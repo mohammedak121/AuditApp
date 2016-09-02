@@ -1,0 +1,66 @@
+<!--
+Filename : AboutUsView.html
+Project : Dealer Audit
+Language : HTML
+Framework: Ionic
+Author : Mohammed Aamir K
+Date of creation : 28-JUL-2016
+Description : This Provides the design for the About Screen UI.
+-->
+
+<!-- Header of the screen-->
+<ion-nav-view>
+	<ion-header-bar class="bar bar-header headerBar" align-title="center">
+		<img class="button button-icon ion-navicon headerBarIcon toolbarleftImgDimensions aboutUsbackIcon" id="aboutBackButton" ng-src={{backIcon}} ng-click="NavigateBackToDashboard()"/>
+		<h1 class="aboutUsName" id="aboutUsHeaderTitle">{{'lblAboutUs'|translate}}</h1>
+	</ion-header-bar>
+	
+	
+	<ion-content class="AboutScreencolorbackground" overflow-scroll="false" scroll="false">
+		<!-- Spacer for space -->
+
+		<div class="spacer aboutUsFirstSpacer"></div>
+
+		<!-- AboutUsScreenLogoimage -->
+		<div align='center'>
+			<img ng-src = {{loglogo}} class="AboutUsScreenLogoimage"/>
+		</div>
+
+		<!-- Spacer for space -->
+		<div class="spacer aboutUsSecondSpacer"></div>
+		
+		<div id="versionDiv">
+			<center class="AboutScreenlabel1" id="versionCenter">
+				{{Version}}
+			</center>
+		</div>
+		
+		<!-- Spacer for space -->
+		<div class="spacer aboutUsThirdSpacer"></div>
+		
+		<!-- Spacer for space -->
+		<div class="spacer aboutUsFourthSpacer"></div>
+		
+		<!-- Spacer for space -->
+		
+		<div class="spacer aboutUsFifthSpacer"></div>
+		
+		<!-- Separate div named as AboutScreenBottom to keep in separate Background color -->
+		<div class="AboutScreenDivBottom">
+
+			<!-- Labels for Copyrights and all reights reserved labels -->
+				<div>
+					<center class="AboutScreenlabel1 ">Copyright © 2016 Goodyear Dunlop.</center>
+					
+					<div class="spacer aboutUsSixthSpacer"></div>
+					<center class="AboutScreenlabel1">{{allRightsReserved}}</center>
+				</div>
+			
+			<!-- AboutUsScreenBottomLogoimage -->
+			<div align='center' class = "AboutUsScreenBottomLogoimageDiv">
+					<img ng-src = {{goodyeardunLogo}} class="AboutUsScreenBottomLogoimage"/>
+			</div>
+
+		</div>
+	</ion-content>
+</ion-nav-view>

@@ -1,0 +1,823 @@
+
+.homeTitle{
+    left: 0px !important;
+    right: 5px !important;
+    color: white !important;
+    top: 8px !important;
+    font-size: x-large !important;
+    margin-left: 4% !important;
+
+}
+.HomePageBg{
+background: url("../img/homePageBg.png") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+ background-size: cover;
+ scroll:false;
+}
+.firstDiv{
+	height:50%;
+	width:100%;
+}
+
+.startAuditingLogoDiv{
+	background: url("../img/startAuditing1.png") no-repeat;
+	width: 161px;
+    height: 156px;
+    margin-top: 15%;
+    margin-left: 4%;
+
+}
+.savedAuditingLogoDiv{
+	background: url("../img/savedAudits2.png") no-repeat;
+	width: 161px;
+    height: 156px;
+    margin-top: -43%;
+    margin-left: 52%;
+}
+.reportAuditingLogoDiv{
+	background: url("../img/reports1.png") no-repeat;
+	width: 161px;
+    height: 156px;
+    margin-top: 3%;
+    margin-left: 4%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settings2.png") no-repeat;
+	width: 161px;
+    height: 156px;
+    margin-top: -43%;
+    margin-left: 52%;
+
+ }
+ .startLabel{
+    height: 7%;
+    width: 48%;
+    position: absolute;
+    margin-top: 30%;
+    padding-left: 0%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+ }
+ .savedLabel{
+    height: 7%;
+    width: 40%;
+    position: absolute;
+    margin-top: 30%;
+    padding-left: 9%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+
+ }
+ .reportsLabel{
+ height: 7%;
+    width: 48%;
+    position: absolute;
+    margin-top: 30%;
+    padding-left: 0%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+
+ }
+ .settingsAuditLabel{
+ height: 7%;
+    width: 40%;
+    position: absolute;
+    margin-top: 30%;
+    padding-left: 9%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+ }
+
+
+/**************************************landscape**************************************************/
+@media only screen and (orientation: landscape) {
+
+.HomePageBg{
+background: url("../img/homePageBgLandscape.png") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+ background-size: cover;
+ scroll:false;
+}
+
+.startAuditingLogoDiv{
+	background: url("../img/startAuditingLand.png") no-repeat;
+	width: 278px;
+    height: 111px;
+    margin-top: 7%;
+    margin-left: 2%;
+    }
+.savedAuditingLogoDiv{
+	background: url("../img/savedAuditsLand.png") no-repeat;
+	width: 278px;
+    height: 111px;
+    margin-top: -19%;
+    margin-left: 51%;
+}
+.reportAuditingLogoDiv{
+	background: url("../img/reportsLand.png") no-repeat;
+	width: 278px;
+    height: 111px;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settingsLand.png") no-repeat;
+	    width: 278px;
+    height: 111px;
+    margin-top: -19%;
+    margin-left: 51%;
+
+ }
+ .startLabel{
+    height: 7%;
+    width: 46%;
+    position: absolute;
+    margin-top: 14%;
+    padding-left: -9%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+    }
+ .savedLabel{
+    height: 7%;
+    width: 40%;
+    position: absolute;
+    margin-top: 14%;
+    padding-left: -9%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+ }
+ .reportsLabel{
+ height: 7%;
+    width: 48%;
+    position: absolute;
+    margin-top: 14%;
+    padding-left: 0%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+
+ }
+ .settingsAuditLabel{
+ height: 7%;
+    width: 41%;
+    position: absolute;
+    margin-top: 14%;
+    padding-left: -6%;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+ }
+
+
+}
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+    .startAuditingLogoDiv{
+    background: url("../img/startAudit@iph.png") no-repeat;
+    width: 161px;
+height: 156px;
+margin-top: 12%;
+margin-left: 5%;
+
+}
+.savedAuditingLogoDiv{
+    background: url("../img/savedAudits@iph.png") no-repeat;
+    width: 161px;
+height: 156px;
+margin-top: -49%;
+margin-left: 52%;
+}
+.reportAuditingLogoDiv{
+    background: url("../img/reports@iph.png") no-repeat;
+    width: 161px;
+height: 156px;
+margin-top: -5%;
+margin-left: 5%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settings@iph.png") no-repeat;
+    width: 161px;
+height: 156px;
+margin-top: -49%;
+margin-left: 52%;
+
+ }
+ .startLabel{
+    height: 7%;
+width: 48%;
+position: absolute;
+margin-top: 28%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 110%;
+ }
+ .savedLabel{
+    height: 7%;
+width: 38%;
+position: absolute;
+margin-top: 28%;
+padding-left: 9%;
+text-align: center;
+color: white;
+font-size: 110%;
+
+ }
+ .reportsLabel{
+ height: 7%;
+width: 40%;
+position: absolute;
+margin-top: 28%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 110%;
+
+ }
+ .settingsAuditLabel{
+ height: 7%;
+width: 35%;
+position: absolute;
+margin-top: 28%;
+padding-left: 9%;
+text-align: center;
+color: white;
+font-size: 110%;
+}
+
+
+
+}
+
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+.startAuditingLogoDiv{
+    background: url("../img/startAuditingiphL.png") no-repeat;
+    width: 278px;
+    height: 111px;
+    margin-top: 4%;
+    margin-left: 5%;
+    }
+.savedAuditingLogoDiv{
+    background: url("../img/savedAuditsiphL.png") no-repeat;
+    width: 278px;
+height: 111px;
+margin-top: -19.5%;
+margin-left: 51%;
+}
+.reportAuditingLogoDiv{
+    background: url("../img/reportsiphL.png") no-repeat;
+    width: 278px;
+height: 111px;
+margin-top: 1%;
+margin-left: 5%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settingsiphL.png") no-repeat;
+        width: 278px;
+height: 111px;
+margin-top: -19.5%;
+margin-left: 51%;
+
+ }
+ .startLabel{
+    height: 7%;
+width: 46%;
+position: absolute;
+margin-top: 12%;
+padding-left: -9%;
+text-align: center;
+color: white;
+font-size: 110%;
+    }
+ .savedLabel{
+    height: 7%;
+width: 38%;
+position: absolute;
+margin-top: 12%;
+padding-left: -9%;
+text-align: center;
+color: white;
+font-size: 110%;
+ }
+ .reportsLabel{
+ height: 7%;
+width: 42%;
+position: absolute;
+margin-top: 12%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 110%;
+ }
+ .settingsAuditLabel{
+ height: 7%;
+width: 35%;
+position: absolute;
+margin-top: 12%;
+padding-left: -6%;
+text-align: center;
+color: white;
+font-size: 110%;
+ }
+ }
+
+/****************************** NEXUS 5 portrait ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait) {
+  .homeTitle{
+      left: 0px !important;
+      right: 5px !important;
+      color: white !important;
+      top: 8px !important;
+      font-size: x-large !important;
+      margin-left: 4% !important;
+
+  }
+    .startAuditingLogoDiv{
+    background: url("../img/startAuditing1.png") no-repeat;
+    width: 179px;
+    height: 156px;
+    margin-top: 15%;
+    margin-left: 4%;
+
+}
+.savedAuditingLogoDiv{
+    background: url("../img/savedAudits2.png") no-repeat;
+    width: 179px;
+    height: 156px;
+    margin-top: -38%;
+    margin-left: 53%;
+}
+.reportAuditingLogoDiv{
+    background: url("../img/reports1.png") no-repeat;
+    width: 179px;
+    height: 156px;
+    margin-top: 5%;
+    margin-left: 4%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settings2.png") no-repeat;
+    width: 185px;
+    height: 156px;
+    margin-top: -38%;
+    margin-left: 53%;
+
+ }
+ .startLabel{
+    height: 7%;
+    width: 44%;
+    position: absolute;
+    margin-top: 28%;
+    padding-left: 0%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+ }
+ .savedLabel{
+    height: 7%;
+    width: 36%;
+    position: absolute;
+    margin-top: 28%;
+    padding-left: 9%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+
+ }
+ .reportsLabel{
+ height: 7%;
+    width: 43%;
+    position: absolute;
+    margin-top: 28%;
+    padding-left: 0%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+
+ }
+ .settingsAuditLabel{
+ height: 7%;
+    width: 33%;
+    position: absolute;
+    margin-top: 28%;
+    padding-left: 9%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+ }
+
+}
+
+
+
+
+/****************************** Google Nexus 7 (portrait) ***********************/
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: portrait) {
+	.startAuditingLogoDiv{
+	background: url("../img/startAudit@2x.png") no-repeat;
+	width: 250px;
+height: 227px;
+margin-top: 11%;
+margin-left: 6%;
+}
+
+
+.savedAuditingLogoDiv{
+	background: url("../img/savedAudit@2x.png") no-repeat;
+	width: 250px;
+height: 227px;
+margin-top: -38%;
+margin-left: 52%;
+}
+.reportAuditingLogoDiv{
+	background: url("../img/reports@2x.png") no-repeat;
+	width: 250px;
+height: 227px;
+margin-top: 5%;
+margin-left: 6%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settings@2x.png") no-repeat;
+	width: 250px;
+height: 227px;
+margin-top: -38%;
+margin-left: 52%;
+
+ }
+ .startLabel{
+    height: 7%;
+width: 40%;
+position: absolute;
+margin-top: 26%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 140%;
+    }
+    .savedLabel {
+height: 7%;
+width: 33%;
+position: absolute;
+margin-top: 26%;
+padding-left: 9%;
+text-align: center;
+color: white;
+font-size: 140%;
+}
+.reportsLabel {
+height: 7%;
+width: 39%;
+position: absolute;
+margin-top: 26%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 140%;
+}
+.settingsAuditLabel {
+height: 7%;
+width: 32%;
+position: absolute;
+margin-top: 26%;
+padding-left: 9%;
+text-align: center;
+color: white;
+font-size: 140%;
+}
+.homeTitle {
+  left: 0px !important;
+  right: 5px !important;
+  color: white !important;
+  top: 1px !important;
+  font-size: x-large !important;
+  margin-left: 4% !important;
+}
+}
+
+/******************************* Google Nexus 7 (lanscape) ****************************/
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: landscape) {
+
+.startAuditingLogoDiv{
+	background: url("../img/startAuditLand@2x.png") no-repeat;
+	width: 420px;
+height: 153px;
+margin-top: 7%;
+margin-left: 4%;
+}
+
+.savedAuditingLogoDiv{
+	background: url("../img/savedAuditsLand@2x.png") no-repeat;
+	width: 420px;
+height: 153px;
+margin-top: -16%;
+margin-left: 52%;
+}
+.reportAuditingLogoDiv{
+	background: url("../img/reportsLand@2x.png") no-repeat;
+	width: 420px;
+height: 153px;
+margin-top: 5%;
+margin-left: 4%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settingsLand@2x.png") no-repeat;
+	    width: 420px;
+height: 153px;
+margin-top: -16%;
+margin-left: 52%;
+
+ }
+ .startLabel{
+    height: 7%;
+width: 44%;
+position: absolute;
+margin-top: 12%;
+padding-left: -9%;
+text-align: center;
+color: white;
+font-size: 140%;
+    }
+ .savedLabel{
+    height: 7%;
+width: 36%;
+position: absolute;
+margin-top: 12%;
+padding-left: -9%;
+text-align: center;
+color: white;
+font-size: 140%;
+}
+ .reportsLabel{
+ height: 7%;
+width: 44%;
+position: absolute;
+margin-top: 12%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 140%;
+}
+ .settingsAuditLabel{
+ height: 7%;
+width: 35%;
+position: absolute;
+margin-top: 12%;
+padding-left: -6%;
+text-align: center;
+color: white;
+font-size: 140%;
+ }
+ .homeTitle{
+ left: 0px !important;
+right: 5px !important;
+color: white !important;
+top: -1px !important;
+font-size: x-large !important;
+margin-left: 2% !important;
+}
+}
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and
+(orientation: landscape) {
+  .homeTitle {
+    left: 0px !important;
+    right: 5px !important;
+    color: white !important;
+    top: 5px !important;
+    font-size: x-large !important;
+    margin-left: 1% !important;
+}
+    .startAuditingLogoDiv{
+    background: url("../img/startAuditingLand.png") no-repeat;
+   width: 291px;
+    height: 118px;
+    margin-top: 8%;
+    margin-left: 5%;
+    }
+.savedAuditingLogoDiv{
+    background: url("../img/savedAuditsLand.png") no-repeat;
+   width: 290px;
+    height: 118px;
+    margin-top: -17%;
+    margin-left: 51%;
+}
+.reportAuditingLogoDiv{
+    background: url("../img/reportsLand.png") no-repeat;
+    width: 290px;
+    height: 120px;
+    margin-top: 3%;
+    margin-left: 5%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settingsLand.png") no-repeat;
+        width: 290px;
+    height: 118px;
+    margin-top: -18%;
+    margin-left: 51%;
+ }
+ .startLabel{
+    height: 7%;
+    width: 43%;
+    position: absolute;
+    margin-top: 12%;
+    padding-left: -9%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+    }
+ .savedLabel{
+    height: 7%;
+    width: 36%;
+    position: absolute;
+    margin-top: 12%;
+    padding-left: -9%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+ }
+ .reportsLabel{
+height: 7%;
+    width: 42%;
+    position: absolute;
+    margin-top: 12%;
+    padding-left: 0%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+
+ }
+ .settingsAuditLabel{
+height: 7%;
+    width: 35%;
+    position: absolute;
+    margin-top: 12%;
+    padding-left: -6%;
+    text-align: center;
+    color: white;
+    font-size: 120%;
+ }
+}
+
+
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+    .startAuditingLogoDiv{
+    background: url("../img/startAudit@3x.png") no-repeat;
+    width: 325px;
+height: 270px;
+margin-top: 6%;
+margin-left: 5%;
+
+}
+.savedAuditingLogoDiv{
+    background: url("../img/savedAudits@3x.png") no-repeat;
+    width: 325px;
+    height: 270px;
+    margin-top: -35%;
+    margin-left: 52%;
+}
+.reportAuditingLogoDiv{
+    background: url("../img/reports@3x.png") no-repeat;
+    width: 325px;
+height: 270px;
+margin-top: 6%;
+margin-left: 5%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settings@3x.png") no-repeat;
+    width: 325px;
+height: 270px;
+margin-top: -35%;
+margin-left: 52%;
+
+ }
+ .startLabel{
+    height: 7%;
+width: 42%;
+position: absolute;
+margin-top: 26%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 140%;
+ }
+ .savedLabel{
+    height: 7%;
+width: 36%;
+position: absolute;
+margin-top: 26%;
+padding-left: 9%;
+text-align: center;
+color: white;
+font-size: 140%;
+
+ }
+ .reportsLabel{
+ height: 7%;
+width: 42%;
+position: absolute;
+margin-top: 26%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 140%;
+
+ }
+ .settingsAuditLabel{
+ height: 7%;
+width: 35%;
+position: absolute;
+margin-top: 26%;
+padding-left: 9%;
+text-align: center;
+color: white;
+font-size: 140%;
+ }
+
+}
+
+/**************************************** iPADipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+
+.startAuditingLogoDiv{
+    background: url("../img/startAuditingLand@3x.png") no-repeat;
+    width: 440px;
+height: 160px;
+margin-top: 5%;
+margin-left: 5%;
+}
+
+.savedAuditingLogoDiv{
+    background: url("../img/savedAuditsLand@3x.png") no-repeat;
+    width: 440px;
+height: 160px;
+margin-top: -15.5%;
+margin-left: 52%;
+}
+.reportAuditingLogoDiv{
+    background: url("../img/reportsLand@3x.png") no-repeat;
+    width: 440px;
+height: 160px;
+margin-top: 5%;
+margin-left: 5%;
+}
+ .settingsAuditingLogoDiv{
+ background: url("../img/settingsLand@3x.png") no-repeat;
+        width: 440px;
+height: 160px;
+margin-top: -15.5%;
+margin-left: 52%;
+
+ }
+ .startLabel{
+    height: 7%;
+width: 44%;
+position: absolute;
+margin-top: 12%;
+padding-left: -9%;
+text-align: center;
+color: white;
+font-size: 140%;
+    }
+ .savedLabel{
+    height: 7%;
+width: 36%;
+position: absolute;
+margin-top: 12%;
+padding-left: -9%;
+text-align: center;
+color: white;
+font-size: 140%;
+}
+ .reportsLabel{
+ height: 7%;
+width: 44%;
+position: absolute;
+margin-top: 12%;
+padding-left: 0%;
+text-align: center;
+color: white;
+font-size: 140%;
+}
+ .settingsAuditLabel{
+ height: 7%;
+width: 35%;
+position: absolute;
+margin-top: 12%;
+padding-left: -6%;
+text-align: center;
+color: white;
+font-size: 140%;
+ }
+}

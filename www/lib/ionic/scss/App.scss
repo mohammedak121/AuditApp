@@ -1,0 +1,1053 @@
+
+@import "ionic","variables", "popup"," _login","_settings","_angularDropdown","_aboutUs", "_home", "_settingsModal", "_homeModal","_dealer","_auditProgress","_searchPage";
+
+
+
+.overLayDiv{
+position:absolute;
+    top: 0%;
+    z-index:11;
+    padding-bottom : 200% !important;
+   margin-top: -10% !important;
+   background-color: #000;
+   opacity: 0.8;
+   width: 100%;
+}
+.overLayDivBgForTyreLoad{
+   opacity: 0.6 !important;
+}
+
+
+body.menu-open ion-side-menu-content {
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    background-color: #ddd;
+    opacity: 0.8;
+}
+
+.dashsidemenulist{
+  /*border-style:none !important;*/
+ font-size:$headingTxtSize;
+  font-family:$headingTxtFamily;
+  color:$titleColor;
+}
+
+.selectboxborderline{
+  border-top: none;
+}
+
+.selectbox{
+  border-left: none;
+  border-right: none;
+  outline: none;
+  width: 100%;
+  height: 3em;
+  background-color: transparent;
+}
+
+
+
+
+
+.divLoginForm .item-input{
+  outline-color: $formOutlineColor;
+  border: 0.5em solid $formBorderColor;
+  border-radius: 0.5em;
+  height: 1em;
+
+}
+
+.mySearchBox{
+    // margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 7%;
+    border-bottom: 1px solid BDBEC2;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.login-link{
+  font-size: 16px;
+    color: $helpTextColor;
+    display: block;
+    margin-left: 1px;
+    margin-top: 8px;
+}
+
+
+
+
+
+
+.settingsBg{
+  background: url("../img/settingsbg.png")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+  -o-background-size: cover;
+    background-size: cover;
+    scroll:false;
+}
+
+
+
+
+
+.customConfirm{
+  text-align:center;
+}
+
+.customConfirm .popup-buttons .button{
+  color:$helpTextColor;
+  background:none;
+  margin-bottom: -5%;
+  margin-left: -5%;
+  margin-right:-5%;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+/*.customConfirm.popup-container .popup {
+  border:solid #004890;
+  border-width:0.2em;
+  border-radius: 1em;
+}*/
+
+.bar .button.button-clear, .bar button.button-clear {
+    padding-right: 3px;
+    padding-left: 7px;
+    padding-top: 8px;
+    font-weight: 300;
+    font-size: 17px;
+    }
+
+
+
+
+
+
+/*************************/
+/*Custom alert messages*/
+
+.customAlert{
+
+  text-align:center;
+
+}
+
+.customAlert .popup-title {
+    color: #BDBEC2;
+    font-weight: bold;
+}
+
+
+.customAlert .popup-buttons .button{
+
+  color: $whiteColor;
+
+  background-color:$buttonColor;
+
+  margin-bottom: -5%;
+
+  margin-left: -5%;
+
+  margin-right:-5%;
+
+  /*border-left:0px solid $buttonColor !important;*/
+
+  border-bottom-left-radius: 0.5em;
+
+ border-bottom-right-radius: 0.5em;
+
+}
+
+.customAlert .popup-buttons .button:after{
+  content: '';
+    position: absolute;
+    bottom: 20%;
+    top: 20%;
+    left:0%;
+    right:0%;
+    border-left: 2px solid #1385cb !important;
+}
+
+
+
+.customAlert.popup-container .popup {
+
+  /*border:solid #004890;*/
+
+  border-width:0.2em;
+
+  border-radius: 0.5em;
+
+}
+/*Custom alert messages ends*/
+
+/*Confirm Popup Styles*/
+.customAlertConfirmation{
+  text-align:center;
+   /*border:red;*/
+}
+
+.customAlertConfirmation .popup-buttons .button{
+  color: $whiteColor;
+  background-color:$buttonColor;
+  margin-bottom: -5%;
+  margin-left: -5%;
+  margin-right:-5%;
+ /* border-bottom-left-radius: 1em;*/
+  /*border-bottom-right-radius: 1em;*/
+}
+
+.customAlertConfirmation.popup-container .popup {
+ /* border:solid #004890;*/
+  border-width:0.2em;
+  border-radius: 0.5em;
+  /*border-top-left-radius: 0.5em;
+
+ border-top-right-radius: 0.5em;*/
+}
+
+.cancelbtn{
+  border-right:1px solid black ;
+}
+.okBtn{
+  border-left:1px solid black ;
+}
+/*Confirm Popup Styles ends*/
+/* dashboardHorizontalLine style*/
+.dashboardHorizontalLine{
+margin-bottom: -5%;
+}
+/*************************/
+
+
+
+
+
+
+
+
+
+/*#region DashboardScreen*/
+
+.button.icon-left.ion-chevron-left.button-clear.button-dark{
+    color: white;
+}
+.dashboardspantext{
+text-align: left;
+font-size: 12px;
+color:#ffffff
+
+}
+
+.ion-content{
+
+background-color:$PageBgGreyColor;
+}
+.dashboardspantext2{
+ font-weight:bold;
+ color:#ffffff;
+ font-size: large;
+ margin-top: 8%;
+ margin-left: 9%;
+ width: 100%;
+}
+.dashboardmyForm{
+  padding-top: 60px;
+  padding-left: 27px;
+  padding-bottom: 20px;
+  padding-right: 27px;
+  background-color: #ffffff;
+}
+
+.dashsidemenulist{
+  border-style:none !important;
+}
+
+.label1{
+
+    color: grey ;
+    font-size:16px;
+     horizontal-align: middle;
+}
+
+.label2{
+
+    color: #1075b3;
+    font-size:14px;
+}
+.AboutScreenBottom{
+
+     background-color: #ffffff;
+}
+
+.colorbackground
+{
+     background-color:#dbddde;
+}
+
+.colorfooterbackground
+{
+     background-color:red;
+}
+.dashboardcss .view-container .nav-bar-block .bar
+{
+  background-color:#1385cb;
+}
+.dashboardcss .bar-stable .button.button-icon
+{
+  color:#ffffff;
+}
+.dashboardcss .bar.bar-stable .title{
+  padding-top:10px;
+  color:#ffffff;
+}
+.dashboardcss .bar.bar-stable {
+  background-color:$HeaderFooterbgcolor;
+}
+
+.dashboardcss .bar{
+  height:70px;
+}
+.syncicon{
+  background: url("../img/sync.png") no-repeat center center;
+  padding: 18px 0px 21px 33px;
+}
+.settingicon{
+  background: url("../img/setting.png") no-repeat center center;
+  padding: 18px 7px 19px 33px;
+}
+.bar .button, .bar button {
+    z-index: 1;
+    padding: 0 8px;
+    min-width: initial;
+    min-height: 31px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 32px;
+
+}
+.buttonTextStyle{
+
+  color: #ffffff;
+
+  border-color: transparent;
+  background:none;
+  margin-left: 41%;
+}
+
+.buttonTextStyle1{
+
+  color: #ffffff;
+  border-color: transparent;
+  background:none;
+  background-color: #1286CB;
+  width: 100%;
+  height: 11%;
+  // margin-left: 41%;
+}
+
+.bar.bar-footer.footerstyle{
+  background-color:#1385cb;
+}
+.bar-footer{
+  bottom:0;
+  border-top-width :1px;
+  border-bottom-width :0;
+  background-position:top;
+  height:44px;
+
+}
+.addressicon{
+  background: url("../img/address.png") no-repeat center center;
+  padding: 18px 7px 19px 33px;
+}
+.contactusicon{
+  background: url("../img/contact us.png") no-repeat center center;
+  padding: 18px 7px 19px 33px;
+}
+.aboutusicon{
+  background: url("../img/about us.png") no-repeat center center;
+  padding: 18px 7px 19px 33px;
+}
+.signouticon{
+  background: url("../img/signout.png") no-repeat center center;
+  padding: 18px 7px 19px 33px;
+}
+.dashboardsearchline{
+  background: url("../img/search_b@2x.png") no-repeat center center;
+  background-size: contain;
+  border:none;
+}
+.card, .list-inset {
+    overflow: hidden;
+    margin: 20px 0px;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+
+.sidemenulist .list{
+      padding-top: 17px;
+      margin-top:17.5%;
+}
+.dashboardcocicon{
+  left: 35%!important;
+  background: url("../img/coc.png") no-repeat center center;
+  font-size: 17px;
+
+}
+.dashboardceicon{
+  left: 50%!important;
+  background: url("../img/ce.png") no-repeat center center;
+  font-size: 17px;
+
+}
+.dashboardcpicon{
+  left:65%!important;
+  background: url("../img/cp.png") no-repeat center center;
+  font-size: 17px;
+
+}
+/*This is to increase the width of header*/
+.dashBoardHeaderBarStyle{
+height: auto !important
+}
+.item-icon-left .icon{
+  left:0px;
+}
+
+/*#endregion DashboardScreen*/
+
+
+
+.headerBar .bar{
+  height:70px !important;
+  color:white !important;
+}
+
+
+
+
+
+/* ------------------ Custom Drop Down Styles---------------------*/
+.custom-select {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 13px;
+  zoom: 1;
+  *display: inline;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-left: none;
+    border-right: none;
+    outline: none;
+    width: 100%;
+    height: 3em;
+    background-color: transparent;
+    color:#444;
+}
+.custom-select.small {
+  width: 104px;
+}
+.custom-select.medium {
+  width: 164px;
+}
+.custom-select.large {
+  width: 300px;
+}
+.custom-select.xlarge {
+  width: 380px;
+}
+.custom-select > select {
+  display: none !important;
+}
+.custom-select > a.dropdown-toggle {
+  border-radius: 0;
+  line-height: 28px;
+  box-shadow: none;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0 0 0 8px;
+  border:none;
+  border-bottom: 1px solid #777;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #888;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 30px;
+  background:none;
+}
+.custom-select > a.dropdown-toggle.disabled,
+.custom-select > a.dropdown-toggle.disabled:hover {
+  cursor: not-allowed;
+  color: #aaa;
+  background: #eee;
+}
+.custom-select > a.dropdown-toggle:hover,
+.custom-select.open > a.dropdown-toggle {
+  color: #aaa;
+}
+.custom-select.open > a.dropdown-toggle {
+  border-bottom: 0;
+  line-height: 29px;
+}
+.control-group.error .custom-select > a.dropdown-toggle {
+  border-color: #f09784;
+  color: #d68273;
+}
+.custom-select > a.dropdown-toggle > span {
+  display: block;
+  overflow: hidden;
+  margin-right: 26px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color:#777;
+}
+.custom-select > a.dropdown-toggle > b {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 18px;
+  height: 100%;
+}
+.custom-select > a.dropdown-toggle > b:before {
+  content: "\f0d7";
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 12px;
+  position: relative;
+  top: -1px;
+  left: 1px;
+}
+.custom-select.open > a.dropdown-toggle > b:before {
+  content: "\f0d8";
+}
+.custom-select > .dropdown-menu {
+  margin-top: 0;
+  border-color: #aaa;
+  border-top: 0;
+  padding-bottom: 0;
+  width: auto;
+  min-width: 100%;
+  height:200px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 0;
+  overflow-y: scroll;
+  overflow: hidden;
+}
+.custom-select > .dropdown-menu > .custom-select-search {
+  position: relative;
+  z-index: 1010;
+  margin: 0;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+.custom-select > .dropdown-menu > .custom-select-search > input {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 4px 20px 4px 5px;
+  border-radius: 0;
+}
+.custom-select > .dropdown-menu > .custom-select-search:after {
+  content: "\f002";
+  display: inline-block;
+  color: #888;
+  font-family: FontAwesome;
+  font-size: 14px;
+  position: absolute;
+  top: 4px;
+  right: 10px;
+}
+.custom-select > .dropdown-menu > ul {
+  border-color: #aaa;
+  border-top: 0;
+  margin: 4px 0;
+  padding: 0;
+  list-style: none;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 240px;
+  padding-right: 14px;
+}
+.custom-select > .dropdown-menu > ul > li > a {
+  font-size: 13px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  display: block;
+  padding: 3px 8px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #333;
+  cursor: pointer;
+  width: 100%;
+  color: #444;
+  border-bottom: 2px solid #BDBDBD;
+}
+.custom-select > .dropdown-menu > ul > li > a:hover,
+.custom-select > .dropdown-menu > ul > li > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-repeat: repeat-x;
+}
+.custom-select > .dropdown-menu > ul > li > a:hover {
+  background: #4f99c6;
+}
+.custom-select > .dropdown-menu > ul > li > a:focus {
+  background: #2283c5;
+}
+.custom-select > .dropdown-menu > ul > li.empty-result > em {
+  text-align: center;
+  padding: 4px 8px;
+  display: block;
+}
+.custom-select > .dropdown-menu > .custom-select-action > button {
+  border-radius: 0;
+  background-image: none;
+}
+
+
+
+
+ .inputSetPinDiv{
+  border: 0.1em solid $inputDivBorderColor;
+    border-radius: 0.5em;
+     width:95%;
+   display: inline-block;
+   margin-top:1%
+     }
+
+
+.saveBtn{
+  position: absolute;
+   left: 87%;
+}
+
+
+/*#region AboutUsScreen*/
+
+
+
+/*#Separate div which is in the bottom of the About Us Screen with different color*/
+
+
+
+/*#Labels in the About Us Screen*/
+.AboutScreenlabel2{
+    color: #1075b3;
+    font-size: 140%;
+}
+
+.AboutUsScreenLogoimage {
+/*background: url("../img/loglogo.png")no-repeat center;*/
+padding-top: 38%;
+width: 37%;
+height:15%
+
+  }
+
+
+
+
+
+
+
+ .aboutUsFourthSpacer{
+ height: 15%;
+ }
+
+
+/* -------------------------------- Media Queries---------------------------------  */
+
+//Media Query for the Landscape of all devices
+@media only screen and (orientation: landscape) {
+
+.AboutUsScreenLogoimage {
+    /* background: url("../img/loglogo.png")no-repeat center; */
+    padding-top: 8%;
+    width: 19%;
+    height: 15%;
+}
+
+
+
+
+
+
+
+}
+
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width : 320px) and (max-device-width : 400px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio: 2){
+
+
+/*#Labels in the About Us Screen*/
+/*#Labels in the About Us Screen*/
+.AboutScreenlabel2{
+    color: #1075b3;
+    font-size: 120%;
+    text-align:center;
+}
+  /*#Labels in the About Us Screen*/
+
+ .aboutUsFourthSpacer{
+ height: 40px;
+ }
+
+
+}
+
+
+   /***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width : 320px) and (max-device-width : 400px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2) {
+
+
+
+/*#Labels in the About Us Screen*/
+
+
+/*#Labels in the About Us Screen*/
+.AboutScreenlabel2{
+    color: #1075b3;
+    font-size: 110%;
+    text-align: center;
+}
+  /*#Labels in the About Us Screen*/
+
+ .aboutUsFourthSpacer{
+ height: 10px;
+ }
+
+.AboutUsScreenLogoimage{
+padding-top: 5% !important;
+width: 19% !important;
+height: 15%!important;
+}
+
+
+
+
+}
+
+
+/****************************** NEXUS 5 portrait ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait){
+
+
+}
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape){
+
+}
+/* Google Nexus 7 (portrait) */
+@media only screen and (min-device-width : 600px) and (max-device-width : 966px) and (orientation : portrait) {
+
+ /*.custom-select {
+    width: 100% !important;
+    height: 0.5em;
+    background-color: yellow;
+  }
+
+  .row.InputPinStyle{
+
+    margin-top: 5%;
+  }*/
+
+  .buttonTextStyle {
+    font-size: $smallTxtSize !important;
+  }
+
+  .crnTyreLoadingImageDashboard {
+    position: absolute;
+    z-index: 10000;
+    width: 40%;
+    margin-top: 41.5%;
+    margin-left: 30%;
+    height: 350%;
+  }
+
+  .crnTyreLoadingImageSearch{
+    position: absolute;
+    z-index: 10000;
+    width: 35%;
+    margin-top: 35%;
+    margin-left: 30%;
+    height: 200%;
+  }
+
+  .crnTyreLoadingImageFilter {
+    position: absolute;
+    z-index: 10000;
+    width: 40%;
+    margin-top: 41.5%;
+    margin-left: 30%;
+    height: 25%;
+  }
+
+}
+
+/* Google Nexus 7 (lanscape) */
+@media only screen and (min-device-width : 604px) and (max-device-width : 966px) and (orientation : landscape) {
+
+
+
+}
+
+/* Google Nexus 7 (portrait) */
+@media only screen and (min-device-width : 604px) and (max-device-width : 966px) and (orientation : portrait) {
+
+
+/*#Labels in the About Us Screen*/
+
+
+/*#Labels in the About Us Screen*/
+.AboutScreenlabel2{
+    color: #1075b3;
+    font-size: 140%;
+}
+
+
+
+
+/*#Labels in the About Us Screen*/
+
+ .aboutUsFourthSpacer{
+ height: 15%;
+ }
+.searchBox{
+    font-Size:$headingTxtSize !important;
+    font-family:$headingTxtFamily !important;
+    width: 70%;
+    left: 35%;
+    margin-top: -20px;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom:$subtitleColor !important;
+    border-style: solid;
+    border-width: 0.1em !important;
+}
+
+
+
+ .custom-select {
+    width: 70em;
+    height: 1.5em;
+  }
+  .row.InputPinStyle{
+    width:100%;
+
+  }
+  .bar .title {
+    font-size: $Title1TxtSize !important;
+  }
+
+  .bar-footer {
+    height: 7% !important;
+  }
+  .buttonTextStyle {
+    font-size: $smallTxtSize !important;
+  }
+
+  // .tireLodingImage {
+  //   position: absolute;
+  //   width: 45% !important;
+  //   height: 40% !important;
+  //   margin-top: 40% !important;
+  //   margin-left: 26% !important;
+  //   z-index: 999;
+  // }
+
+}
+
+
+
+/* Google Nexus 7 (lanscape) */
+@media only screen and (min-device-width : 604px) and (max-device-width : 966px) and (orientation : landscape) {
+
+   .row.InputPinStyle{
+    width:100%;
+
+  }
+  .bar .title {
+    font-size: $Title1TxtSize !important;
+  }
+
+  .bar-footer {
+    height: 13% !important;
+  }
+  .buttonTextStyle {
+    font-size: $smallTxtSize !important;
+  }
+
+  // .tireLodingImage {
+  //   position: absolute;
+  //   width: 45% !important;
+  //   height: 40% !important;
+  //   margin-top: 40% !important;
+  //   margin-left: 26% !important;
+  //   z-index: 999;
+  // }
+
+}
+
+@media only screen and (min-device-width : 600px) and (max-device-width : 966px) and (orientation : landscape) {
+  .crnTyreLoadingImageDashboard {
+    position: absolute;
+    z-index: 10000;
+    width: 25%;
+    margin-top: 10%;
+    margin-left: 40%;
+    height: 350%;
+  }
+
+  .crnTyreLoadingImageSearch{
+    position: absolute;
+    z-index: 10000;
+    width: 25%;
+    margin-top: 10%;
+    margin-left: 40%;
+    height: 200%;
+  }
+
+  .crnTyreLoadingImageFilter {
+    z-index: 10000;
+    position: absolute;
+    width: 25%;
+    margin-top: 15%;
+    margin-left: 35%;
+    height: 40%;
+  }
+}
+/*#Labels in the About Us Screen*/
+
+
+/*#Labels in the About Us Screen*/
+.AboutScreenlabel2{
+    color: #1075b3;
+    font-size: 125%;
+}
+
+
+
+
+/*#Labels in the About Us Screen*/
+
+ .aboutUsFourthSpacer{
+ height: 3%;
+ }
+
+ /* Google Nexus 7 (portrait) */
+@media only screen and (min-device-width : 600px) and (max-device-width : 966px) and (orientation : portrait) {
+
+
+
+
+}
+
+
+
+
+/* iPhone 6 (portrait and landscape) */
+@media only screen and (min-width: 375px) and (max-width: 667px){
+
+
+
+
+
+}
+
+/* iPhone 6 Plus (portrait) */
+@media only screen and (min-width: 414px) and (max-width: 736px) and (orientation : portrait){
+
+
+
+}
+
+
+/* iPhone 5 (portrait) */
+@media only screen and (min-width: 320px) and (max-width: 568px) and (orientation : portrait) {
+
+
+}
+
+/* iPhone 4 (portrait and landscape) */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+
+
+}
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
+/*#Labels in the About Us Screen*/
+
+
+/*#Labels in the About Us Screen*/
+.AboutScreenlabel2{
+    color: #1075b3;
+    font-size: 110%;
+    text-align: center;
+}
+
+
+
+
+/*#Labels in the About Us Screen*/
+
+ .aboutUsFourthSpacer{
+ height: 90px;
+ }
+
+
+.bar .title {
+    text-align: center;
+    color: white !important;;
+    background-color: #1385cb;
+    font-size: 130% !important;
+    font-family: "HelveticaNeue";
+}
+
+.headerBarTitle{
+
+  color:white !important;
+  line-height: 60px !important;
+  font-size: 135% !important;
+
+}
+.inputSetBox{
+  border: 0.2em solid black;
+  border-radius: 0.5em;
+  height: 0.1em;
+  width:100%;
+  font-weight: normal;
+  text-align: left;
+  color:$inputBoxColor;
+  color:grey;
+  margin-top: 7%;
+}
+
+
+}
+
+/**************************************** iPADipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+
+
+
+}

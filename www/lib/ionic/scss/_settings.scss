@@ -1,0 +1,975 @@
+.SettingsPageBg{
+background: url("../img/settingsBg.png") no-repeat center center fixed;
+-webkit-background-size: cover;
+    -moz-background-size: cover;
+  -o-background-size: cover;
+    background-size: cover;
+    scroll:false;
+}
+.headerBarIcon{
+
+  width:70px;
+  height:50px;
+
+
+}
+.headerBar{
+  background-color:#1385cb !important;
+   height:70px !important;
+   color:white !important;
+}
+
+
+.SettingsLabelStyle{
+  font-size: $headingTxtSize;
+  width: 25%;
+  margin-top:5%;
+  margin-left:2%;
+  font-family:$headingTxtFamily;
+}
+
+
+.headerTitle {
+    color: white !important;
+    padding-top: -1% !important;
+    font-size: 21px !important;
+    margin-left: 21% !important;
+    margin-top: 6% !important;
+    padding-bottom: 5%;
+}
+.bar button {
+    z-index: 1;
+    padding: 0 8px;
+    min-width: 100% !important;
+    min-height: 31px;
+    font-weight: 400;
+    font-size: 22px !important;
+    line-height: 32px;
+    margin-left: -2% !important;
+}
+.bar-footer {
+    bottom: 0;
+    border-top-width: 1px;
+    border-bottom-width: 0;
+    background-position: top;
+    height: 8.7% !important;
+}
+.row1 {
+
+    display: flex;
+   margin-left:5%;
+    width: 100%;
+}
+.SettingsLabelStyle{
+ /*  font-size: $headingTxtSize; */
+ /*  width: 25%; */
+ /*  margin-top:5%;*/
+ /*  margin-left:2%;*/
+ /*  font-family:$headingTxtFamily;*/
+ /*  color: #004c98;*/
+ /*  margin-left: 5%;*/
+
+
+    font-size: 113%;
+    width: 25%;
+    margin-top: 5%;
+    margin-left: 8%;
+    font-family: "HelveticaNeue";
+}
+.SettingsLabelStyle1{
+  font-size: $headingTxtSize;
+  width: 25%;
+  margin-top:5%;
+  margin-left:2%;
+  font-family:$headingTxtFamily;
+  color: #004c98;
+  margin-left: -2%;
+}
+
+
+ .logsClass {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 3.42857;
+    margin-left: 4%;
+    color: #004c98;
+
+
+}
+.line{
+  border: 0.05em solid #ddd;
+
+    border-top: 0.05em;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+
+.row.InputPinStyle{
+  /*  border-bottom: solid 0.00005px; */
+  /*  border-color: rgba(222, 215, 215, 0.64); */
+  /*  width: 100%;*/
+  /*  margin-left: 9.5%;*/
+  /*  margin-right: 0.1%;*/
+
+
+    border-bottom: solid 1px;
+    border-color: #aaaaaa;
+    width: 100%;
+    margin-left: 6.5%;
+    margin-right: 0.1%;
+    font-size: 93.75%;
+    font-family: "HelveticaNeue";
+
+}
+
+
+ .inputSetBox{
+ /* outline-color: $inputOutlineColor;*/
+ /* border: 0.2em solid black;*/
+ /* border-radius: 0.5em;*/
+ /* height: 0.1em;*/
+ /* width:100%;*/
+ /* font-family:$titleTxtFamily;*/
+ /* font-size:$titleTxtSize;*/
+ /* font-weight: normal;*/
+ /* text-align: left;*/
+/*  color:$inputBoxColor;*/
+ /* color:grey;*/
+ /* background-color: transparent;*/
+
+
+   outline-color: #686868;
+    border: 0.2em solid black;
+    border-radius: 0.5em;
+    height: 0.1em;
+    width: 100%;
+    font-family: "HelveticaNeue";
+    font-size: 93.75%;
+    font-weight: normal;
+    text-align: left;
+    color: #1075b3;
+    color: grey;
+}
+.toolbarleftImgDimensions{
+  width: 60px;
+  height: 45px;
+  top: 14px;
+}
+.toolbarrightImgDimensions{
+width:43px;
+height:40px;
+padding-top:2%!important;
+}
+.line{
+  border: 0.05em solid #ddd;
+
+    border-top: 0.05em;
+    border-left: 0px;
+    border-right: 0px;
+}
+.SettingsScreenDiv{
+      padding-top: 7%;
+}
+
+
+.langDropDown{
+    position: relative;
+    width: 94%;
+    margin: 0 auto;
+    padding: 5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: 5%;
+    margin-right: 5px;
+    border-bottom: 1px;
+    border-bottom-color: #aaaaaa;
+    border-style: solid;
+    margin-top: 6px;
+    font-family: "HelveticaNeue";
+    color: gray!important;
+    font-size: 14px;
+    padding-left: 4px!important;
+}
+span.selected.ng-binding {
+    padding: 1%;
+    color: grey;
+    vertical-align: -webkit-baseline-middle;
+}
+/************************landscape ****************/
+@media only screen and (orientation: landscape) {
+
+
+.inputSetBox{
+  background: none;
+}
+.headerBar{
+  background-color:#1385cb !important;
+   height:77px !important;
+   color:white !important;
+}
+  .SettingsPageBg{
+background: url("../img/Backgroundimg.png") no-repeat center center fixed;
+-webkit-background-size: cover;
+    -moz-background-size: cover;
+  -o-background-size: cover;
+    background-size: cover;
+    scroll:false;
+}
+  .SettingsScreenDiv{
+      padding-top: 4%;
+}
+.imgSetBox {
+    /*height: 27%;
+    width: 29%;
+    float: right;
+    padding-right: 2%;*/
+
+    width: 29%;
+    padding-left: 13%;
+}
+.headerTitle {
+    color: white !important;
+    padding-top: -1% !important;
+    font-size: 21px !important;
+    margin-left: 27% !important;
+    margin-top: 4% !important;
+    padding-bottom: 5%;
+}
+
+  .bar.bar-footer.footerstyle {
+    background-color: #1385cb;
+    height: 13% !important;
+}
+.line{
+  border: 0.05em solid #ddd;
+
+    border-top: 0.05em;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+
+
+
+}
+
+
+
+
+
+
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width : 320px) and (max-device-width : 400px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio: 2){
+.headerTitle {
+  margin-top: 15px;
+padding-bottom: 15%;
+}
+.SettingsLabelStyle {
+font-size: 113%;
+width: 25%;
+margin-top: 5%;
+font-family: "HelveticaNeue";
+color: #004c98;
+margin-left: 5%;
+
+
+}
+.wrap-dd-select{
+position: relative;
+/* width: 1px; */
+margin: 0 auto;
+padding: 10px;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+cursor: pointer;
+outline: none;
+margin-left: 10px;
+margin-top: 6px;
+height: 5%;
+}
+.wrap-dd-select:after{
+
+height: 0;
+position: absolute;
+right: -115px;
+top: 40%;
+margin-top: -3px;
+border-width: 6px 6px 0 6px;
+border-style: solid;
+border-color: #grey transparent;
+}
+
+
+.imgSetBox{
+  float: right;
+padding-left: 0%;
+}
+.SettingsLabelStyle{
+  margin-top: 6.5%;
+  margin-left: 9%;
+  width:40% !important;
+  color: black!important;
+}
+.toolbarleftImgDimensions{
+
+
+padding-top: 0px !important;
+margin-top: 0px !important;
+padding-left: 0px !important;
+}
+.headerTitleDashBoard{
+
+
+  left: 0px!important;
+  right: 0px!important;
+  width: 100% !important;
+  text-align: center !important;;
+  margin-left: 0% !important;
+
+}
+.SettingsScreenDiv{
+  padding-top: 2%!important;
+}
+.langDropDown{
+  width: 94% !important;
+  padding-left: 4px !important;
+margin-left: 8% !important;
+padding-top: 5px !important;
+padding-bottom: 5px !important;
+margin-top: 10px !important;
+}
+.row.InputPinStyle{
+  width: 100%;
+  margin-left: 9%;
+  margin-top: 0px;
+  border-bottom: 1px solid !important;
+  border-bottom-color: #aaaaaa !important;
+}
+.footerStyleDashBoard{
+  margin-bottom: 0% !important;
+}
+.dashBoardTitle{
+  margin-top: 10px !important;
+}
+.leftToggle{
+  padding-top:0px!important;
+}
+dashboardspantext2{
+  margin-top:25px!important;
+}
+
+
+.sidemenulist .list{
+  margin-top:1%!important;
+}
+.toolbarleftImgDimensions{
+  color: white;
+font-size: 45px !important;
+/* width: 20px !important; */
+/* width: 60px !important; */
+/* height: 45px; */
+top: 0px;
+/* left: 0px !important; */
+/* right: 80 !important; */
+margin-right: 80% !important;
+margin-left: 2% !important;
+text-align: left !important;
+margin-top: 10px !important;
+padding-left: 4% !important;
+padding-top: 10px !important;
+  }
+  .dashBoardTitle{
+left: 0px!important;
+right: 5px!important;
+color: white !important;
+top: 10px !important;
+}
+.headerBarDashBoard{
+  height:64px!important;
+}
+.backIcon{
+    margin-left:0px!important;
+    margin-left: 0% !important;
+    padding-left:0%!important;
+    margin-top: 15px !important;
+padding-top: 0px !important;
+}
+
+
+}
+
+
+   /***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width : 320px) and (max-device-width : 400px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2) {
+.headerTitle {
+  margin-top: 15px;
+padding-bottom: 15%;
+}
+.SettingsScreenDiv{
+  padding-top: 2%;
+}
+.SettingsLabelStyle{
+  font-size: 113%;
+width: 25%;
+margin-top: 3%;
+margin-left: 8%;
+font-family: "HelveticaNeue";
+}
+.langDropDown{
+  width: 94% !important;
+  padding-left: 4px !important;
+margin-left: 5% !important;
+padding-bottom: 10px !important;
+padding-top: 10px !important;
+}
+.row.InputPinStyle{
+  border-bottom: solid 1px;
+border-color: #aaaaaa;
+width: 100%;
+margin-left: 6.5%;
+margin-right: 0.1%;
+font-size: 53.75%;
+font-family: "HelveticaNeue";
+padding-top: 10px !important;
+padding-bottom: 0px !important;
+/* line-height: 10% !important; */
+height: 45px !important;
+}
+.headerTitleDashBoard{
+  left: 0px!important;
+right: 0px!important;
+width: 100% !important;
+text-align: center !important;
+margin-left: 0px !important;
+}
+.toolbarleftImgDimensions{
+  margin-top:5px!important;
+}
+.footerStyleDashBoard{
+  height: 16% !important;
+  /* padding-bottom: 10% !important; */
+  margin-bottom: 0% !important;
+}
+.dashBoardTitle{
+  margin-top: 10px !important;
+}
+.leftToggle{
+  padding-top:0px!important;
+}
+dashboardspantext2{
+  margin-top:25px!important;
+}
+.imgSetBox{
+  padding-left: 17%!important;
+}
+.sidemenulist .list{
+  margin-top:1%!important;
+}
+.toolbarleftImgDimensions{
+  color: white;
+font-size: 35px !important;
+/* width: 20px !important; */
+/* width: 60px !important; */
+/* height: 45px; */
+top: 0px;
+/* left: 0px !important; */
+/* right: 80 !important; */
+margin-right: 80% !important;
+margin-left: 2% !important;
+text-align: left !important;
+margin-top: 10px !important;
+padding-top: 5px !important;
+padding-left: 4% !important;
+  }
+.dashBoardTitle{
+  left: 0px !important;
+right: 5px;
+color: white !important;
+top: 5px !important;
+background: #1385cb !important;
+/* margin-top: 0px !important; */
+margin-left: 0px !important;
+height: 60% !important;
+margin-bottom: 1% !important;
+padding-bottom: 1% !important;
+width: 100%!important;
+}
+.headerBarDashBoard{
+  height:64px!important;
+}
+.backIcon{
+    margin-left:0px!important;
+    margin-left: 0% !important;
+    padding-left:0%!important;
+    margin-top: 15px!important;
+}
+.bar.bar-footer.footerstyle{
+  height: 16% !important;
+}
+}
+
+
+
+
+/****************************** NEXUS 5 portrait ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait){
+  .row.InputPinStyle {
+        margin-right: 1.1%;
+}
+.toolbarleftImgDimensions{
+  color: white;
+font-size: 45px !important;
+/* width: 20px !important; */
+/* width: 60px !important; */
+/* height: 45px; */
+top: 0px;
+/* left: 0px !important; */
+/* right: 80 !important; */
+margin-right: 80% !important;
+margin-left: -2% !important;
+text-align: left !important;
+margin-top: 10px !important;
+padding-left: 4% !important;
+padding-top: 10px !important;
+  }
+  .dashBoardTitle{
+left: 0px!important;
+right: 5px!important;
+color: white !important;
+top: 21px !important;
+}
+}
+
+
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape){
+.imgSetBox{
+height: 32%;
+    width: 32%;
+    padding-left: 18%;
+    margin-left: 26%;
+    padding-top: 3%;
+}
+  .inputSetBox{
+  background: none;
+}
+.headerTitle {
+
+    margin-left: 32% !important;
+    margin-top: 5% !important;
+    padding-bottom: 5%;
+}
+
+ /*input[placeholder] {*/
+   /* padding-left: 5px;*/
+   /* margin-top: 2%;*/
+/*}*/
+.buttonTextStyle {
+
+    margin-left: 46%;
+}
+.dashBoardTitle{
+  margin-top: 7px !important;
+}
+.toolbarleftImgDimensions{
+  color: white;
+font-size: 35px !important;
+/* width: 20px !important; */
+/* width: 60px !important; */
+/* height: 45px; */
+top: 0px;
+/* left: 0px !important; */
+/* right: 80 !important; */
+margin-right: 80% !important;
+margin-left: 2% !important;
+text-align: left !important;
+margin-top: 9px !important;
+padding-top: 5px !important;
+padding-left: 4% !important;
+  }
+.dashBoardTitle{
+  left: 0px !important;
+right: 5px;
+color: white !important;
+top: 5px !important;
+background: #1385cb !important;
+/* margin-top: 0px !important; */
+margin-left: 0px !important;
+height: 60% !important;
+margin-bottom: 1% !important;
+padding-bottom: 1% !important;
+width: 100%!important;
+}
+
+
+}
+  /****************** Google Nexus 7 (portrait) *****************/
+@media only screen and (min-device-width : 601px) and (max-device-width :970px) and (orientation : portrait) {
+
+
+.SettingsLabelStyle {
+   margin-left: 0%;
+   margin-top: 5%;
+}
+.row {
+margin-right: -15px;
+margin-left: 2px;
+}
+.imgSetBox {
+margin-left: -8% !important;
+}
+
+
+.langDropDown{
+  width: 89% !important;
+}
+
+
+.line {
+border: 0.1em solid #ddd;
+border-top: 0.05em;
+border-left: 0px;
+border-right: 0px;
+}
+.headerTitle {
+color: white !important;
+padding-top: -1% !important;
+font-size: 21px !important;
+margin-left: 27% !important;
+margin-top: 3% !important;
+padding-bottom: 5%;
+}
+
+
+.toolbarleftImgDimensions{
+  color: white;
+  font-size: 45px !important;
+  /* width: 20px !important; */
+  /* width: 60px !important; */
+  /* height: 45px; */
+  top: 0px;
+  /* left: 0px !important; */
+  /* right: 80 !important; */
+  margin-right: 80% !important;
+  margin-left: -3% !important;
+  text-align: left !important;
+  margin-top: 10px !important;
+  padding-left: 3%!important;
+  }
+  .dashBoardTitle{
+left: 0px!important;
+right: 5px!important;
+color: white !important;
+top: 10px !important;
+margin-top: 10px!important;
+}
+.InputPinStyle {
+  margin-left: 2.5% !important;
+}
+}
+  /******************* Google Nexus 7 (landscape) ********************/
+@media only screen and (min-device-width : 601px) and (max-device-width :970px) and (orientation : landscape) {
+  .SettingsLabelStyle {
+
+
+margin-top: 5%;
+
+
+}
+.headerTitle {
+color: white !important;
+padding-top: -1% !important;
+font-size: 20px !important;
+margin-left: 32% !important;
+margin-top: 3% !important;
+padding-bottom: 5%;
+}
+.imgSetBox {
+
+
+margin-left: 47%;
+
+
+
+
+}
+.headerBar {
+
+
+height: 77px !important;
+
+
+}
+
+
+.inputSetBox{
+  background: none;
+}
+.line {
+border: 0.1em solid #ddd;
+border-top: 0.05em;
+border-left: 0px;
+border-right: 0px;
+}
+
+
+.toolbarleftImgDimensions{
+  color: white;
+font-size: 35px !important;
+/* width: 20px !important; */
+/* width: 60px !important; */
+/* height: 45px; */
+top: 0px;
+/* left: 0px !important; */
+/* right: 80 !important; */
+margin-right: 80% !important;
+margin-left: 2% !important;
+text-align: left !important;
+margin-top: 15px !important;
+padding-top: 5px !important;
+padding-left: 4% !important;
+  }
+  .dashBoardTitle{
+  left: 0px !important;
+right: 5px;
+color: white !important;
+top: 22px !important;
+background: #1385cb !important;
+/* margin-top: 0px !important; */
+margin-left: -12px !important;
+height: 54% !important;
+margin-bottom: 1% !important;
+padding-bottom: 1% !important;
+width: 100%;
+margin-top: 5%;
+width: 1;
+height: 5%;
+}
+.backIcon{
+  width: 52px!important;
+height: 55px!important;
+top: 0px!important;
+padding-top: 5px !important;
+padding-left: 0% !important;
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+
+
+
+
+  .headerTitle{
+  color: white !important;
+  padding-top: -1% !important;
+  font-size: 21px !important;
+  margin-left: 2% !important;
+  margin-top: 3% !important;
+  padding-bottom: 5%;
+  }
+  .toolbarleftImgDimensions{
+  color: white;
+  font-size: 45px !important;
+  /* width: 20px !important; */
+  /* width: 60px !important; */
+  /* height: 45px; */
+  top: 0px;
+  /* left: 0px !important; */
+  /* right: 80 !important; */
+  margin-right: 80% !important;
+  margin-left: 2% !important;
+  text-align: left !important;
+  margin-top: 10px !important;
+  padding-left: 4%!important;
+  }
+  .SettingsScreenDiv{
+  padding-top: 2%;
+  }
+  .langDropDown{
+ width: 90% !important;
+padding: 15px !important;
+padding-left: 0px !important;
+margin-top: 10px !important;
+margin-right: 25px !important;
+
+  }
+  .SettingsLabelStyle{
+  margin-left: 4%;
+  margin-top: 4%;
+  }
+  .row.InputPinStyle{
+  width: 94%;
+  margin-top: -20px !important;
+  margin-right: 25px;
+  }
+
+  .buttonTextStyleDashBoard{
+  height: 40% !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  padding-left: 4% !important;
+  }
+.footerStyleDashBoard{
+
+
+  background-color: #1385cb;
+  height: 12% !important;
+}
+.dashBoardTitle{
+  margin-top: 10px!important;
+}
+.leftToggleIcon{
+  padding-top:0px!important;
+}
+.dashboardspantext2{
+  margin-top: 25px !important;
+}
+.bar.bar-footer.footerstyle{
+  height: 7% !important;
+}
+.leftToggle{
+  padding-top:0px!important;
+}
+.dashBoardTitle{
+left: 0px!important;
+right: 5px!important;
+color: white !important;
+top: 10px !important;
+}
+.headerBarDashBoard{
+  height:64px!important;
+}
+.sidemenulist .list{
+ padding-top: 0px!important;
+margin-top: 10%!important;
+}
+.backIcon{
+  width: 60px!important;
+height: 45px!important;
+top: 0px!important;
+margin-top: 20px !important;
+padding-left: 0% !important;
+}
+}
+
+
+/**************************************** iPADipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+.SettingsScreenDiv{
+  padding-top: 1%;
+}
+.toolbarleftImgDimensions{
+  color: white;
+font-size: 35px !important;
+/* width: 20px !important; */
+/* width: 60px !important; */
+/* height: 45px; */
+top: 0px;
+/* left: 0px !important; */
+/* right: 80 !important; */
+margin-right: 80% !important;
+margin-left: 2% !important;
+text-align: left !important;
+margin-top: 15px !important;
+padding-top: 5px !important;
+padding-left: 4% !important;
+  }
+.headerTitle{
+  color: white !important;
+  padding-top: -1% !important;
+  font-size: 20px !important;
+  /* margin-left: 17% !important; */
+  margin-top: 2% !important;
+  padding-bottom: 5%;
+  width: 100% !important;
+  text-align: center !important;
+  margin-left: -7% !important;
+}
+.SettingsLabelStyle{
+  margin-left: 4%!important;
+}
+.langDropDown{
+  width: 75% !important;
+  margin-left: 1px !important;
+margin-right: 1px !important;
+margin-top: 3%!important;
+}
+.footerStyleDashBoard{
+  height: 10% !important;
+}
+.dashBoardTitle{
+  left: 0px !important;
+right: 5px;
+color: white !important;
+top: 0px !important;
+background: #1385cb !important;
+/* margin-top: 0px !important; */
+margin-left: 0px !important;
+height: 60% !important;
+margin-bottom: 1% !important;
+padding-bottom: 1% !important;
+}
+.leftToggle{
+  padding-top:0px!important;
+}
+.dashboardspantext2{
+  margin-top: 25px !important;
+}
+.footerStyleDashBoard{
+  background-color: #1385cb;
+  height: 10% !important;
+}
+.bar.bar-footer.footerstyle{
+  height: 10% !important;
+}
+.sidemenulist .list{
+ padding-top: 0px!important;
+margin-top: 10%!important;
+}
+.headerBarDashBoard{
+  height:64px!important;
+}
+.backIcon{
+  width: 60px!important;
+height: 45px!important;
+top: 0px!important;
+padding-top: 5px !important;
+padding-left: 0% !important;
+}
+.imgSetBox{
+
+  width: 30% !important;
+height: 15% !important;
+padding-top: 10% !important;
+padding-left: 13% !important;
+}
+.inputSetBox{
+  padding-top: 8% !important;
+}
+.rowStyle{
+  padding: 0px;
+}
+.row.InputPinStyle{
+  margin-left: 6% !important;
+  margin-top: -5% !important;
+}
+}

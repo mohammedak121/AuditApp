@@ -1,0 +1,120 @@
+<!--
+Filename : settingsView.html
+Project :dealerAudit
+Language : HTML
+Framework: Ionic
+Author : Shabana.s
+Date of creation : 26-07-2016
+Description : This Provides the design for the settings Screen UI.
+-->
+
+<!-- Header of the screen-->
+<ion-nav-view>
+
+	<ion-header-bar class="bar bar-header headerBar">
+     <!-- Navigation to dashboard section -->
+	<img class="button button-icon ion-navicon headerBarIcon toolbarleftImgDimensions backIcon" id="settingBackBtn" ng-src={{backIcon}}  ng-click="NavigateToDashBoard()"/>
+
+
+		<h1 class="title headerTitle headerTitleDashBoard">{{'lblSettings'|translate}}</h1>
+		</ion-header-bar>
+
+     <!--Settings form -->
+	<ion-content class="SettingsPageBg" scroll="false">
+
+		<div class="SettingsScreenDiv"  id="settingsContentDivID" style="height: 100% ">
+
+		 	<!--Language input Section start -->
+		 	<div class="row rowStyle" >
+
+				<label class="SettingsLabelStyle">{{'lblLanguage'|translate}}</label>
+				<div class="langDropDown" id="selectLanguage" dropdown-select="languageOptions"
+				dropdown-model="languageSelected"
+				dropdown-item-label="text"
+				dropdown-onchange="setLanguage(selected)">
+			    </div>
+					<div id="over_map" class="overLayDiv1"  style="display: none;" ng-click="hideOverLay()">
+
+			 <!--language -->
+				<div class="languageLine"></div>
+						<div class="languageCardDiv">
+							{{'lblLtLanguage'|translate}}
+							</div>
+						</div>
+			</div>
+			<!--Language input Section end -->
+
+
+			<!--setPIN input Section start -->
+
+			<div class="row" id="pinTxtAndroid">
+
+				<label class="SettingsLabelStyle">{{'lblSetPinResetPin'|translate}}</label>
+				<div class="row InputPinStyle">
+					<input id="inputAID" name="User_Pin" focus-on="focusMe" type="tel" placeholder={{'lblSetPinPassword'|translate}} ng-model="settings.User_Pin"  maxlength={{User_PinLength}} ng-change="TxtChange(this)" pattern="[0-9]*" numbers-only ng-trim="false" class="inputSetBox" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}">
+
+					<img ng-src={{passwordType}} class="imgSetBox" ng-click ="hideShowPassword()"/>
+				</div>
+				<div id="over_map1" class="overLayDiv2"  style="display: none;" ng-click="hideOverLay()">
+
+		 <!--language -->
+			<div class="setPinLine"></div>
+					<div class="card">
+						{{'lblLtSetPin'|translate}}
+						</div>
+					</div>
+
+
+			</div>
+            <!--setPIN input Section end -->
+
+
+             <div class="row" >
+				<label class ="SettingsLabelStyle">{{'lblLogs'|translate}}</label>
+				<div  class="langDropDown" id="selectlogs" dropdown-select="logsOptions"
+				dropdown-model="logsSelected"
+				dropdown-item-label="text"
+				dropdown-onchange="logInformationChange(selected)"></div>
+				<div id="over_map2" class="overLayDiv3"  style="display: none;" ng-click="hideOverLay()">
+
+		 <!--language -->
+			<div class="logsLine"></div>
+					<div class="logsCardDiv">
+						{{'lblLtLogs'|translate}}
+						</div>
+					</div>
+
+			</div>
+
+
+
+
+        </div>
+				<div>
+
+        <!--footer Section start -->
+        <ion-footer-bar class="bar bar-footer footerstyle footerStyleDashBoard" >
+
+		  	<button class="buttonTextStyle" id="pinSaveBtn"  ng-click="SetPin(settings.userName,settings.User_Pin)"   >
+				Save
+			</button>
+			<div id="over_map3" class="overLayDiv4"  style="display: none;" ng-click="hideOverLay()">
+
+	 <!--language -->
+		<div class="saveLine"></div>
+				<div class="saveCardDiv">
+					{{'lblLtsave'|translate}}
+					</div>
+				</div>
+	    </ion-footer-bar>
+		</div>
+  		<!--footer Section end -->
+	</ion-content>
+		<div id="disableBgIDDiv" class="overLayDiv overLayDivBgForTyreLoad" style="display: none;"></div>
+	  <div id="over_map" class="overLayDiv"  style="display: none;" ng-click="hideOverLay()">
+
+	</div>
+</ion-nav-view>
+
+
+<!--End of settings view-->

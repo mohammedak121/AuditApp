@@ -1,0 +1,250 @@
+.buttoncancelStyle{
+  width: 28px !important;
+text-align: left;
+height: 10px;
+margin-left: 37% !important;
+height: 37px !important;
+margin-top: 4%;
+position: fixed;
+left: 82%;
+background-color: transparent;
+border-color: transparent;
+font-size: initial;
+  }
+  .mySearchPageBox{
+    margin-right: 14%;
+    margin-top: 4%;
+    height: 40px;
+    border-bottom: 1px solid BDBEC2;
+    border: none;
+    width: 78%;
+    background-color: #dfdfdf;
+    border-radius: 0.5em;
+    margin-left: 2%;
+  }
+  .searchImg{
+    // background: url("../img/searchButton.png") no-repeat;
+    width: 23px;
+  height: 23px;
+  margin-left: -2%;
+  margin-top: -2%;
+  position: fixed;
+
+  }
+  .cancelImg{
+    // background: url("../img/cross.png") no-repeat;
+      width: 23px;
+    height: 23px;
+    margin-right: 2%;
+  }
+.inputSearchStyle{
+  //color: #EBEBEB !important;
+    color : black !important;
+    margin-left: -28% !important;
+}
+
+ul.searchList{
+  margin-top: 10%;
+}
+
+ul.searchList li {
+    display: list-item !important;
+    margin-top: 2%;
+    height: 45.5px;
+    width: 94%;
+    margin-left: 3%;
+    background-color: #f2f2f2;
+    color: #696969;
+
+    padding-left: 1%;
+    font-size: large;
+    padding-top: 12px;
+}
+
+
+.highlighted {
+   color: #000000;
+
+
+ }
+
+
+.noDealersImg{
+  //  background: url("../img/noDealers.svg") no-repeat;
+  height: 100px;
+  width: 100px;
+  margin-top: 21%;
+}
+.addNewDealer{
+  // background: url("../img/add-new-dealer.svg") no-repeat;
+  height: 50px;
+  margin-top: 10%;
+}
+.dealerNotFound{
+  text-align: center;
+}
+.noDealerText{
+  font-size: large;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 7%;
+    display: block;
+}
+
+// ul li:after {
+//     content: url ('../img/dealerSearchIcon.svg');
+// }
+ /************************landscape ****************/
+ @media only screen and (orientation: landscape) {
+   ul.searchList {
+    margin-top: 7%;
+}
+.buttoncancelStyle {
+    width: 28px !important;
+    text-align: left;
+    height: 10px;
+    margin-left: 37% !important;
+    height: 37px !important;
+    margin-top: 4%;
+    position: fixed;
+    left: 88%;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: initial;
+}
+ul.searchList li {
+    display: list-item !important;
+    /* border: solid 1px red; */
+    /* padding-bottom: 5%; */
+    margin-top: 1%;
+    height: 45.5px;
+    width: 94%;
+    margin-left: 3%;
+    background-color: #f2f2f2;
+    color: #696969;
+    font-size: initial;
+    padding-left: 1%;
+
+}
+.inputSearchStyle {
+    //color: #EBEBEB !important;
+  color : black !important;
+    margin-left: -29% !important;
+    font-size: initial important;
+}
+.mySearchPageBox {
+  margin-right: 15%;
+  margin-top: 4%;
+  height: 40px;
+  border-bottom: 1px solid BDBEC2;
+  border: none;
+  width: 85%;
+  background-color: #dfdfdf;
+  border-radius: 0.5em;
+
+}
+.noDealersImg {
+  height: 100px;
+  width: 100px;
+  margin-top: 5%;
+  text-align: center;
+}
+.addNewDealer {
+    //background: url("../img/add-new-dealer.svg") no-repeat;
+    height: 50px;
+    margin-top: 6%;
+}
+.noDealerText{
+  font-size: large;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 4%;
+    display: block;
+}
+.searchImg{
+
+margin-left: -1%;
+margin-top: -1.5%;
+position: fixed;
+
+}
+ }
+ /****************************** NEXUS 5 portrait ******************************/
+ @media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait) {
+
+
+   }
+ /****************************** NEXUS 5 Landscape ******************************/
+ @media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and
+ (orientation: landscape) {
+   .buttoncancelStyle {
+       margin-top: 2% !important;
+       left: 88% !important;
+   }
+ }
+ /****************************** Google Nexus 7 (portrait) ***********************/
+ @media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: portrait) {
+   .mySearchPageBox{
+
+     margin-top: 2% !important;
+     width: 82% !important;
+     margin-left: 2% !important;
+   }
+   .buttoncancelStyle{
+   margin-top: 2.5% !important;
+   left: 87%;
+}
+.dealerNotFound {
+text-align: center;
+margin-top: -13% !important;
+ }
+ .noDealersImg {
+ height: 110px;
+ width: 110px;
+ margin-top: 21%;
+ }
+ .addNewDealer {
+height: 54px;
+margin-top: 7%;
+}
+.noDealerText {
+font-size: large;
+text-align: center;
+font-weight: 500;
+margin-top: 5%;
+display: block;
+}
+ }
+ /******************************* Google Nexus 7 (lanscape) ****************************/
+ @media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: landscape) {
+   .mySearchPageBox {
+    margin-top: 2%;
+    width: 90%;
+
+
+   }
+   .buttoncancelStyle {
+        margin-top: 2%;
+        left: 91%;
+
+   }
+   .inputSearchStyle {
+margin-left: -22% !important;
+}
+.searchImg {
+margin-left: 0%;
+margin-top: -1%;
+position: fixed;
+}
+.noDealersImg {
+height: 110px;
+width: 110px;
+margin-top: 3%;
+text-align: center;
+}
+.addNewDealer {
+height: 54px;
+margin-top: 5%;
+}
+
+ }

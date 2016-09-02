@@ -1,0 +1,176 @@
+
+<!--
+Filename : dashBoardView.html
+Project : dealerAudit
+Language : HTML
+Framework: Ionic
+Author : Shabana.S
+Date of creation : 26-07-2016
+Description : This Provides the design for the dashBoard Screen.
+-->
+
+<ion-side-menus enable-menu-with-back-views="false"  class="dashboardcss" can-swipe-back="false">
+
+  <ion-side-menu-content  >
+    <!--side-menu  -->
+
+    <ion-header-bar class="bar bar-header headerBar headerBarDashBoard" align-title="center">
+      <!--Back Button  -->
+      <button class="button button-icon button-clear ion-navicon toolbarleftImgDimensions" style="color: white ; font-size:45px;" id="drawerButton" menu-toggle="left"></button>
+      <!--Back Button-->
+      <!--Header Bar Title -->
+      <h1 class="title dashboardTitleText homeTitle" >{{home}}</h1>
+      <!--Header Bar Title  -->
+
+    </ion-header-bar>
+
+    <ion-content has-header="true" class="contentMarginBottom HomePageBg" scroll="false" >
+
+    <div>
+         <div class="firstDiv">
+              <div class="startAuditingLogoDiv" id="startAudit" ng-click="getDealerInformation()">
+                  <!--<div class="startAuditingLogoDiv" id="startAudit" >-->
+                 <div id="versionDiv">
+                        <center class="startLabel" id="versionCenter">{{startLabel1}}</center>
+                 </div>
+                 <div id="over_mapStart" class="overLayDivStart"  style="display: none;" >
+
+       			       <!--<button class="startCard"> 	</button>-->
+       								<div class="startAuditLine"></div>
+       										<div class="startAuditCardDiv">
+       											{{'lblLtStartAudit'|translate}}
+       										</div>
+       												<button class="okButton1" ng-click="hideOverLay();$event.stopPropagation()"  >
+       													{{'lblLtOk'|translate}}
+       											</button>
+       						</div>
+              </div>
+             <div class="savedAuditingLogoDiv" id="savedAudit">
+                 <div id="versionDiv">
+                        <center class="savedLabel" id="versionCenter">{{savedLabel1}}</center>
+                 </div>
+                 <div id="over_mapSave" class="overLayDivSave"  style="display: none;" >
+
+       			       <!--<button class="startCard"> 	</button>-->
+       								<div class="saveAuditLine"></div>
+       										<div class="saveAuditCardDiv">
+                            <ul>
+                                <li>	{{'lblLtSaveAudit'|translate}}</li>
+                                <li>{{'lblLtSaveAudit2'|translate}} </li>
+
+                           </ul>
+
+       										</div>
+       												<button class="okButton2" ng-click="hideOverLay()">
+       													{{'lblLtOk'|translate}}
+       											</button>
+       						</div>
+               </div>
+         </div>
+
+
+        <div class="secondDiv">
+              <div class="reportAuditingLogoDiv" id="reportAudit">
+                 <div id="versionDiv">
+                        <center class="reportsLabel" id="versionCenter">{{reportsLabel1}}</center>
+                 </div>
+                 <div id="over_mapReport" class="overLayDivReport"  style="display: none;" >
+
+       			       <!--<button class="startCard"> 	</button>-->
+       								<div class="reportAuditLine"></div>
+       										<div class="reportAuditCardDiv">
+                            <ul>
+                              <li>{{'lblLtreportAudit'|translate}}</li>
+                              <li>{{'lblLtreportAudit2'|translate}} </li>
+
+                         </ul>
+
+       										</div>
+       												<button class="okButton3" ng-click="hideOverLay()"  >
+       													{{'lblLtOk'|translate}}
+       											</button>
+       						</div>
+               </div>
+              <div class="settingsAuditingLogoDiv" id="settingsAudit">
+                 <div id="versionDiv">
+                        <center class="settingsAuditLabel" id="versionCenter">{{settingsLabel1}}</center>
+                 </div>
+                 <div id="over_mapSettings" class="overLayDivSettings"  style="display: none;" >
+
+                    <!--<button class="startCard"> 	</button>-->
+                       <div class="settingsAuditLine"></div>
+                           <div class="settingsAuditCardDiv">
+                             <ul>
+                                 <li>{{'lblLsettingsAudit'|translate}}</li>
+                                 <li>{{'lblLsettingsAudit2'|translate}} </li>
+                                <li>{{'lblLsettingsAudit3'|translate}}</li>
+
+                            </ul>
+
+                           </div>
+                               <button class="okButton4" ng-click="hideOverLay()"  >
+                                 {{'lblLtOk'|translate}}
+                             </button>
+                   </div>
+              </div>
+        </div>
+        </div>
+  </div>
+
+
+
+    </ion-content>
+    <!--Footer Bar with Create CRN Button -->
+    <!-- <ion-footer-bar  class="bar bar-footer footerstyle" id="footerBar" >
+
+    </ion-footer-bar> -->
+
+  </ion-side-menu-content>
+
+    <!--side-bar-menu  -->
+    <ion-side-menu side="left" width="200">
+        <ion-header-bar class="bar-stable" dashBoardHeaderBarStyle>
+
+                  <div class="dashboardspantext2">{{loginID}}</div></br>
+
+        </ion-header-bar>
+        <!--side-menu  content-->
+        <ion-content >
+
+            <!--side menu list content -->
+            <ion-list class="sidemenulist">
+
+
+
+                  <ion-item menu-close  href="#/settings" class="dashsidemenulist">
+                     <i class="icon settingicon" ></i>
+                      Settings
+                  </ion-item>
+
+
+                  <ion-item class="dashsidemenulist">
+                      <i class="icon contactusicon"></i>Contact Us
+                  </ion-item>
+                  <ion-item menu-close href="#/aboutUs" class="dashsidemenulist">
+                      <i class="icon aboutusicon"></i>About Us
+                  </ion-item>
+                  <ion-item menu-close href="" ng-Click=signOut()  class="dashsidemenulist">
+                      <i class="icon signouticon"></i>Log out
+                  </ion-item>
+                    <ion-item menu-close href="" ng-Click=sendMail()  class="dashsidemenulist">
+                      <i class="icon signouticon" id="sendMailDashboardBtn"></i>Send Log
+                  </ion-item>
+            </ion-list>
+            <!--side menu list content -->
+
+        </ion-content>
+        <!--side-menu  content-->
+
+    </ion-side-menu>
+    <!--side-bar-menu  -->
+
+</ion-side-menus>
+
+
+
+<!--End of dashBoard view-->

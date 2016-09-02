@@ -1,0 +1,121 @@
+.progressDiv{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.lblSelectDealer{
+  margin-top: 5%;
+  margin-left: 7%;
+  margin-right: 11%;
+  color: #1385CC;
+  margin-bottom: 2%;
+}
+.lblConfirmDealer{
+  margin-right: 12%;
+}
+
+.lblSearchDealerDiv{
+  text-align: center;
+  // width: 100%;
+  margin-bottom: 5%;
+  font-size: 16px;
+}
+
+.inputDiv{
+  // margin-left: 12%;
+  margin-bottom: 5%;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.inputStyle{
+  border-radius: 0.3em;
+    width: 90%;
+    height: 39px;
+    background-color: #EBEBEB;
+    margin-left: 5%;
+    outline: 0;
+    padding-left: 10% !important;
+  //  cursor: not-allowed;
+}
+.dealerButtonStyle{
+  // background-color: #1385CC;
+  // border: none;
+  // border-radius: 0.3em;
+  // height: 35px;
+  // color: white;
+  // margin-left: 26%;
+  width: 50%;
+  margin-left: 26%;
+  // background: url('../img/add-new-dealer.png')  no-repeat;
+}
+
+.searchIconDiv{
+  background:url("../img/searchButton.svg") no-repeat;
+  margin-left: 30px;
+  width: 20px;
+  height: 20px;
+  position: fixed;
+  margin-top: 1%;
+}
+
+.lineLabel{
+  position: absolute;
+  margin-left: 48%;
+  font-size: 16px;
+}
+
+.lineDiv{
+  margin-top: 5%;
+}
+
+.lblSearchDealer {
+  text-align:center;
+  font-size: 16px;
+}
+
+.imgDealerSearchIcon{
+  height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-left: -8%;
+    margin-top: 2.5%;
+}
+.dealerLabel{
+  margin-top: 3%;
+}
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape){
+  .searchIconDiv{
+    margin-left: 44px;
+  }
+  .lblSelectDealer{
+    margin-right: 20%;
+    margin-left: 10%;
+  }
+  .lblConfirmDealer{
+    margin-right: 22%;
+  }
+  .lblSearchDealerDiv{
+    margin-bottom: 3%;
+  }
+  .imgDealerSearchIcon{
+    margin-top: 1.5%;
+  }
+  .lineDiv{
+    margin-top: 3%;
+  }
+  .progressDiv{
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+  .dealerButtonStyle{
+    width: 37%;
+    margin-left: 31%;
+    margin-top: -5%;
+  }
+  .dealerLabel {
+    margin-top: 2%;
+    margin-left: -3%;
+}
+}

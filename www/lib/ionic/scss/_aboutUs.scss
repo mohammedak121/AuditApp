@@ -1,0 +1,272 @@
+
+.aboutUsName {
+  font-size: 19px;
+  line-height: 44px;
+  color: white;
+  padding-top: 0%;
+  margin-left: 25%;
+}
+.AboutScreencolorbackground{
+background-color:#dbddde;
+}
+.aboutUsFirstSpacer {
+  height: 0.5%;
+}
+
+.AboutScreenlabel1 {
+  color: grey;
+  font-size: 133%;
+  horizontal-align: middle;
+}
+  .AboutScreenDivBottom {
+  background-color: #ffffff;
+  padding-top: 2%;
+  position: absolute;
+  bottom: 0px;
+  background-color: #ffffff;
+  padding-top: 2%;
+  position: absolute;
+  bottom: 27px;
+  width: 100%;
+}
+
+/************************************* */
+@media only screen and (orientation: landscape) {
+ .aboutUsName {
+    margin-left: 37%;
+}
+    .AboutScreenDivBottom {
+    background-color: #ffffff;
+    padding-top: 2%;
+    position: absolute;
+    bottom: 0px;
+    background-color: #ffffff;
+    padding-top: 1%;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+  }
+}
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+.aboutUsbackIcon {
+    color: white;
+    font-size: 45px !important;
+    /* width: 20px !important; */
+    /* width: 60px !important; */
+    /* height: 45px; */
+    top: 0px;
+    /* left: 0px !important; */
+    /* right: 80 !important; */
+    margin-right: -7% !important;
+    margin-left: 1% !important;
+    text-align: left !important;
+    margin-top: 10px !important;
+    padding-left: 0% !important;
+    padding-top: 10px !important;
+    width: 50px !important;
+    height: 45px !important; }
+    .AboutScreenDivBottom {
+  background-color: #ffffff;
+  padding-top: 2%;
+  position: absolute;
+  bottom: 0px;
+  background-color: #ffffff;
+  padding-top: 2%;
+  position: absolute;
+  bottom: 27px;
+width: 100%;
+ }
+  .AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 52%;
+    padding-top: 1%;
+    }
+
+}
+
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+
+.aboutUsbackIcon {
+    color: white;
+    font-size: 45px !important;
+    /* width: 20px !important; */
+    /* width: 60px !important; */
+    /* height: 45px; */
+    top: 0px;
+    /* left: 0px !important; */
+    /* right: 80 !important; */
+    margin-right: -7% !important;
+    margin-left: 1% !important;
+    text-align: left !important;
+    margin-top: 10px !important;
+    padding-left: 0% !important;
+    padding-top: 10px !important;
+    width: 50px !important;
+    height: 45px !important;
+}
+.aboutUsName {
+    margin-left: 38%;
+}
+.AboutScreenDivBottom {
+    background-color: #ffffff;
+    padding-top: 0% !important;
+    position: absolute !important;
+    bottom: 10px !important;
+    width: 100%;
+    }
+    .AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 52%;
+    padding-top: 1%;
+    }
+
+}
+/****************************** NEXUS 5 portrait ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait) {
+.aboutUsName {
+    font-size: 19px;
+    line-height: 44px;
+    color: white;
+    padding-top: -3%;
+    margin-left: -53%;
+     }
+     .AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 54%;
+    padding-top: 1%;
+    }
+
+}
+
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape) {
+.aboutUsName {
+    font-size: 19px;
+    line-height: 44px;
+    color: white;
+    padding-top: -3%;
+    margin-left: -48% !important;
+    }
+    .AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 42% !important;
+    padding-top: 1%;
+    margin-left: 1% !important;}
+    .label1{
+    padding-left: 6%;
+    }
+    .toolbarleftImgDimensions{
+    margin-left: -3% !important;
+    }
+}
+/* Google Nexus 7 (portrait) */
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: portrait) {
+.aboutUsName {
+    margin-left: -42%;
+}
+.AboutScreenDivBottom {
+    background-color: #ffffff;
+    padding-top: 2%;
+    position: absolute;
+    bottom: 0px;
+    background-color: #ffffff;
+    padding-top: 2%;
+    position: absolute;
+    bottom: 27px;
+    width: 100%;
+    height: 14%;
+     }
+    .AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 52%;
+    padding-top: 1%; }
+}
+/* Google Nexus 7 (lanscape) */
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: landscape) {
+.aboutUsName {
+    margin-left: -44% !important;
+}
+
+    .AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 38% !important;
+    padding-top: 1%; }
+    .aboutUsName {
+    margin-left: -53%;
+}
+.toolbarleftImgDimensions {
+    width: 76px !important;
+}
+}
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+.aboutUsbackIcon {
+    color: white;
+    font-size: 45px !important;
+    /* width: 20px !important; */
+    /* width: 60px !important; */
+    /* height: 45px; */
+    top: 0px;
+    /* left: 0px !important; */
+    /* right: 80 !important; */
+    margin-right: -7% !important;
+    margin-left: 1% !important;
+    text-align: left !important;
+    margin-top: 10px !important;
+    padding-left: 0% !important;
+    padding-top: 10px !important;
+    width: 50px !important;
+    height: 45px !important;
+}
+ .aboutUsName {
+    margin-left: 44% !important;
+}
+.AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 46%;
+    padding-top: 1%;
+}
+}
+
+/**************************************** iPADipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+
+	.aboutUsbackIcon {
+    color: white;
+    font-size: 45px !important;
+    /* width: 20px !important; */
+    /* width: 60px !important; */
+    /* height: 45px; */
+    top: 0px;
+    /* left: 0px !important; */
+    /* right: 80 !important; */
+    margin-right: -7% !important;
+    margin-left: 1% !important;
+    text-align: left !important;
+    margin-top: 10px !important;
+    padding-left: 0% !important;
+    padding-top: 10px !important;
+    width: 50px !important;
+    height: 45px !important;
+}.aboutUsName {
+    margin-left: 45% !important;
+}
+
+.AboutUsScreenBottomLogoimage {
+    /* background: url("../img/goodyeardunlop.png")no-repeat center; */
+    height: 48px;
+    width: 30%;
+    padding-top: 1%;
+}
+}

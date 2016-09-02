@@ -1,0 +1,53 @@
+<!--
+Filename : searchDealerView.html
+Project :dealerAudit
+Language : HTML
+Framework: Ionic
+Author : Mohammed Aamir K
+Date of creation : 08-08-2016
+Description : This Provides the design for searchind a dealer based on name.
+-->
+
+<ion-nav-view can-swipe-back="false">
+    	<ion-header-bar class="bar bar-header headerBar" align-title="center">
+          <!-- <img class="button button-icon ion-navicon headerBarIcon toolbarleftImgDimensions" id="searchBackBttn" ng-src={{backIcon}} ng-click="backButtonClicked()"/>
+			    <h1 class="title headerBarTitle" id="dashBoardHeaderTitle" >Search dealer</h1>			     -->
+          <div class="item item-input mySearchPageBox">
+            <span class="input-label">
+              <!-- <div class="searchImg" id="searchIcon"></div> -->
+              <img class="searchImg" id="searchIcon" ng-src="{{searchIconWhite}}"/>
+            </span>
+            <!-- <label class="focus" focus-me> -->
+            <input class="inputSearchStyle" type="text" placeholder="Search Dealer" id="searchDealerInput" ng-model="searchByDealerName.dealer_name" maxlength="50" ng-change="isAnyItemMatchWithTheQuery(this)" />
+              <!-- </label> -->
+            <!-- <input class="inputSearchStyle" type="text" placeholder="Search Dealer" id="placeholder" ng-model="searchByDealerName.dealer_name" ng-change="isAnyItemMatchWithTheQuery(this)" maxlength="50" focus-on="focusMe"  /> -->
+
+            <!-- <div class="cancelImg" id="crossIcon" ng-click="clearSearch()"></div> -->
+            <img class="cancelImg" ng-src="{{cancelImg}}" ng-click="clearSearch()"/>
+          </div>
+          <!-- <button class="buttoncancelStyle" id="cancelBtn" ng-click="navigateToProgressScreen()">{{'lblLtcancel'|translate}}</button>           -->
+          <button class="buttoncancelStyle" id="cancelBtn" ng-click="navigateToProgressScreen()">{{cancelLabel}}</button>
+      </ion-header-bar>
+
+      <ion-content class="SettingsPageBg" >
+          <div>
+            <img ng-src={{tireLodingImage}} id="activityIndicator" class="tireLodingImage" ng-show = "shouldShowTyreImage"/>
+
+            <ul class="searchList" >
+
+              <!-- <li  ng-repeat="dealer in result = (dealerList | filter:searchByDealerName.dealer_name)" ng-bind-html="dealer.dealer_name | highlight:searchByDealerName.dealer_name"  ng-click="navigateToModifyDealer(dealer)"> -->
+              <li ng-repeat="dealer in result = (dealerList | filter:applyDealerFilter | orderBy: 'dealer_name')" ng-bind-html="dealer.dealer_name | highlight:searchByDealerName.dealer_name" ng-click="navigateToModifyDealer(dealer)">
+                    {{dealer.dealer_name}}
+
+              </li>
+
+            </ul>
+            <div class="dealerNotFound" ng-show="dealerFound" >
+            <!-- <div ng-class="{'dealerNotFound' : dealerNotFound}" > -->
+                <img class="noDealersImg" ng-src="{{noDealersImg}}" />
+               <label class="noDealerText"> {{'lblLtnoDealers'|translate}} </label>
+               <img class="addNewDealer" ng-src="{{addNewDealer}}" ng-click="navigateToAddDealer()"/>
+             </div>
+         </div>
+      </ion-content>
+</ion-nav-view>

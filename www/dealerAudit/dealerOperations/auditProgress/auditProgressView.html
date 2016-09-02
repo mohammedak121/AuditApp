@@ -1,0 +1,75 @@
+<!--
+Filename : auditProgressView.html
+Project :dealerAudit
+Language : HTML
+Framework: Ionic
+Author : Mohammed Aamir K
+Date of creation : 26-08-2016
+Description : This Provides the design for showing the progress of dealer audit.
+-->
+
+<ion-nav-view can-swipe-back="false">
+  <ion-header-bar class="bar bar-header headerBar" align-title="center">
+    <!--Back Button-->
+    <img class="button button-icon ion-navicon headerBarIcon backButton" id="searchBackBttn" ng-src={{backIcon}} ng-click="backButtonClicked()" />
+    <!--Back Button-->
+
+    <!--Header Bar Title -->
+    <h1 class="title headerBarTitle headerTitleDashBoard" >Audit in Progress</h1>
+    <!--Header Bar Title  -->
+  </ion-header-bar>
+  <ion-content has-footer="true" class="SettingsPageBg" scroll="true" overflow-scroll="true">
+    <div class="SettingsScreenDiv" style="height: 100%;" >
+      <div class="progressDiv">
+
+        <label class="lblSelectDealer">{{'lblSelectDealer'|translate}}</label>
+        <label class="lblConfirmDealer">{{'lblConfirmDealer'|translate}}</label>
+        <label class="lblSubmitAudit">{{'lblSubmitAudit'|translate}}</label>
+        <img ng-src={{dealerNavigationIcon}} />
+        <!-- <hr>
+        <label class="lblSelectDealer">Select Dealer</label>
+        <label class="lblConfirmDealer">Confirm Dealer</label>
+        <label class="lblSubmitAudit">Submit Audit</label>
+
+        <div class="step step-one"></div>
+        <div class="step1 step-two"></div>
+        <div class="step2"></div> -->
+      </div>
+      <div>
+        <div class="lblSearchDealerDiv" >
+
+          <label class="lblSearchDealer">{{'lblSearchDealer'|translate}}</label>
+        </div>
+
+        <div class="inputDiv">
+          <!-- <img ng-src={{inputSearch}}/> -->
+          <!-- <div class="searchIconDiv"></div> -->
+
+          <div class="inputStyle"  ng-click="navigateToSearch()">
+         <img ng-src={{dealerSearchIcon}} class="imgDealerSearchIcon"/>
+             <label class="dealerLabel">
+               Go By Dealer Name
+             </label>
+          </div>
+          <!-- <div class="searchDealerLine"></div> -->
+
+          <div class="lineDiv">
+            <label class="lineLabel">OR</label>
+            <img ng-src={{searchDealerLine}} />
+          </div>
+          <!-- <div class="closeIconDiv"></div> -->
+          <!-- <img ng-src={{cancelSearch}}/> -->
+        </div>
+        <!-- <div class="buttonDiv">           -->
+
+          <!-- <button class="dealerButtonStyle">Add new dealer</button> -->
+          <div class="dealerButtonStyle">
+            <!-- <img height="50px" width="100%;" src={{addNewDealer}} ng-click="navigateToAddDealer()" /> -->
+            <img src={{addNewDealer}} ng-click="navigateToAddDealer()" />
+          </div>
+        <!-- </div> -->
+      </div>
+
+    </div>
+  </ion-content>
+</ion-nav-view>

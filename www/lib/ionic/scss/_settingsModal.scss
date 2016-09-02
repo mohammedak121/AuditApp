@@ -1,0 +1,2070 @@
+.overLayDiv{
+      position:absolute;
+      top: 0%;
+      z-index:11;
+      padding-bottom : 200% !important;
+     margin-top: -10% !important;
+     background-color: #000;
+     opacity: 0.8;
+     width: 100%;
+}
+.overLayDivBgForTyreLoad{
+   opacity: 0.6 !important;
+}
+/*----Start---*/
+/************************portrait ****************/
+@media only screen and (orientation: portrait) {
+  .overLayDiv1{
+      position:absolute;
+      top: 19.5% !important;
+      z-index:12;
+      padding-bottom : 200% !important;
+      margin-top: -10% !important;
+      background-color: #000;
+      opacity: 0.7;
+     width: 103%;
+  }
+.languageLine{
+    height: 107px;
+    width: 201px;
+    length: initial;
+    background: transparent;
+    border-radius: 0px 0px 400px/200px 0px;
+    border: 3px solid white;
+    border-top: none;
+    border-left: none;
+    margin-left: 177px;
+    margin-top: 2px;
+    padding-top: 20px;
+    /* margin-left: 170px; */
+    padding-left: -3px;
+}
+.languageLine:before {
+      height: 20px;
+      width: 20px;
+      border: 3px solid white;
+      border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+      display: block;
+      content: "";
+      border-bottom: none;
+      position: relative;
+      margin-top: -20px;
+      left: 189px;
+}
+
+
+
+
+.languageCardDiv{
+      width: 40%;
+      text-align: center;
+      color: white;
+      font-family: inherit;
+      font-size: large;
+      margin-top: -4% !important;
+      margin-left: 20% !important;
+      background-color: black;
+      padding-left: 6%;
+
+
+}
+.overLayDiv2{
+    position:absolute;
+    top: 26.5% !important;
+    z-index:12;
+    padding-bottom : 200% !important;
+   margin-top: -10% !important;
+   background-color: #000;
+   opacity: 0.7;
+   width: 103%;
+}
+
+
+.setPinLine {
+   height: 107px;
+    width: 201px;
+    length: initial;
+    background: transparent;
+    border-radius: 0px 0px 400px/200px 0px;
+    border: 3px solid white;
+    border-top: none;
+    border-left: none;
+    margin-left: 177px;
+    margin-top: 2px;
+    padding-top: 20px;
+    /* margin-left: 170px; */
+    padding-left: -3px;
+ }
+ .setPinLine:before {
+       height: 20px;
+       width: 20px;
+       border: 3px solid white;
+       border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+       display: block;
+       content: "";
+       border-bottom: none;
+       position: relative;
+       margin-top: -20px;
+       left: 189px;
+ }
+   .card{
+    width: 40%;
+    text-align: center;
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -5% !important;
+    margin-left: 22% !important;
+    padding-left: 17%;
+    background-color: black !important;
+}
+
+
+
+
+.overLayDiv3{
+    position:absolute;
+    top: 34% !important;
+    z-index:12;
+    padding-bottom : 200% !important;
+   margin-top: -10% !important;
+   background-color: #000;
+   opacity: 0.7;
+   width: 103%;
+}
+
+
+    .logsLine{
+        height: 107px;
+        width: 201px;
+        length: initial;
+        background: transparent;
+        border-radius: 0px 0px 400px/200px 0px;
+        border: 3px solid white;
+        border-top: none;
+        border-left: none;
+        margin-left: 177px;
+        margin-top: 2px;
+        padding-top: 20px;
+        /* margin-left: 170px; */
+        padding-left: -3px;
+    }
+    .logsLine:before {
+          height: 20px;
+          width: 20px;
+          border: 3px solid white;
+          border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+          display: block;
+          content: "";
+          border-bottom: none;
+          position: relative;
+          margin-top: -20px;
+          left: 189px;
+    }
+    .logsCardDiv{
+     width: 40%;
+     text-align: center;
+     color: white;
+     font-family: inherit;
+     font-size: large;
+     margin-top: -4% !important;
+     margin-left: 22% !important;
+     padding-left: 16%;
+     background-color: black !important;
+    }
+
+
+
+
+    .overLayDiv4{
+  position: absolute;
+  top: 0% !important;
+  z-index: 12;
+  padding-bottom: 150% !important;
+  /* margin-top: -10% !important; */
+  background-color: #000;
+  opacity: 0.7;
+  width: 106%;
+  margin-left: -2% !important;
+  /* margin-top: 2%; */
+  padding-top: -23%;
+    }
+    .saveLine{
+    height: 100px;
+    width: 200px;
+    background: transparent;
+    border-radius: 0px 426px/214px 301px 0px;
+    border: 3px solid white;
+    border-bottom: none;
+    border-left: none;
+    margin-left: 12px;
+    padding-top: -81px;
+    margin-top: 117%;
+  }
+.saveLine:before {
+    height: 20px;
+    width: 17px;
+    border: 3px solid white;
+    border-radius: 0px 0px 30px 30px/0px 0px 75px 75px;
+    display: block;
+    border-top: none;
+    content: "";
+    /* border-bottom: 18px; */
+    position: relative;
+    margin-top: 78px;
+    left: 190px;
+}
+    .saveCardDiv{
+    width: 36%;
+    text-align: center;
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -25% !important;
+    margin-left: 1% !important;
+    padding-left: -1%;
+    background-color: black !important;
+    }
+
+
+
+
+.doneButton1{
+  background-color: white;
+  text-align: center;
+  margin-left: 37%;
+  margin-top: 5%;
+    width: 16%;
+}
+.doneButton2{
+margin-left: 43%;
+    width: 15%;
+  }
+  .doneButton3{
+
+
+  margin-left: 42%;
+    margin-top: 4%;
+    width: 16%;
+
+
+}
+.doneButton4{
+
+
+margin-left: 12%;
+    margin-top: 2%;
+    width: 14%;
+}
+}
+/************************landscape ****************/
+@media only screen and (orientation: landscape) {
+  .overLayDiv1{
+        position: absolute;
+        top: 46% !important;
+        z-index: 12;
+        padding-bottom: 200% !important;
+        margin-top: -10% !important;
+        background-color: #000;
+        margin-left: 0% !important;
+        opacity: 0.7;
+        width: 103%;
+  }
+  .languageLine{
+      height: 107px;
+      width: 201px;
+      length: initial;
+      background: transparent;
+      border-radius: 0px 0px 400px/200px 0px;
+      border: 3px solid white;
+      border-top: none;
+      border-left: none;
+      margin-left: 449px;
+      margin-top: 2px;
+      padding-top: 20px;
+      /* margin-left: 170px; */
+      padding-left: -3px;
+  }
+  .languageLine:before {
+      height: 20px;
+      width: 20px;
+      border: 3px solid white;
+      border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+      display: block;
+      content: "";
+      border-bottom: none;
+      position: relative;
+      margin-top: -20px;
+      left: 189px;
+  }
+
+
+
+
+  .languageCardDiv{
+        width: 40%;
+        text-align: center;
+        color: white;
+        font-family: inherit;
+        font-size: large;
+        margin-top: -2% !important;
+        margin-left: 25% !important;
+        background-color: black;
+        padding-left: 14%;
+
+
+  }
+  .overLayDiv2{
+        position: absolute;
+        top: 62% !important;
+        z-index: 12;
+        padding-bottom: 200% !important;
+        margin-top: -10% !important;
+        background-color: #000;
+        margin-left: 0% !important;
+        opacity: 0.7;
+        width: 103%;
+  }
+
+
+  .setPinLine {
+      height: 107px;
+      width: 201px;
+      length: initial;
+      background: transparent;
+      border-radius: 0px 0px 400px/200px 0px;
+      border: 3px solid white;
+      border-top: none;
+      border-left: none;
+      margin-left: 450px;
+      margin-top: 2px;
+      padding-top: 20px;
+      /* margin-left: 170px; */
+      padding-left: -3px;
+  }
+  .setPinLine:before {
+       height: 20px;
+       width: 20px;
+       border: 3px solid white;
+       border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+       display: block;
+       content: "";
+       border-bottom: none;
+       position: relative;
+       margin-top: -20px;
+       left: 189px;
+  }
+   .card{
+     width: 40%;
+     text-align: center;
+     color: white;
+     font-family: inherit;
+     font-size: large;
+     margin-top: -2% !important;
+     margin-left: 22% !important;
+     padding-left: 27%;
+     background-color: black !important;
+  }
+
+
+
+
+  .overLayDiv3{
+      position: absolute;
+      top: 80% !important;
+      z-index: 12;
+      padding-bottom: 200% !important;
+      margin-top: -10% !important;
+      background-color: #000;
+      margin-left: 0% !important;
+      opacity: 0.7;
+      width: 103%;
+  }
+
+
+ .logsLine{
+      height: 107px;
+      width: 201px;
+      length: initial;
+      background: transparent;
+      border-radius: 0px 0px 400px/200px 0px;
+      border: 3px solid white;
+      border-top: none;
+      border-left: none;
+      margin-left: 451px;
+      margin-top: 2px;
+      padding-top: 20px;
+      /* margin-left: 170px; */
+      padding-left: -3px;
+    }
+.logsLine:before {
+          height: 20px;
+          width: 20px;
+          border: 3px solid white;
+          border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+          display: block;
+          content: "";
+          border-bottom: none;
+          position: relative;
+          margin-top: -20px;
+          left: 189px;
+    }
+    .logsCardDiv{
+    width: 44%;
+    height: 47%;
+    /* text-align: center; */
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -2.5% !important;
+    margin-left: 40% !important;
+    padding-left: 27%;
+    background-color: black !important;
+    }
+
+
+
+
+    .overLayDiv4{
+    position: absolute;
+    top: 0% !important;
+    z-index: 12;
+    padding-bottom: 150% !important;
+    /* margin-top: -10% !important; */
+    background-color: #000;
+    opacity: 0.7;
+    width: 106%;
+    margin-left: -2% !important;
+    /* margin-top: 2%; */
+    padding-top: -23%;
+}
+
+
+    .saveLine{
+  height: 100px;
+  width: 200px;
+  background: transparent;
+  border-radius: 0px 426px/214px 301px 0px;
+  border: 3px solid white;
+  border-bottom: none;
+  border-left: none;
+  margin-left: 145px;
+  padding-top: -81px;
+  margin-top: 35%;
+  }
+  .saveLine:before {
+    height: 20px;
+    width: 17px;
+    border: 3px solid white;
+    border-radius: 0px 0px 30px 30px/0px 0px 75px 75px;
+    display: block;
+    border-top: none;
+    content: "";
+    /* border-bottom: 18px; */
+    position: relative;
+    margin-top: 78px;
+    left: 190px;
+  }
+    .saveCardDiv {
+    width: 32%;
+    /* text-align: center; */
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -15% !important;
+    margin-left: 5% !important;
+    padding-left: -1%;
+    background-color: black !important;
+}
+.doneButton1{
+    margin-left: 47%;
+    margin-top: 2%;
+    width: 10%;
+}
+.doneButton2{
+margin-left: 50%;
+
+
+width: 9%;
+margin-top: -1%;
+}
+.doneButton3{
+margin-left: 66%;
+    margin-top: 1%;
+    width: 10%;
+}
+.doneButton4{
+margin-left: 17%;
+    margin-top: 2%;
+    width: 10%;
+}
+}
+
+
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+.overLayDiv1{
+    position:absolute;
+    top: 18% !important;
+    z-index:12;
+    padding-bottom : 200% !important;
+   margin-top: -10% !important;
+   background-color: #000;
+   opacity: 0.7;
+   width: 103%;
+   margin-left: -95%;
+}
+.languageLine{
+  height: 100px;
+width: 150px;
+length: initial;
+/* background: transparent; */
+border-radius: 0px 0px 400px/200px 0px;
+border: 3px solid white;
+border-top: none;
+border-left: none;
+margin-left: 132px;
+}
+
+
+.languageLine:before{
+  height: 20px;
+width: 20px;
+border: 3px solid white;
+border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+display: block;
+content: "";
+border-bottom: none;
+position: relative;
+margin-top: -20px;
+left: 139px;
+}
+
+
+
+
+.languageCardDiv{
+    width: 40%;
+text-align: center;
+color: white;
+font-family: inherit;
+font-size: large;
+margin-top: -4% !important;
+margin-left: 9% !important;
+background-color: black;
+padding-left: 6%;
+
+
+}
+.doneButton1{
+background-color: white;
+text-align: center;
+margin-left: 23%;
+margin-top: 5%;
+width: 20%;
+}
+.overLayDiv2{
+
+
+  margin-left: -95% !important;
+}
+
+
+.setPinLine {
+
+
+  margin-left: 140px;
+  height: 100px;
+  width: 150px;
+
+
+}
+.setPinLine:before{
+  left: 139px;
+}
+ .card{
+
+
+  margin-top: -6% !important;
+  margin-left: 15% !important;
+
+
+}
+.doneButton2{
+  margin-left: 36%;
+width: 20%;
+background-color: white;
+}
+
+
+
+
+.overLayDiv3{
+
+
+  margin-left: -95%;
+  top:36% !important;
+}
+
+
+  .logsLine{
+
+
+      margin-left: 135px;
+      height: 100px;
+      width: 150px;
+
+
+  }
+  .logsLine:before{
+  left: 139px;
+  }
+
+
+  .logsCardDiv{
+
+
+   margin-top: -6% !important;
+   margin-left: 20% !important;
+   padding-left: 1%;
+
+
+  }
+  .doneButton3{
+margin-left: 30%;
+margin-top: 4%;
+width: 20%;
+background-color: white
+  }
+
+
+
+
+  .overLayDiv4{
+
+
+/*margin-left: -99% !important;*/
+
+
+  }
+  .saveLine{
+
+
+  margin-left: -30px !important;
+
+
+  margin-top: 125%;
+}
+
+
+  .saveCardDiv{
+   text-align: center;
+  margin-top: -31% !important;
+  margin-left: 2% !important;
+  }
+  .doneButton4{
+  margin-left: 12%;
+margin-top: 2%;
+width: 20%;
+background-color: white
+  }
+
+
+}
+
+
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+
+
+.overLayDiv1{
+
+
+        margin-left: -99% !important;
+  }
+  .languageLine{
+      height: 100px;
+      width: 150px;
+      margin-left: 395px;
+      margin-top: 2px;
+
+
+  }
+
+
+.languageLine:before{
+  left: 139px;
+}
+
+
+  .languageCardDiv{
+
+
+        margin-top: -3% !important;
+        margin-left: 30% !important;
+
+
+
+
+  }
+  .doneButton1{
+margin-left: 50%;
+margin-top: 2%;
+width: 12%;
+text-align: center;
+background-color: white;
+  }
+  .overLayDiv2{
+
+
+        margin-left: -98% !important;
+  }
+
+
+  .setPinLine {
+    height: 100px;
+    width: 150px;
+    margin-left: 385px;
+
+
+  }
+ .setPinLine:before{
+ left: 139px;
+ }
+.card{
+  margin-top: -4% !important;
+}
+.doneButton2{
+margin-left: 50%;
+width: 12%;
+margin-top: -10%;
+background-color: white;
+}
+
+
+  .overLayDiv3{
+
+
+      top: 79% !important;
+
+
+      margin-left: -99% !important;
+  }
+
+
+    .logsLine{
+
+
+      margin-left: 410px;
+      height: 80px;
+      width: 130px;
+    }
+
+
+    .logsCardDiv{
+
+
+    margin-top: -5% !important;
+    margin-left: 30% !important;
+
+
+    }
+.logsLine:before{
+  height: 20px;
+width: 20px;
+border: 3px solid white;
+border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+display: block;
+content: "";
+border-bottom: none;
+position: relative;
+margin-top: -20px;
+left: 119px;
+}
+.doneButton3{
+  margin-left: 57%;
+margin-top: 1%;
+width: 12%;
+background-color: white;
+}
+
+
+    .overLayDiv4{
+
+
+    /*margin-left: -99% !important;*/
+
+
+}
+
+
+    .saveLine{
+
+
+
+
+  margin-left: 90px;
+  margin-top: 190px;
+
+
+  }
+
+
+    .saveCardDiv{
+    text-align: center;
+    margin-top: -19% !important;
+
+
+}
+.doneButton4{
+  margin-left: 17%;
+margin-top: 2%;
+width: 12%;
+background-color: white
+}
+}
+
+
+/****************************** NEXUS 5 portrait ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait) {
+
+
+  .overLayDiv1{
+      position:absolute;
+      top: 19.5% !important;
+      z-index:12;
+      padding-bottom : 200% !important;
+      margin-top: -10% !important;
+      background-color: #000;
+      opacity: 0.7;
+     width: 103%;
+  }
+.languageLine{
+    height: 107px;
+    width: 201px;
+    length: initial;
+    background: transparent;
+    border-radius: 0px 0px 400px/200px 0px;
+    border: 3px solid white;
+    border-top: none;
+    border-left: none;
+    margin-left: 177px;
+    margin-top: 2px;
+    padding-top: 20px;
+    /* margin-left: 170px; */
+    padding-left: -3px;
+}
+.languageLine:before {
+      height: 20px;
+      width: 20px;
+      border: 3px solid white;
+      border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+      display: block;
+      content: "";
+      border-bottom: none;
+      position: relative;
+      margin-top: -20px;
+      left: 189px;
+}
+
+
+
+
+.languageCardDiv{
+      width: 40%;
+      text-align: center;
+      color: white;
+      font-family: inherit;
+      font-size: large;
+      margin-top: -4% !important;
+      margin-left: 20% !important;
+      background-color: black;
+      padding-left: 6%;
+
+
+}
+.overLayDiv2{
+    position:absolute;
+    top: 26.5% !important;
+    z-index:12;
+    padding-bottom : 200% !important;
+   margin-top: -10% !important;
+   background-color: #000;
+   opacity: 0.7;
+   width: 103%;
+}
+
+
+.setPinLine {
+   height: 107px;
+    width: 201px;
+    length: initial;
+    background: transparent;
+    border-radius: 0px 0px 400px/200px 0px;
+    border: 3px solid white;
+    border-top: none;
+    border-left: none;
+    margin-left: 177px;
+    margin-top: 2px;
+    padding-top: 20px;
+    /* margin-left: 170px; */
+    padding-left: -3px;
+ }
+ .setPinLine:before {
+       height: 20px;
+       width: 20px;
+       border: 3px solid white;
+       border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+       display: block;
+       content: "";
+       border-bottom: none;
+       position: relative;
+       margin-top: -20px;
+       left: 189px;
+ }
+   .card{
+    width: 40%;
+    text-align: center;
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -5% !important;
+    margin-left: 22% !important;
+    padding-left: 17%;
+    background-color: black !important;
+}
+
+
+
+
+.overLayDiv3{
+    position:absolute;
+    top: 34% !important;
+    z-index:12;
+    padding-bottom : 200% !important;
+   margin-top: -10% !important;
+   background-color: #000;
+   opacity: 0.7;
+   width: 103%;
+}
+
+
+    .logsLine{
+        height: 107px;
+        width: 201px;
+        length: initial;
+        background: transparent;
+        border-radius: 0px 0px 400px/200px 0px;
+        border: 3px solid white;
+        border-top: none;
+        border-left: none;
+        margin-left: 177px;
+        margin-top: 2px;
+        padding-top: 20px;
+        /* margin-left: 170px; */
+        padding-left: -3px;
+    }
+    .logsLine:before {
+          height: 20px;
+          width: 20px;
+          border: 3px solid white;
+          border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+          display: block;
+          content: "";
+          border-bottom: none;
+          position: relative;
+          margin-top: -20px;
+          left: 189px;
+    }
+    .logsCardDiv{
+     width: 40%;
+     text-align: center;
+     color: white;
+     font-family: inherit;
+     font-size: large;
+     margin-top: -4% !important;
+     margin-left: 22% !important;
+     padding-left: 16%;
+     background-color: black !important;
+    }
+
+
+
+
+    .overLayDiv4{
+  position: absolute;
+  top: 0% !important;
+  z-index: 12;
+  padding-bottom: 150% !important;
+  /* margin-top: -10% !important; */
+  background-color: #000;
+  opacity: 0.7;
+  width: 106%;
+  margin-left: -2% !important;
+  /* margin-top: 2%; */
+  padding-top: -23%;
+    }
+    .saveLine{
+    height: 100px;
+    width: 200px;
+    background: transparent;
+    border-radius: 0px 426px/214px 301px 0px;
+    border: 3px solid white;
+    border-bottom: none;
+    border-left: none;
+    margin-left: 12px;
+    padding-top: -81px;
+    margin-top: 117%;
+  }
+.saveLine:before {
+    height: 20px;
+    width: 17px;
+    border: 3px solid white;
+    border-radius: 0px 0px 30px 30px/0px 0px 75px 75px;
+    display: block;
+    border-top: none;
+    content: "";
+    /* border-bottom: 18px; */
+    position: relative;
+    margin-top: 78px;
+    left: 190px;
+}
+    .saveCardDiv{
+    width: 36%;
+    text-align: center;
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -25% !important;
+    margin-left: 1% !important;
+    padding-left: -1%;
+    background-color: black !important;
+    }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+.overLayDiv1{
+    position:absolute;
+    top: 18% !important;
+    z-index:12;
+    padding-bottom : 200% !important;
+   margin-top: -10% !important;
+   background-color: #000;
+   opacity: 0.7;
+   width: 103%;
+   /*margin-left: -95%;*/
+}
+.languageLine{
+  height: 100px;
+width: 150px;
+length: initial;
+/* background: transparent; */
+border-radius: 0px 0px 400px/200px 0px;
+border: 3px solid white;
+border-top: none;
+border-left: none;
+margin-left: 132px;
+}
+
+
+.languageLine:before{
+  height: 20px;
+width: 20px;
+border: 3px solid white;
+border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+display: block;
+content: "";
+border-bottom: none;
+position: relative;
+margin-top: -20px;
+left: 139px;
+}
+
+
+
+
+.languageCardDiv{
+    width: 40%;
+text-align: center;
+color: white;
+font-family: inherit;
+font-size: large;
+margin-top: -4% !important;
+margin-left: 9% !important;
+background-color: black;
+padding-left: 6%;
+
+
+}
+.overLayDiv2{
+
+
+  /*margin-left: -95% !important;*/
+}
+
+
+.setPinLine {
+
+
+  margin-left: 140px;
+  height: 100px;
+  width: 150px;
+
+
+}
+.setPinLine:before{
+  left: 139px;
+}
+ .card{
+
+
+  margin-top: -6% !important;
+  margin-left: 15% !important;
+
+
+}
+
+
+
+
+.overLayDiv3{
+
+
+  /*margin-left: -95%;*/
+  top:36% !important;
+}
+
+
+  .logsLine{
+
+
+      margin-left: 135px;
+      height: 100px;
+      width: 150px;
+
+
+  }
+  .logsLine:before{
+  left: 139px;
+  }
+
+
+  .logsCardDiv{
+
+
+   margin-top: -6% !important;
+   margin-left: 20% !important;
+   padding-left: 1%;
+
+
+  }
+
+
+
+
+  .overLayDiv4{
+
+
+/*margin-left: -99% !important;*/
+
+
+  }
+  .saveLine{
+
+
+  margin-left: -10px !important;
+
+
+  margin-top: 125% !important;
+}
+
+
+  .saveCardDiv{
+   text-align: center;
+  margin-top: -31% !important;
+  margin-left: 2% !important;
+  }
+
+
+}
+
+
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+
+
+.overLayDiv1{
+
+
+        margin-left: -99% !important;
+  }
+  .languageLine{
+      height: 100px;
+      width: 150px;
+      margin-left: 395px;
+      margin-top: 2px;
+
+
+  }
+
+
+.languageLine:before{
+  left: 139px;
+}
+
+
+  .languageCardDiv{
+
+
+        margin-top: -3% !important;
+        margin-left: 30% !important;
+  }
+  .overLayDiv2{
+
+
+        margin-left: -98% !important;
+  }
+
+
+  .setPinLine {
+    height: 100px;
+    width: 150px;
+    margin-left: 385px;
+
+
+  }
+ .setPinLine:before{
+ left: 139px;
+ }
+
+  .overLayDiv3{
+
+
+      top: 79% !important;
+
+
+      margin-left: -99% !important;
+  }
+
+
+    .logsLine{
+
+
+      margin-left: 410px;
+      height: 80px;
+      width: 130px;
+    }
+
+
+    .logsCardDiv{
+
+
+    margin-top: -3% !important;
+    margin-left: 30% !important;
+
+
+    }
+.logsLine:before{
+  height: 20px;
+width: 20px;
+border: 3px solid white;
+border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+display: block;
+content: "";
+border-bottom: none;
+position: relative;
+margin-top: -20px;
+left: 119px;
+}
+  .saveLine{
+margin-left: 95px;
+  }
+  .saveCardDiv{
+    text-align: center;
+    margin-top: -19% !important;
+}
+}
+
+
+
+
+/****************************** Google Nexus 7 (portrait) ***********************/
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: portrait) {
+  .overLayDiv1{
+    margin-top: -10.5% !important;
+    margin-left: -100% !important;
+
+
+  }
+  .languageLine{
+    margin-left: 379px;
+
+
+  }
+  .languageCardDiv{
+
+
+      margin-top: -2% !important;
+    background-color: transparent !important;
+    margin-left: 24% !important;
+  }
+
+
+.overLayDiv2{
+
+
+  top: 26.5% !important;
+  margin-top: -12% !important;
+  margin-left: -100%;
+
+
+}
+.setPinLine {
+  height: 107px;
+    width: 201px;
+
+
+    background: transparent;
+    border-radius: 0px 0px 400px/200px 0px;
+    border: 3px solid white;
+    border-top: none;
+    border-left: none;
+    margin-left: 370px;
+    margin-top: 2px;
+    padding-top: 20px;
+    /* margin-left: 170px; */
+    /*padding-left: -3px;*/
+}
+
+
+ .card{
+
+
+   padding-left: 19%;
+   margin-top: -2% !important;
+   opacity: 0.7 !important;
+   background-color: transparent !important;
+}
+.overLayDiv3{
+  top: 31.5% !important;
+  margin-left: -100% !important;
+
+
+}
+
+
+  .logsLine{
+margin-left: 370px;
+  }
+
+
+  .logsCardDiv{
+ margin-top: -2% !important;
+   padding-left: 21% !important;
+   background-color: transparent;
+  }
+  .doneButton3 {
+  margin-left: 45%;
+}
+
+
+  .overLayDiv4{
+    top: 0% !important;
+    margin-left: 0% !important;
+  }
+  .saveLine{
+    height: 97px;
+  width: 200px;
+  background: transparent;
+  border-radius: 0px 426px/214px 301px 0px;
+  border: 3px solid white;
+  border-bottom: none;
+  border-left: none;
+  margin-left: 90px;
+  margin-top: 112%;
+
+
+}
+  .saveCardDiv{
+    width: 40%;
+  text-align: center;
+  color: white;
+  font-family: inherit;
+  font-size: large;
+  margin-top: -17% !important;
+  margin-left: -2% !important;
+  padding-left: -1%;
+  background-color: black !important;
+  }
+  .doneButton4 {
+  margin-left: 12%;
+}
+
+
+}
+/******************************* Google Nexus 7 (lanscape) ****************************/
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: landscape) {
+
+
+  .overLayDiv1{
+    margin-top: -11% !important;
+    margin-left: -100% !important;
+
+
+  }
+  .languageLine{
+    margin-left: 730px;
+    margin-top: 2px;
+    padding-top: 20px;
+
+
+  }
+
+
+ .languageCardDiv{
+    margin-top: -1% !important;
+    margin-left: 38% !important;
+    background-color: transparent !important;
+
+
+  }
+  .doneButton1 {
+margin-left: 59%;
+}
+  .overLayDiv2{
+    top: 57% !important;
+    margin-left: -100% !important;
+  }
+
+
+  .setPinLine {
+    margin-left: 730px;
+
+
+  }
+  .card{
+     margin-top: -1% !important;
+     margin-left: 35% !important;
+     background-color: transparent !important;
+}
+.doneButton2 {
+margin-left: 63%;
+}
+.overLayDiv3 {
+   top: 72% !important;
+   margin-left: -99% !important;
+
+
+}
+.logsLine {
+margin-left: 730px;
+}
+.logsCardDiv {
+margin-left: 27% !important;
+padding-left: 35%;
+background-color: transparent;
+margin-top: -0.5% !important;
+}
+.doneButton3 {
+margin-left: 60%;
+
+
+}
+.overLayDiv4{
+margin-left: 0% !important;
+/* margin-top: 2%; */
+
+
+}
+
+
+.saveLine{
+margin-left: 268px !important;
+
+
+margin-top: 37% !important;
+}
+
+
+.saveCardDiv{
+  margin-top: -10% !important;
+  margin-left: 13% !important;
+  padding-left: 7% !important;
+  background-color: black !important;
+}
+.doneButton4 {
+margin-left: 23%;
+}
+
+
+}
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and
+(orientation: landscape) {
+
+
+  .overLayDiv1{
+        position: absolute;
+        top: 46% !important;
+        z-index: 12;
+        padding-bottom: 200% !important;
+        margin-top: -10% !important;
+        background-color: #000;
+        margin-left: 0% !important;
+        opacity: 0.7;
+        width: 103%;
+  }
+  .languageLine{
+      height: 107px;
+      width: 201px;
+      length: initial;
+      background: transparent;
+      border-radius: 0px 0px 400px/200px 0px;
+      border: 3px solid white;
+      border-top: none;
+      border-left: none;
+      margin-left: 449px;
+      margin-top: 2px;
+      padding-top: 20px;
+      /* margin-left: 170px; */
+      padding-left: -3px;
+  }
+  .languageLine:before {
+      height: 20px;
+      width: 20px;
+      border: 3px solid white;
+      border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+      display: block;
+      content: "";
+      border-bottom: none;
+      position: relative;
+      margin-top: -20px;
+      left: 189px;
+  }
+
+
+
+
+  .languageCardDiv{
+        width: 40%;
+        text-align: center;
+        color: white;
+        font-family: inherit;
+        font-size: large;
+        margin-top: -2% !important;
+        margin-left: 25% !important;
+        background-color: black;
+        padding-left: 14%;
+
+
+  }
+  .doneButton1 {
+    margin-left: 46%;
+}
+  .overLayDiv2{
+        position: absolute;
+        top: 62% !important;
+        z-index: 12;
+        padding-bottom: 200% !important;
+        margin-top: -10% !important;
+        background-color: #000;
+        margin-left: 0% !important;
+        opacity: 0.7;
+        width: 103%;
+  }
+
+
+  .setPinLine {
+      height: 107px;
+      width: 201px;
+      length: initial;
+      background: transparent;
+      border-radius: 0px 0px 400px/200px 0px;
+      border: 3px solid white;
+      border-top: none;
+      border-left: none;
+      margin-left: 450px;
+      margin-top: 2px;
+      padding-top: 20px;
+      /* margin-left: 170px; */
+      padding-left: -3px;
+  }
+  .setPinLine:before {
+       height: 20px;
+       width: 20px;
+       border: 3px solid white;
+       border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+       display: block;
+       content: "";
+       border-bottom: none;
+       position: relative;
+       margin-top: -20px;
+       left: 189px;
+  }
+   .card{
+     width: 40%;
+     text-align: center;
+     color: white;
+     font-family: inherit;
+     font-size: large;
+     margin-top: -2% !important;
+     margin-left: 22% !important;
+     padding-left: 27%;
+     background-color: black !important;
+  }
+  .doneButton2 {
+      margin-left: 51%;
+  }
+
+
+
+  .overLayDiv3{
+      position: absolute;
+      top: 80% !important;
+      z-index: 12;
+      padding-bottom: 200% !important;
+      margin-top: -10% !important;
+      background-color: #000;
+      margin-left: 0% !important;
+      opacity: 0.7;
+      width: 103%;
+  }
+
+
+ .logsLine{
+      height: 83px;
+      width: 199px;
+      length: initial;
+      background: transparent;
+      border-radius: 0px 0px 400px/200px 0px;
+      border: 3px solid white;
+      border-top: none;
+      border-left: none;
+      margin-left: 451px;
+      margin-top: 2px;
+      padding-top: 20px;
+      /* margin-left: 170px; */
+      padding-left: -3px;
+    }
+.logsLine:before {
+          height: 20px;
+          width: 20px;
+          border: 3px solid white;
+          border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+          display: block;
+          content: "";
+          border-bottom: none;
+          position: relative;
+          margin-top: -20px;
+          left: 186px;
+    }
+    .logsCardDiv{
+    width: 44%;
+    height: 47%;
+    /* text-align: center; */
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -2.5% !important;
+    margin-left: 35% !important;
+    padding-left: 32%;
+    background-color: black !important;
+    }
+    .doneButton3 {
+        margin-left: 67% !important;
+    }
+
+
+
+    .overLayDiv4{
+    position: absolute;
+    top: 0% !important;
+    z-index: 12;
+    padding-bottom: 150% !important;
+    /* margin-top: -10% !important; */
+    background-color: #000;
+    opacity: 0.7;
+    width: 106%;
+    margin-left: -2% !important;
+    /* margin-top: 2%; */
+    padding-top: -23%;
+}
+
+
+    .saveLine{
+  height: 100px;
+  width: 200px;
+  background: transparent;
+  border-radius: 0px 426px/214px 301px 0px;
+  border: 3px solid white;
+  border-bottom: none;
+  border-left: none;
+  margin-left: 149px !important;
+  padding-top: -81px;
+  margin-top: 35% !important;
+  }
+  .saveLine:before {
+    height: 20px;
+    width: 17px;
+    border: 3px solid white;
+    border-radius: 0px 0px 30px 30px/0px 0px 75px 75px;
+    display: block;
+    border-top: none;
+    content: "";
+    /* border-bottom: 18px; */
+    position: relative;
+    margin-top: 78px;
+    left: 190px;
+  }
+    .saveCardDiv {
+    width: 32%;
+    /* text-align: center; */
+    color: white;
+    font-family: inherit;
+    font-size: large;
+    margin-top: -15% !important;
+    margin-left: 5% !important;
+    padding-left: -1%;
+    background-color: black !important;
+}
+.doneButton4 {
+    margin-left: 17%;
+}
+
+}
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+.overLayDiv1{
+    position:absolute;
+    top: 17% !important;
+
+
+
+
+}
+.languageLine{
+  height: 250px;
+  width: 250px;
+
+
+  margin-left: 470px;
+
+
+}
+.languageLine:before {
+    height: 20px;
+    width: 20px;
+    border: 3px solid white;
+    border-radius: 40px 40px 0px 0px/75px 75px 0px 0px;
+    display: block;
+    content: "";
+    border-bottom: none;
+    position: relative;
+    margin-top: -20px;
+    left: 239px;
+}
+
+
+
+
+.languageCardDiv{
+
+
+    margin-top: -2% !important;
+    margin-left: 25% !important;
+
+
+    padding-left: 6%;
+
+
+}
+.doneButton1{
+  margin-left: 42%;
+  width:10% !important;
+}
+.overLayDiv2{
+
+
+  top: 25% !important;
+
+
+
+
+}
+
+
+.setPinLine {
+  height: 250px;
+  width: 250px;
+
+
+  margin-left: 465px;
+
+
+}
+.setPinLine:before {
+
+
+     left: 239px;
+}
+ .card{
+
+
+
+
+  margin-top: -1% !important;
+  margin-left: 22% !important;
+  padding-left: 17%;
+  background-color: transparent !important;
+}
+.doneButton2{
+  margin-left: 45%;
+width: 10%;
+background-color: white;
+}
+
+
+.overLayDiv3{
+
+
+  top: 30% !important;
+
+
+}
+
+
+  .logsLine{
+      height: 250px;
+      width: 250px;
+
+
+      margin-left: 477px;
+
+
+  }
+  .logsLine:before {
+
+
+        left: 239px;
+  }
+  .logsCardDiv{
+
+
+   margin-top: -2% !important;
+   margin-left: 24% !important;
+   padding-left: 16%;
+   background-color: transparent !important;
+  }
+
+
+.doneButton3{
+
+width: 10%;
+background-color: white;
+}
+  .overLayDiv4{
+
+
+top: 0% !important;
+}
+  .saveLine{
+  height: 230px;
+width: 230px;
+margin-left: 135px !important;
+padding-top: -81px !important;
+margin-top: 92% !important;
+}
+.saveLine:before {
+
+
+  margin-top: 210px;
+left: 220px;
+}
+  .saveCardDiv{
+  width: 35%;
+text-align: center;
+margin-top: -33% !important;
+margin-left: -5% !important;
+background-color: transparent !important;
+  }
+  .doneButton4{
+  margin-left: 6%;
+width: 10%;
+background-color: white
+  }
+
+
+}
+/**************************************** iPADipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+.overLayDiv1{
+
+
+        top: 28% !important;
+
+
+
+
+  }
+  .languageLine{
+      height: 250px;
+      width: 250px;
+
+
+      margin-left: 750px;
+
+
+  }
+  .languageLine:before {
+
+
+      left: 239px;
+  }
+
+
+
+
+  .languageCardDiv{
+
+
+        margin-top: -1% !important;
+        margin-left: 35% !important;
+
+
+  }
+  .doneButton1{
+  margin-left: 56%;
+background-color: white;
+width: 10%;
+  }
+  .overLayDiv2{
+
+
+        top: 37% !important;
+
+
+  }
+
+
+  .setPinLine {
+      height: 250px;
+      width: 250px;
+
+
+      margin-left: 750px;
+
+
+  }
+  .setPinLine:before {
+
+
+       left: 239px;
+  }
+   .card{
+
+
+     margin-top: -1% !important;
+     margin-left: 35% !important;
+
+
+     background-color: transparent !important;
+  }
+.doneButton2{
+
+background-color: white;
+}
+
+
+  .overLayDiv3{
+
+
+      top: 48.5% !important;
+
+
+  }
+
+
+    .logsLine{
+      height: 250px;
+      width: 250px;
+
+
+      margin-left: 751px;
+
+
+    }
+    .logsLine:before {
+
+
+          left: 239px;
+    }
+    .logsCardDiv{
+
+
+    margin-top: -1% !important;
+    margin-left: 28% !important;
+
+
+    background-color: transparent !important;
+    }
+
+
+.doneButton3{
+
+width: 10%;
+background-color: white;
+}
+
+
+    .overLayDiv4{
+
+
+    top: 0% !important;
+
+
+
+}
+
+
+    .saveLine{
+  height: 250px;
+  width: 250px;
+
+
+  margin-left: 22% !important;
+
+
+  margin-top: 43% !important;
+  }
+  .saveLine:before {
+    margin-top: 230px;
+    left: 239px;
+  }
+    .saveCardDiv{
+
+
+    margin-top: -24% !important;
+    margin-left: -3% !important;
+    background-color: transparent !important;
+}
+.doneButton4{
+  margin-left: 7%;
+background-color: white;
+width: 10%;
+}
+
+
+}

@@ -1,0 +1,115 @@
+
+<!--
+Filename : dashBoardView.html
+Project : dealerAudit
+Language : HTML
+Framework: Ionic
+Author : Shabana.S
+Date of creation : 26-07-2016
+Description : This Provides the design for the dashBoard Screen.
+-->
+
+<ion-side-menus enable-menu-with-back-views="false"  class="dashboardcss" can-swipe-back="false">
+
+  <ion-side-menu-content  >
+    <!--side-menu  -->
+
+    <ion-header-bar class="bar bar-header headerBar headerBarDashBoard" align-title="center">
+      <!--Back Button  -->
+      <button class="button button-icon button-clear ion-navicon toolbarleftImgDimensions" style="color: white ; font-size:45px;" id="drawerButton" menu-toggle="left"></button>
+      <!--Back Button-->
+      <!--Header Bar Title -->
+      <h1 class="title dashboardTitleText dashBoardTitle" >{{home}}</h1>
+      <!--Header Bar Title  -->
+
+    </ion-header-bar>
+
+    <ion-content has-header="true" class="contentMarginBottom HomePageBg" scroll="false" >
+
+    <div>
+         <div class="firstDiv">
+              <div class="startAuditingLogoDiv" ng-click="NavigateToDashBoard()">
+                 <div id="versionDiv">
+                        <center class="startLabel" id="versionCenter">{{startLabel1}}</center>
+                 </div>
+              </div>
+             <div class="savedAuditingLogoDiv">
+                 <div id="versionDiv">
+                        <center class="savedLabel" id="versionCenter">{{savedLabel1}}</center>
+                 </div>
+               </div>
+         </div>
+
+
+        <div class="secondDiv">
+              <div class="reportAuditingLogoDiv">
+                 <div id="versionDiv">
+                        <center class="reportsLabel" id="versionCenter">{{reportsLabel1}}</center>
+                 </div>
+               </div>
+              <div class="settingsAuditingLogoDiv">
+                 <div id="versionDiv">
+                        <center class="settingsAuditLabel" id="versionCenter">{{settingsLabel1}}</center>
+                 </div>
+              </div>
+        </div>
+        </div>
+  </div>
+
+
+
+    </ion-content>
+    <!--Footer Bar with Create CRN Button -->
+    <!-- <ion-footer-bar  class="bar bar-footer footerstyle" id="footerBar" >
+
+    </ion-footer-bar> -->
+
+  </ion-side-menu-content>
+
+    <!--side-bar-menu  -->
+    <ion-side-menu side="left" width="200">
+        <ion-header-bar class="bar-stable" dashBoardHeaderBarStyle>
+
+                  <div class="dashboardspantext2">{{loginID}}</div></br>
+
+        </ion-header-bar>
+        <!--side-menu  content-->
+        <ion-content >
+
+            <!--side menu list content -->
+            <ion-list class="sidemenulist">
+
+
+
+                  <ion-item menu-close  href="#/settings" class="dashsidemenulist">
+                     <i class="icon settingicon" ></i>
+                      Settings
+                  </ion-item>
+
+
+                  <ion-item class="dashsidemenulist">
+                      <i class="icon contactusicon"></i>Contact Us
+                  </ion-item>
+                  <ion-item menu-close href="#/aboutUs" class="dashsidemenulist">
+                      <i class="icon aboutusicon"></i>About Us
+                  </ion-item>
+                  <ion-item menu-close href="" ng-Click=signOut()  class="dashsidemenulist">
+                      <i class="icon signouticon"></i>Log out
+                  </ion-item>
+                    <ion-item menu-close href="" ng-Click=sendMail()  class="dashsidemenulist">
+                      <i class="icon signouticon" id="sendMailDashboardBtn"></i>Send Log
+                  </ion-item> 
+            </ion-list>
+            <!--side menu list content -->
+
+        </ion-content>
+        <!--side-menu  content-->
+
+    </ion-side-menu>
+    <!--side-bar-menu  -->
+
+</ion-side-menus>
+
+
+
+<!--End of dashBoard view-->

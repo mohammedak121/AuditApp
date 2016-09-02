@@ -1,0 +1,72 @@
+<!--
+Filename : loginView.html
+Project : dealerAudit
+Language : HTML
+Framework: Ionic
+Author : Shabana.S
+Date of creation : 19-07-2016
+Description : This Provides the design for the Login Screen.
+-->
+
+<ion-nav-view>
+    <ion-content class="loginbackgroundimage">
+	
+        <div class="formclass" ng-controller="LoginCtrl as ctrl">
+            
+            <img ng-src={{tireLodingImage}} id="activityIndicator" class="tireLodingImage" ng-show = "shouldShowTyreImage"/>
+
+	        		
+	        <div class="divLoginLogo">
+			  <img ng-src={{logo}} class="logoimg"/>
+			</div>	
+			
+		
+			<div class="divLoginForm">
+
+				<!--Login form -->
+			    <form>
+				    <ion-list></ion-list>
+		            <div class="spacer"></div>
+		            <div class="appName">Dealer Audit Tool</div>
+		            <div class="spacer"></div>
+					
+					<!--Username input Section start -->
+		            <div class="inputDiv">        
+		            	<input type="text"  id="useranameTxt" class="inputBox"  placeholder={{'lblEmailAddressORUserName'|translate}} ng-model="username">
+                	</div>
+					<!--Username input Section end-->
+		            
+
+		            <div class="spacer"></div>
+
+					
+					<!--Password input Section start--> 
+					<div class="inputDiv">      
+		            	<input class="inputBox" id="passwordTxt" type="password"  placeholder={{'lblPassword'|translate}} ng-model="password" autocomplete="false">
+		         	</div>
+					<!--Password input Section end-->
+
+
+		           
+                   <!--Forgot password Section start--> 
+		           <div class="forgotPassword" id="rememberPasswordAlertLink" ng-click="openInAppBrowser()">Forgot password?</div>
+                   <!--Forgot password Section end--> 
+					
+					
+			       
+					<!--Login In Button section start-->
+			        <button id="loginBtn" ng-click="login(username,password)" class="button button-block loginbutton" ng-disabled="buttonDisabled">LOG IN</button>
+			        <!--Login In Button section s-->
+			        
+				</form>
+				<!-- Login form ends -->
+
+			</div>
+
+	   </div>
+	   	  
+    </ion-content>
+     <div id="disableBgIDDiv" class="overLayDiv overLayDivBgForTyreLoad" style="display: none;"></div>
+</ion-nav-view>
+
+<!--End of Login View-->

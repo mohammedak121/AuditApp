@@ -1,0 +1,383 @@
+.pac-container:after{
+    content:none !important;
+}
+
+.validationErrorText{
+  color: red !important;
+  margin-left: 43%;
+}
+
+.backButton{
+  width: 60px;
+  height: 45px;
+  top: -2px;
+
+}
+
+.DealerLabelStyle {
+  width: 114%;
+  margin-left: -78%;
+  margin-right: 9%;
+  margin-top: 9% !important;
+  font-size: 126%;
+  font-family: "HelveticaNeue";
+  color: grey;
+}
+.row.InputStyle{
+  margin-left: 43% !important;
+border-bottom: solid 1px;
+border-color: #aaaaaa;
+width: 55%;
+margin-right: 2%;
+font-size: 93.75%;
+font-family: "HelveticaNeue";
+margin-bottom: 2%;
+margin-top: -2%;
+}
+
+.row.InputStyleError{
+  margin-left: 43% !important;
+border-bottom: solid 1px;
+border-color: red;
+width: 55%;
+margin-right: 2%;
+font-size: 93.75%;
+font-family: "HelveticaNeue";
+margin-bottom: 2%;
+margin-top: -2%;
+}
+.dealerInputStyle {
+  outline-color: #686868;
+  border-radius: 0.5em;
+  width: 100%;
+  color: black !important;
+
+  font-size: large !important;
+  background: transparent;
+  margin-left: -33% !important;
+  margin-top: 6%;
+}
+.row.InputDateStyle{
+  border-bottom: solid 1px;
+    border-color: #aaaaaa;
+    width: 56%;
+    margin-right: 2%;
+    font-size: 93.75%;
+    font-family: "HelveticaNeue";
+    margin-bottom: 2%;
+    margin-top: -2%;
+    margin-left: 43%;
+}
+.dealerInputDateStyle {
+  position: relative;
+  margin-top: 4%;
+  outline-color: #686868;
+  border-radius: 0.5em;
+  width: 100%;
+  font-family: "HelveticaNeue";
+  font-weight: normal;
+}
+.backButton{
+  top: 0px;
+  margin-top: 2%;
+}
+.addDealerScreenDiv{
+  padding-top: 7%;
+  margin-bottom: 70%;
+}
+.langDropDownTF{
+  width: 221% !important;
+  margin-right: -9% !important;
+  color: black;
+  font-size: initial;
+
+}
+.Colon{
+  margin-left: -41%;
+  margin-top: 10%;
+}
+span.selected.ng-binding {
+  padding: 1%;
+  color: black !important;
+  vertical-align: -webkit-baseline-middle;
+}
+/****************** Google Nexus 7 (portrait) *****************/
+@media only screen and (min-device-width : 601px) and (max-device-width :970px) and (orientation : portrait) {
+  .langDropDownTF {
+  width: 200% !important;
+  margin-right: -6% !important;
+  color: black;
+  font-size: initial;
+  }
+}
+
+/******************* Google Nexus 7 (landscape) ********************/
+@media only screen and (min-device-width : 601px) and (max-device-width :970px) and (orientation : landscape) {
+  .backButton{
+    margin-top: 2.7%;
+  }
+  .addDealerScreenDiv {
+padding-top: 4%;
+margin-bottom: 70%;
+}
+.row.InputStyle {
+margin-left: 37% !important;
+border-bottom: solid 1px;
+border-color: #aaaaaa;
+width: 61%;
+margin-right: 24%;
+font-size: 93.75%;
+font-family: "HelveticaNeue";
+margin-bottom: 2%;
+margin-top: -4%;
+}
+
+.row.InputStyleError {
+margin-left: 37% !important;
+border-bottom: solid 1px;
+border-color: red;
+width: 61%;
+margin-right: 24%;
+font-size: 93.75%;
+font-family: "HelveticaNeue";
+margin-bottom: 2%;
+margin-top: -4%;
+}
+.DealerLabelStyle {
+width: 110%;
+margin-left: -57%;
+margin-right: 9%;
+margin-top: 9% !important;
+font-size: 126%;
+font-family: "HelveticaNeue";
+color: grey;
+}
+.dealerInputStyle {
+outline-color: #686868;
+border-radius: 0.5em;
+width: 100%;
+color: black !important;
+font-size: large !important;
+background: transparent;
+margin-left: -53% !important;
+margin-top: 6%;
+}
+.langDropDownTF {
+width: 240% !important;
+margin-right: -3% !important;
+color: black;
+font-size: initial;
+margin-top: 5%;
+}
+}
+
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/****************************** NEXUS 5 portrait ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait){
+  .DealerLabelStyle {
+    width: 114%;
+    margin-left: -78%;
+    margin-right: 9%;
+    margin-top: 9% !important;
+    font-size: 126%;
+    font-family: "HelveticaNeue";
+    color: "grey";
+  }
+  .row.InputStyle{
+    margin-left: 43% !important;
+border-bottom: solid 1px;
+border-color: #aaaaaa;
+width: 55%;
+margin-right: 2%;
+font-size: 93.75%;
+font-family: "HelveticaNeue";
+margin-bottom: 2%;
+margin-top: -2%;
+  }
+  
+  .row.InputStyleError{
+    margin-left: 43% !important;
+border-bottom: solid 1px;
+border-color: red;
+width: 55%;
+margin-right: 2%;
+font-size: 93.75%;
+font-family: "HelveticaNeue";
+margin-bottom: 2%;
+margin-top: -2%;
+  }
+  .dealerInputStyle {
+    outline-color: #686868;
+    border-radius: 0.5em;
+    width: 100%;
+    color: black !important;
+
+    font-size: large !important;
+    background: transparent;
+    margin-left: -33% !important;
+    margin-top: 6%;
+}
+  .row.InputDateStyle{
+    border-bottom: solid 1px;
+      border-color: #aaaaaa;
+      width: 56%;
+      margin-right: 2%;
+      font-size: 93.75%;
+      font-family: "HelveticaNeue";
+      margin-bottom: 2%;
+      margin-top: -2%;
+      margin-left: 43%;
+  }
+  .dealerInputDateStyle {
+    position: relative;
+    margin-top: 4%;
+    outline-color: #686868;
+    border-radius: 0.5em;
+    width: 100%;
+    font-family: "HelveticaNeue";
+    font-weight: normal;
+}
+  .backButton{
+    top: 0px;
+    margin-top: 2%;
+  }
+  .addDealerScreenDiv{
+    padding-top: 7%;
+    margin-bottom: 70%;
+  }
+  .langDropDownTF{
+    width: 221% !important;
+    margin-right: -9% !important;
+    color: black;
+    font-size: initial;
+
+  }
+  .Colon{
+    margin-left: -41%;
+    margin-top: 10%;
+  }
+  span.selected.ng-binding {
+    padding: 1%;
+    color: black !important;
+    vertical-align: -webkit-baseline-middle;
+}
+}
+
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape){
+  .DealerLabelStyle {
+    width: 114%;
+    margin-left: -66%;
+    margin-right: 9%;
+    margin-top: 9% !important;
+    font-size: 126%;
+    font-family: "HelveticaNeue";
+    color: "grey";
+}
+
+.validationErrorText{
+  color: red !important;
+  margin-left: 40%;
+  margin-top: 1%;
+  margin-bottom: 0%;
+}
+  .row.InputStyle{
+    margin-left: 40% !important;
+    border-bottom: solid 1px;
+    border-color: #aaaaaa;
+    width: 59%;
+    margin-right: 2%;
+    font-size: 93.75%;
+    font-family: "HelveticaNeue";
+    margin-bottom: 0%;
+    /* margin-top: -2%; */
+  }
+  .row.InputStyleError{
+    margin-left: 40% !important;
+    border-bottom: solid 1px;
+    border-color: red;
+    width: 59%;
+    margin-right: 2%;
+    font-size: 93.75%;
+    font-family: "HelveticaNeue";
+    margin-bottom: 0%;
+    /* margin-top: -2%; */
+  }
+  .dealerInputStyle {
+    outline-color: #686868;
+    border-radius: 0.5em;
+    width: 100%;
+    color: black !important;
+
+    font-size: large !important;
+    background: transparent;
+    margin-left: -43% !important;
+    margin-top: 6%;
+  }
+  .row.InputDateStyle{
+    border-bottom: solid 1px;
+      border-color: #aaaaaa;
+      width: 56%;
+      margin-right: 2%;
+      font-size: 93.75%;
+      font-family: "HelveticaNeue";
+      margin-bottom: 2%;
+      margin-top: -2%;
+      margin-left: 43%;
+  }
+  .dealerInputDateStyle {
+    position: relative;
+    margin-top: 4%;
+    outline-color: #686868;
+    border-radius: 0.5em;
+    width: 100%;
+    font-family: "HelveticaNeue";
+    font-weight: normal;
+  }
+  .backButton{
+    top: 0px;
+    margin-top: 2%;
+  }
+  .addDealerScreenDiv{
+    padding-top: 7%;
+    margin-bottom: 70%;
+  }
+  .langDropDownTF{
+    width: 198% !important;
+      margin-right: -4% !important;
+      color: black;
+      font-size: initial;
+      margin-left: -7%;
+      margin-top: 3%;
+
+  }
+  .Colon{
+    margin-left: -41%;
+    margin-top: 10%;
+  }
+  span.selected.ng-binding {
+    padding: 1%;
+    color: black !important;
+    vertical-align: -webkit-baseline-middle;
+  }
+}
+
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+
+
+}
+
+/**************************************** ipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+
+}
