@@ -27,7 +27,7 @@ var loginControllers = angular.module('dealerAudit.loginControllers', ['ngCordov
 	 * @description functionalities for login and prepopulation of userName.
 	 */
 
-loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location, dealerAudit_ConstantsConst, dealerAudit_AssetsConst, settingsDbfctry, $ionicPlatform, $cordovaNetwork, $ionicPopup, $filter, $timeout, logsFctry, syncModuleFactory, syncManageDbfctry, toastFctry, passParameterFctry, $cordovaDevice, loginDbfctry) {
+loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location, dealerAudit_ConstantsConst, dealerAudit_AssetsConst, settingsDbfctry, $ionicPlatform, $cordovaNetwork, $ionicPopup, $filter, $timeout, logsFctry, syncModuleFactory, syncManageDbfctry, toastFctry, passParameterFctry, $cordovaDevice, loginDbfctry, ErrorHandlerService) {
 
 	$scope.TagName = 'LoginCtrl';
 
@@ -61,8 +61,8 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 	$scope.shouldShowTyreImage = false;
 	$scope.goPressedFlag = false;
 	// NOTE : This is used for development only. Should be commented for release.
-	//$scope.username = "advanced_user_be";
-	//$scope.password = "eCasing2016";
+	$scope.username = "advanced_user_be";
+	$scope.password = "eCasing2016";
 
 	var isIPad = ionic.Platform.isIPad();
 
@@ -352,6 +352,8 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 										console.log("No records for upload sync.");
 									}
 								}, function(error) {
+									$scope.shouldShowTyreImage = false;
+									logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in login function upload dealer data.' + JSON.stringify(error));
 									console.log("Error during upload", error);
 								});
 
@@ -395,7 +397,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 									}
 
 								}).catch(function(error) {
-
+									$scope.shouldShowTyreImage = false;
 									conosle.log("Error in the getpin function call or Error in getpin function");
 									logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in the getpin function call or Error in getpin function");
 								});
@@ -410,7 +412,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 								// Upload local dealer information to server.
 								syncModuleFactory.uploadDealerData().then(function(response) {
 									if(response) {
-										toastFctry.showToast("Dealer uploaded successfully");
+										//toastFctry.showToast("Dealer uploaded successfully");
 
 										// Once the locally created dealer is synced , remove the flag which indicates it is a local record.
 										modifyDealerDbFactory.modifyDealerInformation().then(function(response) {
@@ -424,6 +426,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 										}, function(error) {
 											$scope.shouldShowTyreImage = false;
 											console.log("Unable to modify dealer DB info " + error);
+											logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in function login modify dealer information' + JSON.stringify(error));
 										});
 									} else {
 										//toastFctry.showToast("Dealer data could not be uploaded due to server error.");
@@ -432,16 +435,19 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 								}, function(error) {
 									$scope.shouldShowTyreImage = false;
 									console.log("Error during upload", error);
+									logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in function login upload dealer data' + JSON.stringify(error));
 								});
 
 								//return;
 							}
 						}, function(error) {
 							$scope.shouldShowTyreImage = false;
+							ErrorHandlerService.showError(error);
 							console.log("Dealers not downloaded " + error);
+							logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in function login downloadDealerData' + JSON.stringify(error));
 						});
 						// 	} else {
-						// 
+						//
 						// 		// For subsequent online login's after first login just navigate to dashboard.
 						// 		$location.path('/dashBoard');
 						// 		$scope.buttonDisabled = false;
@@ -452,15 +458,17 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 						// })
 					}, function(error) {
 
-						$ionicPopup.alert({
-
-							title: $scope.failureTitle,
-
-							content: $scope.failureContent,
-
-							cssClass: 'customAlert'
-
-						});
+						// $ionicPopup.alert({
+						//
+						// 	title: $scope.failureTitle,
+						//
+						// 	content: $scope.failureContent,
+						//
+						// 	cssClass: 'customAlert'
+						//
+						// });
+						ErrorHandlerService.showError(error);
+						logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in function $rootScope.login' + JSON.stringify(error));
 
 						$scope.password = "";
 
@@ -478,15 +486,17 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 
 					console.log(error);
 
-					$ionicPopup.alert({
+					// $ionicPopup.alert({
+					//
+					// 	title: $scope.failureTitle,
+					//
+					// 	content: $scope.SessionfailedToInitializeMsg,
+					//
+					// 	cssClass: 'customAlert'
+					//
+					// });
 
-						title: $scope.failureTitle,
-
-						content: $scope.SessionfailedToInitializeMsg,
-
-						cssClass: 'customAlert'
-
-					});
+					ErrorHandlerService.showError(error);
 
 					$scope.buttonDisabled = false;
 
@@ -594,6 +604,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 												})
 											}
 										}, function(error) {
+											logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in login function howManyDaysOldData.' + JSON.stringify(error));
 											console.log("Error in function howManyDaysOldData" + error);
 										});
 									} else {

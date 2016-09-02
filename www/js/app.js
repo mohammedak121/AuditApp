@@ -46,7 +46,7 @@
 //dealerAudit_ConstantsConst: Its an dependency to access the constants defined globally
 
 var dealerAudit =
-	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers'])
+	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule'])
 	.run(function($ionicPlatform, $ionicPopup, $state, $cordovaSQLite, $rootScope, $location, $interval, broadcast, $filter, settingsDbfctry, dealerAudit_ConstantsConst, syncModuleFactory, toastFctry, modifyDealerDbFactory, loginDbfctry) {
 		/**
 		 * Basic ready configuration includes disabling default functionalities such as hidding accessorybar and handling keyboards
@@ -145,16 +145,21 @@ var dealerAudit =
 								if(response) {
 									logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealer_master isServerRecord value successfully changed.');
 								}
+							}, function(error) {
+								console.log("Error in app.js module function modifyDealerInformation " + JSON.stringify(error));
+								logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in app.js module function modifyDealerInformation.' + JSON.stringify(error));
 							});
 						} else {
 							console.log("No records for upload sync.");
 						}
 					}, function(error) {
 						console.log("Error during upload", error);
+						logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in app.js module function uploadeDealerData.' + JSON.stringify(error));
 					});
 				}, function(error) {
 					//toastFctry.showToast("Session failed to initialize");
 					console.log("Session failed to initialize" + error);
+					logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in app.js module function Isession.Initialize.' + JSON.stringify(error));
 				});
 				//}
 				// else {
@@ -558,14 +563,14 @@ dealerAudit.directive('disabletap', function($timeout) {
 // });
 
 dealerAudit.directive('focusMe', function($timeout) {
-  return {
-    link: function(scope, element, attrs) {
-      $timeout(function() {
-        element[0].focus();
-        if(ionic.Platform.isAndroid()){
-           cordova.plugins.Keyboard.show();
-        }
-      }, 1);
-    }
-  };
+	return {
+		link: function(scope, element, attrs) {
+			$timeout(function() {
+				element[0].focus();
+				if(ionic.Platform.isAndroid()) {
+					cordova.plugins.Keyboard.show();
+				}
+			}, 1);
+		}
+	};
 });

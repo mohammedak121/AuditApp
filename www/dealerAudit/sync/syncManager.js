@@ -4,7 +4,7 @@
  * @param {Module} ngCordova defines cordova specific functionalities or services.
  * @description This module includes functionalities to sync data from dB.
  */
-/** 
+/**
  * @function syncModule
  * @param {ScopeElemet} $rootScope defines scope of an elemet or function.
  * @param {Factory} syncManageDbfctry defines database related functionalities used for sync.
@@ -51,22 +51,23 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 
 					var message = "";
 					//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object Dealer_Master' + error);
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object Dealer_Master' + JSON.stringify(error));
 
 					// This message will be displayed if no dealers are present. Else a generic message is displayed.
 					if(error.code == 55 && error.message == "No Content") {
 						//message = $filter('translate')('lblNoDealersFound');
 						return true;
-					} else {
-						message = $filter('translate')('lblServerDataDownloadError');
 					}
+					// else {
+					// 	message = $filter('translate')('lblServerDataDownloadError');
+					// }
 					//toastFctry.showToast(message);
 					return false;
 				})
 			}, function(error) {
 				//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type Dealer_Master' + error);
-				var message = $filter('translate')('lblServerDataDownloadError');
+				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type Dealer_Master' + JSON.stringify(error));
+				//var message = $filter('translate')('lblServerDataDownloadError');
 				//toastFctry.showToast(message);
 				return false;
 			})
@@ -90,7 +91,7 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 							console.log("Dealer information " + JSON.stringify(response));
 
 							// Parse all the dealer info and send it to the server.
-							// Make sure the values are not undefined.                    
+							// Make sure the values are not undefined.
 							for(var i = 0; i < response.length; i++) {
 
 								if(response[i].participating_tf == 0) {
@@ -102,7 +103,7 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 								// After getting the data , populate the data and send it to the backend.
 								clientObjectType.create(response[i]).then(function(response) {
 									if(response != null && typeof(response) != "undefined") {
-										//console.log("Dealer data uploaded successfully");             
+										//console.log("Dealer data uploaded successfully");
 										logsFctry.logsDisplay('INFO', TagName, 'Dealer data successfully uploaded.');
 										//return true;
 										resolve(true);
@@ -112,7 +113,7 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 								}, function(error) {
 									var message = "";
 									//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-									logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object Dealer_Master' + error);
+									logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object Dealer_Master' + JSON.stringify(error));
 									// This message will be displayed if no dealers are present. Else a generic message is displayed.
 									if(error.code == 55 && error.message == "No Content") {
 										message = $filter('translate')('lblNoDealersFound');
@@ -130,7 +131,7 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 					})
 				}, function(error) {
 					//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type Dealer_Master' + error);
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type Dealer_Master' + JSON.stringify(error));
 					var message = $filter('translate')('lblServerDataUploadError');
 					//toastFctry.showToast(message);
 					console.log("Data could not be uploaded" + error + message);
@@ -215,7 +216,7 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 			var lastLoginDate;
 
 			// return new Promise(function(resolve, reject) {
-			// 
+			//
 			// });
 
 			return new Promise(function(resolve, reject) {
@@ -248,7 +249,7 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 			// 			console.log("lastonlineLoginDate------" + lastLoginDate.getTime());
 			// 		}
 			// 		console.log("lastonlineLoginDate------" + lastLoginDate.getTime());
-			// 
+			//
 			// 		var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 			// 		var diffDays = Math.round(Math.abs((currentDate.getTime() - lastLoginDate.getTime()) / (oneDay)));
 			// 		return diffDays;

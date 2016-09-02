@@ -8,7 +8,7 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 
 		/**
 		 * @function showError
-		 * @param {String} error Error object which has the error information.		 		 
+		 * @param {String} error Error object which has the error information.
 		 * @description Function for displaying server error messages.
 		 */
 		showError: function(error) {
@@ -29,35 +29,44 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 					case 0:
 						failureTitle = "Login failed";
 						failureMessage = "Unable to login. Please try with valid credentials ";
+						break;
 
 					case 11:
+						// App verification failed.
 						failureTitle = "Access denied";
-						failureMessage = "Unable to login. Please try with valid credentials ";
+						failureMessage = "Server error: Unable to access the server due to network issue";
+						break;
 
 					case 13:
 						failureTitle = "Login failed";
 						failureMessage = "Authentication failure. Please make sure the credentials are correct";
+						break;
 						// return "Authentication failure. Please make sure the credentials are correct";
 
-					case 55:
-						failureTitle = "Sync error";
-						failureMessage = "Data could not be synced due to";
+						// case 55:
+						// 	failureTitle = "Sync error";
+						// 	failureMessage = "Data could not be synced due to";
+						// 	break;
 
 					case 51:
 						failureTitle = "Token expired";
 						failureMessage = "Session expired. Please login again.";
+						break;
 
 					case 400:
 						failureTitle = "Login failed";
 						failureMessage = "Unable to download data due to network issues.";
+						break;
 
 					case 401:
 						failureTitle = "Login failed";
 						failureMessage = "Please enter valid credentials.";
+						break;
 
 					default:
 						failureTitle = "Error";
 						failureMessage = "Some error occured. Please contact your administrator.";
+						break;
 				}
 			}
 

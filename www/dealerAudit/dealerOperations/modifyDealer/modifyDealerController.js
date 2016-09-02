@@ -264,6 +264,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 										console.log("Dealer not uploaded");
 									}
 								}, function(error) {
+									logsFctry.logsDisplay('ERROR', $scope.TagName, "Dealer Data could not be uploaded " + JSON.stringify(error));
 									console.log("Dealer not uploaded" + error);
 								});
 							}
@@ -275,10 +276,11 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 							logsFctry.logsDisplay('INFO', $scope.TagName, "Dealer Data could not be saved");
 						}
 					}, function(error) {
-						logsFctry.logsDisplay('ERROR', $scope.TagName, "Dealer Data could not be saved due to error " + error);
+						logsFctry.logsDisplay('ERROR', $scope.TagName, "Dealer Data could not be saved due to error " + JSON.stringify(error));
 					})
 				} else {
-					//toastFctry.showToast("Dealer already exists.Please enter a different dealer");
+
+					// This will executed if a dealer already is present in the DB.
 					$ionicPopup.alert({
 						title: $scope.failureTitle,
 						content: $scope.failureContent,
@@ -286,12 +288,12 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 					});
 				}
 			}, function(error) {
-				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error from checkIfDealerExists");
+				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error from checkIfDealerExists" + JSON.stringify(error));
 			});
 		}
 
 	} catch(error) {
 		//console.log("ERROR" + $scope.TagName + "Error loading ModifyDealerController" + error);
-		logsFctry.logsDisplay('ERROR', $scope.TagName, "Error loading ModifyDealerController" + error);
+		logsFctry.logsDisplay('ERROR', $scope.TagName, "Error loading ModifyDealerController" + JSON.stringify(error));
 	}
 }])

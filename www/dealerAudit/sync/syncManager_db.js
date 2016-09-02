@@ -119,7 +119,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 
 				} catch(error) {
 					//console.log("Error in function insertDealerData " + error);
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in function insertDealerData' + error);
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in function insertDealerData' + JSON.stringify(error));
 					return error;
 				}
 			},
@@ -152,7 +152,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 
 				} catch(error) {
 					//console.log("Error in function getDealerData " + error);
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in function getDealerData' + error);
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in function getDealerData' + JSON.stringify(error));
 					return error;
 				}
 			},
@@ -180,7 +180,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 
 	} catch(error) {
 		//console.log("Error in module dealerAudit.syncManagerModuleDB " + error);
-		logsFctry.logsDisplay('ERROR', TagName, 'Error in module dealerAudit.syncManagerModuleDB' + error);
+		logsFctry.logsDisplay('ERROR', TagName, 'Error in module dealerAudit.syncManagerModuleDB' + JSON.stringify(error));
 		return error;
 	}
 });

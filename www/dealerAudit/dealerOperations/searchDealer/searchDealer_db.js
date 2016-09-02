@@ -51,13 +51,13 @@ angular.module('dealerAudit.searchDealerModuleDB', []).factory('searchDealerDbfa
 					return dealerData;
 				} catch(error) {
 					//console.log("Error" + TagName  + "Error in function getAllDealers" + error);
-					logsFctry.logsDisplay('Error', TagName, "Error in function getAllDealers" + error);
+					logsFctry.logsDisplay('Error', TagName, "Error in function getAllDealers" + JSON.stringify(error));
 				}
 			}
 		};
 	} catch(error) {
 		//console.log("Error " + TagName + " Error in the module dealerAudit.searchDealerDbfactory" + error);
-		logsFctry.logsDisplay('Error', TagName, "Error in the module dealerAudit.searchDealerDbfactory" + error);
+		logsFctry.logsDisplay('Error', TagName, "Error in the module dealerAudit.searchDealerDbfactory" + JSON.stringify(error));
 		return error;
 	}
 }])

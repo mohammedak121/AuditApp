@@ -16,9 +16,9 @@
  * @description Function to modify a dealer.
  */
 
-var searchDealerModule = angular.module('dealerAudit.searchDealerControllers', ['ionic','ngCordova']);
+var searchDealerModule = angular.module('dealerAudit.searchDealerControllers', ['ionic', 'ngCordova']);
 
-searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_AssetsConst', '$location', '$filter', '$ionicPopup', 'searchDealerDbfactory', 'logsFctry', 'passParameterFctry', 'focus', function($scope, dealerAudit_AssetsConst, $location, $filter, $ionicPopup, searchDealerDbfactory, logsFctry, passParameterFctry, focus,broadcast,$rootScope) {
+searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_AssetsConst', '$location', '$filter', '$ionicPopup', 'searchDealerDbfactory', 'logsFctry', 'passParameterFctry', 'focus', function($scope, dealerAudit_AssetsConst, $location, $filter, $ionicPopup, searchDealerDbfactory, logsFctry, passParameterFctry, focus, broadcast, $rootScope) {
 		$scope.TagName = 'SearchDealerController';
 		$scope.searchByDealerName = {};
 		$scope.dealerList = [];
@@ -52,7 +52,7 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 		 */
 		$scope.$on('$ionicView.beforeEnter', function() {
 			try {
-      // focus('focusMe');
+				// focus('focusMe');
 				//cordova.plugins.Keyboard.show();
 
 				//console.log("Info" + $scope.TagName + "Enter into search View $ionicView.beforeEnter" );
@@ -61,7 +61,7 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 				$scope.getDealerInformation();
 			} catch(error) {
 				//console.log("Error" + $scope.TagName + "Error in search View $ionicView.beforeEnter" + error);
-				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in search View $ionicView.beforeEnter" + error);
+				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in search View $ionicView.beforeEnter" + JSON.stringify(error));
 			}
 			//console.log("Info" + $scope.TagName + "Exit from search View $ionicView.beforeEnter" );
 			logsFctry.logsDisplay('INFO', $scope.TagName, "Exit from search View $ionicView.beforeEnter");
@@ -92,11 +92,11 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 		 */
 		$scope.getDealerInformation = function() {
 			//console.log("Info" + $scope.TagName + "Enter into getDealerInformation");
-    	//$scope.shouldShowTyreImage = true;
+			//$scope.shouldShowTyreImage = true;
 			logsFctry.logsDisplay('INFO', $scope.TagName, "Enter into getDealerInformation");
 
 			try {
-					//$scope.shouldShowTyreImage = false;
+				//$scope.shouldShowTyreImage = false;
 				searchDealerDbfactory.getAllDealers().then(function(data) {
 					//console.log("Info" + $scope.TagName + "dealer data" + JSON.stringify(data));
 					logsFctry.logsDisplay('DEBUG', $scope.TagName, "dealer data" + JSON.stringify(data));
@@ -108,7 +108,7 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 						for(var i = 0; i < data.length; i++) {
 							$scope.dealerList.push(data[i]);
 						}
-            $scope.shouldShowTyreImage = false;
+						$scope.shouldShowTyreImage = false;
 						cordova.plugins.Keyboard.show();
 						angular.element('#searchDealerInput').focus();
 						// if($scope.shouldShowTyreImage == false){
@@ -126,12 +126,12 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 
 			} catch(error) {
 				//console.log("Error" + $scope.TagName + "Error in getDealerInformation" + error);
-				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in getDealerInformation" + error);
+				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in getDealerInformation" + JSON.stringify(error));
 			}
 
 			console.log("Info" + $scope.TagName + "Exit from getDealerInformation");
 			logsFctry.logsDisplay('INFO', $scope.TagName, "Exit from getDealerInformation");
-				//$scope.shouldShowTyreImage = false;
+			//$scope.shouldShowTyreImage = false;
 		}
 
 
@@ -201,7 +201,7 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 
 			} catch(error) {
 				//console.log("ERROR" + $scope.TagName + "Error in isAnyItemMatchWithTheQuery" + error);
-				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in isAnyItemMatchWithTheQuery" + error);
+				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in isAnyItemMatchWithTheQuery" + JSON.stringify(error));
 			}
 		}
 

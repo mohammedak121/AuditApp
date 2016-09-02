@@ -112,7 +112,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 
 				}, function(error) {
 					//console.log("Insert into DB failed" + JSON.stringify(error));
-					logsFctry.logsDisplay('DEBUG', TagName, "Insert into Dealer_Master DB failed" + JSON.stringify(error));
+					logsFctry.logsDisplay('ERROR', TagName, "Insert into Dealer_Master DB failed" + JSON.stringify(error));
 					return false;
 				}));
 			},
@@ -153,7 +153,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 									updateQuery = "";
 									resolve(true);
 								}, function(error) {
-									logsFctry.logsDisplay('DEBUG', TagName, "Update Dealer_Master DB failed" + JSON.stringify(error));
+									logsFctry.logsDisplay('ERROR', TagName, "Update Dealer_Master DB failed" + JSON.stringify(error));
 									reject(false);
 								});
 							}
@@ -161,7 +161,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 							reject(false);
 						}
 					}, function(error) {
-						logsFctry.logsDisplay('DEBUG', TagName, "SELECT Dealer_Master DB failed" + JSON.stringify(error));
+						logsFctry.logsDisplay('ERROR', TagName, "SELECT Dealer_Master DB failed" + JSON.stringify(error));
 						reject(false);
 					})
 				})
@@ -189,7 +189,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 							resolve(false);
 						}
 					}, function(error) {
-						logsFctry.logsDisplay('DEBUG', TagName, "SELECT Dealer_Master DB failed in checkIfDealerExists" + JSON.stringify(error));
+						logsFctry.logsDisplay('ERROR', TagName, "SELECT Dealer_Master DB failed in checkIfDealerExists" + JSON.stringify(error));
 						reject(false);
 					})
 				})
@@ -198,6 +198,6 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 
 	} catch(error) {
 		//console.log("Error" + TagName + "Error in the module dealerAudit.ModifyDealerModuleDB");
-		logsFctry.logsDisplay('Error', TagName, "Error in the module dealerAudit.ModifyDealerModuleDB" + error);
+		logsFctry.logsDisplay('Error', TagName, "Error in the module dealerAudit.ModifyDealerModuleDB" + JSON.stringify(error));
 	}
 }])

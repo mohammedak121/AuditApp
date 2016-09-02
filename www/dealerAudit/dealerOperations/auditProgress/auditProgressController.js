@@ -32,7 +32,7 @@ auditProgressDealerModule.controller('AuditProgressDealerController', ['$scope',
 		 * @desc on focus of input box navigate to search screen.
 		 */
 		$scope.navigateToSearch = function() {
-		
+
 			$location.path('/searchDealer');
 		}
 
@@ -56,12 +56,13 @@ auditProgressDealerModule.controller('AuditProgressDealerController', ['$scope',
 							loginDbfctry.insertLastOnlineLoginDateForUser();
 						}
 					}, function(error) {
+						logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in audit progress View downloadDealerData" + JSON.stringify(error));
 						console.log("Dealers not downloaded " + error);
 					});
 				}
 			} catch(error) {
 				//console.log("Error" + $scope.TagName + "Error in search View $ionicView.beforeEnter" + error);
-				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in audit progress View $ionicView.beforeEnter" + error);
+				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in audit progress View $ionicView.beforeEnter" + JSON.stringify(error));
 			}
 			//console.log("Info" + $scope.TagName + "Exit from search View $ionicView.beforeEnter" );
 			logsFctry.logsDisplay('INFO', $scope.TagName, "Exit from audit progress View $ionicView.beforeEnter");
@@ -88,6 +89,6 @@ auditProgressDealerModule.controller('AuditProgressDealerController', ['$scope',
 		}
 
 	} catch(error) {
-		logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in entering into AuditProgressDealerController');
+		logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in entering into AuditProgressDealerController' + JSON.stringify(error));
 	}
 }])
