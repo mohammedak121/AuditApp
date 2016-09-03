@@ -18,7 +18,7 @@
 
 var searchDealerModule = angular.module('dealerAudit.searchDealerControllers', ['ionic', 'ngCordova']);
 
-searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_AssetsConst', '$location', '$filter', '$ionicPopup', 'searchDealerDbfactory', 'logsFctry', 'passParameterFctry', 'focus', function($scope, dealerAudit_AssetsConst, $location, $filter, $ionicPopup, searchDealerDbfactory, logsFctry, passParameterFctry, focus, broadcast, $rootScope) {
+searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_AssetsConst', '$location', '$filter', '$ionicPopup', 'searchDealerDbfactory', 'logsFctry', 'passParameterFctry', 'focus', function($scope, dealerAudit_AssetsConst, $location, $filter, $ionicPopup, searchDealerDbfactory, logsFctry, passParameterFctry, focus, broadcast) {
 		$scope.TagName = 'SearchDealerController';
 		$scope.searchByDealerName = {};
 		$scope.dealerList = [];
@@ -119,6 +119,8 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 
 					} else {
 						$scope.dealerFound = true;
+						$scope.shouldShowTyreImage = false;
+
 						//console.log("Info" + $scope.TagName + "dealer data is empty" + JSON.stringify(data));
 						logsFctry.logsDisplay('DEBUG', $scope.TagName, "dealer data is empty" + JSON.stringify(data));
 					}

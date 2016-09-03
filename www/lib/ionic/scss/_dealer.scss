@@ -1,3 +1,17 @@
+input[type=date] {
+    -webkit-appearance: none;
+}
+
+.fieldset {
+    margin: 0 0;
+    padding: 0em 0em 0em;
+    border: none;
+}
+// .fieldset {
+//     margin: 0 2px;
+//     padding: 0.35em 0.625em 0.75em;
+//     border: 0px !important;
+//   }
 .pac-container:after{
     content:none !important;
 }
@@ -76,6 +90,25 @@ margin-top: -2%;
   width: 100%;
   font-family: "HelveticaNeue";
   font-weight: normal;
+  background: transparent;
+  // margin-left: 101%;
+  // text-align: left;
+  font-size: 17px;
+  font-weight: 400;    
+  margin-right: 37%;
+  
+}
+// #auditDate{
+//     background: url("../img/Calender.svg") no-repeat ;
+// 
+// }
+
+.dateIconStyle {
+  height: 35px;
+  width: 35px;  
+  margin-left: 45%;
+  margin-top: 1%;
+  position:fixed;
 }
 .backButton{
   top: 0px;
@@ -169,6 +202,11 @@ color: black;
 font-size: initial;
 margin-top: 5%;
 }
+
+.dateIconStyle{
+  margin-left: 52%;
+  margin-top: 3%;
+}
 }
 
 /***************************iPhone 5 (portrait) *************/
@@ -202,7 +240,7 @@ font-family: "HelveticaNeue";
 margin-bottom: 2%;
 margin-top: -2%;
   }
-  
+
   .row.InputStyleError{
     margin-left: 43% !important;
 border-bottom: solid 1px;
@@ -244,6 +282,7 @@ margin-top: -2%;
     width: 100%;
     font-family: "HelveticaNeue";
     font-weight: normal;
+    font-size: 17px !important;
 }
   .backButton{
     top: 0px;
@@ -298,7 +337,7 @@ margin-top: -2%;
     font-size: 93.75%;
     font-family: "HelveticaNeue";
     margin-bottom: 0%;
-    /* margin-top: -2%; */
+     margin-top: -2% !important; 
   }
   .row.InputStyleError{
     margin-left: 40% !important;
@@ -335,12 +374,14 @@ margin-top: -2%;
   }
   .dealerInputDateStyle {
     position: relative;
-    margin-top: 4%;
+    margin-top: 6%;
     outline-color: #686868;
     border-radius: 0.5em;
     width: 100%;
     font-family: "HelveticaNeue";
     font-weight: normal;
+    // margin-right: -34%;
+    font-size: 17px !important;
   }
   .backButton{
     top: 0px;

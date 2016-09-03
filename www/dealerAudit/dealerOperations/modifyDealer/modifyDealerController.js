@@ -18,7 +18,7 @@
 
 var modifyDealerModule = angular.module('dealerAudit.modifyDealerControllers', ['ionic', 'ngDropdowns']);
 
-modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParameterFctry', '$location', 'dealerAudit_AssetsConst', 'modifyDealerDbFactory', 'toastFctry', 'logsFctry', 'syncModuleFactory', '$cordovaNetwork', 'dealerAudit_ConstantsConst', '$filter', '$ionicPopup', function($scope, passParameterFctry, $location, dealerAudit_AssetsConst, modifyDealerDbFactory, toastFctry, logsFctry, syncModuleFactory, $cordovaNetwork, dealerAudit_ConstantsConst, $filter, $ionicPopup) {
+modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParameterFctry', '$location', 'dealerAudit_AssetsConst', 'modifyDealerDbFactory', 'toastFctry', 'logsFctry', 'syncModuleFactory', '$cordovaNetwork', 'dealerAudit_ConstantsConst', '$filter', '$ionicPopup', '$rootScope', function($scope, passParameterFctry, $location, dealerAudit_AssetsConst, modifyDealerDbFactory, toastFctry, logsFctry, syncModuleFactory, $cordovaNetwork, dealerAudit_ConstantsConst, $filter, $ionicPopup, $rootScope) {
 	try {
 		$scope.TagName = 'ModifyDealerController';
 		$scope.dealerData = {};
@@ -26,7 +26,13 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		$scope.backIcon = dealerAudit_AssetsConst.backIcon;
 		$scope.isFormValid = false;
 		$scope.formDisable = false;
+		$scope.calender = dealerAudit_AssetsConst.calender;
 		// $scope.dealerScreenInputMaxLength = dealerAudit_ConstantsConst.dealerScreenInputMaxLength;
+
+		$scope.yesLabel = $filter('translate')('lblYes');
+		$scope.noLabel = $filter('translate')('lblNo');
+		$scope.alertMsg = $filter('translate')('lblAlertMsg');
+		$scope.warningTitle = $filter('translate')('lblWarning');
 
 		$scope.dealerDetailsLength = {
 			dealerScreenInputMaxLength: dealerAudit_ConstantsConst.dealerScreenInputMaxLength
@@ -77,6 +83,10 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 
 		//console.log("INFO" + $scope.TagName + "Entered into ModifyDealerController");
 		logsFctry.logsDisplay('INFO', $scope.TagName, 'Entered into ModifyDealerController');
+
+		// $scope.focusDate = function() {
+		// 	angular.element('#auditDate').focus();
+		// }
 
 		/**
 		 * @function on
@@ -137,13 +147,55 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		 * @function backButtonClicked
 		 * @description Back button click on the header.
 		 */
-		$scope.backButtonClicked = function() {
+		$rootScope.auditPagebackButtonClicked = function() {
 
-			if($location.search().auditProgress == "true") {
-				$location.path('/auditProgressDealer');
+			console.log("Form value" + $scope.myForm);
+
+			console.log("$scope.myForm.$valid " + $scope.myForm.$valid);
+			console.log("$scope.myForm.$invalid " + $scope.myForm.$invalid);
+
+			console.log("$scope.myForm.$pristine " + $scope.myForm.$pristine);
+			console.log("$scope.myForm.$dirty " + $scope.myForm.$dirty);
+
+			if($scope.myForm.$dirty) {
+				var confirmPopup = $ionicPopup.confirm({
+					title: $scope.warningTitle,
+					template: $scope.alertMsg,
+					cancelText: $scope.noLabel,
+					okText: $scope.yesLabel,
+					cssClass: 'customAlertConfirmation'
+				});
+
+				confirmPopup.then(function(res) {
+					if(res) {
+						if($location.search().auditProgress == "true") {
+							$location.path('/auditProgressDealer');
+						} else {
+							$location.path('/searchDealer');
+						}
+					}
+				})
 			} else {
-				$location.path('/searchDealer');
+				if($location.search().auditProgress == "true") {
+					$location.path('/auditProgressDealer');
+				} else {
+					$location.path('/searchDealer');
+				}
 			}
+
+			// if($location.search().auditProgress == "true") {
+			// 	$location.path('/auditProgressDealer');
+			// } else {
+			// 	$location.path('/searchDealer');
+			// }
+		}
+
+		/**
+		 * @function setForm
+		 * @description Get the form instance.
+		 */
+		$scope.setForm = function(form) {
+			$scope.myForm = form;
 		}
 
 		/**

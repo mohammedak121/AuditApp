@@ -370,6 +370,12 @@ var dealerAudit =
 				//BackButton handle in settings
 				$rootScope.NavigateToDashBoard();
 
+			} else if($state.current.name == "searchDealer") {
+				$location.path('/auditProgressDealer');
+				$rootScope.$apply();
+			} else if($state.current.name == "modifyDealer") {
+				$rootScope.auditPagebackButtonClicked();
+				$rootScope.$apply();
 			} else {
 
 				navigator.app.backHistory();

@@ -27,6 +27,7 @@ angular.module('dealerAudit.ModuleAssets', []).constant('dealerAudit_AssetsConst
 	dealerSearchIcon: "img/dealerSearchIcon.svg",
 	noDealersImg: "img/noDealers.svg",
 	cancelImg: "img/crossBlack.svg",
-	searchIconWhite: "img/searchButton.svg"
+	searchIconWhite: "img/searchButton.svg",
+	calender: "img/Calender.svg"
 
 });

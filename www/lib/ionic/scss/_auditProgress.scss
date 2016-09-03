@@ -119,3 +119,174 @@
     margin-left: -3%;
 }
 }
+
+/****************** Google Nexus 7 (portrait) *****************/
+@media only screen and (min-device-width : 601px) and (max-device-width :970px) and (orientation : portrait) {
+  .lblSelectDealer{
+    margin-right: 8%;
+    margin-left: 8%;
+    margin-bottom: 2%;
+    width: 25%;
+  }
+  .lblConfirmDealer{
+    width: 25%;
+    margin-right: 10%;
+  }
+  .progressDiv{
+    margin-top: 0%;
+    margin-bottom: 5%;
+  }
+  .lblSearchDealer {
+    width : 30%;
+  }
+  .imgDealerSearchIcon{
+    margin-top: 1.7%;
+  }
+  .dealerLabel{
+    width: 35%;
+    margin-top: 2%;
+  }
+}
+
+/******************* Google Nexus 7 (landscape) ********************/
+@media only screen and (min-device-width : 601px) and (max-device-width :970px) and (orientation : landscape) {
+  .progressDiv {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .lblSelectDealer{
+    margin-top: 0%;
+    width : 15%;
+    margin-left: 11%;
+    margin-right: 18%;
+    margin-bottom: 1%;
+    font-size: 16px !important;
+  }
+  .lblConfirmDealer{
+    width: 15%;
+    margin-right: 19%;
+    font-size: 16px !important;
+  }
+  .lblSubmitAudit{
+    font-size: 16px !important;
+    width : 15%;
+  }
+  .lblSearchDealer{
+    width : 25%;
+  }
+  .imgDealerSearchIcon{
+    margin-top: 1%;
+  }
+  .dealerLabel {
+    margin-top: 1%;
+    width: 35%;
+    font-size: 16px !important;
+  }
+  .lblSearchDealerDiv{
+    margin-bottom: 3%;
+  }
+  .lineDiv{
+    margin-top: 3%;
+  }
+  .dealerButtonStyle {
+    width: 33%;
+    margin-left: 34%;
+  }
+  .inputDiv{
+    margin-bottom: 3%;
+  }
+}
+
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .lblSelectDealer{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 4%;
+    color: #1385CC;
+    margin-bottom: 2%;
+    font-size: 14px;
+  }
+  .lblConfirmDealer{
+    margin-right: 5%;
+    font-size: 14px;
+  }
+  .lblSearchDealer{
+    font-size: 14px !important;
+  }
+}
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .progressDiv{
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+  .lblSelectDealer{
+    margin-top: 2%;
+    margin-left: 8%;
+    margin-right: 18%;
+    margin-bottom: 0%;
+  }
+  .lblConfirmDealer{
+    margin-right: 18%;
+  }
+  .lblSearchDealer{
+    font-size: 14px;
+  }
+  .lblSearchDealerDiv{
+    margin-bottom: 2%;
+  }
+  .inputDiv{
+    margin-bottom: 2%;
+  }
+  .imgDealerSearchIcon{
+    margin-top: 1.7%;
+  }
+  .dealerLabel{
+    margin-top: 2%;
+  }
+  .lineDiv{
+    margin-top: 2%;
+  }
+  .dealerButtonStyle{
+    width: 35%;
+    margin-left: 33%;
+  }
+}
+
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+  .lblSelectDealer{
+    font-size: 16px !important;
+    margin-right: 9%;
+  }
+  .lblConfirmDealer{
+    font-size: 16px !important;
+  }
+  .lblSubmitAudit{
+    font-size: 16px !important;
+  }
+  .lblSearchDealer{
+    font-size: 16px !important;
+  }
+  .imgDealerSearchIcon{
+    margin-top: 1.3%;
+  }
+  .dealerLabel{
+    margin-top: 1.4%;
+  }
+  .dealerButtonStyle{
+    width: 40%;
+    margin-left: 31%;
+  }
+
+}
+
+/**************************************** ipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+  .dealerButtonStyle{
+    width: 28%;
+    margin-left: 37%;
+  }
+}
