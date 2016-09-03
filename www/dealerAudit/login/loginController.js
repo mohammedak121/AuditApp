@@ -61,8 +61,8 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 	$scope.shouldShowTyreImage = false;
 	$scope.goPressedFlag = false;
 	// NOTE : This is used for development only. Should be commented for release.
-	$scope.username = "advanced_user_be";
-	$scope.password = "eCasing2016";
+	// $scope.username = "advanced_user_be";
+	// $scope.password = "eCasing2016";
 
 	var isIPad = ionic.Platform.isIPad();
 
@@ -577,6 +577,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 													$scope.buttonDisabled = false;
 													$scope.shouldShowTyreImage = false;
 													cordova.plugins.Keyboard.close();
+													$scope.$apply();
 													// return;
 												} else if(numberofDays_DataOld >= 6) {
 
@@ -609,23 +610,44 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 										});
 									} else {
 
-										// Navigate to the dashboard for subsequent offline logins after first offline login.
-										$location.path('/dashBoard');
+										loginDbfctry.insertLastOfflineLoginDateForUser();
 
-										$scope.buttonDisabled = false;
-										$scope.shouldShowTyreImage = false;
-										cordova.plugins.Keyboard.close();
+										syncModuleFactory.howManyDaysOldData().then(function(data) {
+											if(data >= 6) {
+
+												$scope.buttonDisabled = false;
+												$scope.shouldShowTyreImage = false;
+												cordova.plugins.Keyboard.close();
+
+												var syncAlertTitle = $filter('translate')('lblSyncAlertTitle');
+												var syncAlertMessage = $filter('translate')('lblSyncAlertForDay6');
+
+												$ionicPopup.alert({
+													title: syncAlertTitle,
+													content: syncAlertMessage,
+													cssClass: 'customAlert'
+												});
+
+												return;
+											} else {
+												// Navigate to the dashboard for subsequent offline logins after first offline login.
+												$location.path('/dashBoard');
+
+												$scope.buttonDisabled = false;
+												$scope.shouldShowTyreImage = false;
+												cordova.plugins.Keyboard.close();
+												$scope.$apply();
+											}
+										}, function(error) {
+											logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in login function howManyDaysOldData.' + JSON.stringify(error));
+											console.log("Error in function howManyDaysOldData" + error);
+										});
 									}
-
 								})
-
-
-
 							} else {
 
 								console.log("wrong item from database");
 								logsFctry.logsDisplay('DEBUG', $scope.TagName, "wrong item from database");
-
 
 								$ionicPopup.alert({
 
