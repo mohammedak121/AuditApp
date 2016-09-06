@@ -51,9 +51,7 @@
 		$scope.User_PinLength = dealerAudit_ConstantsConst.User_PinLength;
     $rootScope.logoutPopupFlag = false;
 		var isAlertFlag = false;
-    var isAlertFlag1 = false;
-    var isAlertFlag2 = false;
-    var isAlertFlag3 = false;
+
 
 		var displayMessage = null;
 		var navigateBackPopup = true;
@@ -215,107 +213,61 @@
 
 
         //$scope.firstTimeEntry += 1;
-    settingsDbfctry.getLiveTutorialFlag($scope.settings.TTS_Name).then(function(TutorialFlag) {
-      var TutorialFlagFromDB = TutorialFlag;
-      console.log("in settings getLiveTutorial");
-      console.log("TutorialFlagFromDB is --->"+ TutorialFlagFromDB);
-      console.log("TutorialFlag is "+ TutorialFlag);
-      logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagFromDB ::' + TutorialFlagFromDB);
-      $scope.TutorialFlagArray = TutorialFlagFromDB.split('|');
+  settingsDbfctry.getLiveTutorialFlag($scope.settings.TTS_Name).then(function(TutorialFlag) {
+    var TutorialFlagFromDB = TutorialFlag;
+    console.log("in settings getLiveTutorial");
+    console.log("TutorialFlagFromDB is --->"+ TutorialFlagFromDB);
+    console.log("TutorialFlag is "+ TutorialFlag);
+    logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagFromDB ::' + TutorialFlagFromDB);
+    $scope.TutorialFlagArray = TutorialFlagFromDB.split('|');
 
-      logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray ::' + $scope.TutorialFlagArray);
-      logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArrayLength ::' + $scope.TutorialFlagArray.length);
-      if ($scope.TutorialFlagArray[0] == 0) {
-        logsFctry.logsDisplay('DEBUG', $scope.TagName, 'need to open live tutorial view here');
+    logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray ::' + $scope.TutorialFlagArray);
+    logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArrayLength ::' + $scope.TutorialFlagArray.length);
+    if ($scope.TutorialFlagArray[0] == 0) {
+      logsFctry.logsDisplay('DEBUG', $scope.TagName, 'need to open live tutorial view here');
 
-        angular.element('#settingBackBtn').css({
-          "pointer-events" : "none"
-        });
-        angular.element('#pinSaveBtn').css({
-          "pointer-events" : "none"
-        });
-        isAlertFlag = true;
-        //	$scope.shouldShowTyreImage = true;
-        angular.element('#over_map').show();
-      } else if ($scope.TutorialFlagArray[0] == 1) {
-        //logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
-        console.log("tutorial array ==1")
-        angular.element('#settingBackBtn').css({
-          "pointer-events" : "none"
-        });
-        angular.element('#pinSaveBtn').css({
-          "pointer-events" : "none"
-        });
-        isAlertFlag = false;
-          isAlertFlag1 = true;
-        //	$scope.shouldShowTyreImage = false;
-        angular.element('#over_map').hide();
+      angular.element('#settingBackBtn').css({
+        "pointer-events" : "none"
+      });
+      angular.element('#pinSaveBtn').css({
+        "pointer-events" : "none"
+      });
+      isAlertFlag = true;
+      //	$scope.shouldShowTyreImage = true;
+      angular.element('#over_map1').show();
+    } else if ($scope.TutorialFlagArray[0] == 1) {
+      logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
+      console.log("tutorial array ==1")
+      angular.element('#settingBackBtn').css({
+        "pointer-events" : ""
+      });
+      angular.element('#pinSaveBtn').css({
+        "pointer-events" : ""
+      });
+      isAlertFlag = false;
 
-          angular.element('#over_map1').show();
+      //	$scope.shouldShowTyreImage = false;
+      angular.element('#over_map1').hide();
 
-      }else if ($scope.TutorialFlagArray[0] == 2) {
-        console.log("tutorial array ==2")
-        //logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
-        angular.element('#settingBackBtn').css({
-          "pointer-events" : "none"
-        });
-        angular.element('#pinSaveBtn').css({
-          "pointer-events" : "none"
-        });
-        isAlertFlag1 = false;
-        isAlertFlag2 = true;
-        //	$scope.shouldShowTyreImage = false;
-        angular.element('#over_map1').hide();
-          angular.element('#over_map2').show();
-       }else if ($scope.TutorialFlagArray[0] == 3) {
-         console.log("tutorial array ==2")
-         //logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
-         angular.element('#settingBackBtn').css({
-           "pointer-events" : "none"
-         });
-         angular.element('#pinSaveBtn').css({
-           "pointer-events" : "none"
-         });
-         isAlertFlag2 = false;
-         isAlertFlag3 = true;
-         //	$scope.shouldShowTyreImage = false;
-         angular.element('#over_map2').hide();
-           angular.element('#over_map3').show();
-        }else if ($scope.TutorialFlagArray[0] == 4) {
-          console.log("tutorial array ==2")
-          //logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
-          angular.element('#settingBackBtn').css({
-            "pointer-events" : ""
-          });
-          angular.element('#pinSaveBtn').css({
-            "pointer-events" : ""
-          });
-          isAlertFlag3 = false;
-          isAlertFlag4 = true;
-          //	$scope.shouldShowTyreImage = false;
-          angular.element('#over_map3').hide();
 
-         }
+    }
 
-       else {
-        angular.element('#settingBackBtn').css({
-          "pointer-events" : ""
-        });
-        angular.element('#pinSaveBtn').css({
-          "pointer-events" : ""
-        });
-        isAlertFlag = false;
-          isAlertFlag1 = false;
-        //	$scope.shouldShowTyreImage = false;
-        angular.element('#over_map').hide();
+     else {
+      angular.element('#settingBackBtn').css({
+        "pointer-events" : ""
+      });
+      angular.element('#pinSaveBtn').css({
+        "pointer-events" : ""
+      });
+      isAlertFlag = false;
 
-          angular.element('#over_map1').hide();
-          angular.element('#over_map2').hide();
+      //	$scope.shouldShowTyreImage = false;
+      angular.element('#over_map1').hide();
 
-            angular.element('#over_map3').hide();
-        //do nothing
-      }
-    });
+
+      //do nothing
+    }
+  });
 
   });
 
@@ -326,10 +278,9 @@
   		 * @description afterleaving th page set the submit alert message to false
   		 */
   		$scope.$on('$ionicView.afterLeave', function() {
-  			angular.element('#over_map').hide();
+
           angular.element('#over_map1').hide();
-            angular.element('#over_map2').hide();
-              angular.element('#over_map3').hide();
+
 
   		});
 
@@ -364,84 +315,10 @@
 						"pointer-events" : ""
 					});
 					isAlertFlag = false;
-            angular.element('#over_map').hide();
-              angular.element('#over_map1').show();
-
-				}else if ($scope.TutorialFlagArray[0] == 1){
-          $scope.TutorialFlagArray[0] = 2;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, '$scope.TutorialFlagArray:: before closing modal' + $scope.TutorialFlagArray);
-					var TutorialFlagArray = '';
-					var lastString = $scope.TutorialFlagArray[$scope.TutorialFlagArray.length - 1];
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray:: lastString before closing modal' + lastString);
-					for (var i = 0; i < $scope.TutorialFlagArray.length - 1; i++) {
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + '$scope.TutorialFlagArray[i]::' + $scope.TutorialFlagArray[i]);
-						TutorialFlagArray = TutorialFlagArray + $scope.TutorialFlagArray[i] + "|";
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + 'TutorialFlagArray::' + TutorialFlagArray);
-					}
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: out side for loop::' + TutorialFlagArray);
-					TutorialFlagArray = TutorialFlagArray + lastString;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: after adding last string::' + TutorialFlagArray);
-					settingsDbfctry.setLiveTutorialFlag(TutorialFlagArray,  dealerAudit_ConstantsConst.TTS_Name);
-					angular.element('#settingBackBtn').css({
-						"pointer-events" : ""
-					});
-					angular.element('#pinSaveBtn').css({
-						"pointer-events" : ""
-					});
-					isAlertFlag1 = false;
             angular.element('#over_map1').hide();
-              angular.element('#over_map2').show();
 
-        }else if($scope.TutorialFlagArray[0] == 2){
-          $scope.TutorialFlagArray[0] = 3;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, '$scope.TutorialFlagArray:: before closing modal' + $scope.TutorialFlagArray);
-					var TutorialFlagArray = '';
-					var lastString = $scope.TutorialFlagArray[$scope.TutorialFlagArray.length - 1];
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray:: lastString before closing modal' + lastString);
-					for (var i = 0; i < $scope.TutorialFlagArray.length - 1; i++) {
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + '$scope.TutorialFlagArray[i]::' + $scope.TutorialFlagArray[i]);
-						TutorialFlagArray = TutorialFlagArray + $scope.TutorialFlagArray[i] + "|";
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + 'TutorialFlagArray::' + TutorialFlagArray);
-					}
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: out side for loop::' + TutorialFlagArray);
-					TutorialFlagArray = TutorialFlagArray + lastString;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: after adding last string::' + TutorialFlagArray);
-					settingsDbfctry.setLiveTutorialFlag(TutorialFlagArray,  dealerAudit_ConstantsConst.TTS_Name);
-					angular.element('#settingBackBtn').css({
-						"pointer-events" : ""
-					});
-					angular.element('#pinSaveBtn').css({
-						"pointer-events" : ""
-					});
-					isAlertFlag1 = false;
-            angular.element('#over_map2').hide();
-              angular.element('#over_map3').show();
 
-        }else if($scope.TutorialFlagArray[0] == 3){
-          $scope.TutorialFlagArray[0] = 4;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, '$scope.TutorialFlagArray:: before closing modal' + $scope.TutorialFlagArray);
-					var TutorialFlagArray = '';
-					var lastString = $scope.TutorialFlagArray[$scope.TutorialFlagArray.length - 1];
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray:: lastString before closing modal' + lastString);
-					for (var i = 0; i < $scope.TutorialFlagArray.length - 1; i++) {
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + '$scope.TutorialFlagArray[i]::' + $scope.TutorialFlagArray[i]);
-						TutorialFlagArray = TutorialFlagArray + $scope.TutorialFlagArray[i] + "|";
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + 'TutorialFlagArray::' + TutorialFlagArray);
-					}
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: out side for loop::' + TutorialFlagArray);
-					TutorialFlagArray = TutorialFlagArray + lastString;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: after adding last string::' + TutorialFlagArray);
-					settingsDbfctry.setLiveTutorialFlag(TutorialFlagArray,  dealerAudit_ConstantsConst.TTS_Name);
-					angular.element('#settingBackBtn').css({
-						"pointer-events" : ""
-					});
-					angular.element('#pinSaveBtn').css({
-						"pointer-events" : ""
-					});
-					isAlertFlag1 = false;
-            angular.element('#over_map3').hide();
-
-        }
+				}
 			} catch(e) {
 
 				logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error  in  hideOverLay::' + e);

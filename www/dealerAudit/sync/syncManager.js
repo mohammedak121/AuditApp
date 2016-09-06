@@ -28,9 +28,9 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 			var dealerList = [];
 			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadDealerData');
 
-			return $rootScope.session.getClientObjectType("Dealer_Master").then(function(clientObjectType) {
-				return clientObjectType.search("Dealer_Master", 0, -1, null, null, null, null, null, null, false).then(function(response) {
-					logsFctry.logsDisplay('INFO', TagName, 'Client object Dealer_Master search get successful');
+			return $rootScope.session.getClientObjectType("dealers").then(function(clientObjectType) {
+				return clientObjectType.search("dealers", 0, -1, null, null, null, null, null, null, false).then(function(response) {
+					logsFctry.logsDisplay('INFO', TagName, 'Client object dealers search get successful');
 					console.log("Dealer data successfully downloaded -- ");
 					console.log("Numer of dealers -- " + response.length);
 					//toastFctry.showToast("Number of dealers " + response.length);
@@ -50,8 +50,8 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 				}, function(error) {
 
 					var message = "";
-					//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object Dealer_Master' + JSON.stringify(error));
+					//console.log("Error in getClientObjectType dealers ::" + JSON.stringify(error));
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object dealers' + JSON.stringify(error));
 
 					// This message will be displayed if no dealers are present. Else a generic message is displayed.
 					if(error.code == 55 && error.message == "No Content") {
@@ -65,8 +65,8 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 					return false;
 				})
 			}, function(error) {
-				//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type Dealer_Master' + JSON.stringify(error));
+				//console.log("Error in getClientObjectType dealers ::" + JSON.stringify(error));
+				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
 				//var message = $filter('translate')('lblServerDataDownloadError');
 				//toastFctry.showToast(message);
 				return false;
@@ -82,8 +82,8 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 			logsFctry.logsDisplay('INFO', TagName, 'Entered into function uploadDealerData');
 
 			return new Promise(function(resolve, reject) {
-				$rootScope.session.getClientObjectType("Dealer_Master").then(function(clientObjectType) {
-					console.log("Get client Dealer_Master object successful");
+				$rootScope.session.getClientObjectType("dealers").then(function(clientObjectType) {
+					console.log("Get client dealers object successful");
 
 					// Get dealer information from localDatabase first. If there are no records then dont proceed further.
 					syncManageDbfctry.getDealerData().then(function(response) {
@@ -112,8 +112,8 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 									}
 								}, function(error) {
 									var message = "";
-									//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-									logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object Dealer_Master' + JSON.stringify(error));
+									//console.log("Error in getClientObjectType dealers ::" + JSON.stringify(error));
+									logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object dealers' + JSON.stringify(error));
 									// This message will be displayed if no dealers are present. Else a generic message is displayed.
 									if(error.code == 55 && error.message == "No Content") {
 										message = $filter('translate')('lblNoDealersFound');
@@ -130,8 +130,8 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 						}
 					})
 				}, function(error) {
-					//console.log("Error in getClientObjectType Dealer_Master ::" + JSON.stringify(error));
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type Dealer_Master' + JSON.stringify(error));
+					//console.log("Error in getClientObjectType dealers ::" + JSON.stringify(error));
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
 					var message = $filter('translate')('lblServerDataUploadError');
 					//toastFctry.showToast(message);
 					console.log("Data could not be uploaded" + error + message);

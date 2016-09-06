@@ -33,17 +33,7 @@ Description : This Provides the design for the settings Screen UI.
 				dropdown-item-label="text"
 				dropdown-onchange="setLanguage(selected)">
 			    </div>
-					<div id="over_map" class="overLayDiv1"  style="display: none;" >
 
-			 <!--language -->
-								<div class="languageLine"></div>
-										<div class="languageCardDiv">
-											{{'lblLtLanguage'|translate}}
-										</div>
-												<button class="doneButton1" ng-click="hideOverLay()"  >
-													{{'lblLtdone'|translate}}
-											</button>
-						</div>
 			</div>
 			<!--Language input Section end -->
 
@@ -58,40 +48,20 @@ Description : This Provides the design for the settings Screen UI.
 
 					<img ng-src={{passwordType}} class="imgSetBox" ng-click ="hideShowPassword()"/>
 				</div>
-				<div id="over_map1" class="overLayDiv2"  style="display: none;" >
 
-		 <!--language -->
-			<div class="setPinLine"></div>
-					<div class="card">
-						{{'lblLtSetPin'|translate}}
-						</div>
-						<button class="doneButton2" ng-click="hideOverLay()"  >
-							{{'lblLtdone'|translate}}
-					</button>
-					</div>
 
 
 			</div>
             <!--setPIN input Section end -->
 
 
-             <div class="row" >
+       <div class="row" >
 				<label class ="SettingsLabelStyle">{{'lblLogs'|translate}}</label>
 				<div  class="langDropDown" id="selectlogs" dropdown-select="logsOptions"
 				dropdown-model="logsSelected"
 				dropdown-item-label="text"
 				dropdown-onchange="logInformationChange(selected)"></div>
-				<div id="over_map2" class="overLayDiv3"  style="display: none;" >
 
-		 <!--language -->
-			<div class="logsLine"></div>
-					<div class="logsCardDiv">
-						{{'lblLtLogs'|translate}}
-						</div>
-						<button class="doneButton3" ng-click="hideOverLay()"  >
-							{{'lblLtdone'|translate}}
-					</button>
-					</div>
 
 			</div>
 
@@ -114,22 +84,41 @@ Description : This Provides the design for the settings Screen UI.
 
 
 	</ion-content>
-	<div id="over_map3" class="overLayDiv4"  style="display: none;">
 
-<!--language -->
-		<div class="saveLine"></div>
-			<div class="saveCardDiv">
-				{{'lblLtsave'|translate}}
-			</div>
-			<button class="doneButton4" ng-click="hideOverLay()"  >
-				{{'lblLtdone'|translate}}
-		</button>
-	</div>
 
 		<!-- <div id="disableBgIDDiv" class="overLayDiv overLayDivBgForTyreLoad" style="display: none;"></div> -->
 	  <!-- <div id="over_map" class="overLayDiv"  style="display: none;" ng-click="hideOverLay()"> -->
+		<div id="over_map1" class="overLayDiv"  ng-click="hideOverLay()" style="display: none;">
 
-	</div>
+				<div class="languageline"></div>
+					<div class="languageCardDiv">
+						<!--<div class="item item-text-wrap" > -->
+						{{'lblLtLanguage'|translate}}
+						<!--</div>-->
+					</div>
+		<div class="setPinLine"></div>
+		<div class="setPincard">
+			<!--<div class="item item-text-wrap" > -->
+			{{'lblLtSetPin'|translate}}
+			<!--</div>-->
+		</div>
+
+
+		<div class="logsLine"></div>
+				<div class="logsCard">
+					<!--<div class="item item-text-wrap" > -->
+					{{'lbllogs'|translate}}
+					<!--</div>-->
+				</div>
+				<div class="savePin"></div>
+						<div class="savePinCard">
+							<!--<div class="item item-text-wrap" > -->
+							{{'lblLtsave'|translate}}
+							<!--</div>-->
+						</div>
+
+			</div>
+
 </ion-nav-view>
 
 

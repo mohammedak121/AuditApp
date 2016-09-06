@@ -23,12 +23,12 @@ Description : This Provides the design for creating/updating dealer information.
 
     <ion-content has-footer="true" class="SettingsPageBg" scroll="true">
         <div class="addDealerScreenDiv">
-          <form name="dealerForm" id="dealerForm" >            
+          <form name="dealerForm" id="dealerForm" >
             <fieldset ng-disabled="formDisable" class="fieldset">
             <!-- <div class="row InputStyle" ng-class="($scope.dealerErrorMsg.companyNameErr)"> -->
             <div ng-class="((dealerForm.companyname.$touched && dealerForm.companyname.$invalid) || dealerErrorMsg.companyNameErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblCompanyName'|translate}}</label>
-                <input id="companyName" name="companyName" focus-on="focusMe" type="text" class="dealerInputStyle"  ng-model="dealerData.dealer_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
+                <input id="companyName" name="companyName" ng-focus="companyNameFocus(this)"  focus-on="focusMe" type="text" class="dealerInputStyle class1"  ng-model="dealerData.dealer_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
 
             </div>
             <!-- <p class="validationErrorText" ng-if="dealerErrorMsg.companyNameErr">{{companyNameError}}</p> -->
@@ -36,49 +36,49 @@ Description : This Provides the design for creating/updating dealer information.
 
             <div ng-class="((dealerForm.email.$error.email || dealerForm.email.$error.pattern)) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblEmail'|translate}}</label>
-                <input id="email" name="email" focus-on="focusMe" type="email" class="dealerInputStyle"  ng-model="dealerData.email"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
+                <input id="email" name="email"   ng-focus="emailFocus(this)" focus-on="focusMe" type="email" class="dealerInputStyle class2"  ng-model="dealerData.email"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.email.$error.email || dealerForm.email.$error.pattern))">{{emailError}}</p>
 
             <div ng-class="((dealerForm.phone.$error.tel || dealerForm.phone.$error.pattern)) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblPhone'|translate}}</label>
-                <input id="phone" name="phone" focus-on="focusMe" type="tel" ng-pattern ="phoneFormat || international" class="dealerInputStyle"  ng-model="dealerData.phone"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
+                <input id="phone" name="phone"  ng-focus="phoneFocus(this)" focus-on="focusMe" type="tel" ng-pattern ="phoneFormat || international" class="dealerInputStyle class3"  ng-model="dealerData.phone"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.phone.$error.tel || dealerForm.phone.$error.pattern))">{{phoneError}}</p>
 
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblNetwork'|translate}}</label>
-                <input id="network" name="network" focus-on="focusMe" type="text" class="dealerInputStyle"  ng-model="dealerData.network"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
+                <input id="network" name="network"  ng-focus="networkFocus(this)" focus-on="focusMe" type="text" class="dealerInputStyle class4"  ng-model="dealerData.network"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
             <div ng-class="((dealerForm.address.$touched && dealerForm.address.$invalid) || dealerErrorMsg.addressErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblAddress'|translate}}</label>
-                <input id="address" name="address" focus-on="focusMe" type="text" class="dealerInputStyle"  ng-model="dealerData.address"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" required>
+                <input id="address" name="address"   ng-focus="addressFocus(this)" focus-on="focusMe" type="text" class="dealerInputStyle class5"  ng-model="dealerData.address"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" required>
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.address.$touched && dealerForm.address.$invalid) || dealerErrorMsg.addressErr)">{{addressError}}</p>
 
             <div ng-class="((dealerForm.zipCode.$touched && dealerForm.zipCode.$invalid) || dealerErrorMsg.postCodeErr) ? 'row InputStyleError' : 'row InputStyle'">
-                <label class="DealerLabelStyle">{{'lblZipCode'|translate}}</label>
-                <input id="zipCode" name="zipCode" focus-on="focusMe" type="text" class="dealerInputStyle"  ng-model="dealerData.post_code"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
+                <label class="DealerLabelStyle">{{'lblZipCode'|translate}} *</label>
+                <input id="zipCode" name="zipCode"  ng-focus="zipCodeFocus(this)" focus-on="focusMe" type="text" class="dealerInputStyle class6"  ng-model="dealerData.post_code"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.zipCode.$touched && dealerForm.zipCode.$invalid) || dealerErrorMsg.postCodeErr)">{{postCodeError}}</p>
 
             <div ng-class="((dealerForm.city.$touched && dealerForm.city.$invalid) || dealerErrorMsg.cityErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblCity'|translate}}</label>
-                <input id="city" name="city" focus-on="focusMe" type="text" placeholder="" class="dealerInputStyle"  ng-model="dealerData.city_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleplace disabletap required>
+                <input id="city" name="city" ng-focus="cityFocus(this)" focus-on="focusMe" type="text" placeholder="" class="dealerInputStyle class7"  ng-model="dealerData.city_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleplace disabletap required>
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.city.$touched && dealerForm.city.$invalid) || dealerErrorMsg.cityErr)">{{cityError}}</p>
 
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblCountry'|translate}}</label>
-                <input id="country" name="country" focus-on="focusMe" type="text" placeholder="" class="dealerInputStyle"  ng-model="dealerData.country_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleregion disabletap>
+                <input id="country" name="country" focus-on="focusMe" type="text" placeholder="" class="dealerInputStyle class8"  ng-model="dealerData.country_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleregion disabletap>
             </div>
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblHoldingName'|translate}}</label>
-                <input id="holdingName" name="holdingName" focus-on="focusMe" type="text" class="dealerInputStyle"  ng-model="dealerData.holding_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
+                <input id="holdingName" name="holdingName" ng-focus="holdingNameFocus(this)" focus-on="focusMe" type="text" class="dealerInputStyle class9"  ng-model="dealerData.holding_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblHoldingCode'|translate}}</label>
-                <input id="holdingCode" name="holdingCode" focus-on="focusMe" type="text" class="dealerInputStyle"  ng-model="dealerData.holding_code"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
+                <input id="holdingCode" name="holdingCode" focus-on="focusMe" type="text" class="dealerInputStyle class10"  ng-model="dealerData.holding_code"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblPayerCode'|translate}}</label>
@@ -114,10 +114,18 @@ Description : This Provides the design for creating/updating dealer information.
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblAuditDate'|translate}}</label>
                 <!-- <span class="ion-calendar"></span> -->
-                <input id="auditDate" name="auditDate" ng-click="focusDate()" type="date" class="dealerInputDateStyle" value="{{date | date:'yyyy/MM/dd'}}" ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}">
-                  <!-- <img class="dateIconStyle" ng-src="{{calender}}" ng-click="focusDate()"/> -->
-                  <img class="dateIconStyle" ng-src="{{calender}}"/>
-                </input>
+                
+                <!-- <label >{{dateData}}</label> -->
+                <div class="dealerInputDateStyle" ng-click="focusDate()" ng-model="dateData">
+                  <label style="font-size: 14px;">{{dateData}}</label>
+                </div>
+                <!-- <img class="dateIconStyle" ng-src="{{calender}}" ng-click="focusDate()"/> -->
+                <!-- <label> -->
+                  <!-- <input id="auditDate" name="auditDate" type="date" class="dealerInputDateStyle" value="{{date | date:'yyyy/MM/dd'}}" ng-trim="false" style="-webkit-text-security: {{inputSecurityStyle}}">                                                      -->
+                  <!-- </input> -->
+                  <!-- <img class="dateIconStyle" ng-src="{{calender}}" /> -->
+                  <img class="dateIconStyle" ng-src="{{calender}}" ng-click="focusDate()"/>
+                <!-- </label> -->
             </div>
 
             <div class="row InputStyle">
@@ -128,7 +136,7 @@ Description : This Provides the design for creating/updating dealer information.
                 <label class="DealerLabelStyle">{{'lblauditDoneBy'|translate}}</label>
                 <input id="auditDoneBy" name="auditDoneBy" focus-on="focusMe" type="text" class="dealerInputStyle"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
-            </fieldset>            
+            </fieldset>
             <div ng-init="setForm(dealerForm)"></div>
           </form>
         </div>

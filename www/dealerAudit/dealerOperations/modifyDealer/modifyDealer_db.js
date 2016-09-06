@@ -31,7 +31,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 				//console.log("Debug " + TagName + "Dealer data information" + JSON.stringify(dealerData));
 				logsFctry.logsDisplay('DEBUG', TagName, "Dealer data information" + JSON.stringify(dealerData));
 
-				var insertQuery = "INSERT OR REPLACE INTO Dealer_Master(dealer_name ,address ,post_code ,province , email ,phone ,network ,pos_code , holding_code,tts_name, payee_code ,holding_name ,city_name ,country_name ,participating_tf , createdBy , modified_date , modified_time, payer_code, isServerRecord) VALUES";
+				var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_name ,address ,post_code ,province , email ,phone ,network ,pos_code , holding_code,tts_name, payee_code ,holding_name ,city_name ,country_name ,participating_tf , createdBy , modified_date , modified_time, payer_code, isServerRecord) VALUES";
 
 				if(typeof(dealerData.participating_tf) == "undefined" || dealerData.participating_tf == null) {
 					dealerData.participating_tf = 0;
@@ -107,12 +107,12 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 				return $q.when($cordovaSQLite.execute(db, insertQuery).then(function(res) {
 					insertQuery = "";
 					//console.log("Insert into DB successful" + JSON.stringify(res));
-					logsFctry.logsDisplay('DEBUG', TagName, "Insert into Dealer_Master DB successful" + JSON.stringify(res));
+					logsFctry.logsDisplay('DEBUG', TagName, "Insert into dealers DB successful" + JSON.stringify(res));
 					return true;
 
 				}, function(error) {
 					//console.log("Insert into DB failed" + JSON.stringify(error));
-					logsFctry.logsDisplay('ERROR', TagName, "Insert into Dealer_Master DB failed" + JSON.stringify(error));
+					logsFctry.logsDisplay('ERROR', TagName, "Insert into dealers DB failed" + JSON.stringify(error));
 					return false;
 				}));
 			},
@@ -124,8 +124,8 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 			modifyDealerInformation: function() {
 				logsFctry.logsDisplay('INFO', TagName, 'Entered into modifyDealerInformation');
 
-				var selectItemQuery = "SELECT * from Dealer_Master where isServerRecord=" + 0;
-				//var selectItemQuery = "SELECT * from Dealer_Master";
+				var selectItemQuery = "SELECT * from dealers where isServerRecord=" + 0;
+				//var selectItemQuery = "SELECT * from dealers";
 
 				return new Promise(function(resolve, reject) {
 					$cordovaSQLite.execute(db, selectItemQuery).then(function(res) {
@@ -147,13 +147,13 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 								console.log("Dealer Array values : " + JSON.stringify(dealerArray[i]));
 								console.log("Dealer ID : " + dealerArray[i].dealer_id);
 
-								var updateQuery = "UPDATE Dealer_Master SET isServerRecord=" + 1 + " WHERE dealer_id=" + dealerArray[i].dealer_id;
+								var updateQuery = "UPDATE dealers SET isServerRecord=" + 1 + " WHERE dealer_id=" + dealerArray[i].dealer_id;
 
 								$cordovaSQLite.execute(db, updateQuery).then(function(res) {
 									updateQuery = "";
 									resolve(true);
 								}, function(error) {
-									logsFctry.logsDisplay('ERROR', TagName, "Update Dealer_Master DB failed" + JSON.stringify(error));
+									logsFctry.logsDisplay('ERROR', TagName, "Update dealers DB failed" + JSON.stringify(error));
 									reject(false);
 								});
 							}
@@ -161,7 +161,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 							reject(false);
 						}
 					}, function(error) {
-						logsFctry.logsDisplay('ERROR', TagName, "SELECT Dealer_Master DB failed" + JSON.stringify(error));
+						logsFctry.logsDisplay('ERROR', TagName, "SELECT dealers DB failed" + JSON.stringify(error));
 						reject(false);
 					})
 				})
@@ -171,13 +171,21 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 			 * @function checkIfDealerExists
 			 * @description Function to avoid dealer duplication in local DB.
 			 */
+			// checkIfDealerExists: function(dealerName, companyName) {
 			checkIfDealerExists: function(dealerName) {
 				logsFctry.logsDisplay('INFO', TagName, 'Entered into function checkIfDealerExists');
 				console.log("Entered into function checkIfDealerExists");
 
-				var selectItemQuery = "SELECT * FROM Dealer_Master WHERE dealer_name= '" + dealerName.toLowerCase() + "'";
+				// Since country name is not mandatory if it is null or undefined make it empty.
+				// if(typeof(countryName) == "undefined" || countryName == null) {
+				// 	countryName = "";
+				// }
 
-				// "SELECT UserID FROM User WHERE EmailAddress = '" + eCasing_ConstantsConst.userName + "' ";
+				// Dealer only
+				var selectItemQuery = "SELECT * FROM dealers WHERE dealer_name= '" + dealerName.toLowerCase() + "'";
+
+				// Dealer + country name
+				//var selectItemQuery = "SELECT * FROM dealers WHERE dealer_name= '" + dealerName.toLowerCase() + "' AND country_name = '" + countryName.toLowerCase() + "'";				
 
 				return new Promise(function(resolve, reject) {
 					$cordovaSQLite.execute(db, selectItemQuery).then(function(res) {
@@ -189,7 +197,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 							resolve(false);
 						}
 					}, function(error) {
-						logsFctry.logsDisplay('ERROR', TagName, "SELECT Dealer_Master DB failed in checkIfDealerExists" + JSON.stringify(error));
+						logsFctry.logsDisplay('ERROR', TagName, "SELECT dealers DB failed in checkIfDealerExists" + JSON.stringify(error));
 						reject(false);
 					})
 				})

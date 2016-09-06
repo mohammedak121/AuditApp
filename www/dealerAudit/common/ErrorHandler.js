@@ -27,6 +27,7 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 			if(errorCode) {
 				switch(errorCode) {
 					case 0:
+					case 5:
 						failureTitle = "Login failed";
 						failureMessage = "Unable to login. Please try with valid credentials ";
 						break;

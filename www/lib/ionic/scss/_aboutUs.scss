@@ -79,8 +79,8 @@ width: 100%;
  }
   .AboutUsScreenBottomLogoimage {
     /* background: url("../img/goodyeardunlop.png")no-repeat center; */
-    height: 48px;
-    width: 52%;
+    height: 30px;
+    width: 50%;
     padding-top: 1%;
     }
 
@@ -119,8 +119,8 @@ width: 100%;
     }
     .AboutUsScreenBottomLogoimage {
     /* background: url("../img/goodyeardunlop.png")no-repeat center; */
-    height: 48px;
-    width: 52%;
+    height: 30px;
+    width: 30%;
     padding-top: 1%;
     }
 
@@ -185,7 +185,7 @@ width: 100%;
     .AboutUsScreenBottomLogoimage {
     /* background: url("../img/goodyeardunlop.png")no-repeat center; */
     height: 48px;
-    width: 52%;
+    width: 48% !important;
     padding-top: 1%; }
 }
 /* Google Nexus 7 (lanscape) */
@@ -197,7 +197,7 @@ width: 100%;
     .AboutUsScreenBottomLogoimage {
     /* background: url("../img/goodyeardunlop.png")no-repeat center; */
     height: 48px;
-    width: 38% !important;
+    width: 27% !important;
     padding-top: 1%; }
     .aboutUsName {
     margin-left: -53%;
@@ -233,7 +233,7 @@ and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device
 .AboutUsScreenBottomLogoimage {
     /* background: url("../img/goodyeardunlop.png")no-repeat center; */
     height: 48px;
-    width: 46%;
+    width: 40% !important;
     padding-top: 1%;
 }
 }
@@ -262,11 +262,13 @@ and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device
 }.aboutUsName {
     margin-left: 45% !important;
 }
-
+.AboutUsScreenLogoimage{
+    width: 30% !important;
+}
 .AboutUsScreenBottomLogoimage {
     /* background: url("../img/goodyeardunlop.png")no-repeat center; */
     height: 48px;
-    width: 30%;
+    width: 30% !important;
     padding-top: 1%;
 }
 }

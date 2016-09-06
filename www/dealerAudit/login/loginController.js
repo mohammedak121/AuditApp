@@ -61,8 +61,8 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 	$scope.shouldShowTyreImage = false;
 	$scope.goPressedFlag = false;
 	// NOTE : This is used for development only. Should be commented for release.
-	// $scope.username = "advanced_user_be";
-	// $scope.password = "eCasing2016";
+	$scope.username = "advanced_user_be";
+	$scope.password = "eCasing2016";
 
 	var isIPad = ionic.Platform.isIPad();
 
@@ -345,7 +345,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 										// Once the locally created dealer is synced , remove the flag which indicates it is a local record.
 										modifyDealerDbFactory.modifyDealerInformation().then(function(response) {
 											if(response) {
-												logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealer_master isServerRecord value successfully changed.');
+												logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealers isServerRecord value successfully changed.');
 											}
 										});
 									} else {
@@ -417,7 +417,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 										// Once the locally created dealer is synced , remove the flag which indicates it is a local record.
 										modifyDealerDbFactory.modifyDealerInformation().then(function(response) {
 											if(response) {
-												logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealer_master isServerRecord value successfully changed.');
+												logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealers isServerRecord value successfully changed.');
 												// $scope.buttonDisabled = false;
 												// $scope.shouldShowTyreImage = false;
 												// cordova.plugins.Keyboard.close();

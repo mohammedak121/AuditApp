@@ -8,9 +8,9 @@
  * @param {Service} $cordovaToast service for displaying toast.
  * @description Function for displaying the toast messages.
  */
- 
+
  var toastModule = angular.module('dealerAudit.toastModule', ['ionic']);
- 
+
  toastModule.factory('toastFctry',function($cordovaToast){
    return {
 
@@ -24,7 +24,7 @@
   	 showToast : function(message) {
   	 	try{
   	 	console.log('Entered into showToast');
-  		$cordovaToast.show(message, 'long', 'center').then(function(success) {
+  		$cordovaToast.show(message, 'short', 'center').then(function(success) {
   			console.log("The toast was shown");
   		}, function(error) {
   			console.log("The toast was not shown due to " + error);

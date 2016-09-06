@@ -24,10 +24,9 @@ dashBoardControllers.controller('CustomerInfoController', function($scope, $root
 	$scope.settingsLabel1 = $filter('translate')('lblsettingsLabel1');
 	$rootScope.popUpFlag = false;
 	$rootScope.logoutPopupFlag = false;
-	var isAlertFlag = false;
+	//var isAlertFlag = false;
 	var isAlertFlag1 = false;
-	var isAlertFlag2 = false;
-	var isAlertFlag3 = false;
+
 
 	try {
 
@@ -47,62 +46,28 @@ dashBoardControllers.controller('CustomerInfoController', function($scope, $root
 					});
 
 
-					isAlertFlag = true;
-					angular.element('#over_mapStart').show();
+					isAlertFlag1 = true;
+					angular.element('#over_map2').show();
 				} else if($scope.TutorialFlagArray[1] == 1) {
 					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
 					angular.element('#drawerButton').css({
 						"pointer-events": ""
 					});
 
-					isAlertFlag = false;
-					isAlertFlag1 = true;
-					angular.element('#over_mapStart').hide();
-					angular.element('#over_mapSave').show();
 
-				} else if($scope.TutorialFlagArray[1] == 2) {
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
+					isAlertFlag1 = false;
+					angular.element('#over_map2').hide();
+
+
+				}   else {
 					angular.element('#drawerButton').css({
 						"pointer-events": ""
 					});
 
 					isAlertFlag1 = false;
-					isAlertFlag2 = true;
-					angular.element('#over_mapSave').hide();
-					angular.element('#over_mapReport').show();
 
-				} else if($scope.TutorialFlagArray[1] == 3) {
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
-					angular.element('#drawerButton').css({
-						"pointer-events": ""
-					});
+					angular.element('#over_map2').hide();
 
-					isAlertFlag3 = false;
-					angular.element('#over_mapReport').hide();
-					angular.element('#over_mapSettings').show();
-
-				} else if($scope.TutorialFlagArray[1] == 4) {
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'no need to open live tutorial view here');
-					angular.element('#drawerButton').css({
-						"pointer-events": ""
-					});
-
-					isAlertFlag4 = false;
-					angular.element('#over_mapSettings').hide();
-
-				} else {
-					angular.element('#drawerButton').css({
-						"pointer-events": ""
-					});
-
-					isAlertFlag = false;
-					isAlertFlag2 = false;
-					isAlertFlag3 = false;
-					isAlertFlag4 = false;
-					angular.element('#over_mapStart').hide();
-					angular.element('#over_mapSave').hide();
-					angular.element('#over_mapReport').hide();
-					angular.element('#over_mapSettings').hide();
 					//do nothing
 				}
 				//if(TutorialFlagFromDB == '0|0|0|0|0|0'){
@@ -328,79 +293,8 @@ dashBoardControllers.controller('CustomerInfoController', function($scope, $root
 					});
 
 					isAlertFlag = false;
-					angular.element('#over_mapStart').hide();
-					angular.element('#over_mapSave').show();
+					angular.element('#over_map2').hide();
 
-				} else if($scope.TutorialFlagArray[1] == 1) {
-					$scope.TutorialFlagArray[1] = 2;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, '$scope.TutorialFlagArray:: before closing modal' + $scope.TutorialFlagArray);
-					var TutorialFlagArray = '';
-					var lastString = $scope.TutorialFlagArray[$scope.TutorialFlagArray.length - 1];
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray:: lastString before closing modal' + lastString);
-					for(var i = 0; i < $scope.TutorialFlagArray.length - 1; i++) {
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + '$scope.TutorialFlagArray[i]::' + $scope.TutorialFlagArray[i]);
-						TutorialFlagArray = TutorialFlagArray + $scope.TutorialFlagArray[i] + "|";
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + 'TutorialFlagArray::' + TutorialFlagArray);
-					}
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: out side for loop::' + TutorialFlagArray);
-					TutorialFlagArray = TutorialFlagArray + lastString;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: after adding last string::' + TutorialFlagArray);
-					settingsDbfctry.setLiveTutorialFlag(TutorialFlagArray, dealerAudit_ConstantsConst.TTS_Name);
-					angular.element('#drawerButton').css({
-						"pointer-events": ""
-					});
-
-					isAlertFlag1 = false;
-
-					angular.element('#over_mapSave').hide();
-					angular.element('#over_mapReport').show();
-
-				} else if($scope.TutorialFlagArray[1] == 2) {
-					$scope.TutorialFlagArray[1] = 3;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, '$scope.TutorialFlagArray:: before closing modal' + $scope.TutorialFlagArray);
-					var TutorialFlagArray = '';
-					var lastString = $scope.TutorialFlagArray[$scope.TutorialFlagArray.length - 1];
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray:: lastString before closing modal' + lastString);
-					for(var i = 0; i < $scope.TutorialFlagArray.length - 1; i++) {
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + '$scope.TutorialFlagArray[i]::' + $scope.TutorialFlagArray[i]);
-						TutorialFlagArray = TutorialFlagArray + $scope.TutorialFlagArray[i] + "|";
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + 'TutorialFlagArray::' + TutorialFlagArray);
-					}
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: out side for loop::' + TutorialFlagArray);
-					TutorialFlagArray = TutorialFlagArray + lastString;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: after adding last string::' + TutorialFlagArray);
-					settingsDbfctry.setLiveTutorialFlag(TutorialFlagArray, dealerAudit_ConstantsConst.TTS_Name);
-					angular.element('#drawerButton').css({
-						"pointer-events": ""
-					});
-
-					isAlertFlag1 = false;
-
-					angular.element('#over_mapReport').hide();
-					angular.element('#over_mapSettings').show();
-
-				} else if($scope.TutorialFlagArray[1] == 3) {
-					$scope.TutorialFlagArray[1] = 4;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, '$scope.TutorialFlagArray:: before closing modal' + $scope.TutorialFlagArray);
-					var TutorialFlagArray = '';
-					var lastString = $scope.TutorialFlagArray[$scope.TutorialFlagArray.length - 1];
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray:: lastString before closing modal' + lastString);
-					for(var i = 0; i < $scope.TutorialFlagArray.length - 1; i++) {
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + '$scope.TutorialFlagArray[i]::' + $scope.TutorialFlagArray[i]);
-						TutorialFlagArray = TutorialFlagArray + $scope.TutorialFlagArray[i] + "|";
-						logsFctry.logsDisplay('DEBUG', $scope.TagName, 'i::' + i + 'TutorialFlagArray::' + TutorialFlagArray);
-					}
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: out side for loop::' + TutorialFlagArray);
-					TutorialFlagArray = TutorialFlagArray + lastString;
-					logsFctry.logsDisplay('DEBUG', $scope.TagName, 'TutorialFlagArray :: after adding last string::' + TutorialFlagArray);
-					settingsDbfctry.setLiveTutorialFlag(TutorialFlagArray, dealerAudit_ConstantsConst.TTS_Name);
-					angular.element('#drawerButton').css({
-						"pointer-events": ""
-					});
-
-					isAlertFlag1 = false;
-
-					angular.element('#over_mapSettings').hide();
 
 				}
 
@@ -430,7 +324,7 @@ dashBoardControllers.controller('CustomerInfoController', function($scope, $root
 		// 								// Once the locally created dealer is synced , remove the flag which indicates it is a local record.
 		//                 modifyDealerDbFactory.modifyDealerInformation().then(function(response){
 		//                     if(response){
-		// 												logsFctry.logsDisplay('INFO', $scope.TagName,'Offline dealer_master isServerRecord value successfully changed.');
+		// 												logsFctry.logsDisplay('INFO', $scope.TagName,'Offline dealers isServerRecord value successfully changed.');
 		//                     }
 		//                 });
 		// 						}

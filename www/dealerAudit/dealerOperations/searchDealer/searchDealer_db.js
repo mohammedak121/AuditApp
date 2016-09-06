@@ -29,7 +29,7 @@ angular.module('dealerAudit.searchDealerModuleDB', []).factory('searchDealerDbfa
 					var dealerData = [];
 					logsFctry.logsDisplay('INFO', TagName, 'Entered into function getAllDealers');
 
-					var fetchQueryDealer = "SELECT * FROM Dealer_Master";
+					var fetchQueryDealer = "SELECT * FROM dealers";
 					//console.log('DEBUG'+ TagName + 'fetchQueryDealer' + fetchQueryDealer);					
 					logsFctry.logsDisplay('DEBUG', TagName, 'fetchQueryDealer' + fetchQueryDealer);
 

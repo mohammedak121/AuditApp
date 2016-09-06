@@ -169,6 +169,53 @@ position: fixed;
 
 }
  }
+ /***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .searchImg{
+  width: 20px;
+height: 20px;
+margin-left: -7%;
+margin-top: -11%;
+position: fixed;
+  }
+  .cancelImg{
+  width: 24px;
+height: 24px;
+margin-right: 6%;
+  }
+  .buttoncancelStyle{
+
+margin-left: 37% !important;
+margin-top: 4%;
+position: fixed;
+left: 78%;
+background-color: transparent;
+border-color: transparent;
+  }
+  .ul.searchList{
+  margin-top: 5%;
+  }
+  
+}
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  ul.searchList{
+  margin-top: 5%;
+  }
+  .searchImg{
+  margin-left: -4%;
+margin-top: -6%;
+position: fixed;
+  }
+  .cancelImg{
+  width: 24px;
+height: 24px;
+margin-right: 2%;
+  }
+  .buttoncancelStyle{
+  left: 87%;
+  }
+}
  /****************************** NEXUS 5 portrait ******************************/
  @media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait) {
 
@@ -248,3 +295,49 @@ margin-top: 5%;
 }
 
  }
+ /**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+  .mySearchPageBox{
+  margin-top: 3% !important;
+width: 85% !important;
+margin-left: 2% !important;
+height: 35px !important;
+  }
+  .searchImg{
+  width: 23px;
+height: 23px;
+margin-left: -3%;
+margin-top: -5%;
+position: fixed;
+  }
+  .buttoncancelStyle{
+  margin-top: 2.5% !important;
+left: 90%;
+  }
+  ul.searchList{
+  margin-top: 3%;
+  }
+}
+
+
+/**************************************** ipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+  .mySearchPageBox{
+  margin-top: 2% !important;
+width: 95%;
+  }
+  .searchImg{
+  margin-left: -3.5%;
+margin-top: -3.5%;
+position: fixed;
+  }
+  .cancelImg{
+  width: 23px;
+height: 23px;
+margin-right: 2%;
+  }
+  ul.searchList{
+  margin-top: 3% !important;
+  }
+}

@@ -18,7 +18,7 @@
 
 var modifyDealerModule = angular.module('dealerAudit.modifyDealerControllers', ['ionic', 'ngDropdowns']);
 
-modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParameterFctry', '$location', 'dealerAudit_AssetsConst', 'modifyDealerDbFactory', 'toastFctry', 'logsFctry', 'syncModuleFactory', '$cordovaNetwork', 'dealerAudit_ConstantsConst', '$filter', '$ionicPopup', '$rootScope', function($scope, passParameterFctry, $location, dealerAudit_AssetsConst, modifyDealerDbFactory, toastFctry, logsFctry, syncModuleFactory, $cordovaNetwork, dealerAudit_ConstantsConst, $filter, $ionicPopup, $rootScope) {
+modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParameterFctry', '$location', 'dealerAudit_AssetsConst', 'modifyDealerDbFactory', 'toastFctry', 'logsFctry', 'syncModuleFactory', '$cordovaNetwork', 'dealerAudit_ConstantsConst', '$filter', '$ionicPopup', '$rootScope', '$cordovaDatePicker', function($scope, passParameterFctry, $location, dealerAudit_AssetsConst, modifyDealerDbFactory, toastFctry, logsFctry, syncModuleFactory, $cordovaNetwork, dealerAudit_ConstantsConst, $filter, $ionicPopup, $rootScope, $cordovaDatePicker) {
 	try {
 		$scope.TagName = 'ModifyDealerController';
 		$scope.dealerData = {};
@@ -27,6 +27,14 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		$scope.isFormValid = false;
 		$scope.formDisable = false;
 		$scope.calender = dealerAudit_AssetsConst.calender;
+		$scope.nextFieldFocus = true;
+		$scope.email = true;
+		$scope.phone = true;
+		$scope.network = true;
+		$scope.address = true;
+		$scope.zipCode = true;
+		$scope.city = true;
+		$scope.holdingName = true;
 		// $scope.dealerScreenInputMaxLength = dealerAudit_ConstantsConst.dealerScreenInputMaxLength;
 
 		$scope.yesLabel = $filter('translate')('lblYes');
@@ -84,9 +92,43 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		//console.log("INFO" + $scope.TagName + "Entered into ModifyDealerController");
 		logsFctry.logsDisplay('INFO', $scope.TagName, 'Entered into ModifyDealerController');
 
-		// $scope.focusDate = function() {
-		// 	angular.element('#auditDate').focus();
-		// }
+		$scope.focusDate = function() {
+			// angular.element('#auditDate').focus();
+
+			var options = {
+				date: new Date(),
+				mode: 'date', // or 'time'
+				minDate: new Date() - 10000,
+				allowOldDates: true,
+				allowFutureDates: false,
+				doneButtonLabel: 'DONE',
+				doneButtonColor: '#F2F3F4',
+				cancelButtonLabel: 'CANCEL',
+				cancelButtonColor: '#000000'
+			};
+
+			$cordovaDatePicker.show(options).then(function(date) {
+				//alert(date);
+				// $scope.date = date;
+				console.log("Date value from date picker" + date);
+
+				var dateValue = date.getDate();
+				var month = date.getMonth() + 1;
+				var year = date.getFullYear();
+
+				var fullDate = dateValue + "/" + month + "/" + year;
+
+				console.log("Formatted date date: " + dateValue);
+				console.log("Formatted date month: " + month);
+				console.log("Formatted date year: " + year);
+
+				// $scope.dateData = {};
+				// $scope.dateData = "";
+				console.log("Full date " + fullDate);
+				$scope.dateData = fullDate;
+				// $scope.dateData = new Date();
+			});
+		}
 
 		/**
 		 * @function on
@@ -142,6 +184,87 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 			//console.log("DEBUG " + $scope.TagName + " get Dealer data " + $scope.dealerData);
 			logsFctry.logsDisplay('DEBUG', $scope.TagName, " get Dealer data " + $scope.dealerData);
 		});
+
+		//bugfix-To get focus on next input field
+
+		// $(document).keypress(function(e) {
+		//
+		// 				    if(e.which == 13) {
+		//
+		// 						console.log(" key pressed");
+		// 		          textboxe1 = $("input.class1");
+		// 							textboxe2 = $("input.class2");
+		// 				    	textboxe3 = $("input.class3");
+		// 							textboxe4 = $("input.class4");
+		// 							textboxe5 = $("input.class5");
+		// 							textboxe6 = $("input.class6");
+		// 							textboxe7 = $("input.class7");
+		// 							textboxe8 = $("input.class8");
+		// 							textboxe9 = $("input.class9");
+		// 							textboxe10 = $("input.class10");
+		// 							textboxe11 = $("input.class11");
+		//
+		//                if($scope.nextFieldFocus && textboxe1[0].id =="companyName"){
+		// 						      angular.element("#email").focus();
+		// 						      $scope.nextFieldFocus=false;
+		// 				 		     }
+		//               else if($scope.email && textboxe2[0].id =="email"){
+		// 					            angular.element("#phone").focus();
+		// 									    $scope.email=false;
+		// 			  			   }
+		// 					    	else if($scope.phone && textboxe3[0].id =="phone"){
+		// 								     	angular.element("#network").focus();
+		// 									    $scope.phone=false;
+		// 						  	}
+		// 							else if($scope.network && textboxe4[0].id =="network"){
+		// 								      angular.element("#address").focus();
+		// 									   	$scope.network=false;
+		// 								}
+		// 							else if($scope.address && textboxe5[0].id =="address"){
+		// 											angular.element("#zipCode").focus();
+		// 											$scope.address=false;
+		// 								}
+		// 				      else if($scope.zipCode && textboxe6[0].id =="zipCode"){
+		// 											angular.element("#city").focus();
+		// 											$scope.zipCode=false;
+		// 								}
+		//      	        else if($scope.holdingName && textboxe10[0].id =="holdingName"){
+		// 											angular.element("#holdingCode").focus();
+		// 											$scope.holdingName=false;
+		// 								}
+		// 							else if($scope.holdingCode && textboxe11[0].id =="holdingCode"){
+		// 											angular.element("#payerCode").focus();
+		// 											$scope.holdingCode=false;
+		// 								}
+		// 			}
+		// });
+		//
+		//
+		//   	$scope.companyNameFocus=function(){
+		// 				$scope.nextFieldFocus = true;
+		// 			}
+		//     	$scope.emailFocus=function(){
+		// 				$scope.email = true;
+		// 			}
+		//     	$scope.phoneFocus=function(){
+		// 				$scope.phone = true;
+		// 			}
+		// 			$scope.networkFocus=function(){
+		// 			 $scope.network = true;
+		// 			}
+		// 	  	$scope.addressFocus=function(){
+		// 				$scope.address = true;
+		// 			}
+		// 			$scope.zipCodeFocus=function(){
+		// 				$scope.zipCode = true;
+		// 			}
+		// 			$scope.cityFocus=function(){
+		// 				$scope.city = true;
+		// 			}
+		// 			$scope.holdingNameFocus=function(){
+		// 				$scope.holdingName = true;
+		// 			}
+
 
 		/**
 		 * @function backButtonClicked
@@ -287,6 +410,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 			console.log("Dealer name entered " + $scope.dealerData.dealer_name);
 
 			// Check for dealer duplication based on dealer_name.
+			// modifyDealerDbFactory.checkIfDealerExists($scope.dealerData.dealer_name, $scope.dealerData.country_name).then(function(response) {
 			modifyDealerDbFactory.checkIfDealerExists($scope.dealerData.dealer_name).then(function(response) {
 				console.log("Response from checkIfDealerExists" + response)
 				if(!response) {
@@ -308,7 +432,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 										// Once the locally created dealer is synced , remove the flag which indicates it is a local record.
 										modifyDealerDbFactory.modifyDealerInformation().then(function(response) {
 											if(response) {
-												logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealer_master isServerRecord value successfully changed.');
+												logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealers isServerRecord value successfully changed.');
 											}
 										});
 									} else {

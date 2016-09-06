@@ -22,7 +22,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 			/**
 			 * @function insertDealerData
 			 * @param {String} dealerData returned by the HaloMEM.
-			 * @description function which inserts Dealer data to "Dealer_Master" table.
+			 * @description function which inserts Dealer data to "dealers" table.
 			 */
 			insertDealerData: function(dealerData) {
 				try {
@@ -30,11 +30,11 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 					console.log("Entered into function insertDealerData");
 					logsFctry.logsDisplay('INFO', TagName, 'Entered in function insertDealerData');
 
-					// var insertQuery = "INSERT OR REPLACE INTO Dealer_Master(dealer_Id, dealer_name, address, postcode, province, email, phone, network, pos_code, payee_code, holding_name, city, country, participating_tf, createdBy , modified_date , modified_time , payer_code , isServerRecord ) VALUES";
+					// var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_Id, dealer_name, address, postcode, province, email, phone, network, pos_code, payee_code, holding_name, city, country, participating_tf, createdBy , modified_date , modified_time , payer_code , isServerRecord ) VALUES";
 
 					for(var i = 0; i < dealerData.length; i++) {
 
-						var insertQuery = "INSERT OR REPLACE INTO Dealer_Master(dealer_Id, dealer_name, address, post_code, province, email, phone, network, pos_code,holding_code,tts_name, payee_code, holding_name, city_name, country_name, participating_tf, createdBy , modified_date , modified_time , payer_code , isServerRecord ) VALUES";
+						var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_Id, dealer_name, address, post_code, province, email, phone, network, pos_code,holding_code,tts_name, payee_code, holding_name, city_name, country_name, participating_tf, createdBy , modified_date , modified_time , payer_code , isServerRecord ) VALUES";
 
 						if(typeof(dealerData[i].data.holding_code) == "undefined" || dealerData[i].data.holding_code == null) {
 							dealerData[i].data.holding_code = "";
@@ -88,7 +88,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 						}
 						if(typeof(dealerData[i].data.modified_date) == "undefined" || dealerData[i].data.modified_date == null) {
 							dealerData[i].data.modified_date = "";
-							// var insertQuery = "INSERT OR REPLACE INTO Dealer_Master(dealer_Id, dealer_name, address, postcode, province, email, phone, network, pos_code, payee_code, holding_name, city, country, participating_tf, createdBy , modified_time , payer_code , isServerRecord ) VALUES";
+							// var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_Id, dealer_name, address, postcode, province, email, phone, network, pos_code, payee_code, holding_name, city, country, participating_tf, createdBy , modified_time , payer_code , isServerRecord ) VALUES";
 							// insertQuery += "('" + dealerData[i].getData().dealer_id + "','" + dealerData[i].getData().dealer_name + "','" + dealerData[i].getData().address + "','" + dealerData[i].getData().postcode + "','" + dealerData[i].getData().province + "','" +
 							// 	dealerData[i].getData().email + "','" + dealerData[i].getData().phone + "','" + dealerData[i].getData().network + "','" + dealerData[i].getData().pos_code + "','" +
 							// 	dealerData[i].getData().payee_code + "','" + dealerData[i].getData().holding_name + "','" + dealerData[i].getData().city + "','" + dealerData[i].getData().country + "','" + dealerData[i].getData().participant_TF + "','" +
@@ -126,7 +126,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 
 			/**
 			 * @function getDealerData
-			 * @description function which gets all Dealer data from local dealer_master table.
+			 * @description function which gets all Dealer data from local dealers table.
 			 */
 			getDealerData: function() {
 				try {
@@ -136,7 +136,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 					logsFctry.logsDisplay('INFO', TagName, 'Entered into function getDealerData');
 
 					// Fetch all the dealer records which are local DB records.
-					var selectQuery = "SELECT * from Dealer_Master where isServerRecord =" + 0;
+					var selectQuery = "SELECT * from dealers where isServerRecord =" + 0;
 					return $q.when($cordovaSQLite.execute(db, selectQuery).then(function(res) {
 						if(res.rows.length > 0) {
 
