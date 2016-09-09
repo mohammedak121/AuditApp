@@ -39,9 +39,10 @@
 		$scope.User_PinSuccessContent = $filter('translate')('lblUser_PinSuccess');
 		$scope.User_PinSuccess1Content = $filter('translate')('lblUser_PinSuccess1');
 		$scope.User_PinSuccess1Title = $filter('translate')('lblSuccess1');
+    // Enabling the button by default.
+    $scope.saveButton = false;
 
-
-		$scope.backIcon = dealerAudit_AssetsConst.backIcon;
+  	$scope.backIcon = dealerAudit_AssetsConst.backIcon;
 		$scope.setPinUpdateContent = $filter('translate')('lblSetPinUpdateSuccess');
 
 		//getPin
@@ -50,6 +51,7 @@
 		$scope.save = dealerAudit_AssetsConst.save;
 		$scope.User_PinLength = dealerAudit_ConstantsConst.User_PinLength;
     $rootScope.logoutPopupFlag = false;
+    //$scope.UserPin = "******";
 		var isAlertFlag = false;
 
 
@@ -158,6 +160,8 @@
 
 
 	$scope.$on('$ionicView.beforeEnter', function() {
+
+
 
     settingsDbfctry.getLogsStatus(dealerAudit_ConstantsConst.TTS_Name).then(function(LogsStatus) {
   				logsFctry.logsDisplay('DEBUG', $scope.TagName, 'LogsStatus from db::' + LogsStatus);
@@ -280,6 +284,7 @@
   		$scope.$on('$ionicView.afterLeave', function() {
 
           angular.element('#over_map1').hide();
+
 
 
   		});
@@ -490,15 +495,15 @@
 						var insertUpdateFlag = 0;
 
 						if (val != 0) {
-
 							insertUpdateFlag = dealerAudit_ConstantsConst.User_PinStausUpdate;
 
 						} else {
-
 							insertUpdateFlag = dealerAudit_ConstantsConst.User_PinStausInsert;
-
 						}
 
+
+            $scope.saveButton = true;
+            
 
 
 						// For first time set pin
@@ -532,9 +537,10 @@
 
 
 														showAlert($scope.User_PinSuccessTitle, $scope.User_PinSuccessContent, '/dashBoard');
+
 													 }
 
-				                                 	if (insertUpdateFlag == dealerAudit_ConstantsConst.User_PinStausInsert) {
+				                              if (insertUpdateFlag == dealerAudit_ConstantsConst.User_PinStausInsert) {
 														displayMessage = $scope.User_PinSuccessContent;
 													} else {
 														displayMessage = $scope.setPinUpdateContent;
@@ -556,6 +562,7 @@
 											}
 
 				                             else {
+                                       $scope.saveButton = false;
 												showAlert($scope.errorTitle, $scope.User_PininFailureContent, '');
 											}
 
@@ -573,6 +580,11 @@
 														if (TTS_Name != '' && TTS_Name != null && TTS_Name != 'null') {
 
 							                           		if (User_Pin != '' && User_Pin != 'undefined' && User_Pin != undefined && User_Pin != 'null' && User_Pin != null) {
+                                              // angular.element('#pinSaveBtn').css({
+                                              //           "opacity: " : 0,
+                                              //           "pointer-events" : "none"
+                                              //           });
+                                                //$scope.saveButton = false;
 
 							                           			console.log('TTS_Name =>'+TTS_Name);
                                               logsFctry.logsDisplay('DEBUG', $scope.TagName,'TTS_Name =>'+TTS_Name);
@@ -582,13 +594,19 @@
 
 																settingsDbfctry.SetPin(TTS_Name, User_Pin, insertUpdateFlag);
 
-
+                                $scope.saveButton = true;
 																showAlert($scope.User_PinSuccessTitle, $scope.User_PinSuccessContent, '/dashBoard');
 
 
-							                                }else{
-							                                	showAlert($scope.User_PinSuccess1Title, $scope.User_PinSuccess1Content, '/settings');
 							                                }
+                                              else{
+                                                  //$scope.saveButton = false;
+							                                	showAlert($scope.User_PinSuccess1Title, $scope.User_PinSuccess1Content, '/settings');
+                                                // angular.element('#pinSaveBtn').css({
+                                                //           "opacity: " : 0.9,
+                                                //           "pointer-events" : "none"
+                                                //           });
+                                              }
 
 
 						                                 	if (insertUpdateFlag == dealerAudit_ConstantsConst.User_PinStausInsert) {
@@ -621,7 +639,7 @@
 													}
 
 						                             else {
-
+                                               $scope.saveButton = false;
 														showAlert($scope.errorTitle, $scope.User_PininFailureContent, '');
 													}
 
@@ -689,6 +707,58 @@
 
 
 		}
+
+    $scope.enableSaveButton = function(){
+
+      // $scope.saveButton = false;
+
+      settingsDbfctry.getPin(dealerAudit_ConstantsConst.TTS_Name).then(function(settingsPinValue) {
+        console.log("Settings pin value length" + settingsPinValue.length);
+
+        if(settingsPinValue.length > 0){
+          console.log("Settings pin value " + settingsPinValue);
+          console.log("Settings pin value stringified" + JSON.stringify(settingsPinValue));
+
+          var pinValue = settingsPinValue[0].User_Pin;
+          var insertUpdateFlag = 0;
+
+          if(pinValue != "" && typeof(pinValue) != "undefined" && pinValue != null){
+            insertUpdateFlag = dealerAudit_ConstantsConst.User_PinStausUpdate;
+          }
+          else{
+            insertUpdateFlag = dealerAudit_ConstantsConst.User_PinStausInsert;
+          }
+
+          if(insertUpdateFlag == dealerAudit_ConstantsConst.User_PinStausUpdate){
+            // Only when the character limit is reached to 6 enable/disbale save button.
+            $scope.saveButton = false;
+
+            // if($scope.settings.User_Pin.length ==	dealerAudit_ConstantsConst.User_PinLength)
+            // {
+            //   $scope.saveButton = false;
+            // }
+            // else{
+            //   $scope.saveButton = true;
+            // }
+          }
+        }
+      });
+
+      // // If the pin is being entered for the second time enable/disable the save button.
+      // if(!$scope.pinEnterFirstTime){
+      //
+      //   // Only when the character limit is reached to 6 enable/disbale save button.
+      //   if($scope.settings.User_Pin.length ==	dealerAudit_ConstantsConst.User_PinLength)
+      //   {
+      //     $scope.saveButton = false;
+      //   }
+      //   else{
+      //     $scope.saveButton = true;
+      //   }
+      // }
+
+    }
+
 
 /**
 * @memberof SettingsCtrl

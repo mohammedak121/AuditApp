@@ -61,8 +61,8 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 	$scope.shouldShowTyreImage = false;
 	$scope.goPressedFlag = false;
 	// NOTE : This is used for development only. Should be commented for release.
-	$scope.username = "advanced_user_be";
-	$scope.password = "eCasing2016";
+	// $scope.username = "advanced_user_be";
+	// $scope.password = "eCasing2016";
 
 	var isIPad = ionic.Platform.isIPad();
 

@@ -16,10 +16,36 @@
  * @param {Service} logsFctry used for logging information.
  * @description Function to check whether download is needed and to download the data.
  */
-angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncModuleFactory', function($rootScope, syncManageDbfctry, dealerAudit_ConstantsConst, $q, $cordovaSQLite, $filter, toastFctry, logsFctry) {
+var syncModule = angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']);
+
+syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, dealerAudit_ConstantsConst, $q, $cordovaSQLite, $filter, toastFctry, logsFctry) {
+
 	var TagName = 'syncModuleFactory';
 	logsFctry.logsDisplay('DEBUG', TagName, 'Entered in module dealerAudit.syncModule');
+
 	return {
+
+		/**
+		 * @function downloadMasterData
+		 * @description Download all the master data required for the application.
+		 */
+		downloadMasterData: function() {
+			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadMasterData');
+
+			return new Promise(function(resolve, reject) {
+				return downloadDealerData().then(function(dealerResponse) {
+					if(dealerResponse) {
+						resolve(true);
+					} else {
+						resolve(false);
+					}
+				}, function(error) {
+					reject(false);
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting dealers - downloadMasterData' + JSON.stringify(error));
+				})
+			})
+		},
+
 		/**
 		 * @function getDealerData
 		 * @description Fucntion to download dealer information from Halomem.
@@ -36,8 +62,10 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 					//toastFctry.showToast("Number of dealers " + response.length);
 					// Insert dealer data in local DB only if there are dealers present.
 					if(response.length > 0) {
-						syncManageDbfctry.insertDealerData(response);
-						return true;
+						if(syncManageDbfctry.deleteDealerData()) {
+							syncManageDbfctry.insertDealerData(response);
+							return true;
+						}
 					}
 
 					// If there are no dealers to download the user should still be allowed to login.
@@ -240,24 +268,6 @@ angular.module('dealerAudit.syncModule', ['ngCordova', 'ionic']).factory('syncMo
 					}
 				});
 			});
-
-			// return syncManageDbfctry.getOnlineLoginInfo().then(function(res) {
-			// 	if(res.rows.length > 0) {
-			// 		for(var i = 0; i < res.rows.length; i++) {
-			// 			console.log("res :::" + res.rows.item(i).AppKeyValue);
-			// 			lastLoginDate = new Date(res.rows.item(i).AppKeyValue);
-			// 			console.log("lastonlineLoginDate------" + lastLoginDate.getTime());
-			// 		}
-			// 		console.log("lastonlineLoginDate------" + lastLoginDate.getTime());
-			//
-			// 		var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-			// 		var diffDays = Math.round(Math.abs((currentDate.getTime() - lastLoginDate.getTime()) / (oneDay)));
-			// 		return diffDays;
-			// 		console.log("Difference number of days" + diffDays);
-			// 	} else {
-			// 		console.log("No records found");
-			// 	}
-			// })
 		},
 	};
 });

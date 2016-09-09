@@ -9687,7 +9687,7 @@ a.button {
   margin-bottom: 25%;
   margin-left: 15%;
   margin-right: 15%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   border-top-color: rgba(255, 255, 255, 0.4);
   border-left-color: rgba(255, 255, 255, 0.4);
   border-bottom-color: rgba(60, 60, 60, 0.4);
@@ -9785,7 +9785,7 @@ a.button {
     margin-bottom: 25%;
     margin-left: 30%;
     margin-right: 20%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-top-color: rgba(255, 255, 255, 0.4);
     border-left-color: rgba(255, 255, 255, 0.4);
     border-bottom-color: rgba(60, 60, 60, 0.4);
@@ -9881,7 +9881,7 @@ a.button {
     margin-bottom: 25%;
     margin-left: 10%;
     margin-right: 10%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-top-color: rgba(255, 255, 255, 0.4);
     border-left-color: rgba(255, 255, 255, 0.4);
     border-bottom-color: rgba(60, 60, 60, 0.4);
@@ -9905,7 +9905,7 @@ a.button {
     margin-bottom: 25%;
     margin-left: 29%;
     margin-right: 10%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-top-color: rgba(255, 255, 255, 0.4);
     border-left-color: rgba(255, 255, 255, 0.4);
     border-bottom-color: rgba(60, 60, 60, 0.4);
@@ -9921,7 +9921,7 @@ a.button {
     margin-bottom: 25%;
     margin-left: 20%;
     margin-right: 20%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-top-color: rgba(255, 255, 255, 0.4);
     border-left-color: rgba(255, 255, 255, 0.4);
     border-bottom-color: rgba(60, 60, 60, 0.4);
@@ -9937,7 +9937,7 @@ a.button {
     margin-bottom: 25%;
     margin-left: 15%;
     margin-right: 15%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-top-color: rgba(255, 255, 255, 0.4);
     border-left-color: rgba(255, 255, 255, 0.4);
     border-bottom-color: rgba(60, 60, 60, 0.4);
@@ -9953,7 +9953,7 @@ a.button {
     margin-bottom: 25%;
     margin-left: 20%;
     margin-right: 20%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-top-color: rgba(255, 255, 255, 0.4);
     border-left-color: rgba(255, 255, 255, 0.4);
     border-bottom-color: rgba(60, 60, 60, 0.4);
@@ -9970,6 +9970,11 @@ a.button {
 .headerBarIcon {
   width: 70px;
   height: 50px; }
+
+.button[disabled] {
+  opacity: .3 !important;
+  /* cursor: default !important; */
+  pointer-events: none; }
 
 .headerBar {
   background-color: #1385cb !important;
@@ -12983,10 +12988,10 @@ span.selected.ng-binding {
 input[type=date] {
   -webkit-appearance: none; }
 
-.fieldset {
-  margin: 0 0;
-  padding: 0em 0em 0em;
-  border: none; }
+.dateLabel {
+  font-size: 17px;
+  margin-top: 3%;
+  margin-left: 1%; }
 
 .pac-container:after {
   content: none !important; }
@@ -13080,7 +13085,7 @@ input[type=date] {
   padding-top: 7%;
   margin-bottom: 70%; }
 
-.langDropDownTF {
+.networkDropDown {
   width: 221% !important;
   margin-right: -9% !important;
   color: black;
@@ -13097,6 +13102,9 @@ span.selected.ng-binding {
 
 /***************************iPhone 5 (portrait) *************/
 @media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .modifyTitle {
+    margin-top: 8% !important; }
+
   .addDealerScreenDiv {
     padding-top: 3%; }
 
@@ -13104,6 +13112,17 @@ span.selected.ng-binding {
     margin-left: 53% !important;
     border-bottom: solid 1px;
     border-color: #aaaaaa;
+    width: 63%;
+    margin-right: 2%;
+    font-size: 93.75%;
+    font-family: "HelveticaNeue";
+    margin-bottom: 2%;
+    margin-top: -2%; }
+
+  .row.InputStyleError {
+    margin-left: 53% !important;
+    border-bottom: solid 1px;
+    border-color: red;
     width: 63%;
     margin-right: 2%;
     font-size: 93.75%;
@@ -13123,7 +13142,7 @@ span.selected.ng-binding {
   .dealerInputStyle {
     outline-color: #686868;
     border-radius: 0.5em;
-    width: 100%;
+    width: 80%;
     color: black !important;
     font-size: large !important;
     background: transparent;
@@ -13153,9 +13172,19 @@ span.selected.ng-binding {
     width: 25px;
     margin-left: -23%;
     margin-top: 3%;
-    position: fixed; } }
+    position: fixed; }
+
+  .validationErrorText {
+    color: red !important;
+    margin-left: 53%; }
+
+  .dateLabel {
+    margin-left: 0%; } }
 /***************************iPhone 5 (landscape) *************/
 @media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .modifyTitle {
+    margin-top: 4.5% !important; }
+
   .addDealerScreenDiv {
     padding-top: 2%; }
 
@@ -13163,6 +13192,17 @@ span.selected.ng-binding {
     margin-left: 40% !important;
     border-bottom: solid 1px;
     border-color: #aaaaaa;
+    width: 55%;
+    margin-right: 2%;
+    font-size: 93.75%;
+    font-family: "HelveticaNeue";
+    margin-bottom: 2%;
+    margin-top: -3%; }
+
+  .row.InputStyleError {
+    margin-left: 40% !important;
+    border-bottom: solid 1px;
+    border-color: red;
     width: 55%;
     margin-right: 2%;
     font-size: 93.75%;
@@ -13211,7 +13251,14 @@ span.selected.ng-binding {
     width: 25px;
     margin-left: -4%;
     margin-top: 3%;
-    position: fixed; } }
+    position: fixed; }
+
+  .validationErrorText {
+    color: red !important;
+    margin-left: 40%; }
+
+  .dateLabel {
+    margin-left: 0%; } }
 /****************** Google Nexus 7 (portrait) *****************/
 @media only screen and (min-device-width: 601px) and (max-device-width: 970px) and (orientation: portrait) {
   .langDropDownTF {
@@ -13219,6 +13266,9 @@ span.selected.ng-binding {
     margin-right: -6% !important;
     color: black;
     font-size: initial; }
+
+  .dateLabel {
+    margin-top: 1%; }
 
   .dateIconStyle {
     height: 35px;
@@ -13238,9 +13288,15 @@ span.selected.ng-binding {
     background: transparent;
     font-size: 17px;
     font-weight: 600;
-    margin-right: 42%; } }
+    margin-right: 42%; }
+
+  .modifyTitle {
+    margin-top: 2.5% !important; } }
 /******************* Google Nexus 7 (landscape) ********************/
 @media only screen and (min-device-width: 601px) and (max-device-width: 970px) and (orientation: landscape) {
+  .modifyTitle {
+    margin-top: 3% !important; }
+
   .backButton {
     margin-top: 2.7%; }
 
@@ -13515,6 +13571,17 @@ span.selected.ng-binding {
     margin-bottom: 2%;
     margin-top: -2%; }
 
+  .row.InputStyleError {
+    margin-left: 43% !important;
+    border-bottom: solid 1px;
+    border-color: red;
+    width: 55%;
+    margin-right: 2%;
+    font-size: 93.75%;
+    font-family: "HelveticaNeue";
+    margin-bottom: 2%;
+    margin-top: -2%; }
+
   .DealerLabelStyle {
     width: 114%;
     margin-left: -75%;
@@ -13547,7 +13614,11 @@ span.selected.ng-binding {
     background: transparent;
     font-size: 17px !important;
     font-weight: 500;
-    margin-right: 38%; } }
+    margin-right: 38%; }
+
+  .dateLabel {
+    margin-top: 0%;
+    margin-left: -4%; } }
 /**************************************** ipad Landscape*********************/
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3 / 4) {
   .DealerLabelStyle {
@@ -13558,7 +13629,11 @@ span.selected.ng-binding {
 
   .dealerInputDateStyle {
     font-size: 17px !important;
-    font-weight: 400 !important; } }
+    font-weight: 400 !important; }
+
+  .dateLabel {
+    margin-top: 0% !important;
+    margin-left: 0% !important; } }
 .progressDiv {
   margin-top: 5%;
   margin-bottom: 5%; }
@@ -13967,18 +14042,21 @@ ul.searchList li {
   .cancelImg {
     width: 24px;
     height: 24px;
-    margin-right: 6%; }
+    margin-right: 7%; }
 
   .buttoncancelStyle {
     margin-left: 37% !important;
     margin-top: 4%;
     position: fixed;
-    left: 78%;
+    left: 76%;
     background-color: transparent;
     border-color: transparent; }
 
   .ul.searchList {
-    margin-top: 5%; } }
+    margin-top: 5%; }
+
+  .mySearchPageBox {
+    width: 74% !important; } }
 /***************************iPhone 5 (landscape) *************/
 @media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
   ul.searchList {

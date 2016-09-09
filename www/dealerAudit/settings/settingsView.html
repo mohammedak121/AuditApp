@@ -44,7 +44,7 @@ Description : This Provides the design for the settings Screen UI.
 
 				<label class="SettingsLabelStyle">{{'lblSetPinResetPin'|translate}}</label>
 				<div class="row InputPinStyle">
-					<input id="inputAID" name="User_Pin" focus-on="focusMe" type="tel" placeholder={{'lblSetPinPassword'|translate}} ng-model="settings.User_Pin"  maxlength={{User_PinLength}} ng-change="TxtChange(this)" pattern="[0-9]*" numbers-only ng-trim="false" class="inputSetBox" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}">
+					<input id="inputAID" name="User_Pin" focus-on="focusMe" type="tel" placeholder={{'lblSetPinPassword'|translate}} ng-model="settings.User_Pin"  ng-change="enableSaveButton()"  maxlength={{User_PinLength}} ng-change="TxtChange(this)" pattern="[0-9]*" numbers-only ng-trim="false" class="inputSetBox" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}">
 
 					<img ng-src={{passwordType}} class="imgSetBox" ng-click ="hideShowPassword()"/>
 				</div>
@@ -74,7 +74,7 @@ Description : This Provides the design for the settings Screen UI.
         <!--footer Section start -->
         <ion-footer-bar class="bar bar-footer footerstyle footerStyleDashBoard" >
 
-		  	<button class="buttonTextStyle" id="pinSaveBtn"  ng-click="SetPin(settings.userName,settings.User_Pin)"   >
+		  	<button class="buttonTextStyle buttonDisabled" id="pinSaveBtn"  ng-disabled="saveButton"  ng-click="SetPin(settings.userName,settings.User_Pin)"   >
 				Save
 			</button>
 

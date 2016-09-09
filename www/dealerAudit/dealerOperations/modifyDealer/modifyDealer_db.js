@@ -201,7 +201,17 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 						reject(false);
 					})
 				})
-			}
+			},
+
+			/**
+			 * @function editDealerInformation
+			 * @description Edit dealer information in local DB.
+			 */
+			// editDealerInformation: function(dealerData) {
+			// 	logsFctry.logsDisplay('INFO', TagName, 'Entered into function editDealerInformation - modifyDealer_db');
+			// 
+			// 
+			// }
 		};
 
 	} catch(error) {

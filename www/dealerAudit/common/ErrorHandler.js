@@ -21,8 +21,11 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 			// HaloMem error code can come in either error.code or error.data.code.
 			// error.status is for generic http status codes.
 			var errorCode = error.code || error.data.code || error.status;
-			var failureTitle = "";
-			var failureMessage = "";
+
+			// When the Wi-Fi is switched of during the sync the switch condition is not executed.
+			// Hence a generic message is given.
+			var failureTitle = "Error";
+			var failureMessage = "There is some problem with the connection. Please try again.";
 
 			if(errorCode) {
 				switch(errorCode) {
@@ -63,6 +66,10 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 						failureTitle = "Login failed";
 						failureMessage = "Please enter valid credentials.";
 						break;
+
+					case 504:
+						failureTitle = "Server Error";
+						failureMessage = "Please try again.";
 
 					default:
 						failureTitle = "Error";

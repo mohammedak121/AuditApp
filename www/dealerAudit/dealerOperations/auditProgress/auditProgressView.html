@@ -15,7 +15,7 @@ Description : This Provides the design for showing the progress of dealer audit.
     <!--Back Button-->
 
     <!--Header Bar Title -->
-    <h1 class="title headerBarTitle headerTitleDashBoard" >Audit in Progress</h1>
+    <h1 class="title headerBarTitle headerTitleDashBoard modifyTitle" >Audit in Progress</h1>
     <!--Header Bar Title  -->
   </ion-header-bar>
   <ion-content has-footer="true" class="SettingsPageBg" scroll="true" overflow-scroll="true">
@@ -47,9 +47,8 @@ Description : This Provides the design for showing the progress of dealer audit.
 
           <div class="inputStyle"  ng-click="navigateToSearch()">
          <img ng-src={{dealerSearchIcon}} class="imgDealerSearchIcon"/>
-             <label class="dealerLabel">
-               Go By Dealer Name
-             </label>
+             <label class="dealerLabel">{{'lblGoByDealerName'|translate}}
+            </label>
           </div>
           <!-- <div class="searchDealerLine"></div> -->
 

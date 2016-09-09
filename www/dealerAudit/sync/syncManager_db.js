@@ -176,6 +176,19 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 				return $q.when($cordovaSQLite.execute(db, query));
 
 			},
+
+			/**
+			 * @function deleteDealerData
+			 * @description Functoin to delete data locally from DB.
+			 */
+			deleteDealerData: function() {
+
+				logsFctry.logsDisplay('INFO', TagName, "Entered into the function deleteDealerData");
+				var deleteQuery = "DELETE FROM dealers WHERE isServerRecord=" + 1;
+
+				$cordovaSQLite.execute(db, deleteQuery);
+				return true;
+			},
 		}
 
 	} catch(error) {

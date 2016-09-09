@@ -47,7 +47,7 @@
 
 var dealerAudit =
 	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule'])
-	.run(function($ionicPlatform, $ionicPopup, $state, $cordovaSQLite, $rootScope, $location, $interval, broadcast, $filter, settingsDbfctry, dealerAudit_ConstantsConst, syncModuleFactory, toastFctry, modifyDealerDbFactory, loginDbfctry) {
+	.run(function($ionicPlatform, $ionicPopup, $state, $cordovaSQLite, $rootScope, $location, $interval, broadcast, $filter, settingsDbfctry, dealerAudit_ConstantsConst, syncModuleFactory, toastFctry, modifyDealerDbFactory, loginDbfctry, logsFctry) {
 		/**
 		 * Basic ready configuration includes disabling default functionalities such as hidding accessorybar and handling keyboards
 		 * @memberof dealerAudit
@@ -138,7 +138,6 @@ var dealerAudit =
 					// Sync the locally present dealer data.
 					syncModuleFactory.uploadDealerData().then(function(response) {
 						if(response) {
-							//toastFctry.showToast("Dealer uploaded successfully");
 
 							// Once the locally created dealer is synced , remove the flag which indicates it is a local record.
 							modifyDealerDbFactory.modifyDealerInformation().then(function(response) {
@@ -161,26 +160,6 @@ var dealerAudit =
 					console.log("Session failed to initialize" + error);
 					logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in app.js module function Isession.Initialize.' + JSON.stringify(error));
 				});
-				//}
-				// else {
-				// 	// Sync the locally present dealer data.
-				// 	syncModuleFactory.uploadDealerData().then(function(response) {
-				// 		if(response) {
-				// 			//toastFctry.showToast("Dealer uploaded successfully");
-				//
-				// 			// Once the locally created dealer is synced , remove the flag which indicates it is a local record.
-				// 			modifyDealerDbFactory.modifyDealerInformation().then(function(response) {
-				// 				if(response) {
-				// 					logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealers isServerRecord value successfully changed.');
-				// 				}
-				// 			});
-				// 		} else {
-				// 			console.log("No records for upload sync.");
-				// 		}
-				// 	}, function(error) {
-				// 		console.log("Error during upload", error);
-				// 	});
-				// }
 			}, false);
 
 			/**
@@ -255,8 +234,6 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Logs (LogID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LogFileName VARCHAR(250) NOT NULL, LogFileCrationTime LONG NOT NULL,LogStatus INTEGER ,EmailAddress VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS LiveTutorial (LiveTutorialID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LiveTutorialFlag VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Language (Language VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
-					// $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),postcode VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city  VARCHAR(250) ,country VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
-					// $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),postcode VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),holding_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS AppData (AppKey LONG NOT NULL , AppKeyValue LONG NOT NULL , UserID VARCHAR(250),PRIMARY KEY(UserID, AppKey))");
 				} catch(error) {
@@ -286,8 +263,6 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Logs (LogID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LogFileName VARCHAR(250) NOT NULL, LogFileCrationTime LONG NOT NULL,LogStatus INTEGER ,EmailAddress VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS LiveTutorial (LiveTutorialID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LiveTutorialFlag VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Language (Language VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
-					// $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),postcode VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city  VARCHAR(250) ,country VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
-					// $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),postcode VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),holding_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS AppData (AppKey LONG NOT NULL , AppKeyValue LONG NOT NULL , UserID VARCHAR(250),PRIMARY KEY(UserID, AppKey))");
 				} catch(error) {
@@ -375,6 +350,9 @@ var dealerAudit =
 				$rootScope.$apply();
 			} else if($state.current.name == "modifyDealer") {
 				$rootScope.auditPagebackButtonClicked();
+				$rootScope.$apply();
+			} else if($state.current.name == "auditProgressDealer") {
+				$location.path('/dashBoard');
 				$rootScope.$apply();
 			} else {
 
@@ -548,25 +526,6 @@ dealerAudit.directive('disabletap', function($timeout) {
 		}
 	};
 });
-
-// // Auto focus on input elements.
-// dealerAudit.directive('focusOn', function() {
-// 	return function(scope, elem, attr) {
-// 		scope.$on('focusOn', function(e, name) {
-// 			if(name === attr.focusOn) {
-// 				elem[0].focus();
-// 			}
-// 		});
-// 	};
-// });
-//
-// dealerAudit.factory('focus', function($rootScope, $timeout) {
-// 	return function(name) {
-// 		$timeout(function() {
-// 			$rootScope.$broadcast('focusOn', name);
-// 		});
-// 	}
-// });
 
 dealerAudit.directive('focusMe', function($timeout) {
 	return {

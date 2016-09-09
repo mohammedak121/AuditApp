@@ -116,5 +116,9 @@ lblEmailFormat : 'Not a valid email',
 lblstartAudit : 'Start Audit',
 lblsavedAudit : 'Saved Audits',
 lblreportsAudit : 'Reports',
-lblsettingsAudit : 'Settings'
+lblsettingsAudit : 'Settings',
+lblGoByDealerName : ' Go By Dealer Name',
+lblAddNewDealer : 'Add New Dealer',
+lblEditDealer : 'Edit Dealer',
+lblPOSForgot : 'Forgot FOS Code ?'
 };

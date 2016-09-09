@@ -181,21 +181,23 @@ position: fixed;
   .cancelImg{
   width: 24px;
 height: 24px;
-margin-right: 6%;
+margin-right: 7%;
   }
   .buttoncancelStyle{
 
 margin-left: 37% !important;
 margin-top: 4%;
 position: fixed;
-left: 78%;
+left: 76%;
 background-color: transparent;
 border-color: transparent;
   }
   .ul.searchList{
   margin-top: 5%;
   }
-  
+  .mySearchPageBox{
+  width: 74% !important;
+  }
 }
 /***************************iPhone 5 (landscape) *************/
 @media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
