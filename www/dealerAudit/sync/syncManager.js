@@ -23,81 +23,110 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 	var TagName = 'syncModuleFactory';
 	logsFctry.logsDisplay('DEBUG', TagName, 'Entered in module dealerAudit.syncModule');
 
-	return {
-
-		/**
-		 * @function downloadMasterData
-		 * @description Download all the master data required for the application.
-		 */
-		downloadMasterData: function() {
-			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadMasterData');
-
-			return new Promise(function(resolve, reject) {
-				return downloadDealerData().then(function(dealerResponse) {
-					if(dealerResponse) {
-						resolve(true);
-					} else {
-						resolve(false);
-					}
-				}, function(error) {
-					reject(false);
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting dealers - downloadMasterData' + JSON.stringify(error));
-				})
-			})
-		},
-
-		/**
-		 * @function getDealerData
-		 * @description Fucntion to download dealer information from Halomem.
-		 */
-		downloadDealerData: function downloadDealerData() {
-			var dealerList = [];
-			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadDealerData');
-
-			return $rootScope.session.getClientObjectType("dealers").then(function(clientObjectType) {
-				return clientObjectType.search("dealers", 0, -1, null, null, null, null, null, null, false).then(function(response) {
+	function downloadDealer() {
+		return new Promise(function(resolve, reject) {
+			$rootScope.session.getClientObjectType("dealers").then(function(clientObjectType) {
+				clientObjectType.search("dealers", 0, -1, null, null, null, null, null, null, false).then(function(response) {
 					logsFctry.logsDisplay('INFO', TagName, 'Client object dealers search get successful');
 					console.log("Dealer data successfully downloaded -- ");
 					console.log("Numer of dealers -- " + response.length);
-					//toastFctry.showToast("Number of dealers " + response.length);
+
 					// Insert dealer data in local DB only if there are dealers present.
 					if(response.length > 0) {
 						if(syncManageDbfctry.deleteDealerData()) {
 							syncManageDbfctry.insertDealerData(response);
-							return true;
+
+							resolve(dealerAudit_ConstantsConst.success);
 						}
 					}
 
 					// If there are no dealers to download the user should still be allowed to login.
 					// Because the user can create dealers in offline mode.
-					if(response.length == 0) {
-						return true;
+					else if(response.length == 0) {
+
+						// Delete data from the local DB when there are no dealers found.
+						syncManageDbfctry.deleteDealerData();
+						resolve(dealerAudit_ConstantsConst.noContent);
+					} else {
+						reject(dealerAudit_ConstantsConst.failure);
 					}
 
-					return false;
 				}, function(error) {
 
 					var message = "";
-					//console.log("Error in getClientObjectType dealers ::" + JSON.stringify(error));
+
 					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object dealers' + JSON.stringify(error));
 
 					// This message will be displayed if no dealers are present. Else a generic message is displayed.
 					if(error.code == 55 && error.message == "No Content") {
-						//message = $filter('translate')('lblNoDealersFound');
-						return true;
+						syncManageDbfctry.deleteDealerData();
+						resolve(dealerAudit_ConstantsConst.noContent);
+					} else {
+						reject(dealerAudit_ConstantsConst.failure);
 					}
-					// else {
-					// 	message = $filter('translate')('lblServerDataDownloadError');
-					// }
-					//toastFctry.showToast(message);
-					return false;
 				})
 			}, function(error) {
-				//console.log("Error in getClientObjectType dealers ::" + JSON.stringify(error));
 				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
-				//var message = $filter('translate')('lblServerDataDownloadError');
-				//toastFctry.showToast(message);
-				return false;
+				reject(dealerAudit_ConstantsConst.failure);
+			})
+		});
+	}
+
+	function downloadQuestionnaire() {
+		return new Promise(function(resolve, reject) {
+			$rootScope.session.getClientObjectType("question").then(function(clientObjectType) {
+
+				clientObjectType.search("question", 0, -1, null, null, null, null, null, null, false).then(function(response) {
+
+					console.log("Get client object questions successful");
+					console.log("Number of questionnaire's" + response.length);
+
+					if(response.length > 0) {
+						syncManageDbfctry.insertQuestionnaireData(response);
+						resolve(dealerAudit_ConstantsConst.success);
+					}
+
+					// If there are no questions then the below condition will execute.
+					if(response.length == 0) {
+						resolve(dealerAudit_ConstantsConst.noContent);
+					}
+
+				}, function(error) {
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
+					reject(dealerAudit_ConstantsConst.failure);
+				})
+			}, function(error) {
+				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
+				console.log("Data could not be uploaded" + error + message);
+				reject(dealerAudit_ConstantsConst.failure);
+			})
+		});
+	}
+
+	return {
+
+		/**
+		 * @function getDealerData
+		 * @description Fucntion to download dealer information from Halomem.
+		 */
+		downloadDealerData: function() {
+			var dealerList = [];
+			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadDealerData');
+
+			return new Promise(function(resolve, reject) {
+				downloadDealer().then(function(response) {
+					if(response == dealerAudit_ConstantsConst.success) {
+						resolve(dealerAudit_ConstantsConst.success);
+					}
+
+					if(response == dealerAudit_ConstantsConst.noContent) {
+						resolve(dealerAudit_ConstantsConst.noContent);
+					}
+
+				}, function(error) {
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
+					reject(dealerAudit_ConstantsConst.failure);
+				})
 			})
 		},
 
@@ -268,6 +297,63 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 					}
 				});
 			});
+		},
+
+		/**
+		 * @function howManyDaysOldData
+		 * @description Download questionnaire data required for Audit.
+		 */
+		downloadQuestionnaireData: function() {
+			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadQuestionnaire');
+
+			return new Promise(function(resolve, reject) {
+				downloadQuestionnaire().then(function(response) {
+					if(response == dealerAudit_ConstantsConst.success) {
+						// resolve(dealerAudit_ConstantsConst.success);
+						// This is a test method to populate the questionnaire result in JSON format.
+						syncManageDbfctry.getQuestionnaireObject().then(function(response) {
+							if(response.length > 0) {
+
+								resolve(response);
+							}
+						})
+
+					}
+
+					if(response == dealerAudit_ConstantsConst.noContent) {
+						resolve(response);
+					}
+				}, function(error) {
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type question' + JSON.stringify(error));
+					reject(dealerAudit_ConstantsConst.failure);
+				})
+			})
+		},
+
+		/**
+		 * @function downloadMasterData
+		 * @description Download all the master data required for the application.
+		 */
+		downloadMasterData: function() {
+			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadMasterData');
+
+			return new Promise(function(resolve, reject) {
+				downloadDealer().then(function(dealerResponse) {
+					if(dealerResponse == dealerAudit_ConstantsConst.success || dealerResponse == dealerAudit_ConstantsConst.noContent) {
+						downloadQuestionnaire().then(function(questionnaireResponse) {
+							if(questionnaireResponse == dealerAudit_ConstantsConst.success || questionnaireResponse == dealerAudit_ConstantsConst.noContent) {
+								resolve(dealerAudit_ConstantsConst.success);
+							}
+						})
+
+					} else {
+						resolve(dealerAudit_ConstantsConst.failure);
+					}
+				}, function(error) {
+					reject(dealerAudit_ConstantsConst.failure);
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting dealers - downloadMasterData' + JSON.stringify(error));
+				})
+			})
 		},
 	};
 });

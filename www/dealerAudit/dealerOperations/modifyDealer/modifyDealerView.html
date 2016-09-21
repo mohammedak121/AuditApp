@@ -12,7 +12,7 @@ Description : This Provides the design for creating/updating dealer information.
   <ion-pane>
     <ion-header-bar class="bar bar-header headerBar" align-title="center">
         <!--Back Button-->
-        <img class="button button-icon ion-navicon headerBarIcon backButton" id="searchBackBttn" ng-src={{backIcon}} ng-click="auditPagebackButtonClicked()" />
+        <img class="button button-icon ion-navicon headerBarIcon backButton" id="searchBackBttn" ng-src="{{backIcon}}" ng-click="auditPagebackButtonClicked()" />
         <!--Back Button-->
 
         <!--Header Bar Title -->
@@ -67,10 +67,11 @@ Description : This Provides the design for creating/updating dealer information.
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.zipCode.$touched && dealerForm.zipCode.$invalid) || dealerErrorMsg.postCodeErr)">{{postCodeError}}</p>
 
-            <div class="row InputStyle">
+            <div ng-class="((dealerForm.country.$touched && dealerForm.country.$invalid) || dealerErrorMsg.countryErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblCountry'|translate}}</label>
-                <input id="country" name="country" type="text" placeholder="" class="dealerInputStyle"  ng-model="dealerData.country_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleregion disabletap>
+                <input id="country" name="country" type="text" placeholder="" class="dealerInputStyle"  ng-model="dealerData.country_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleregion disabletap required>
             </div>
+            <p class="validationErrorText" ng-if="((dealerForm.country.$touched && dealerForm.country.$invalid) || dealerErrorMsg.countryErr)">{{countryError}}</p>
 
             <div ng-class="((dealerForm.city.$touched && dealerForm.city.$invalid) || dealerErrorMsg.cityErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblCity'|translate}}</label>
@@ -82,23 +83,21 @@ Description : This Provides the design for creating/updating dealer information.
                 <label class="DealerLabelStyle">{{'lblHoldingName'|translate}}</label>
                 <input id="holdingName" name="holdingName" type="text" class="dealerInputStyle"  ng-model="dealerData.holding_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
-            <div class="row InputStyle">
+            <!-- <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblHoldingCode'|translate}}</label>
                 <input id="holdingCode" name="holdingCode"  type="text" class="dealerInputStyle"  ng-model="dealerData.holding_code"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
-            </div>
+            </div> -->
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblPayerCode'|translate}}</label>
                 <input id="payerCode" name="payerCode"  type="text" class="dealerInputStyle"  ng-model="dealerData.payer_code"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div>
-            <div ng-class="((dealerForm.posCode.$touched && dealerForm.posCode.$invalid && !fosVendorCodeMandate) || dealerErrorMsg.posCodeErr) ? 'row InputStyleError' : 'row InputStyle'">
+            <div ng-class="(((dealerForm.posCode.$touched && dealerForm.posCode.$invalid ) || dealerErrorMsg.posCodeErr) && !fosVendorCodeMandate) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblPOSCode'|translate}}</label>
-                <input id="posCode" name="posCode"  type="text" class="dealerInputStyle"  ng-model="dealerData.pos_code"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} ng-required="!fosVendorCodeMandate">
+                <input id="posCode" name="posCode"  type="text" class="dealerInputStyle" ng-model="dealerData.pos_code" ng-change="fosCodeTextChange(dealerData.pos_code)" ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} ng-required="!fosVendorCodeUnknown" ng-disabled="fosCodeDisabled">
             </div>
-            <p class="validationErrorText" ng-if="((dealerForm.posCode.$touched && dealerForm.posCode.$invalid && !fosVendorCodeMandate) || dealerErrorMsg.posCodeErr)">{{posCodeError}}</p>
+            <p class="validationErrorText" ng-if="(((dealerForm.posCode.$touched && dealerForm.posCode.$invalid ) || dealerErrorMsg.posCodeErr) && !fosVendorCodeMandate)">{{posCodeError}}</p>
             
-            <div class= "row InputStyle">              
-              <ion-toggle ng-model="fosVendorCodeMandate" checked="false" toggle-class="toggle-positive">{{'lblPOSForgot'|translate}}</ion-toggle>              
-            </div>
+            <ion-checkbox ng-model="fosVendorCodeUnknown" ng-change="fosVendorCodeUnknownCheck()" class="checkBoxClass" ng-disabled="isCheckBoxDisabled">FOS code unknown</ion-checkbox>
 
             <!-- <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblParticipantTF'|translate}}</label>
@@ -114,8 +113,8 @@ Description : This Provides the design for creating/updating dealer information.
                 <input id="TAM" name="TAM"  type="text" class="dealerInputStyle"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
             </div> -->
             <div ng-class="((dealerForm.tts.$touched && dealerForm.tts.$invalid) || dealerErrorMsg.ttsErr) ? 'row InputStyleError' : 'row InputStyle'">
-                <label class="DealerLabelStyle">{{'lblTTS'|translate}}</label>
-                <input id="tts" name="tts" type="text" class="dealerInputStyle" ng-model="dealerData.tts_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
+                <label class="DealerLabelTTSStyle">{{'lblTTS'|translate}}</label>
+                <input id="tts" name="tts" type="text" class="dealerTTSInputStyle" ng-model="dealerData.tts_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.tts.$touched && dealerForm.tts.$invalid) || dealerErrorMsg.ttsErr)">{{ttsError}}</p>
 

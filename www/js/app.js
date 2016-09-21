@@ -46,7 +46,7 @@
 //dealerAudit_ConstantsConst: Its an dependency to access the constants defined globally
 
 var dealerAudit =
-	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule'])
+	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule', 'dealerAudit.auditQuestionnaireControllers', 'dealerAudit.AuditQuestionnaireModuleDB'])
 	.run(function($ionicPlatform, $ionicPopup, $state, $cordovaSQLite, $rootScope, $location, $interval, broadcast, $filter, settingsDbfctry, dealerAudit_ConstantsConst, syncModuleFactory, toastFctry, modifyDealerDbFactory, loginDbfctry, logsFctry) {
 		/**
 		 * Basic ready configuration includes disabling default functionalities such as hidding accessorybar and handling keyboards
@@ -127,9 +127,9 @@ var dealerAudit =
 					$rootScope.session = session;
 
 					// Download master data if the user is online.
-					syncModuleFactory.downloadDealerData().then(function(response) {
-						if(response) {
-							loginDbfctry.insertLastOnlineLoginDateForUser();
+					syncModuleFactory.downloadMasterData().then(function(response) {
+						if(response == dealerAudit_ConstantsConst.success) {
+							//loginDbfctry.insertLastOnlineLoginDateForUser();
 						}
 					}, function(error) {
 						console.log("Dealers not downloaded " + error);
@@ -160,6 +160,24 @@ var dealerAudit =
 					console.log("Session failed to initialize" + error);
 					logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in app.js module function Isession.Initialize.' + JSON.stringify(error));
 				});
+			}, false);
+
+			/**
+			 * @memberof dealerAudit
+			 * @ngdoc EventListener
+			 * @name keydown
+			 * @desc Handle the keydown event , specifically the enter button.
+			 */
+			document.addEventListener("keydown", function(event) {
+				console.log("Key down event fired");
+				console.log("Event key code " + event.keyCode);
+
+				// If the submit button is clicked hide the keyboard.
+				if((event.keyCode == dealerAudit_ConstantsConst.keyBoardSubmitButtonKeyCode) || (event.keyCode == dealerAudit_ConstantsConst.keyBoardGoButtonKeyCode)) {
+					// cordova.plugins.Keyboard.hide();
+					// Keyboard.hide();
+					cordova.plugins.Keyboard.close();
+				}
 			}, false);
 
 			/**
@@ -222,7 +240,7 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Form_Response_Master (Id INTEGER PRIMARY KEY NOT NULL ,question_Id INTEGER NOT NULL, response_text VARCHAR(250), question_max_score BIGINT NOT NULL,question_result BIGINT NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Question_Type_Master (question_type_Id INTEGER PRIMARY KEY NOT NULL, question_type_text VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Question_Type_IdIndex ON Question_Type_Master (question_type_Id ASC)");
-					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Question_Master (question_Id INTEGER PRIMARY KEY NOT NULL,form_Id INTEGER NOT NULL,question_type_Id INTEGER NOT NULL, Question_text VARCHAR(250) NOT NULL, Header_text  VARCHAR(250) NOT NULL, sub_header_text  VARCHAR(250) NOT NULL)");
+					// $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Question_Master (question_Id INTEGER PRIMARY KEY NOT NULL,form_Id INTEGER NOT NULL,question_type_Id INTEGER NOT NULL, Question_text VARCHAR(250) NOT NULL, Header_text  VARCHAR(250) NOT NULL, sub_header_text  VARCHAR(250) NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Question_IdIndex ON Question_Master (question_Id  ASC)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_Form_Master (form_Id  INTEGER PRIMARY KEY NOT NULL,form_name VARCHAR(250) NOT NULL,UserID INTEGER NOT NULL,total_score BIGINT NOT NULL,total_result BIGINT NOT NULL,comments_text VARCHAR(250) NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Form_IdIndex ON Audit_Form_Master (form_Id ASC)");
@@ -234,8 +252,9 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Logs (LogID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LogFileName VARCHAR(250) NOT NULL, LogFileCrationTime LONG NOT NULL,LogStatus INTEGER ,EmailAddress VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS LiveTutorial (LiveTutorialID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LiveTutorialFlag VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Language (Language VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
-					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),holding_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS AppData (AppKey LONG NOT NULL , AppKeyValue LONG NOT NULL , UserID VARCHAR(250),PRIMARY KEY(UserID, AppKey))");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS question_master (question_text VARCHAR(250) NOT NULL, header_text VARCHAR(250) NOT NULL, sub_header_text VARCHAR(250) NOT NULL, question_version INTEGER NOT NULL , question_id INTEGER PRIMARY KEY NOT NULL , position_id INTEGER,template_id INTEGER,question_typ VARCHAR(250),mandatory_field VARCHAR(4),status VARCHAR(250),minimum_value INTEGER,maximum_value INTEGER)");
 				} catch(error) {
 					console.log("Table not created" + error);
 				}
@@ -251,7 +270,7 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Form_Response_Master (Id INTEGER PRIMARY KEY NOT NULL ,question_Id INTEGER NOT NULL, response_text VARCHAR(250), question_max_score BIGINT NOT NULL,question_result BIGINT NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Question_Type_Master (question_type_Id INTEGER PRIMARY KEY NOT NULL, question_type_text VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Question_Type_IdIndex ON Question_Type_Master (question_type_Id ASC)");
-					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Question_Master (question_Id INTEGER PRIMARY KEY NOT NULL,form_Id INTEGER NOT NULL,question_type_Id INTEGER NOT NULL, Question_text VARCHAR(250) NOT NULL, Header_text  VARCHAR(250) NOT NULL, sub_header_text  VARCHAR(250) NOT NULL)");
+					// $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Question_Master (question_Id INTEGER PRIMARY KEY NOT NULL,form_Id INTEGER NOT NULL,question_type_Id INTEGER NOT NULL, Question_text VARCHAR(250) NOT NULL, Header_text  VARCHAR(250) NOT NULL, sub_header_text  VARCHAR(250) NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Question_IdIndex ON Question_Master (question_Id  ASC)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_Form_Master (form_Id  INTEGER PRIMARY KEY NOT NULL,form_name VARCHAR(250) NOT NULL,UserID INTEGER NOT NULL,total_score BIGINT NOT NULL,total_result BIGINT NOT NULL,comments_text VARCHAR(250) NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Form_IdIndex ON Audit_Form_Master (form_Id ASC)");
@@ -263,8 +282,9 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Logs (LogID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LogFileName VARCHAR(250) NOT NULL, LogFileCrationTime LONG NOT NULL,LogStatus INTEGER ,EmailAddress VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS LiveTutorial (LiveTutorialID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LiveTutorialFlag VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Language (Language VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
-					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),holding_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS AppData (AppKey LONG NOT NULL , AppKeyValue LONG NOT NULL , UserID VARCHAR(250),PRIMARY KEY(UserID, AppKey))");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS question_master (question_text VARCHAR(250) NOT NULL, header_text VARCHAR(250) NOT NULL, sub_header_text VARCHAR(250) NOT NULL, question_version INTEGER NOT NULL , question_id INTEGER PRIMARY KEY NOT NULL , position_id INTEGER,template_id INTEGER,question_typ VARCHAR(250),mandatory_field VARCHAR(4),status VARCHAR(250),minimum_value INTEGER,maximum_value INTEGER)");
 				} catch(error) {
 					console.log("Table not created" + error);
 				}
@@ -437,6 +457,14 @@ var dealerAudit =
 			url: "/auditProgressDealer",
 			templateUrl: dealerAudit_FileListsConst.auditProgressView,
 			controller: "AuditProgressDealerController"
+		})
+
+		//State Provider for modify dealer screen.
+		.state('auditQuestionnaire', {
+			cache: false,
+			url: "/auditQuestionnaire",
+			templateUrl: dealerAudit_FileListsConst.auditQuestionnaireView,
+			controller: "AuditQuestionnaireController"
 		})
 
 		$urlRouterProvider.otherwise('/Login');

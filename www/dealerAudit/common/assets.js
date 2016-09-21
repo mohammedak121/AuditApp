@@ -28,6 +28,6 @@ angular.module('dealerAudit.ModuleAssets', []).constant('dealerAudit_AssetsConst
 	noDealersImg: "img/noDealers.svg",
 	cancelImg: "img/crossBlack.svg",
 	searchIconWhite: "img/searchButton.svg",
-	calender: "img/Calender.svg"
-
+	calender: "img/Calender.svg",
+	rightArrow: "img/rightArrow.svg"
 });

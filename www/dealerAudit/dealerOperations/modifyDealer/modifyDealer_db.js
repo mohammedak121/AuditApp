@@ -31,7 +31,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 				//console.log("Debug " + TagName + "Dealer data information" + JSON.stringify(dealerData));
 				logsFctry.logsDisplay('DEBUG', TagName, "Dealer data information" + JSON.stringify(dealerData));
 
-				var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_name ,address ,post_code ,province , email ,phone ,network ,pos_code , holding_code,tts_name, payee_code ,holding_name ,city_name ,country_name ,participating_tf , createdBy , modified_date , modified_time, payer_code, isServerRecord) VALUES";
+				var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_name ,address ,post_code ,province , email ,phone ,network ,pos_code , tts_name, payee_code ,holding_name ,city_name ,country_name ,participating_tf , createdBy , modified_date , modified_time, payer_code, isServerRecord) VALUES";
 
 				if(typeof(dealerData.participating_tf) == "undefined" || dealerData.participating_tf == null) {
 					dealerData.participating_tf = 0;
@@ -41,10 +41,6 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 					} else {
 						dealerData.participating_tf = 1;
 					}
-				}
-
-				if(typeof(dealerData.holding_code) == undefined || dealerData.holding_code == null) {
-					dealerData.holding_code = "";
 				}
 
 				if(typeof(dealerData.tts_name) == undefined || dealerData.tts_name == null) {
@@ -100,7 +96,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 				}
 
 				insertQuery += "('" + dealerData.dealer_name.toLowerCase() + "','" + dealerData.address + "','" + dealerData.post_code + "','" + dealerData.province + "','" +
-					dealerData.email + "','" + dealerData.phone + "','" + dealerData.network + "','" + dealerData.pos_code + "','" + dealerData.holding_code + "','" + dealerData.tts_name + "','" +
+					dealerData.email + "','" + dealerData.phone + "','" + dealerData.network + "','" + dealerData.pos_code + "','" + dealerData.tts_name + "','" +
 					dealerData.payee_code + "','" + dealerData.holding_name + "','" + dealerData.city_name + "','" + dealerData.country_name + "','" + dealerData.participating_tf + "','" +
 					dealerData.createdBy + "','" + dealerData.modified_date + "','" + dealerData.modified_time + "','" + dealerData.payer_code + "','" + 0 + "')";
 

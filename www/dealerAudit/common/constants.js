@@ -9,14 +9,14 @@ angular.module('dealerAudit.ModuleConstants', []).constant('dealerAudit_Constant
 
 	//Server Environment------dev-gy.halosys.comSonata
 	//Android Dev Instance
-	// HybrisLocalSonataInstance: "https://dev-gy.halosys.com/",
-	// AppNameAndroid: "Audit_Android",
-	// AppKeyAndroid: "5603861",
-	// SecretAndroid: "4d373f77-0343-4a45-b3c6-efa0fdc90ad9",
-	// //IOS Dev Instance
-	// AppNameIOS: "Audit_IOS",
-	// AppKeyIOS: "9076418",
-	// SecretIOS: "124457e5-7bd1-4fdf-bec6-9af435b508d8",
+	HybrisLocalSonataInstance: "https://dev-gy.halosys.com/",
+	AppNameAndroid: "Audit_Android",
+	AppKeyAndroid: "5603861",
+	SecretAndroid: "4d373f77-0343-4a45-b3c6-efa0fdc90ad9",
+	//IOS Dev Instance
+	AppNameIOS: "Audit_IOS",
+	AppKeyIOS: "9076418",
+	SecretIOS: "124457e5-7bd1-4fdf-bec6-9af435b508d8",
 	//End of Server Environment------dev-gy.halosys.comSonata
 
 	//Server Environment------dev-gy.halosys.comGoodyear
@@ -34,14 +34,14 @@ angular.module('dealerAudit.ModuleConstants', []).constant('dealerAudit_Constant
 
 	//Server Environment------qa-cons-gy.halosys.comSonata
 	// Android QA instance
-	HybrisLocalSonataInstance: "https://qa-cons-gy.halosys.com",
-	AppNameAndroid: "Audit_Android",
-	AppKeyAndroid: "6955007",
-	SecretAndroid: "7d0f1f28-96e3-4f6d-aba0-bddaa4c768bd",
-	// IOS QA instance.
-	AppNameIOS: "Audit_IOS",
-	AppKeyIOS: "7354101",
-	SecretIOS: "3c4b68ed-0b5c-48f7-9d8d-1e6682124075",
+	// HybrisLocalSonataInstance: "https://qa-cons-gy.halosys.com",
+	// AppNameAndroid: "Audit_Android",
+	// AppKeyAndroid: "6955007",
+	// SecretAndroid: "7d0f1f28-96e3-4f6d-aba0-bddaa4c768bd",
+	// // IOS QA instance.
+	// AppNameIOS: "Audit_IOS",
+	// AppKeyIOS: "7354101",
+	// SecretIOS: "3c4b68ed-0b5c-48f7-9d8d-1e6682124075",
 	// End of Server Environment------qa-cons-gy.halosys.comSonata
 
 
@@ -52,9 +52,9 @@ angular.module('dealerAudit.ModuleConstants', []).constant('dealerAudit_Constant
 	// AppKeyAndroid: "281828",
 	// SecretAndroid: "7d0f1f28-96e3-4f6d-aba0-bddaa4c768bd",
 	// // IOS QA instance.
-	// AppNameIOS: "Audit_IOS",
-	// AppKeyIOS: "786231",
-	// SecretIOS: "3c4b68ed-0b5c-48f7-9d8d-1e6682124075",
+	// AppNameIOS: "DealerAudit",
+	// AppKeyIOS: "4527791",
+	// SecretIOS: "e17ab210-7e1d-4ee3-9593-4900b2c8e966",
 	// End of Server Environment------qa-cons-gy.halosys.comGoodyear
 
 	User_PinLength: 6,
@@ -88,4 +88,11 @@ angular.module('dealerAudit.ModuleConstants', []).constant('dealerAudit_Constant
 		RegExpPhoneIndian: /(7|8|9)\d{9}/,
 		RegExpPhoneInternational: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 	},
+	downloadDealerStatusCodes: {
+		success: 1,
+		failure: 0,
+		noContent: 2
+	},
+	keyBoardSubmitButtonKeyCode: 13,
+	keyBoardGoButtonKeyCode: 9
 });

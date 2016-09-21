@@ -26,6 +26,9 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		$scope.backIcon = dealerAudit_AssetsConst.backIcon;
 		$scope.isFormValid = false;
 		$scope.calender = dealerAudit_AssetsConst.calender;
+		$scope.fosVendorCodeUnknown = false;
+		$scope.fosCodeDisabled = false;
+		$scope.isCheckBoxDisabled = false;
 
 		// Translation labels
 		$scope.yesLabel = $filter('translate')('lblYes');
@@ -46,6 +49,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 			addressErr: false,
 			postCodeErr: false,
 			cityErr: false,
+			countryErr: false,
 			posCodeErr: false,
 			ttsErr: false
 		};
@@ -59,6 +63,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		$scope.addressError = $filter('translate')('addressRequired');
 		$scope.postCodeError = $filter('translate')('postCodeRequired');
 		$scope.cityError = $filter('translate')('cityRequired');
+		$scope.countryError = $filter('translate')('countryRequired');
 		$scope.posCodeError = $filter('translate')('posCodeRequired');
 		$scope.ttsError = $filter('translate')('ttsRequired');
 		$scope.phoneError = $filter('translate')('lblPhoneFormat');
@@ -100,6 +105,37 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		}];
 
 		logsFctry.logsDisplay('INFO', $scope.TagName, 'Entered into ModifyDealerController');
+
+		/**
+		 * @function fosCodeTextChange
+		 * @description Toggle checkbox baesd on the input value.
+		 */
+		$scope.fosCodeTextChange = function(pos_code) {
+			if(pos_code != null || typeof(pos_code) != "undefined") {
+				if(pos_code.length >= 1) {
+					$scope.isCheckBoxDisabled = true;
+				} else {
+					$scope.isCheckBoxDisabled = false;
+				}
+			} else {
+				$scope.isCheckBoxDisabled = false;
+			}
+		}
+
+		/**
+		 * @function fosVendorCodeUnknownCheck
+		 * @description Toggle model for fos vendor code check-box.
+		 */
+		$scope.fosVendorCodeUnknownCheck = function() {
+			console.log("Check box change event fired");
+			if(!$scope.fosVendorCodeUnknown) {
+				$scope.fosVendorCodeUnknown = true;
+				$scope.fosCodeDisabled = true;
+			} else {
+				$scope.fosVendorCodeUnknown = false;
+				$scope.fosCodeDisabled = false;
+			}
+		}
 
 		/**
 		 * @function openDatePicker
@@ -172,7 +208,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 					province: (typeof(dealerInfo.province) == "undefined" || dealerInfo.province == null) ? dealerInfo.province = "" : dealerInfo.province,
 					country_name: (typeof(dealerInfo.country_name) == "undefined" || dealerInfo.country_name == null) ? dealerInfo.country_name = "" : dealerInfo.country_name,
 					holding_name: (typeof(dealerInfo.holding_name) == "undefined" || dealerInfo.holding_name == null) ? "" : dealerInfo.holding_name,
-					holding_code: (typeof(dealerInfo.holding_code) == "undefined" || dealerInfo.holding_code == null) ? "" : dealerInfo.holding_code,
+					//holding_code: (typeof(dealerInfo.holding_code) == "undefined" || dealerInfo.holding_code == null) ? "" : dealerInfo.holding_code,
 					payer_code: (typeof(dealerInfo.payer_code) == "undefined" || dealerInfo.payer_code == null) ? "" : dealerInfo.payer_code,
 					pos_code: (typeof(dealerInfo.pos_code) == "undefined" || dealerInfo.pos_code == null) ? "" : dealerInfo.pos_code,
 					tts_name: dealerAudit_ConstantsConst.TTS_Name
@@ -279,11 +315,21 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 			} else {
 				$scope.dealerErrorMsg.cityErr = false;
 			}
-			if($scope.dealerData.pos_code == "" || typeof($scope.dealerData.pos_code) == "undefined") {
-				$scope.dealerErrorMsg.posCodeErr = true;
+			if($scope.dealerData.country_name == "" || typeof($scope.dealerData.country_name) == "undefined") {
+				$scope.dealerErrorMsg.countryErr = true;
 				$scope.isFormValid = false;
 			} else {
+				$scope.dealerErrorMsg.countryErr = false;
+			}
+			if($scope.fosVendorCodeUnknown) {
 				$scope.dealerErrorMsg.posCodeErr = false;
+			} else {
+				if($scope.dealerData.pos_code == "" || typeof($scope.dealerData.pos_code) == "undefined") {
+					$scope.dealerErrorMsg.posCodeErr = true;
+					$scope.isFormValid = false;
+				} else {
+					$scope.dealerErrorMsg.posCodeErr = false;
+				}
 			}
 			if($scope.dealerData.tts_name == "" || typeof($scope.dealerData.tts_name) == "undefined") {
 				$scope.dealerErrorMsg.ttsErr = true;
@@ -293,7 +339,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 			}
 
 			if($scope.dealerErrorMsg.companyNameErr == false && $scope.dealerErrorMsg.addressErr == false && $scope.dealerErrorMsg.postCodeErr == false &&
-				$scope.dealerErrorMsg.cityErr == false && $scope.dealerErrorMsg.posCodeErr == false && $scope.dealerErrorMsg.ttsErr == false) {
+				$scope.dealerErrorMsg.cityErr == false && $scope.dealerErrorMsg.countryErr == false && $scope.dealerErrorMsg.posCodeErr == false && $scope.dealerErrorMsg.ttsErr == false) {
 				$scope.isFormValid = true;
 			}
 

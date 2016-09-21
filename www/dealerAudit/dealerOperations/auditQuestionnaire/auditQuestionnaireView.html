@@ -1,0 +1,145 @@
+<!--
+Filename : auditQuestionnaireView.html
+Project :dealerAudit
+Language : HTML
+Framework: Ionic
+Author : Mohammed Aamir K
+Date of creation : 16-09-2016
+Description : Audit questionnaire form.
+-->
+
+<ion-nav-view can-swipe-back="false">
+  <ion-header-bar class="bar bar-header headerBar" align-title="center">
+    <h1 class="title headerBarTitle headerTitleDashBoard modifyTitle" id="dashBoardHeaderTitle">{{questionnaireHeaderTitle}}</h1>
+  </ion-header-bar>
+  <ion-content has-footer="true" class="SettingsPageBg" scroll="true">
+    
+      <div style="padding-bottom: 70%;margin-top: 10%;">  
+        
+        <ion-list>
+         <div ng-repeat="y in grid">
+           <ion-item class="item-stable"
+                     ng-click="toggleGroup(y)"
+                     ng-class="{active: isGroupShown(y)}">
+               <i class="icon" ng-class="isGroupShown(y) ? 'ion-minus' : 'ion-plus'"></i>
+             &nbsp;
+             <!-- Group {{group.name}} -->
+             {{headers[$index]}}
+           </ion-item>
+           <ion-item class="item-accordion"
+                     ng-repeat="x in y"
+                     ng-show="isGroupShown(y)">
+             <h2>{{x[0].sub_header_text}}</h2>
+             <ion-list>
+               <ion-item class="item-text-wrap" ng-repeat="z in x ">
+                 <label class="questions">{{z.question_text}}</label>
+   
+                 <div class="textAreaDiv" ng-if="z.question_typ == 'Text'">
+                   <label class="item item-input">
+                     <textarea class="textareaBox" placeholder="Comments here"></textarea>
+                   </label>
+                 </div>
+   
+                 <div class="numberDivision" ng-if="z.question_typ == 'Numeric'">
+                   <input style="float:left;margin-right:2%" type="tel" ></input>
+                   <label>
+                      Units
+                   </label>
+                 </div>
+   
+                 <div class="toggleDiv" ng-if="z.question_typ == 'Y/N'">
+                   <ion-toggle ion-toggle-text="Yes;No" >
+                       Toggle Value
+                   </ion-toggle>
+                 </div>
+   
+   
+                 <div class="multipleChoiceDiv" ng-if="z.question_typ == 'Multiple choice'">
+                   <ion-checkbox>option1</ion-checkbox>
+                   <ion-checkbox>option2</ion-checkbox>
+                   <ion-checkbox>option3</ion-checkbox>
+                   <ion-checkbox>option4</ion-checkbox>
+                 </div>
+                 
+                 <div class="dateDiv" ng-if="z.question_typ == 'Date'">
+                   <div class="InputDateStyl" ng-model="dateData">
+                     <label class="dateLabel">{{dateData}}</label>
+                   </div>
+                   <img class="dateStyle" ng-src="{{calender}}" ng-click="openDatePicker()"/>
+   
+                 </div>
+   
+               </ion-item>
+             </ion-list>
+           </ion-item>
+         </div>
+       </ion-list>
+      
+      <!-- <label style="text-align:center;"><h2>Audit Questionnaire</h2></label>
+      <div ng-repeat="y in grid | limitTo : 1">
+        <h3>{{headers[$index]}}</h3>
+
+        <div class="headerSubheaderDiv" ng-repeat="x in y">
+
+          <div style="width : 100%;height: 80px;padding-top: 3%; background-color: #E6E6E6;">
+
+            <h4>{{x[0].sub_header_text}}</h4>
+          </div>
+
+          <ion-list>
+            <ion-item class="item-text-wrap" ng-repeat="z in x ">
+              <label class="questions">{{z.question_text}}</label>
+
+              <div class="textAreaDiv" ng-if="z.question_typ == 'Text'">
+                <label class="item item-input">
+                  <textarea class="textareaBox" placeholder="Comments here"></textarea>
+                </label>
+              </div>
+
+              <div class="numberDivision" ng-if="z.question_typ == 'Numeric'">
+                <input style="float:left;margin-right:2%" type="tel" ></input>
+                <label>
+                   Units
+                </label>
+              </div>
+
+              <div class="toggleDiv" ng-if="z.question_typ == 'Y/N'">
+                <ion-toggle ion-toggle-text="Yes;No" >
+                    Toggle Value
+                </ion-toggle>
+              </div>
+
+
+              <div class="multipleChoiceDiv" ng-if="z.question_typ == 'Multiple choice'">
+                <ion-checkbox>option1</ion-checkbox>
+                <ion-checkbox>option2</ion-checkbox>
+                <ion-checkbox>option3</ion-checkbox>
+                <ion-checkbox>option4</ion-checkbox>
+              </div>
+              
+              <div class="dateDiv" ng-if="z.question_typ == 'Date'">
+                <div class="InputDateStyl" ng-model="dateData">
+                  <label class="dateLabel">{{dateData}}</label>
+                </div>
+                <img class="dateStyle" ng-src="{{calender}}" ng-click="openDatePicker()"/>
+
+              </div>
+
+            </ion-item>
+          </ion-list>
+        </div>
+      </div> -->
+
+    </div>
+
+      <!-- <div class="questionsIndicator">
+       <label class="questionsIndicatorLabel">(1-4 of 20)</label>
+      </div> -->
+  </ion-content>
+  <div class="footerDiv">
+
+      <button class="backButtonQuestionnaire" >Back</button>
+      <button class="nextButtonQuestionnaire" >Next</button>
+  </div>
+
+</ion-nav-view>

@@ -59,7 +59,7 @@ dashBoardControllers.controller('CustomerInfoController', function($scope, $root
 					angular.element('#over_map2').hide();
 
 
-				}   else {
+				} else {
 					angular.element('#drawerButton').css({
 						"pointer-events": ""
 					});
@@ -248,6 +248,14 @@ dashBoardControllers.controller('CustomerInfoController', function($scope, $root
 					//logsFctry.logsDisplay('INFO', $scope.TagName, 'Exit from  settings $ionicView.afterEnter');
 				}); */
 
+		/**
+		 * @memberof dealerAudit.dashBoardControllers
+		 * @name loadQuestionnaires
+		 * @desc Load questionnaires.
+		 */
+		$scope.loadQuestionnaires = function() {
+			$location.path('/auditQuestionnaire');
+		}
 
 		/**
 		 * @memberof dealerAudit.dashBoardControllers

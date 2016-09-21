@@ -15,7 +15,7 @@
 
 var auditProgressDealerModule = angular.module('dealerAudit.auditProgressDealerControllers', ['ionic', 'ngCordova']);
 
-auditProgressDealerModule.controller('AuditProgressDealerController', ['$scope', '$location', 'dealerAudit_AssetsConst', 'logsFctry', '$cordovaNetwork', 'syncModuleFactory', 'loginDbfctry', function($scope, $location, dealerAudit_AssetsConst, logsFctry, $cordovaNetwork, syncModuleFactory, loginDbfctry) {
+auditProgressDealerModule.controller('AuditProgressDealerController', ['$scope', '$location', 'dealerAudit_AssetsConst', 'logsFctry', '$cordovaNetwork', 'syncModuleFactory', 'loginDbfctry', 'dealerAudit_ConstantsConst', function($scope, $location, dealerAudit_AssetsConst, logsFctry, $cordovaNetwork, syncModuleFactory, loginDbfctry, dealerAudit_ConstantsConst) {
 	try {
 		$scope.TagName = 'AuditProgressDealerController';
 		$scope.backIcon = dealerAudit_AssetsConst.backIcon;
@@ -32,7 +32,6 @@ auditProgressDealerModule.controller('AuditProgressDealerController', ['$scope',
 		 * @desc on focus of input box navigate to search screen.
 		 */
 		$scope.navigateToSearch = function() {
-
 			$location.path('/searchDealer');
 		}
 
@@ -51,9 +50,9 @@ auditProgressDealerModule.controller('AuditProgressDealerController', ['$scope',
 
 					// Download master data if the user is online.
 					syncModuleFactory.downloadDealerData().then(function(response) {
-						if(response) {
+						if(response == dealerAudit_ConstantsConst.success) {
 							// $scope.getDealerInformation();
-							loginDbfctry.insertLastOnlineLoginDateForUser();
+							//loginDbfctry.insertLastOnlineLoginDateForUser();
 						}
 					}, function(error) {
 						logsFctry.logsDisplay('ERROR', $scope.TagName, "Error in audit progress View downloadDealerData" + JSON.stringify(error));

@@ -18,6 +18,23 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 		var TagName = "syncManageDbfctry";
 		console.log('Entered into module eCasing.syncManagerModuleDB');
 		logsFctry.logsDisplay('INFO', TagName, 'Entered in module dealerAudit.syncManagerModuleDB');
+
+		/**
+		 * @function insertDealerData
+		 * @param {String} dealerData returned by the HaloMEM.
+		 * @description function which inserts Dealer data to "dealers" table.
+		 */
+		_.groupByMultipleFields = function(obj, values, context) {
+			if(!values.length)
+				return obj;
+			var byFirst = _.groupBy(obj, values[0], context),
+				rest = values.slice(1);
+			for(var prop in byFirst) {
+				byFirst[prop] = _.groupByMultipleFields(byFirst[prop], rest, context);
+			}
+			return byFirst;
+		};
+
 		return {
 			/**
 			 * @function insertDealerData
@@ -34,11 +51,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 
 					for(var i = 0; i < dealerData.length; i++) {
 
-						var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_Id, dealer_name, address, post_code, province, email, phone, network, pos_code,holding_code,tts_name, payee_code, holding_name, city_name, country_name, participating_tf, createdBy , modified_date , modified_time , payer_code , isServerRecord ) VALUES";
-
-						if(typeof(dealerData[i].data.holding_code) == "undefined" || dealerData[i].data.holding_code == null) {
-							dealerData[i].data.holding_code = "";
-						}
+						var insertQuery = "INSERT OR REPLACE INTO dealers(dealer_Id, dealer_name, address, post_code, province, email, phone, network, pos_code,tts_name, payee_code, holding_name, city_name, country_name, participating_tf, createdBy , modified_date , modified_time , payer_code , isServerRecord ) VALUES";
 
 						if(typeof(dealerData[i].data.tts_name) == "undefined" || dealerData[i].data.tts_name == null) {
 							dealerData[i].data.tts_name = "";
@@ -103,7 +116,7 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 						}
 
 						insertQuery += "('" + dealerData[i].getData().dealer_id + "','" + dealerData[i].getData().dealer_name + "','" + dealerData[i].getData().address + "','" + dealerData[i].getData().post_code + "','" + dealerData[i].getData().province + "','" +
-							dealerData[i].getData().email + "','" + dealerData[i].getData().phone + "','" + dealerData[i].getData().network + "','" + dealerData[i].getData().pos_code + "','" + dealerData[i].getData().holding_code + "','" + dealerData[i].getData().tts_name + "','" +
+							dealerData[i].getData().email + "','" + dealerData[i].getData().phone + "','" + dealerData[i].getData().network + "','" + dealerData[i].getData().pos_code + "','" + dealerData[i].getData().tts_name + "','" +
 							dealerData[i].getData().payee_code + "','" + dealerData[i].getData().holding_name + "','" + dealerData[i].getData().city_name + "','" + dealerData[i].getData().country_name + "','" + dealerData[i].getData().participant_TF + "','" +
 							dealerData[i].getData().createdBy + "','" + dealerData[i].getData().modified_date + "','" + dealerData[i].getData().modified_time + "','" + dealerData[i].getData().payer_code + "','" + 1 + "')";
 
@@ -188,6 +201,31 @@ angular.module('dealerAudit.syncManagerModuleDB', []).factory('syncManageDbfctry
 
 				$cordovaSQLite.execute(db, deleteQuery);
 				return true;
+			},
+
+			/**
+			 * @function insertQuestionnaireData
+			 * @description Insert Questionnaire data.
+			 */
+			insertQuestionnaireData: function(questionnaireData) {
+				logsFctry.logsDisplay('INFO', TagName, "Entered into the function insertQuestionnaireData");
+
+				for(var i = 0; i < questionnaireData.length; i++) {
+					var insertQuery = "INSERT OR REPLACE INTO question_master(question_text , header_text , sub_header_text , question_version , question_id , position_id ,template_id ,question_typ ,mandatory_field ,status ,minimum_value ,maximum_value ) VALUES";
+
+					insertQuery += "('" + questionnaireData[i].getData().question_text + "','" + questionnaireData[i].getData().header_text + "','" + questionnaireData[i].getData().sub_header_text + "','" + questionnaireData[i].getData().question_version + "','" + questionnaireData[i].getData().question_id + "','" +
+						questionnaireData[i].getData().position_id + "','" + questionnaireData[i].getData().template_id + "','" + questionnaireData[i].getData().question_typ + "','" + questionnaireData[i].getData().mandatory_field + "','" + questionnaireData[i].getData().status + "','" +
+						questionnaireData[i].getData().minimum_value + "','" + questionnaireData[i].getData().maximum_value + "')";
+
+					$cordovaSQLite.execute(db, insertQuery).then(function(res) {
+						insertQuery = "";
+						//console.log("insertQueryExecuteCount success response" + JSON.stringify(res));
+						logsFctry.logsDisplay('DEBUG', TagName, 'insertQueryExecuteCount success response');
+					}, function(error) {
+						console.log("insertQueryExecuteCount error response" + JSON.stringify(error));
+						logsFctry.logsDisplay('DEBUG', TagName, 'insertQueryExecuteCount error response');
+					});
+				}
 			},
 		}
 

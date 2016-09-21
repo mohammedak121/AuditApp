@@ -61,8 +61,8 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 	$scope.shouldShowTyreImage = false;
 	$scope.goPressedFlag = false;
 	// NOTE : This is used for development only. Should be commented for release.
-	// $scope.username = "advanced_user_be";
-	// $scope.password = "eCasing2016";
+	$scope.username = "testuser_audit_mobile_user";
+	$scope.password = "123456";
 
 	var isIPad = ionic.Platform.isIPad();
 
@@ -329,11 +329,19 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 						//syncModuleFactory.isFirstOnlineLoginOfTheDay().then(function(response) {
 						//if(response) {
 						// Sync dealer data.
-						syncModuleFactory.downloadDealerData().then(function(response) {
-							if(response) {
+						syncModuleFactory.downloadMasterData().then(function(response) {
+							if(response == (dealerAudit_ConstantsConst.success || dealerAudit_ConstantsConst.noContent)) {
+								// if(response) {
+
 								loginDbfctry.insertLastOnlineLoginDateForUser();
 								//passParameterFctry.setDealerSyncInformation(true);
 								//toastFctry.showToast("Dealers synced successfully");
+
+								// syncModuleFactory.downloadQuestionnaireData().then(function(response) {
+								// 	if(response == dealerAudit_ConstantsConst.success) {
+								// 		toastFctry.showToast("Questionnaire synced successfully");
+								// 	}
+								// })
 
 								$scope.handleSetPin();
 
