@@ -14,5 +14,6 @@ angular.module('dealerAudit.ModuleFileList', []).constant('dealerAudit_FileLists
 	searchDealerViewHtml: "dealerAudit/dealerOperations/searchDealer/searchDealerView.html",
 	modifyDealerViewHtml: "dealerAudit/dealerOperations/modifyDealer/modifyDealerView.html",
 	auditProgressView: "dealerAudit/dealerOperations/auditProgress/auditProgressView.html",
-	auditQuestionnaireView: "dealerAudit/dealerOperations/auditQuestionnaire/auditQuestionnaireView.html"
+	auditQuestionnaireView: "dealerAudit/dealerOperations/auditQuestionnaire/auditQuestionnaireView.html",
+	confirmDealerView: "dealerAudit/dealerOperations/confirmDealer/confirmDealerView.html"
 });

@@ -29,24 +29,26 @@ label{
     background-color: #E6E6E6;
     /* margin-top: -19%; */
     height: 1000px;
-    padding-top: 3%;
+    padding-top: 1.5%;
     position: fixed !important;
     width: 100%;
     overflow: hidden;
     top: 4%;
 }
-.headerSubheaderDiv{
 
-}
 .textAreaDiv{
   margin-top: 3%;
   background: transparent;
 }
+
+.numericDiv{
+  width: 30%;
+  background-color: white;  
+}
 .rightArrow{
-  width: 10px;
-  height: 16px;
-  position: fixed;
-  padding-top: 1%;
+  width: 20px;
+  height: 20px;  
+  margin-right: 1%;
 }
 .lblHeaderQuestionnaire{
   font-size: 19px;
@@ -109,8 +111,7 @@ label{
       //overflow: auto;
 }
 .item {
-
-  background-color: transparent;
+  background-color: transparent;  
 }
 .item-input textarea {
     width: 104%;
@@ -121,12 +122,6 @@ label{
   margin-bottom: -1%;
   margin-top: -1.4%;
   margin-left: -4.3%;
-}
-.scroll {
-
-    width: 100px;
-    height: 100px;
-    overflow: scroll;
 }
 .questionsIndicator{
   padding-bottom: 40%;
@@ -148,11 +143,59 @@ label{
   margin-top: -9%;
   position: fixed;
 }
-.numericDiv{
-  width: 45%;
-  background-color: white;
-  padding-right: 2%;
-}
-.unitsLabel{
 
+.toggle-small.item-toggle .toggle {
+    top: 5px;
+}
+
+.toggle-small input:checked + .track {
+    background: #1385CC;
+}
+
+.toggle input:checked + .track {
+    border-color: #1385CC;
+    background-color: #1385CC;
+}
+
+.toggle-small input:checked + .track .handle{
+  background: #1385CC;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.ionItemClass{
+  border : none !important;
+}
+
+.item-toggle{
+  border: transparent;
+  padding-right: 62px;
+}
+
+.toggleDiv{
+  width : 0%;  
+}
+
+.dateStyleQuestionnaire{
+  height: 30px;
+  width: 30px;
+  margin-left: 81%;
+  margin-top: -6%;
+  position: fixed;
+}
+
+.multipleChoiceDiv{
+  border : none !important;
+}
+
+.checkBoxLabelStyle{
+  border : transparent !important;
 }

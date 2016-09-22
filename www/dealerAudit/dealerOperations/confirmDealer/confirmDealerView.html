@@ -1,0 +1,79 @@
+<!--
+Filename : confirmDealerView.html
+Project :dealerAudit
+Language : HTML
+Framework: Ionic
+Author : shabana S
+Date of creation : 21-09-2016
+Description : This Provides the design for showing the confirmation of dealer audit.
+-->
+
+
+<ion-nav-view>
+  <ion-header-bar class="bar bar-header headerBar" align-title="center">
+
+    <h1 class="title confirmDealer" >Audit in Progress</h1>
+    <!--Header Bar Title  -->
+  </ion-header-bar>
+  <ion-content has-footer="true" class="SettingsPageBg" scroll="true">
+    <div class="progressDiv">
+
+      <label class="lblSelectDealerConfirm">{{'lblSelectDealer'|translate}}</label>
+      <label class="lblConfirmDealerConfirm">{{'lblConfirmDealer'|translate}}</label>
+      <label class="lblSubmitAudit">{{'lblSubmitAudit'|translate}}</label>
+      <img ng-src={{confirmDealerNavigationIcon}} />
+
+    </div>
+    <div class="dealerSelectedLabel">
+        <label class="labelStyle">{{'lbldealerSelectedLabel'|translate}}</label>
+    </div>
+
+    <div class="dealerList">
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblDealerName'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblEmail'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblPhone'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblNetwork'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblDealerAddress'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblZipCode'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblDealerCountry'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblDealerCity'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblHoldingName'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblPayerCode'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblDealerPOSCode'|translate}}</label>
+      </div>
+      <div>
+          <label class="confrmDealerLabelStyle">{{'lblTTS'|translate}}</label>
+      </div>
+    </div>
+  </ion-content>
+  <div>
+      <!--footer Section start -->
+      <!-- <ion-footer-bar ng-show="buttonVisibility" style="position:fixed;" class="bar bar-footer footerstyle footerStyleDashBoard"> -->
+      <div class="footerDiv">
+
+          <button class="backButtonQuestionnaire" >Back</button>
+          <button class="nextButtonQuestionnaire" >Confirm</button>
+      </div>
+  </div>
+</ion-nav-view>

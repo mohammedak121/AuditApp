@@ -46,7 +46,7 @@
 //dealerAudit_ConstantsConst: Its an dependency to access the constants defined globally
 
 var dealerAudit =
-	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule', 'dealerAudit.auditQuestionnaireControllers', 'dealerAudit.AuditQuestionnaireModuleDB'])
+	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule', 'dealerAudit.auditQuestionnaireControllers', 'dealerAudit.AuditQuestionnaireModuleDB','dealerAudit.confirmDealerControllers'])
 	.run(function($ionicPlatform, $ionicPopup, $state, $cordovaSQLite, $rootScope, $location, $interval, broadcast, $filter, settingsDbfctry, dealerAudit_ConstantsConst, syncModuleFactory, toastFctry, modifyDealerDbFactory, loginDbfctry, logsFctry) {
 		/**
 		 * Basic ready configuration includes disabling default functionalities such as hidding accessorybar and handling keyboards
@@ -467,6 +467,13 @@ var dealerAudit =
 			controller: "AuditQuestionnaireController"
 		})
 
+		//State Provider for confirm dealer screen.
+		.state('confirmDealer', {
+			cache: false,
+			url: "/confirmDealer",
+			templateUrl: dealerAudit_FileListsConst.confirmDealerView,
+			controller: "confirmDealerController"
+		})
 		$urlRouterProvider.otherwise('/Login');
 
 	});

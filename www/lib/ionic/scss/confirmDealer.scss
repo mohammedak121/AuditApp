@@ -1,0 +1,62 @@
+.confirmDealer{
+  top: 15% !important;
+}
+.selectedDealer{
+  height: 70px;
+  width: 100%;
+  background-color: grey;
+}
+.selectedDealerLabel{
+  margin-left: 30%;
+  margin-top: 11%;
+}
+.backButtonDealer{
+  margin-top: 2%;
+    width: 50%;
+    margin-left: 6%;
+
+    display: inline;
+}
+.confirmButton{
+  width: 147%;
+    background-color: blue;
+    margin-left: 159%;
+    margin-top: -31%;
+
+}
+.backButtonTextStyle{
+  color: blue;
+  border-color: transparent;
+  background: none;
+}
+.confirmButtonTextStyle{
+      margin-top: 5%;
+      color: #ffffff;
+      border-color: transparent;
+      background: none;
+}
+.lblSelectDealerConfirm{
+  margin-top: 5%;
+  margin-left: 7%;
+  margin-right: 11%;
+  margin-bottom: 2%;
+}
+.lblConfirmDealerConfirm{
+  margin-right: 12%;
+  color: #1385CC;
+}
+.dealerSelectedLabel{
+  text-align: center;
+}
+.labelStyle{
+  font-size: 18px;
+  font-weight: 400;
+  color: #000000;
+}
+.confrmDealerLabelStyle{
+  margin-left: 5%;
+  margin-top: 2% !important;
+  font-size: 17px;
+  font-family: "HelveticaNeue";
+  color: grey;
+}

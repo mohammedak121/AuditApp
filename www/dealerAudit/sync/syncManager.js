@@ -197,6 +197,56 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 			});
 		},
 
+
+
+		/**
+		 * @function updateDealerData
+		 * @description Fucntion to update dealer information from Halomem.
+		 */
+		updateDealerData: function(dealerData) {
+			//var dealerData = [];
+			// var dealer_id= $rootScope.dealerData.dealer_id;
+			logsFctry.logsDisplay('INFO', TagName, 'Entered into function updateDealerData');
+
+		    	$rootScope.session.getClientObjectType("dealers").then(function(clientObjectType){
+						console.log("Client object type acquired.");
+						console.log("Creating/updating data ...");
+
+
+							clientObjectType.get(dealerData.dealer_id).then(function(response) {
+								console.log('response inside update==>'+JSON.stringify(response));
+
+								console.log('dealerData ==>'+JSON.stringify(dealerData));
+								response.update(dealerData).then(function(success){
+									if(success){
+
+										console.log("Dealer information Could updated" + success);
+									}
+									else{
+
+
+										console.log("Dealer information Could not be updated" + success);
+									}
+								},
+								function(error){
+
+									console.log("Update dealer information failed " + JSON.stringify(error));
+								})
+							},
+						function(error)
+						{
+							//$rootScope.shouldShowTyre = false;
+							console.log("Could not get the client obejct" + JSON.stringify(error));
+						});
+
+					},
+					function(error){
+						//$rootScope.shouldShowTyre = false;
+						console.log("Could not get the client obejct" + JSON.stringify(error));
+					})
+
+		},
+
 		/**
 		 * @function isFirstOnlineLoginOfTheDay
 		 * @description fucntion to check whether it is first login of the calendar day

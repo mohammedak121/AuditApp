@@ -27,7 +27,7 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 			var failureTitle = "Error";
 			var failureMessage = "There is some problem with the connection. Please try again.";
 
-			if(errorCode) {
+			if(errorCode.toString().length) {
 				switch(errorCode) {
 					case 0:
 					case 5:
@@ -69,7 +69,8 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 
 					case 504:
 						failureTitle = "Server Error";
-						failureMessage = "Please try again.";
+						failureMessage = "Server did not repond due to internal error.";
+						break;
 
 					default:
 						failureTitle = "Error";

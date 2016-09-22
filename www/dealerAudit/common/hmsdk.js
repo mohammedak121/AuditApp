@@ -592,7 +592,7 @@ var EError = (function () {
                     }
             };
 
-                
+
         }
 
 
@@ -647,10 +647,24 @@ ExceptionHandler.submitCrashLogs = function(zipFile){
                     reject(error);
                 });
         },function(error){
-
+            console.log(error);
         });
     });
 };
+
+/**
+ * Created by pradeep.kp on 03-05-2016.
+ */
+var EPollType = {
+    "TRUE_FALSE": "TRUE_FALSE" ,
+    "NUMERIC_RATING" : "NUMERIC_RATING",
+    "SINGLE_CHOICE_TEXT" : "SINGLE_CHOICE_TEXT",
+    "MULTI_CHOICE_TEXT" : "MULTI_CHOICE_TEXT",
+    "SINGLE_CHOICE_IMAGE" : "SINGLE_CHOICE_IMAGE",
+    "MULTI_CHOICE_IMAGE" : "MULTI_CHOICE_IMAGE",
+    "WORD_CLOUD" : "WORD_CLOUD"
+};
+
 
 function Constants()
 {
@@ -772,7 +786,7 @@ Constants.getPollUrl = function() {
 
 Constants.getPollResultsUrl = function(pollTitle) {
 
-	return "client-api/api/polls/" + pollTitle + "/results";
+	return "client-api/api/polls/" + encodeURIComponent(pollTitle) + "/results";
 };
 
 Constants.getAnnouncementUrl = function() {
@@ -831,7 +845,11 @@ Constants.getFunctionUrl = function(functionName){
 	return "client-api/api/function/" + functionName;
 };
 
-/*  
+Constants.getPasswordResetUrl = function(){
+	return "client-api/api/users/reset_password";
+};
+
+/*
  *  Object Class EEoperator
  */
 var FilterStatement = (function () {
@@ -840,11 +858,11 @@ var FilterStatement = (function () {
 
 		function init(filterString) {
 
-			
+
 			var operator = filterString;
 			var alias = formatToString(filterString);
 
-			this.ISNULL             = 0;//"null"; 
+			this.ISNULL             = 0;//"null";
 			this.NOT_NULL           = 1;//"notnull";
 			this.EQUALS             = 2;//"eq";
 			this.NOT_EQUALS         = 3;//"ne";
@@ -877,7 +895,7 @@ var FilterStatement = (function () {
 
 				return operator;
 			};
-				
+
 		}
 
 
@@ -906,7 +924,7 @@ var FilterStatement = (function () {
 
 })();
 
-/*  
+/*
  *  Object Class For FieldMetadata
  */
 function FieldMetadata(schemaDictionary)
@@ -1001,7 +1019,7 @@ function FieldMetadata(schemaDictionary)
     };
 }
 
-/*  
+/*
 *  Object Class For Filter Statement
 */
 function FilterStatement(_field, _operator, _value) {
@@ -1049,7 +1067,7 @@ function FilterStatement(_field, _operator, _value) {
 	};
 }
 
-FilterStatement.ISNULL				="null"; 
+FilterStatement.ISNULL				="null";
 FilterStatement.NOT_NULL			="notnull";
 FilterStatement.EQUALS				="eq";
 FilterStatement.NOT_EQUALS			="ne";
@@ -1080,7 +1098,7 @@ FilterStatement.LESS_THAN_EQUAL		="le";
 
 				return value;
 			};
-				
+
 		}
 
 
@@ -1097,16 +1115,16 @@ FilterStatement.LESS_THAN_EQUAL		="le";
 
 				var instance = init(field, operator, value);
 
-				return instance;			
+				return instance;
 			}
 		};
 
 })();*/
 
-/*  
+/*
  *  Object Class For Application
  */
- /*  
+ /*
 *  Object Class For Application Using Function Prototyping
 */
 function IApplication(dataDictionary)
@@ -1129,7 +1147,7 @@ function IApplication(dataDictionary)
     this.downloadDate = null;
     this.bundleVersion = null;
     this.categories = null;
-    
+
     this.passcodeRequired = null;
     this.allowRootedAccess = null;
     this.allowSaveCredential = null;
@@ -1288,18 +1306,18 @@ function IApplication(dataDictionary)
 
 	this.getAppIcon = function () {
 
-		return new Promise(function(resolve, reject) 
+		return new Promise(function(resolve, reject)
 		{
 			HM_Log("get app icon called");
 
 			var url = self.getIconUrl();
 
 			HM_HTTPRequest(url, "GET", null, null).then(
-			function(response) 
-			{				
+			function(response)
+			{
 				resolve(data);
 			},
-			function(response) 
+			function(response)
 			{
 				reject(response);
 			});
@@ -1463,7 +1481,7 @@ function IClientObject(clientObjectType, clientObjectData) {
 	this.id = null;
 	this.data = null;
 	this.type = null;
-	
+
 	if(clientObjectData.ETag)
 		this.ETag = parseInt(clientObjectData.ETag.replace(/"/g, ''));
 
@@ -1496,9 +1514,9 @@ function IClientObject(clientObjectType, clientObjectData) {
 			switch(operationType) {
 
 				case self.HMOperationType_UPDATE :	// Check if all required fields are passed
-													for(var requiredCountUpdate = 0; requiredCountUpdate < self.type.requiredFields.length; requiredCountUpdate++) {
+													for(var requiredCountUpdate = 0; requiredCountUpdate < params.length; requiredCountUpdate++) {
 
-														var fieldNameUpdate = self.type.requiredFields[requiredCountUpdate];
+														var fieldNameUpdate = self.type.requiredFields[params[requiredCountUpdate]];
 														var requiredMetadataUpdate = self.type.schemaMap[fieldNameUpdate];
 
 														//validation for field whether they are updateable or not
@@ -1566,7 +1584,7 @@ function IClientObject(clientObjectType, clientObjectData) {
 				var toSend  = "";
 
 				var formData = new FormData();
-
+                var paramsAdded = false;
 				for(var key in object){
 					if(key === "ETag"){
 						//do nothing
@@ -1580,17 +1598,32 @@ function IClientObject(clientObjectType, clientObjectData) {
 								formData.append(key, object[key]);
 						}
 						else{
-								if(object[key] !== null && typeof object[key] === 'object')
-								{
-									if(JSON.stringify(object[key]).indexOf("&") == -1)
-										data = data + "&" + key + "=" + JSON.stringify(object[key]);
-									else
-										data = data + "&" + key + "=" + JSON.stringify(object[key]).replace(/&/g,'%26');
-								}
-								else
-								{
+                            if(!paramsAdded){
+                                if(object[key] !== null && typeof object[key] === 'object')
+                                {
+                                    if(JSON.stringify(object[key]).indexOf("&") == -1)
+                                        data = key + "=" + JSON.stringify(object[key]);
+                                    else
+                                        data = key + "=" + JSON.stringify(object[key]).replace(/&/g,'%26');
+                                }
+                                else
+                                {
+                                    data = key + "=" + encodeURIComponent(object[key]);
+                                }
+                                paramsAdded = true;
+                            }else{
+                                if(object[key] !== null && typeof object[key] === 'object')
+                                {
+                                    if(JSON.stringify(object[key]).indexOf("&") == -1)
+                                        data = data + "&" + key + "=" + JSON.stringify(object[key]);
+                                    else
+                                        data = data + "&" + key + "=" + JSON.stringify(object[key]).replace(/&/g,'%26');
+                                }
+                                else
+                                {
                                     data = data + "&" + key + "=" + encodeURIComponent(object[key]);
-								}
+                                }
+                            }
 						}
 					}
 				}
@@ -1610,7 +1643,7 @@ function IClientObject(clientObjectType, clientObjectData) {
 					else{
 						headers = {"Content-type":"application/x-www-form-urlencoded", "Accept":"application/json", "Authorization":"Bearer " + token};
 					}
-					
+
 					toSend = data;
 				}else {
 
@@ -1658,10 +1691,10 @@ function IClientObject(clientObjectType, clientObjectData) {
 			function(){
 
 				reject(response);
-			});			
+			});
 		});
 
-	}	
+	}
 	function genericDelete(url, session) {
 
 		return new Promise(function(resolve, reject) {
@@ -1698,15 +1731,15 @@ function IClientObject(clientObjectType, clientObjectData) {
 						return;
 				}
 			}
-			
+
 			session.getAuthToken().then(
 			function(token){
 
 				var method  = "DELETE";
 				var headers = {};
-				
+
 				headers = {"Accept":"application/json", "Authorization":"Bearer " + token};
-				
+
 				HM_HTTPRequest(url, method, headers).then(
 				function(response) {
 
@@ -1715,15 +1748,15 @@ function IClientObject(clientObjectType, clientObjectData) {
 				function(response) {
 
 					reject(response);
-				});	
+				});
 
 			},
 			function(){
 
 				reject(response);
-			});			
+			});
 		});
-	}	
+	}
 	function checkConditions(checkSchema) {
 
 		return new Promise(function(resolve, reject) {
@@ -1745,7 +1778,7 @@ function IClientObject(clientObjectType, clientObjectData) {
 			function(response) {
 
 				reject(response);
-			});			
+			});
 		});
 	}
 	function privateUpdate(clientObjectName, object, session) {
@@ -1761,9 +1794,9 @@ function IClientObject(clientObjectType, clientObjectData) {
 			function(response) {
 
 				reject(response);
-			});					
+			});
 		});
-	}	
+	}
 	function privateDelete(clientObjectName, id, session) {
 
 		return new Promise(function(resolve, reject) {
@@ -1777,9 +1810,9 @@ function IClientObject(clientObjectType, clientObjectData) {
 			function(response) {
 
 				reject(response);
-			});					
+			});
 		});
-	}		
+	}
 	// Private Functions
 
 	// Public Functions
@@ -1796,7 +1829,7 @@ function IClientObject(clientObjectType, clientObjectData) {
 
 					reject(response);
 				});
-		});	
+		});
 	};
 	this.getId = function() {
 
@@ -1876,7 +1909,7 @@ function IClientObject(clientObjectType, clientObjectData) {
 
 					reject(response);
 				});
-				
+
 			},
 			function(response) {
 
@@ -1886,7 +1919,7 @@ function IClientObject(clientObjectType, clientObjectData) {
     };
 }
 
-/*  
+/*
  *  Object Class For IClientObjectType
  */
 function IClientObjectType(objectName, schemaArray, clientObject)
@@ -1902,11 +1935,11 @@ function IClientObjectType(objectName, schemaArray, clientObject)
     this.fileFields = [];
     this.isIdentityObject = null;
 
-    this.enableCreate = clientObject && clientObject.enable_create ? clientObject.enable_create : false;
-    this.enableUpdate = clientObject && clientObject.enable_update ? clientObject.enable_update : false;
-    this.enableDelete = clientObject && clientObject.enable_delete ? clientObject.enable_delete : false;
-    this.enableOfflineWrite = clientObject && clientObject.enable_offline_write ? clientObject.enable_offline_write : false;
-    this.enableOptimisticLocking = clientObject && clientObject.enable_optimistic_locking ? clientObject.enable_optimistic_locking : false;
+    this.enable_create = clientObject && clientObject.enable_create ? clientObject.enable_create : false;
+    this.enable_update = clientObject && clientObject.enable_update ? clientObject.enable_update : false;
+    this.enable_delete = clientObject && clientObject.enable_delete ? clientObject.enable_delete : false;
+    this.enable_offline_write = clientObject && clientObject.enable_offline_write ? clientObject.enable_offline_write : false;
+    this.enable_optimistic_locking = clientObject && clientObject.enable_optimistic_locking ? clientObject.enable_optimistic_locking : false;
 
     this.schemaMap = {};
 
@@ -2542,10 +2575,10 @@ function IClientObjectType(objectName, schemaArray, clientObject)
                                 for(var key in filterParams) {
 
                                     if(paramsAdded == 1)
-                                        url = url + "&" + key + "=" + filterParams[key];
+                                        url = url + "&" + key + "=" + encodeURIComponent(filterParams[key]);
                                     else {
 
-                                        url = url + key + "=" + filterParams[key];
+                                        url = url + key + "=" + encodeURIComponent(filterParams[key]);
                                         paramsAdded = 1;
                                     }
 
@@ -3013,7 +3046,12 @@ function IClientObjectType(objectName, schemaArray, clientObject)
                             url = url + "?" + query;
                             HM_HTTPRequest(url,method,headers,null,true).then(
                                 function(response){
-                                    resolve(response.headers['Content-Length']);
+                                    if(response.headers['Content-Length'] !== undefined && response.headers['Content-Length'] !== null){
+                                        resolve(response.headers['Content-Length']);
+                                    }
+                                    else{
+                                       resolve(0);
+                                    }
                                 },
                                 function(error) {
                                     reject(error);
@@ -3263,7 +3301,18 @@ function IPoll(poll, answered){
                                     paramToPush = "";
                                 }
                             }
-                            var choiceIds = "poll_choice_id=" + pollChoiceIds;
+                            var choiceIds = "";
+                            var choicesAdded = 0;
+                            for(var k = 0 ; k < pollChoiceIds.length ; k++){
+                                if(choicesAdded === 0){
+                                    choiceIds = choiceIds + "poll_choice_id=" + pollChoiceIds[k];
+                                    choicesAdded = 1;
+                                }
+                                else{
+                                    choiceIds = choiceIds + "&poll_choice_id=" + pollChoiceIds[k];
+                                }
+                            }
+
                             if(paramAdded === 0){
                                 params = choiceIds;
                                 paramAdded = 1;
@@ -3540,7 +3589,9 @@ function IPoll(poll, answered){
 
             if(self.choices.length !== 0){
                 for(var i = 0 ; i < self.choices.length; i++){
-                    deletePollchoice(self.choices[i].poll_choice_id);
+                    if(self.choices[i].poll_choice_id !== undefined && self.choices[i].poll_choice_id !== null && self.choices[i].poll_choice_id !== ""){
+                        deletePollchoice(self.choices[i].poll_choice_id);
+                    }
                 }
             }
             ISession.getInstance().then(
@@ -3556,7 +3607,7 @@ function IPoll(poll, answered){
                             data.append("end_date",endDate.toISOString());
                             data.append("type",pollType);
 
-                            if(choices.length === 0){
+                            if((choices === null || choices.length === 0) && (words === null || words === undefined)){
                                 HM_HTTPRequest(url, method, headers, data, null).then(
                                     function(response)
                                     {
@@ -3673,7 +3724,7 @@ function IPollChoice(poll, choice) {
     };
 
     this.getId = function () {
-        return self.id;
+        return self.poll_choice_id;
     };
 
     this.getWordCloudResponse = function(){
@@ -4298,6 +4349,9 @@ var ISession = function (storedObject) {
                     if(!(model === null || model === ""  || model === undefined))
                         data = data + "&model=" + model;
 
+                    if(!(phoneNo === null || phoneNo === ""  || phoneNo === undefined))
+                        data = data + "&phone_number=" + phoneNo;
+
                     if(!(device_uid === null || device_uid === "" || device_uid === undefined)){
                         data = data + "&device_uid=" + device_uid;
                     }
@@ -4459,10 +4513,11 @@ var ISession = function (storedObject) {
             if(self.clientObjectTypes.length !== 0){
                 var returnObject;
                 for(var i=0; i < self.clientObjectTypes.length; i++) {
-                    var oneObject = new IClientObjectType(self.clientObjectTypes[i].name,self.clientObjectTypes[i].schema,self.clientObjectTypes[i]);
+                    var oneObject = self.clientObjectTypes[i];
+                    var clientObjectType = new IClientObjectType(oneObject.name, oneObject.storeSchemaArray, oneObject);
 
-                    if(oneObject.getName() === name) {
-                        returnObject = oneObject;
+                    if(clientObjectType.getName() === name) {
+                        returnObject = clientObjectType;
                         found = true;
                         break;
                     }
@@ -4644,6 +4699,7 @@ var ISession = function (storedObject) {
                         };
                     }else{
                         reject(error.getErrorObject(error.INVALID_INPUT, ["content Type should be 'url-encoded' or 'json'"]));
+                        return;
                     }
 
                     if(parameters)
@@ -5018,8 +5074,8 @@ var ISession = function (storedObject) {
                             "Accept":"application/json",
                             "Authorization":"Bearer " + token};
                         data = data + "title=" + encodeURIComponent(pollTitle);
-                        data = data + "&start_date=" + startDate;
-                        data = data + "&end_date=" + endDate;
+                        data = data + "&start_date=" + startDate.toISOString();
+                        data = data + "&end_date=" + endDate.toISOString();
                         data = data + "&type=" + pollType;
 
                         HM_HTTPRequest(url, method, headers, data, null).then(
@@ -5075,6 +5131,41 @@ var ISession = function (storedObject) {
                 }
             }
             resolve(createObjectArray,updateObjectArray,deleteObjectArray);
+        });
+    };
+
+    this.recoverpassword = function (username) {
+
+        return new Promise(function(resolve, reject) {
+
+            ISession.getInstance().then(
+                function(token) {
+
+                    if(!username)
+                        reject(error.getErrorObject(error.MISSING_INPUT, ["User Name or Email"]));
+
+                    var url     = Constants.getUrl() + Constants.getPasswordResetUrl();
+                    var method  = "POST";
+                    var headers = {"Content-type":"application/x-www-form-urlencoded", "Accept":"application/json", "Authorization":"Bearer " + token};
+                    var data    = "";
+
+                    data = data + "username=" + username;
+
+                    HM_HTTPRequest(url, method, headers, data).then(
+                        function(response) {
+
+                            resolve(response.data);
+                        },
+                        function(response) {
+
+                            reject(response);
+                        });
+
+                },
+                function(response) {
+
+                    reject(response);
+                });
         });
     };
     // Public Functions
@@ -5137,7 +5228,7 @@ ISession.getInstance = function ()
     });
 };
 
-/*  
+/*
  *  Object Class For User
  */
 function IUser(email, first_name, last_name, phone_number,notification_token)
@@ -5163,7 +5254,7 @@ function IUser(email, first_name, last_name, phone_number,notification_token)
 
 	if(phone_number)
 		phoneNumber = phone_number;
-		
+
 	if(notification_token)
 		notificationToken = notification_token;
 
@@ -5188,7 +5279,7 @@ function IUser(email, first_name, last_name, phone_number,notification_token)
 			function(response) {
 
 				reject(response);
-			});			
+			});
 		});
 	}
 
@@ -5266,7 +5357,7 @@ function IUser(email, first_name, last_name, phone_number,notification_token)
 
 					reject(response);
 				});
-				
+
 			},
 			function(response) {
 
@@ -5274,44 +5365,9 @@ function IUser(email, first_name, last_name, phone_number,notification_token)
 			});
 		});
 	};
-	this.recoverpassword = function (email) {
-
-		return new Promise(function(resolve, reject) {
-
-			checkConditions().then(
-			function(token) {
-
-				if(!email)
-					reject(error.getErrorObject(error.MISSING_INPUT, ["Email"]));
-
-				var url     = Constants.getUrl() + Constants.getUserUpdateURL();
-				var method  = "POST";
-				var headers = {"Content-type":"application/x-www-form-urlencoded", "Accept":"application/json", "Authorization":"Bearer " + token};
-				var data    = "";
-
-				data = data + "username=" + email;
-
-				HM_HTTPRequest(url, method, headers, data).then(
-				function(response) {
-
-					resolve(response.data);
-				},
-				function(response) {
-
-					reject(response);
-				});
-				
-			},
-			function(response) {
-
-				reject(response);
-			});
-		});		
-	};
-
 }
 
-/*  
+/*
  *  Object Class For User
  */
 function Policy(locked, remoteWipe, passcodeRequired, allowRootedAccess, registrationMode)
@@ -5394,19 +5450,19 @@ DEALINGS IN THE SOFTWARE.
     function now() {
         return new Date().getTime();
     }
-    
+
     function someNumber() {
         return Math.random() * 1000000000 | 0;
     }
 
     var myId = now() + ":" + someNumber();
-        
+
     function getter(lskey) {
         return function () {
             var value = localStorage[lskey];
             if (!value)
                 return null;
-            
+
             var splitted = value.split(/\|/);
             if (parseInt(splitted[1]) < now()) {
                 return null;
@@ -5414,7 +5470,7 @@ DEALINGS IN THE SOFTWARE.
             return splitted[0];
         }
     }
-    
+
     function _mutexTransaction(key, callback, synchronous) {
         var xKey = key + "__MUTEX_x",
             yKey = key + "__MUTEX_y",
@@ -5427,7 +5483,7 @@ DEALINGS IN THE SOFTWARE.
                 localStorage.removeItem(yKey);
             }
         }
-        
+
         localStorage[xKey] = myId;
         if (getY()) {
             if (!synchronous)
@@ -5435,7 +5491,7 @@ DEALINGS IN THE SOFTWARE.
             return false;
         }
         localStorage[yKey] = myId + "|" + (now() + 40);
-        
+
         if (localStorage[xKey] !== myId) {
             if (!synchronous) {
                 setTimeout(function () {
@@ -5452,25 +5508,25 @@ DEALINGS IN THE SOFTWARE.
             return true;
         }
     }
-    
+
     function lockImpl(key, callback, maxDuration, synchronous) {
 
         maxDuration = maxDuration || 5000;
-        
+
         var mutexKey = key + "__MUTEX",
             getMutex = getter(mutexKey),
             mutexValue = myId + ":" + someNumber() + "|" + (now() + maxDuration);
-            
+
         function restart () {
             setTimeout(function () { lockImpl(key, callback, maxDuration); }, 10);
         }
-        
+
         if (getMutex()) {
             if (!synchronous)
                 restart();
             return false;
         }
-        
+
         var aquiredSynchronously = _mutexTransaction(key, function () {
             if (getMutex()) {
                 if (!synchronous)
@@ -5481,7 +5537,7 @@ DEALINGS IN THE SOFTWARE.
             if (!synchronous)
                 setTimeout(mutexAquired, 0)
         }, synchronous);
-        
+
         if (synchronous && aquiredSynchronously) {
             mutexAquired();
             return true;
@@ -5494,14 +5550,14 @@ DEALINGS IN THE SOFTWARE.
                 _mutexTransaction(key, function () {
                     if (localStorage[mutexKey] !== mutexValue)
                         throw key + " was locked by a different process while I held the lock"
-                
+
                     localStorage.removeItem(mutexKey);
                 });
             }
         }
-        
+
     }
-    
+
     window.LockableStorage = {
         lock: function (key, callback, maxDuration) { lockImpl(key, callback, maxDuration, false) },
         trySyncLock: function (key, callback, maxDuration) { return lockImpl(key, callback, maxDuration, true) }

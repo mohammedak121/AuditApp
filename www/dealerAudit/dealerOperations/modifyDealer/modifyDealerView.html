@@ -23,13 +23,13 @@ Description : This Provides the design for creating/updating dealer information.
 
     <ion-content has-footer="true" class="SettingsPageBg" scroll="true">
         <div class="addDealerScreenDiv">
-          <form name="dealerForm" id="dealerForm" >            
-            
+          <form name="dealerForm" id="dealerForm" >
+
             <div ng-class="((dealerForm.companyname.$touched && dealerForm.companyname.$invalid) || dealerErrorMsg.companyNameErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblCompanyName'|translate}}</label>
-                <input id="companyName" name="companyName" type="text" class="dealerInputStyle"  ng-model="dealerData.dealer_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
+                <input id="companyName" name="companyName" type="text" class="dealerInputStyle" ng-disabled="companyName" ng-model="dealerData.dealer_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} required>
 
-            </div>            
+            </div>
             <p class="validationErrorText" ng-if="((dealerForm.companyname.$touched && dealerForm.companyname.$invalid) || dealerErrorMsg.companyNameErr)">{{companyNameError}}</p>
 
             <div ng-class="((dealerForm.email.$error.email || dealerForm.email.$error.pattern)) ? 'row InputStyleError' : 'row InputStyle'">
@@ -47,14 +47,20 @@ Description : This Provides the design for creating/updating dealer information.
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblNetwork'|translate}}</label>
                 <!-- <input id="network" name="network"  type="text" class="dealerInputStyle"  ng-model="dealerData.network"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}> -->
-                <div class="networkDropDown" ng-model="dealerData.network" id="selectNetwork"
+                <!-- <div class="networkDropDown"   id="selectNetwork"
                   dropdown-select="networkOptions"
                   dropdown-model="networkSelected"
                   dropdown-item-label="text"
-                  dropdown-onchange="setNetwork(selected)">        				
-                </div>   
+                  dropdown-onchange="setNetwork(selected)">
+                </div> -->
+
+                <div class="networkDropDown" id="selectNetwork" dropdown-select="networkOptions"
+        				dropdown-model="networkSelected"
+        				dropdown-item-label="text"
+        				dropdown-onchange="setNetwork(selected)">
+        			    </div>
             </div>
-            
+
             <div ng-class="((dealerForm.address.$touched && dealerForm.address.$invalid) || dealerErrorMsg.addressErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblAddress'|translate}}</label>
                 <input id="address" name="address" type="text" class="dealerInputStyle"  ng-model="dealerData.address"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" required>
@@ -69,7 +75,7 @@ Description : This Provides the design for creating/updating dealer information.
 
             <div ng-class="((dealerForm.country.$touched && dealerForm.country.$invalid) || dealerErrorMsg.countryErr) ? 'row InputStyleError' : 'row InputStyle'">
                 <label class="DealerLabelStyle">{{'lblCountry'|translate}}</label>
-                <input id="country" name="country" type="text" placeholder="" class="dealerInputStyle"  ng-model="dealerData.country_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleregion disabletap required>
+                <input id="country" name="country" type="text" placeholder="" class="dealerInputStyle" ng-disabled="country" ng-model="dealerData.country_name"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} googleregion disabletap required>
             </div>
             <p class="validationErrorText" ng-if="((dealerForm.country.$touched && dealerForm.country.$invalid) || dealerErrorMsg.countryErr)">{{countryError}}</p>
 
@@ -96,7 +102,7 @@ Description : This Provides the design for creating/updating dealer information.
                 <input id="posCode" name="posCode"  type="text" class="dealerInputStyle" ng-model="dealerData.pos_code" ng-change="fosCodeTextChange(dealerData.pos_code)" ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}} ng-required="!fosVendorCodeUnknown" ng-disabled="fosCodeDisabled">
             </div>
             <p class="validationErrorText" ng-if="(((dealerForm.posCode.$touched && dealerForm.posCode.$invalid ) || dealerErrorMsg.posCodeErr) && !fosVendorCodeMandate)">{{posCodeError}}</p>
-            
+
             <ion-checkbox ng-model="fosVendorCodeUnknown" ng-change="fosVendorCodeUnknownCheck()" class="checkBoxClass" ng-disabled="isCheckBoxDisabled">FOS code unknown</ion-checkbox>
 
             <!-- <div class="row InputStyle">
@@ -105,8 +111,8 @@ Description : This Provides the design for creating/updating dealer information.
                   dropdown-select="participantOptions"
         				  dropdown-model="participantSelected"
         				  dropdown-item-label="text"
-                  dropdown-onchange="setParticipant(selected)">        				
-        			  </div>                
+                  dropdown-onchange="setParticipant(selected)">
+        			  </div>
             </div> -->
             <!-- <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblTAM'|translate}}</label>
@@ -134,14 +140,14 @@ Description : This Provides the design for creating/updating dealer information.
             <div class="row InputStyle">
                 <label class="DealerLabelStyle">{{'lblauditDoneBy'|translate}}</label>
                 <input id="auditDoneBy" name="auditDoneBy"  type="text" class="dealerInputStyle"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
-            </div> -->            
+            </div> -->
             <div ng-init="setForm(dealerForm)"></div>
           </form>
         </div>
     </ion-content>
     <div >
         <!--footer Section start -->
-        <ion-footer-bar ng-show="buttonVisibility" style="position:fixed;" class="bar bar-footer footerstyle footerStyleDashBoard">
+        <ion-footer-bar  style="position:fixed;" class="bar bar-footer footerstyle footerStyleDashBoard">
             <button class="buttonTextStyle" ng-click="saveDealerInformation()">Submit & Start Audit</button>
         </ion-footer-bar>
     </div>

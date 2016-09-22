@@ -29,6 +29,8 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		$scope.fosVendorCodeUnknown = false;
 		$scope.fosCodeDisabled = false;
 		$scope.isCheckBoxDisabled = false;
+		$scope.companyName = false;
+		$scope.country = false;
 
 		// Translation labels
 		$scope.yesLabel = $filter('translate')('lblYes');
@@ -100,9 +102,9 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		}];
 
 		// NEtwork dropdown default value.
-		$scope.networkSelected = [{
-			text: "Please select"
-		}];
+		$scope.networkSelected = {
+			text: " "
+		};
 
 		logsFctry.logsDisplay('INFO', $scope.TagName, 'Entered into ModifyDealerController');
 
@@ -194,14 +196,24 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 
 				var dealerInfo = passParameterFctry.getDealerInformation();
 				console.log("Dealer information : " + JSON.stringify(dealerInfo));
+				if(typeof(dealerInfo.network)== "undefined" || dealerInfo.network== "" ||  dealerInfo.network==null)	{
+					$scope.networkSelected.text ="Please Select"
+				}else{
+					$scope.networkSelected.text =dealerInfo.network;
+				}
 
 				$scope.dealerTitle = editDealerTitle;
+				$scope.companyName = true;
+				$scope.country = true;
 
 				$scope.dealerData = {
+					dealer_id: (typeof(dealerInfo.dealer_id) == "undefined" || dealerInfo.dealer_id == null) ? "" : dealerInfo.dealer_id,
 					dealer_name: (typeof(dealerInfo.dealer_name) == "undefined" || dealerInfo.dealer_name == null) ? "" : dealerInfo.dealer_name,
 					email: (typeof(dealerInfo.email) == "undefined" || dealerInfo.email == null) ? "" : dealerInfo.email,
 					phone: (typeof(dealerInfo.phone) == "undefined" || dealerInfo.phone == null) ? "" : dealerInfo.phone,
-					network: (typeof(dealerInfo.network) == "undefined" || dealerInfo.network == null) ? "" : dealerInfo.network,
+					//network: (typeof(dealerInfo.network) == "undefined" || dealerInfo.network == null) ? "" : dealerInfo.network,
+					//network: 	dealerInfo.network,
+					//network:$scope.networkOptions.value,
 					address: (typeof(dealerInfo.address) == "undefined" || dealerInfo.address == null) ? "" : dealerInfo.address,
 					post_code: (typeof(dealerInfo.post_code) == "undefined" || dealerInfo.post_code == null) ? "" : dealerInfo.post_code,
 					city_name: (typeof(dealerInfo.city_name) == "undefined" || dealerInfo.city_name == null) ? dealerInfo.city_name = "" : dealerInfo.city_name,
@@ -216,10 +228,11 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 			} else {
 				$scope.dealerTitle = addDealerTitle;
 				$scope.dealerData = {};
+				$scope.networkSelected.text ="Please Select";
 				if(dealerAudit_ConstantsConst.TTS_Name != null || typeof(dealerAudit_ConstantsConst.TTS_Name) != "undefined") {
 					$scope.dealerData.tts_name = dealerAudit_ConstantsConst.TTS_Name;
 				}
-				$scope.buttonVisibility = true;
+
 			}
 
 			console.log("Dealer data empty");
@@ -279,10 +292,10 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 		 * @function setNetwork
 		 * @description On dropdown value change set model value.
 		 */
-		$scope.setNetwork = function(value) {
-			if(value != null || typeof(value) != "undefined") {
-				console.log("Value text", value.text);
-				$scope.dealerData.network = value.text;
+		$scope.setNetwork = function(data) {
+			if(data.text != null || typeof(data.text) != "undefined") {
+				console.log("Value text", data.text);
+				$scope.dealerData.network = data.text;
 			}
 		}
 
@@ -370,12 +383,13 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 
 			// Check for dealer duplication based on dealer_name.
 			// modifyDealerDbFactory.checkIfDealerExists($scope.dealerData.dealer_name, $scope.dealerData.country_name).then(function(response) {
-			modifyDealerDbFactory.checkIfDealerExists($scope.dealerData.dealer_name).then(function(response) {
-				console.log("Response from checkIfDealerExists" + response)
-				if(!response) {
-					// Save dealer information into local DB.
-					modifyDealerDbFactory.saveDealerInfo($scope.dealerData).then(function(data) {
-						if(data) {
+				if($location.search().addDealer == "true"){
+					modifyDealerDbFactory.checkIfDealerExists($scope.dealerData.dealer_name).then(function(response) {
+						console.log("Response from checkIfDealerExists" + response)
+						if(!response) {
+							// Save dealer information into local DB.
+							modifyDealerDbFactory.saveDealerInfo($scope.dealerData).then(function(data) {
+								if(data) {
 
 							logsFctry.logsDisplay('INFO', $scope.TagName, "Dealer data saved successfully");
 							toastFctry.showToast("Dealer succesfully added.");
@@ -421,8 +435,41 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 			}, function(error) {
 				logsFctry.logsDisplay('ERROR', $scope.TagName, "Error from checkIfDealerExists" + JSON.stringify(error));
 			});
+
+				}else{
+					//Save dealer information into local DB.
+												modifyDealerDbFactory.editDealerInfo($scope.dealerData).then(function(data) {
+														console.log("inside	modifyDealerDbFactory.editDealerInfo");
+													if(data) {
+
+														logsFctry.logsDisplay('INFO', $scope.TagName, "Dealer data updated successfully");
+														toastFctry.showToast("Dealer succesfully updated.");
+
+														console.log("Dealer ID : " + $scope.dealerData.dealer_id);
+
+														// Check if there is online connectivity , then trigger an upload sync for the added dealer.
+														// This sync should happen in background.
+														if($cordovaNetwork.isOnline()) {
+
+															syncModuleFactory.updateDealerData($scope.dealerData);
+
+														}
+
+														$location.path('/searchDealer');
+
+													} else {
+														logsFctry.logsDisplay('INFO', $scope.TagName, "Dealer Data could not be updated");
+													}
+												}, function(error) {
+													logsFctry.logsDisplay('ERROR', $scope.TagName, "Dealer Data could not be updated due to error " + JSON.stringify(error));
+												})
+
 		}
 
+
+
+
+}
 	} catch(error) {
 		logsFctry.logsDisplay('ERROR', $scope.TagName, "Error loading ModifyDealerController" + JSON.stringify(error));
 	}

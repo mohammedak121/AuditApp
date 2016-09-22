@@ -6,7 +6,7 @@
 
 var questionnaireModule = angular.module("dealerAudit.auditQuestionnaireControllers", ['ionic']);
 
-questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsFctry', '$filter', 'auditQuestionnaireDBFactory', 'dealerAudit_AssetsConst', '$cordovaDatePicker', '$ionicPopup', function($scope, logsFctry, $filter, auditQuestionnaireDBFactory, dealerAudit_AssetsConst, $cordovaDatePicker, $ionicPopup) {
+questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsFctry', '$filter', 'auditQuestionnaireDBFactory', 'dealerAudit_AssetsConst', '$cordovaDatePicker', '$ionicPopup', '$location', function($scope, logsFctry, $filter, auditQuestionnaireDBFactory, dealerAudit_AssetsConst, $cordovaDatePicker, $ionicPopup, $location) {
 	try {
 
 		$scope.TagName = "AuditQuestionnaireController";
@@ -22,6 +22,14 @@ questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsF
 
 		$scope.errorTitle = $filter('translate')('lblError');
 		$scope.noQuestionnaires = $filter('translate')('lblNoQuestionnaires');
+
+		/**
+		 * @function gotoDashboard
+		 * @description Navigate to dashboard.
+		 */
+		$scope.gotoDashboard = function() {
+			$location.path('/dashBoard');
+		}
 
 		/**
 		 * @function on

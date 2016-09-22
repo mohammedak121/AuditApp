@@ -113,6 +113,115 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 				}));
 			},
 
+
+
+			/**
+			 * @function editDealerInfo
+			 * @description Function which updates the dealer information in local DB.
+			 */
+			editDealerInfo: function(dealerData) {
+
+				//console.log("Info " + TagName + "Entered into saveDealerInfo");
+				logsFctry.logsDisplay('INFO', TagName, 'Entered into editDealerInfo');
+				//console.log("Debug " + TagName + "Dealer data information" + JSON.stringify(dealerData));
+				logsFctry.logsDisplay('DEBUG', TagName, "Dealer data information" + JSON.stringify(dealerData));
+
+				var updateQuery = "UPDATE dealers SET dealer_name = '"+ dealerData.dealer_name.toLowerCase()  +"', address = '"+ dealerData.address +"',post_code = '" +  dealerData.post_code +"' ,province = '" +
+				dealerData.province +"' , email = '" + dealerData.email + "',phone = '" + dealerData.phone +"',network = '" + dealerData.network +"',pos_code = '"+ dealerData.pos_code +"',tts_name = '"+
+				dealerData.tts_name +"',payee_code = '"+ dealerData.payee_code +"', holding_name = '"+ dealerData.holding_name +"',city_name= '" + dealerData.city_name  +"',country_name = '"+ dealerData.country_name+"',participating_tf = '" +
+				dealerData.participating_tf +"',createdBy = '"+ dealerData.createdBy +"',modified_date = '" + dealerData.modified_date +"',payer_code = '" + dealerData.payer_code  +"'  WHERE dealer_id = '" + dealerData.dealer_id + "' ";
+
+				if(typeof(dealerData.participating_tf) == "undefined" || dealerData.participating_tf == null) {
+					dealerData.participating_tf = 0;
+				} else {
+					if(dealerData.participating_tf == "" || dealerData.participating_tf == "No") {
+						dealerData.participating_tf = 0;
+					} else {
+						dealerData.participating_tf = 1;
+					}
+				}
+
+				if(typeof(dealerData.tts_name) == undefined || dealerData.tts_name == null) {
+					dealerData.tts_name = "";
+				}
+
+				if(typeof(dealerData.country_name) == undefined || dealerData.country_name == null) {
+					dealerData.country_name = "";
+				}
+				if(typeof(dealerData.city_name) == undefined || dealerData.city_name == null) {
+					dealerData.city_name = "";
+				}
+				if(typeof(dealerData.address) == undefined || dealerData.address == null) {
+					dealerData.address = "";
+				}
+				if(typeof(dealerData.post_code) == undefined || dealerData.post_code == null) {
+					dealerData.post_code = "";
+				}
+				if(typeof(dealerData.province) == undefined || dealerData.province == null) {
+					dealerData.province = "";
+				}
+				if(typeof(dealerData.email) == undefined || dealerData.email == null) {
+					dealerData.email = "";
+				}
+				if(typeof(dealerData.phone) == undefined || dealerData.phone == null) {
+					dealerData.phone = "";
+				}
+				if(typeof(dealerData.network) == undefined || dealerData.network == null) {
+					dealerData.network = "";
+				}
+				if(typeof(dealerData.pos_code) == undefined || dealerData.pos_code == null) {
+					dealerData.pos_code = "";
+				}
+				if(typeof(dealerData.payee_code) == undefined || dealerData.payee_code == null) {
+					dealerData.payee_code = "";
+				}
+				if(typeof(dealerData.holding_name) == undefined || dealerData.holding_name == null) {
+					dealerData.holding_name = "";
+				}
+				if(typeof(dealerData.createdBy) == undefined || dealerData.createdBy == null) {
+					dealerData.createdBy = "";
+				} else {
+					dealerData.createdBy = dealerAudit_ConstantsConst.TTS_Name;
+				}
+				if(typeof(dealerData.modified_date) == undefined || dealerData.modified_date == null) {
+					dealerData.modified_date = null;
+				}
+				if(typeof(dealerData.modified_time) == undefined || dealerData.modified_time == null) {
+					dealerData.modified_time = "";
+				}
+				if(typeof(dealerData.payer_code) == undefined || dealerData.payer_code == null) {
+					dealerData.payer_code = "";
+				}
+				//
+				// updateQuery += "('" + dealerData.dealer_name.toLowerCase() + "','" + dealerData.address + "','" + dealerData.post_code + "','" + dealerData.province + "','" +
+				// 	dealerData.email + "','" + dealerData.phone + "','" + dealerData.network + "','" + dealerData.pos_code + "','" + dealerData.tts_name + "','" +
+				// 	dealerData.payee_code + "','" + dealerData.holding_name + "','" + dealerData.city_name + "','" + dealerData.country_name + "','" + dealerData.participating_tf + "','" +
+				// 	dealerData.createdBy + "','" + dealerData.modified_date + "','" + dealerData.modified_time + "','" + dealerData.payer_code + "','" + 0 + "')";
+
+				// $cordovaSQLite.execute(db, updateQuery).then(function(response){
+				// 	//console.log('response ==>'+JSON.stringify(response));
+				// 	logsFctry.logsDisplay('DEBUG', TagName, "update into dealers DB successful" + JSON.stringify(response));
+				// 	//return true;
+				//
+				// },function(error){
+				// 	logsFctry.logsDisplay('ERROR', TagName, "update into dealers DB failed" + JSON.stringify(error));
+				// 	//return false;
+				//
+				// });
+				return $q.when($cordovaSQLite.execute(db, updateQuery).then(function(res) {
+					updateQuery = "";
+					//console.log("Insert into DB successful" + JSON.stringify(res));
+					logsFctry.logsDisplay('DEBUG', TagName, "update into dealers DB successful" + JSON.stringify(res));
+					console.log("update into dealers DB successful" + JSON.stringify(res));
+					return true;
+
+				}, function(error) {
+					//console.log("Insert into DB failed" + JSON.stringify(error));
+					logsFctry.logsDisplay('ERROR', TagName, "update into dealers DB failed" + JSON.stringify(error));
+					console.log("update into dealers DB failed" + JSON.stringify(error));
+					return false;
+				}));
+			},
 			/**
 			 * @function modifyDealerInformation
 			 * @description Once the locally created dealer is synced , remove the flag which indicates it is a local record.
@@ -181,7 +290,7 @@ angular.module('dealerAudit.ModifyDealerModuleDB', []).factory('modifyDealerDbFa
 				var selectItemQuery = "SELECT * FROM dealers WHERE dealer_name= '" + dealerName.toLowerCase() + "'";
 
 				// Dealer + country name
-				//var selectItemQuery = "SELECT * FROM dealers WHERE dealer_name= '" + dealerName.toLowerCase() + "' AND country_name = '" + countryName.toLowerCase() + "'";				
+				//var selectItemQuery = "SELECT * FROM dealers WHERE dealer_name= '" + dealerName.toLowerCase() + "' AND country_name = '" + countryName.toLowerCase() + "'";
 
 				return new Promise(function(resolve, reject) {
 					$cordovaSQLite.execute(db, selectItemQuery).then(function(res) {

@@ -123,5 +123,10 @@ lblAddNewDealer : 'Add New Dealer',
 lblEditDealer : 'Edit Dealer',
 lblPOSForgot : 'Forgot FOS Code ?',
 lblQuestionnaireTitle : 'Audit in Progress',
-lblNoQuestionnaires : 'There are no questionnaires present.'
+lbldealerSelectedLabel : 'Dealer You Selected',
+lblDealerName : 'Company Name',
+lblDealerAddress : 'Address',
+lblDealerCountry : 'Country',
+lblDealerCity : 'City',
+lblDealerPOSCode : 'FOS Vendor Code'
 };
