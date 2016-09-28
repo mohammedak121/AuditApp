@@ -12,6 +12,11 @@ questionnaireDBModule.factory('auditQuestionnaireDBFactory', ['logsFctry', '$q',
 		logsFctry.logsDisplay('INFO', tagName, 'Entered in the module dealerAudit.AuditQuestionnaireModuleDB');
 
 		return {
+
+			/**
+			 * @function getQuestionnaireObject
+			 * @description Get the questionnaires to bind to the UI.
+			 */
 			getQuestionnaireObject: function() {
 
 				var questionnaireObj = [];
@@ -32,29 +37,43 @@ questionnaireDBModule.factory('auditQuestionnaireDBFactory', ['logsFctry', '$q',
 							questionnaireObj.push(res.rows.item(i));
 						}
 
-						// console.log("Questionnaire object" + questionnaireObj);
-						// console.log("Questionnaire object" + JSON.stringify(questionnaireObj));
-
 						var groupedArray = _.groupByMultipleFields(questionnaireObj, ['header_text', 'sub_header_text']);
-						// var keys = Object.keys(groupedArray);
-
-						// console.log("JSON grouped array" + JSON.stringify(groupedArray))
-
-						// CompleteGroupedArray.push({
-						// 	'GroupedArray': groupedArray,
-						// 	'KeysArray': keys
-						// })
-
-						// console.log("Grouped Array " + groupedArray);
-						// console.log("Grouped Array " + JSON.stringify(groupedArray));
-
-						// console.log("Complete Grouped Array" + CompleteGroupedArray);
 
 						return groupedArray;
 					} else {
 						return groupedArray;
 					}
 				}))
+			},
+
+			/**
+			 * @function getMandatoryQuestions
+			 * @description Get the mandatory questions.
+			 */
+			getMandatoryQuestions: function() {
+
+				var mandatoryQuestions = [];
+				logsFctry.logsDisplay('INFO', tagName, 'Entered in the function getMandatoryQuestions');
+
+				var selectQuery = "SELECT * from question_master WHERE mandatory_field = '" + true + "' ";
+
+				return new Promise(function(resolve, reject) {
+					$cordovaSQLite.execute(db, selectQuery).then(function(res) {
+						if(res.rows.length > 0) {
+
+							// console.log("No of mandatory questions " + res.rows);
+							// console.log("No of mandatory questions" + JSON.stringify(res.rows));
+
+							for(var i = 0; i < res.rows.length; i++) {
+								mandatoryQuestions.push(res.rows.item(i));
+							}
+
+							resolve(mandatoryQuestions);
+						} else {
+							resolve(mandatoryQuestions);
+						}
+					})
+				});
 
 			}
 		}

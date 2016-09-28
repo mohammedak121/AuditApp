@@ -1,0 +1,53 @@
+<ion-nav-view can-swipe-back="false">
+    <ion-header-bar class="bar bar-header headerBar" align-title="center">
+        <!--Back Button-->
+          <img class="button button-icon ion-navicon headerBarIcon backButton" id="searchBackBttn" ng-src={{backIcon}} ng-click="backButtonClicked()" />
+        <!--Back Button-->
+
+        <!--Header Bar Title -->
+        <!-- <h1 class="title dashboardTitleText" id="dashBoardHeaderTitle" >Add or Modify Dealer</h1>			     -->
+        <h1 class="title headerBarTitle headerTitleDashBoard modifyTitle" id="dashBoardHeaderTitle">Audit in progress</h1>
+        <!--Header Bar Title  -->
+    </ion-header-bar>
+    <ion-content has-footer="true" class="SettingsPageBg" scroll="false">
+  <div class="auditDetailsDiv">
+      <span class="auditDetailsText">Audit Details</span>
+    </div>
+    <form name="auditDetailsForm" id="auditDetailsForm" >
+      <!-- <div class="row InputStyle">
+          <label class="DealerLabelStyle">Audit Date</label>
+          <div class="dealerInputDateStyle" ng-model="dateData">
+            <label class="dateLabel">{{dateData}}</label>
+          </div>
+          <img class="dateIconStyle" ng-src="{{calender}}" ng-click="openDatePicker()"/>
+      </div> -->
+      <div class="row InputStyle">
+          <label class="DealerLabelStyle">{{'lblAuditDate'|translate}}</label>
+
+          <div class="dealerInputDateStyle" ng-model="dateData">
+
+            <label class="dateLabel">{{dateData}}</label>
+          </div>
+          <img class="dateIconStyle" ng-src="{{calender}}" ng-click="openDatePicker()"/>
+      </div>
+
+      <!-- <div class="row InputStyle"> -->
+        <div ng-class="((auditDetailsForm.auditPersonContact.$touched && auditDetailsForm.auditPersonContact.$invalid) || auditDetailsErrorMsg.auditPerson) ? 'row InputStyleError' : 'row InputStyle'">
+          <label class="DealerLabelStyle">{{'lblauditPersonContact'|translate}}</label>
+          <input id="auditPersonContact" name="auditPersonContact" ng-model="audit.auditPerson" type="text" class="dealerInputStyle" ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
+      </div>
+      <p class="validationErrorText" ng-if="((auditDetailsForm.auditPersonContact.$touched && auditDetailsForm.auditPersonContact.$invalid) || auditDetailsErrorMsg.auditPerson)">{{auditPersonError}}</p>
+
+      <!-- <div class="row InputStyle"> -->
+      <div ng-class="((auditDetailsForm.auditDoneBy.$touched && auditDetailsForm.auditDoneBy.$invalid) || auditDetailsErrorMsg.auditDoneBy) ? 'row InputStyleError' : 'row InputStyle'">
+          <label class="DealerLabelStyle">{{'lblauditDoneBy'|translate}}</label>
+          <input id="auditDoneBy" name="auditDoneBy" ng-model="audit.auditDoneBy" type="text" class="dealerInputStyle"  ng-trim="false" style="color:grey;-webkit-text-security: {{inputSecurityStyle}}" maxlength={{dealerDetailsLength.dealerScreenInputMaxLength}}>
+      </div>
+        <p class="validationErrorText" ng-if="((auditDetailsForm.auditDoneBy.$touched && auditDetailsForm.auditDoneBy.$invalid) || auditDetailsErrorMsg.auditDoneBy)">{{auditDoneByError}}</p>
+    </form>
+      </ion-content>
+    <ion-footer-bar  style="position:fixed;" class="bar bar-footer footerstyle footerStyleDashBoard">
+        <button class="buttonTextStyle" ng-click="saveAuditDetails()">Proceed with Questions</button>
+    </ion-footer-bar>
+
+</ion-nav-view>

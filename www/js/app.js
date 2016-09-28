@@ -46,7 +46,7 @@
 //dealerAudit_ConstantsConst: Its an dependency to access the constants defined globally
 
 var dealerAudit =
-	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule', 'dealerAudit.auditQuestionnaireControllers', 'dealerAudit.AuditQuestionnaireModuleDB','dealerAudit.confirmDealerControllers'])
+	angular.module('dealerAudit', ['ngCordova', 'ionic', 'pascalprecht.translate', 'dealerAudit.loginControllers', 'dealerAudit.dashBoardControllers', 'dealerAudit.ModuleConstants', 'dealerAudit.ModuleFileList', 'dealerAudit.ModuleAssets', 'dealerAudit.settingsModule', 'dealerAudit.settingsDbModuleDB', 'dealerAudit.aboutUsModule', 'dealerAudit.logsModule', 'dealerAudit.pageParameterPass', 'dealerAudit.syncModule', 'dealerAudit.syncManagerModuleDB', 'dealerAudit.toastModule', 'dealerAudit.searchDealerControllers', 'dealerAudit.searchDealerModuleDB', 'dealerAudit.ModifyDealerModuleDB', 'dealerAudit.modifyDealerControllers', 'dealerAudit.loginModuleDB', 'dealerAudit.auditProgressDealerControllers', 'dealerAudit.errorHandlerModule', 'dealerAudit.auditQuestionnaireControllers', 'dealerAudit.AuditQuestionnaireModuleDB', 'dealerAudit.confirmDealerControllers', 'dealerAudit.AuditDetailsModuleDB', 'dealerAudit.auditDetailsControllers'])
 	.run(function($ionicPlatform, $ionicPopup, $state, $cordovaSQLite, $rootScope, $location, $interval, broadcast, $filter, settingsDbfctry, dealerAudit_ConstantsConst, syncModuleFactory, toastFctry, modifyDealerDbFactory, loginDbfctry, logsFctry) {
 		/**
 		 * Basic ready configuration includes disabling default functionalities such as hidding accessorybar and handling keyboards
@@ -244,7 +244,7 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Question_IdIndex ON Question_Master (question_Id  ASC)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_Form_Master (form_Id  INTEGER PRIMARY KEY NOT NULL,form_name VARCHAR(250) NOT NULL,UserID INTEGER NOT NULL,total_score BIGINT NOT NULL,total_result BIGINT NOT NULL,comments_text VARCHAR(250) NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Form_IdIndex ON Audit_Form_Master (form_Id ASC)");
-					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_master (audit_Id INTEGER PRIMARY KEY NOT NULL,audit_date Date NOT NULL,audit_person_onsite VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_master (audit_Id INTEGER PRIMARY KEY NOT NULL,audit_date Date NOT NULL,audit_person_onsite VARCHAR(250) NOT NULL,audit_done_by VARCHAR(250) NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Audit_IdIndex ON Audit_master(audit_Id ASC)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS TTS_NameIndex ON Audit_master(TTS_Name ASC)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Dealer_info_Transaction (dealer_Id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,network  VARCHAR(250) NOT NULL,address  VARCHAR(250) NOT NULL,zipcode  VARCHAR(250) NOT NULL,city  VARCHAR(250) NOT NULL,holding_name  VARCHAR(250) NOT NULL, holding_code  VARCHAR(250) NOT NULL, pos_code BIGINT NULL,TAM_Name  VARCHAR(250) NULL,TTS_Name VARCHAR(250) NULL )");
@@ -252,9 +252,13 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Logs (LogID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LogFileName VARCHAR(250) NOT NULL, LogFileCrationTime LONG NOT NULL,LogStatus INTEGER ,EmailAddress VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS LiveTutorial (LiveTutorialID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LiveTutorialFlag VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Language (Language VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Country (Country VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS AppData (AppKey LONG NOT NULL , AppKeyValue LONG NOT NULL , UserID VARCHAR(250),PRIMARY KEY(UserID, AppKey))");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS question_master (question_text VARCHAR(250) NOT NULL, header_text VARCHAR(250) NOT NULL, sub_header_text VARCHAR(250) NOT NULL, question_version INTEGER NOT NULL , question_id INTEGER PRIMARY KEY NOT NULL , position_id INTEGER,template_id INTEGER,question_typ VARCHAR(250),mandatory_field VARCHAR(4),status VARCHAR(250),minimum_value INTEGER,maximum_value INTEGER)");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS TTS_master (first_name VARCHAR(250) NOT NULL, last_name VARCHAR(250) NOT NULL, email VARCHAR(250) NOT NULL, tam_name VARCHAR(250) PRIMARY KEY NOT NULL , tts_name VARCHAR(250) NOT NULL )");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS template_master (country_id NUMERIC , country_name VARCHAR(250) , creation_date Date , language_id NUMERIC , language_name VARCHAR(250) , status VARCHAR(250) , tam_id NUMERIC , tam_name VARCHAR(250), template_id NUMERIC PRIMARY KEY NOT NULL, template_name VARCHAR(250) )");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS tts_country_language (table_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, country_name VARCHAR(250) , language_name VARCHAR(250) )");
 				} catch(error) {
 					console.log("Table not created" + error);
 				}
@@ -274,7 +278,7 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Question_IdIndex ON Question_Master (question_Id  ASC)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_Form_Master (form_Id  INTEGER PRIMARY KEY NOT NULL,form_name VARCHAR(250) NOT NULL,UserID INTEGER NOT NULL,total_score BIGINT NOT NULL,total_result BIGINT NOT NULL,comments_text VARCHAR(250) NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Form_IdIndex ON Audit_Form_Master (form_Id ASC)");
-					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_master (audit_Id INTEGER PRIMARY KEY NOT NULL,audit_date Date NOT NULL,audit_person_onsite VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Audit_master (audit_Id INTEGER PRIMARY KEY NOT NULL,audit_date Date NOT NULL,audit_person_onsite VARCHAR(250) NOT NULL,audit_done_by VARCHAR(250) NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS Audit_IdIndex ON Audit_master(audit_Id ASC)");
 					$cordovaSQLite.execute(db, "CREATE INDEX IF NOT EXISTS TTS_NameIndex ON Audit_master(TTS_Name ASC)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Dealer_info_Transaction (dealer_Id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,network  VARCHAR(250) NOT NULL,address  VARCHAR(250) NOT NULL,zipcode  VARCHAR(250) NOT NULL,city  VARCHAR(250) NOT NULL,holding_name  VARCHAR(250) NOT NULL, holding_code  VARCHAR(250) NOT NULL, pos_code BIGINT NULL,TAM_Name  VARCHAR(250) NULL,TTS_Name VARCHAR(250) NULL )");
@@ -282,9 +286,13 @@ var dealerAudit =
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Logs (LogID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LogFileName VARCHAR(250) NOT NULL, LogFileCrationTime LONG NOT NULL,LogStatus INTEGER ,EmailAddress VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS LiveTutorial (LiveTutorialID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,LiveTutorialFlag VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Language (Language VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS Country (Country VARCHAR(250) NOT NULL,TTS_Name VARCHAR(250) NOT NULL)");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS dealers (dealer_id INTEGER PRIMARY KEY NOT NULL,dealer_name  VARCHAR(250) NOT NULL,address VARCHAR(250),post_code VARCHAR(250),province VARCHAR(250) , email VARCHAR(250) ,phone VARCHAR(250) ,network VARCHAR(250) ,pos_code VARCHAR(250),tts_name VARCHAR(250),payee_code VARCHAR(250) ,holding_name VARCHAR(250) ,city_name  VARCHAR(250) ,country_name VARCHAR(250),participating_tf TINYINT(1), createdBy VARCHAR(250), modified_date DATE , modified_time VARCHAR(250), payer_code VARCHAR(250) , isServerRecord TINYINT(1) )");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS AppData (AppKey LONG NOT NULL , AppKeyValue LONG NOT NULL , UserID VARCHAR(250),PRIMARY KEY(UserID, AppKey))");
 					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS question_master (question_text VARCHAR(250) NOT NULL, header_text VARCHAR(250) NOT NULL, sub_header_text VARCHAR(250) NOT NULL, question_version INTEGER NOT NULL , question_id INTEGER PRIMARY KEY NOT NULL , position_id INTEGER,template_id INTEGER,question_typ VARCHAR(250),mandatory_field VARCHAR(4),status VARCHAR(250),minimum_value INTEGER,maximum_value INTEGER)");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS TTS_master (first_name VARCHAR(250) NOT NULL, last_name VARCHAR(250) NOT NULL, email VARCHAR(250) NOT NULL, tam_name VARCHAR(250) PRIMARY KEY NOT NULL , tts_name VARCHAR(250) NOT NULL )");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS template_master (country_id NUMERIC , country_name VARCHAR(250) , creation_date Date , language_id NUMERIC , language_name VARCHAR(250) , status VARCHAR(250) , tam_id NUMERIC , tam_name VARCHAR(250), template_id NUMERIC PRIMARY KEY NOT NULL, template_name VARCHAR(250) )");
+					$cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS tts_country_language (table_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, country_name VARCHAR(250) , language_name VARCHAR(250) )");
 				} catch(error) {
 					console.log("Table not created" + error);
 				}
@@ -374,6 +382,19 @@ var dealerAudit =
 			} else if($state.current.name == "auditProgressDealer") {
 				$location.path('/dashBoard');
 				$rootScope.$apply();
+			} else if($state.current.name == "auditDetails") {
+				$location.path('/dashBoard');
+				$rootScope.$apply();
+			} else if($state.current.name == "confirmDealer") {
+				// $location.path('/searchDealer');
+				if($location.search().confirmDealerFromSearch == "true") {
+					$location.path('/searchDealer');
+					$rootScope.$apply();
+				} else {
+					$location.path('/modifyDealer');
+					$rootScope.$apply();
+				}
+
 			} else {
 
 				navigator.app.backHistory();
@@ -473,6 +494,14 @@ var dealerAudit =
 			url: "/confirmDealer",
 			templateUrl: dealerAudit_FileListsConst.confirmDealerView,
 			controller: "confirmDealerController"
+		})
+
+		//Audit details.
+		.state('auditDetails', {
+			cache: false,
+			url: "/auditDetails",
+			templateUrl: dealerAudit_FileListsConst.auditDetailsViewHtml,
+			controller: "AuditDetailsController"
 		})
 		$urlRouterProvider.otherwise('/Login');
 

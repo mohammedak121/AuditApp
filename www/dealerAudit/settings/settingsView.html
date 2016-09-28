@@ -24,17 +24,27 @@ Description : This Provides the design for the settings Screen UI.
 
 		<div class="SettingsScreenDiv"  id="settingsContentDivID" style="height: 100% ">
 
+
+			<!--Language input Section start -->
+		<div class="row rowStyle" >
+			<label class="SettingsLabelStyle">{{'lblCountry'|translate}}</label>
+				<div class="langDropDown" id="selectCountry" dropdown-select="countryOptions"
+					dropdown-model="countrySelected"
+					dropdown-item-label="text"
+					dropdown-onchange="setCountry(selected)">
+				</div>
+			</div>
+		<!--Language input Section end -->
+
 		 	<!--Language input Section start -->
 		 	<div class="row rowStyle" >
-
 				<label class="SettingsLabelStyle">{{'lblLanguage'|translate}}</label>
-				<div class="langDropDown" id="selectLanguage" dropdown-select="languageOptions"
-				dropdown-model="languageSelected"
-				dropdown-item-label="text"
-				dropdown-onchange="setLanguage(selected)">
+					<div class="langDropDown" id="selectLanguage" dropdown-select="languageOptions"
+						dropdown-model="languageSelected"
+						dropdown-item-label="text"
+						dropdown-onchange="setLanguage(selected)">
 			    </div>
-
-			</div>
+				</div>
 			<!--Language input Section end -->
 
 
@@ -48,9 +58,6 @@ Description : This Provides the design for the settings Screen UI.
 
 					<img ng-src={{passwordType}} class="imgSetBox" ng-click ="hideShowPassword()"/>
 				</div>
-
-
-
 			</div>
             <!--setPIN input Section end -->
 

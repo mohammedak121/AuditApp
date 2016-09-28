@@ -234,9 +234,9 @@ searchDealerModule.controller('SearchDealerController', ['$scope', 'dealerAudit_
 
 			if(dealerData != null || typeof(dealerData) != "undefined") {
 				passParameterFctry.setDealerInformation(dealerData);
-				$location.path('/modifyDealer').search({
-					addDealer: 'false',
-					auditProgress: 'false'
+				//$location.path('/confirmDealer');
+				$location.path('/confirmDealer').search({					
+					confirmDealerFromSearch: 'true'
 				});
 			}
 		}

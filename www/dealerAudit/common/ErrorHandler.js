@@ -18,9 +18,13 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 
 			console.log("Error information " + JSON.stringify(error));
 
-			// HaloMem error code can come in either error.code or error.data.code.
-			// error.status is for generic http status codes.
-			var errorCode = error.code || error.data.code || error.status;
+			if(typeof(error) != "undefined") {
+				// HaloMem error code can come in either error.code or error.data.code.
+				// error.status is for generic http status codes.
+				var errorCode = error.code || error.data.code || error.status;
+			} else {
+				var errorCode = "";
+			}
 
 			// When the Wi-Fi is switched of during the sync the switch condition is not executed.
 			// Hence a generic message is given.
@@ -74,7 +78,7 @@ errorHandlerModule.factory('ErrorHandlerService', ['$ionicPopup', '$filter', 'lo
 
 					default:
 						failureTitle = "Error";
-						failureMessage = "Some error occured. Please contact your administrator.";
+						failureMessage = "Some error occured. Please try again.";
 						break;
 				}
 			}

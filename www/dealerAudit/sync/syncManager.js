@@ -34,9 +34,11 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 					// Insert dealer data in local DB only if there are dealers present.
 					if(response.length > 0) {
 						if(syncManageDbfctry.deleteDealerData()) {
-							syncManageDbfctry.insertDealerData(response);
-
-							resolve(dealerAudit_ConstantsConst.success);
+							syncManageDbfctry.insertDealerData(response).then(function(dealerResponse) {
+								if(dealerResponse === dealerAudit_ConstantsConst.success) {
+									resolve(dealerAudit_ConstantsConst.success);
+								}
+							});
 						}
 					}
 
@@ -54,7 +56,6 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 				}, function(error) {
 
 					var message = "";
-
 					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object dealers' + JSON.stringify(error));
 
 					// This message will be displayed if no dealers are present. Else a generic message is displayed.
@@ -72,18 +73,36 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 		});
 	}
 
-	function downloadQuestionnaire() {
+	function downloadQuestionnaire(templateId) {
 		return new Promise(function(resolve, reject) {
 			$rootScope.session.getClientObjectType("question").then(function(clientObjectType) {
 
-				clientObjectType.search("question", 0, -1, null, null, null, null, null, null, false).then(function(response) {
+				var filterParams = {
+					"template_id": templateId,
+				};
+
+				clientObjectType.search("question", 0, -1, filterParams, null, null, null, null, null, false).then(function(response) {
 
 					console.log("Get client object questions successful");
-					console.log("Number of questionnaire's" + response.length);
+					console.log("Number of questionnaire's for template id " + templateId + " are " + response.length);
 
 					if(response.length > 0) {
-						syncManageDbfctry.insertQuestionnaireData(response);
-						resolve(dealerAudit_ConstantsConst.success);
+
+						if(syncManageDbfctry.deleteQuestionnaireData()) {
+							syncManageDbfctry.insertQuestionnaireData(response).then(function(response) {
+								if(response == dealerAudit_ConstantsConst.success) {
+									resolve(dealerAudit_ConstantsConst.success);
+								} else {
+									resolve(dealerAudit_ConstantsConst.failure);
+								}
+							}, function(error) {
+								console.log("records not inserted into Questionnaire table due to error" + JSON.stringify(error));
+								logsFctry.logsDisplay('ERROR', TagName, 'Error in inserting questionnaires' + JSON.stringify(error));
+
+								syncManageDbfctry.deleteQuestionnaireData();
+								reject(dealerAudit_ConstantsConst.failure);
+							});
+						}
 					}
 
 					// If there are no questions then the below condition will execute.
@@ -93,7 +112,13 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 
 				}, function(error) {
 					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
-					reject(dealerAudit_ConstantsConst.failure);
+
+					if(error.code == 55 && error.message == "No Content") {
+						resolve(dealerAudit_ConstantsConst.noContent);
+					} else {
+						reject(dealerAudit_ConstantsConst.failure);
+					}
+
 				})
 			}, function(error) {
 				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
@@ -101,6 +126,96 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 				reject(dealerAudit_ConstantsConst.failure);
 			})
 		});
+	}
+
+	function downloadTTSInformation() {
+		return new Promise(function(resolve, reject) {
+			$rootScope.session.getClientObjectType("TTS_master").then(function(clientObjectType) {
+
+				var filterParams = {
+					"tts_name": dealerAudit_ConstantsConst.TTS_Name,
+				};
+
+				clientObjectType.search("TTS_master", 0, -1, filterParams, null, null, null, null, null, false).then(function(response) {
+
+					console.log("Get client object TTS_master successful");
+					console.log("Number of TAM's " + response.length);
+					console.log("TAM information " + response);
+
+					if(response.length > 0) {
+						syncManageDbfctry.insertTTSInformation(response).then(function(response) {
+							if(response.toString().length > 0) {
+								resolve(response);
+							} else {
+								resolve(dealerAudit_ConstantsConst.failure);
+							}
+
+						}, function(error) {
+							console.log("Records not inserted into TTS_master table due to error" + JSON.stringify(error));
+							logsFctry.logsDisplay('ERROR', TagName, 'Error in inserting TTS information' + JSON.stringify(error));
+
+							reject(dealerAudit_ConstantsConst.failure);
+						})
+					}
+
+				}, function(error) {
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
+
+					if(error.code == 55 && error.message == "No Content") {
+						resolve(dealerAudit_ConstantsConst.noContent);
+					} else {
+						reject(dealerAudit_ConstantsConst.failure);
+					}
+
+				})
+			}, function(error) {
+				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
+				console.log("Data could not be uploaded" + error + message);
+				reject(dealerAudit_ConstantsConst.failure);
+			})
+		});
+	}
+
+	function downloadTemplateInformation(tam_name) {
+		return new Promise(function(resolve, reject) {
+			$rootScope.session.getClientObjectType("template_master").then(function(clientObjectType) {
+				var filterParams = {
+					"tam_name": tam_name,
+					"status": "Published"
+				};
+
+				clientObjectType.search("template_master", 0, -1, filterParams, null, null, null, null, null, false).then(function(response) {
+					console.log("Get client object template_master successful");
+					console.log("Number of Templates : " + response.length);
+
+					if(response.length > 0) {
+						syncManageDbfctry.insertTemplateInformation(response).then(function(templateResponse) {
+							if(templateResponse == dealerAudit_ConstantsConst.success) {
+								resolve(dealerAudit_ConstantsConst.success);
+							}
+						}, function(error) {
+							console.log("Records not inserted into template_master table due to error" + JSON.stringify(error));
+							logsFctry.logsDisplay('ERROR', TagName, 'Error in inserting template_master information' + JSON.stringify(error));
+
+							reject(dealerAudit_ConstantsConst.failure);
+						})
+					}
+				}, function(error) {
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type dealers' + JSON.stringify(error));
+
+					if(error.code == 55 && error.message == "No Content") {
+						resolve(dealerAudit_ConstantsConst.noContent);
+					} else {
+						reject(dealerAudit_ConstantsConst.failure);
+					}
+
+				})
+
+			}, function(error) {
+				logsFctry.logsDisplay('ERROR', TagName, 'Error in getting client object type template_master' + JSON.stringify(error));
+				reject(dealerAudit_ConstantsConst.failure);
+			})
+		})
 	}
 
 	return {
@@ -208,42 +323,40 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 			// var dealer_id= $rootScope.dealerData.dealer_id;
 			logsFctry.logsDisplay('INFO', TagName, 'Entered into function updateDealerData');
 
-		    	$rootScope.session.getClientObjectType("dealers").then(function(clientObjectType){
-						console.log("Client object type acquired.");
-						console.log("Creating/updating data ...");
+			$rootScope.session.getClientObjectType("dealers").then(function(clientObjectType) {
+					console.log("Client object type acquired.");
+					console.log("Creating/updating data ...");
 
 
-							clientObjectType.get(dealerData.dealer_id).then(function(response) {
-								console.log('response inside update==>'+JSON.stringify(response));
+					clientObjectType.get(dealerData.dealer_id).then(function(response) {
+							console.log('response inside update==>' + JSON.stringify(response));
 
-								console.log('dealerData ==>'+JSON.stringify(dealerData));
-								response.update(dealerData).then(function(success){
-									if(success){
+							console.log('dealerData ==>' + JSON.stringify(dealerData));
+							response.update(dealerData).then(function(success) {
+									if(success) {
 
 										console.log("Dealer information Could updated" + success);
-									}
-									else{
+									} else {
 
 
 										console.log("Dealer information Could not be updated" + success);
 									}
 								},
-								function(error){
+								function(error) {
 
 									console.log("Update dealer information failed " + JSON.stringify(error));
 								})
-							},
-						function(error)
-						{
+						},
+						function(error) {
 							//$rootScope.shouldShowTyre = false;
 							console.log("Could not get the client obejct" + JSON.stringify(error));
 						});
 
-					},
-					function(error){
-						//$rootScope.shouldShowTyre = false;
-						console.log("Could not get the client obejct" + JSON.stringify(error));
-					})
+				},
+				function(error) {
+					//$rootScope.shouldShowTyre = false;
+					console.log("Could not get the client obejct" + JSON.stringify(error));
+				})
 
 		},
 
@@ -353,20 +466,21 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 		 * @function howManyDaysOldData
 		 * @description Download questionnaire data required for Audit.
 		 */
-		downloadQuestionnaireData: function() {
+		downloadQuestionnaireData: function(templateId) {
 			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadQuestionnaire');
 
 			return new Promise(function(resolve, reject) {
-				downloadQuestionnaire().then(function(response) {
-					if(response == dealerAudit_ConstantsConst.success) {
+				downloadQuestionnaire(templateId).then(function(response) {
+					if(response == dealerAudit_ConstantsConst.success || response == dealerAudit_ConstantsConst.noContent) {
 						// resolve(dealerAudit_ConstantsConst.success);
 						// This is a test method to populate the questionnaire result in JSON format.
-						syncManageDbfctry.getQuestionnaireObject().then(function(response) {
-							if(response.length > 0) {
+						// syncManageDbfctry.getQuestionnaireObject().then(function(response) {
+						// 	if(response.length > 0) {
+						// 		resolve(response);
+						// 	}
+						// })
 
-								resolve(response);
-							}
-						})
+						resolve(response);
 
 					}
 
@@ -388,20 +502,42 @@ syncModule.factory('syncModuleFactory', function($rootScope, syncManageDbfctry, 
 			logsFctry.logsDisplay('INFO', TagName, 'Entered into function downloadMasterData');
 
 			return new Promise(function(resolve, reject) {
-				downloadDealer().then(function(dealerResponse) {
-					if(dealerResponse == dealerAudit_ConstantsConst.success || dealerResponse == dealerAudit_ConstantsConst.noContent) {
-						downloadQuestionnaire().then(function(questionnaireResponse) {
-							if(questionnaireResponse == dealerAudit_ConstantsConst.success || questionnaireResponse == dealerAudit_ConstantsConst.noContent) {
-								resolve(dealerAudit_ConstantsConst.success);
-							}
-						})
+				downloadTTSInformation().then(function(ttsResponse) {
+					if(ttsResponse.toString().length > 0) {
+						console.log("Successfully inserted TTS information");
+						console.log("The TTS belongs to TAM  " + ttsResponse);
 
-					} else {
-						resolve(dealerAudit_ConstantsConst.failure);
+						downloadTemplateInformation(ttsResponse).then(function(templateResponse) {
+							if(templateResponse == dealerAudit_ConstantsConst.success) {
+								downloadDealer().then(function(dealerResponse) {
+									if(dealerResponse == dealerAudit_ConstantsConst.success || dealerResponse == dealerAudit_ConstantsConst.noContent) {
+										// downloadQuestionnaire().then(function(questionnaireResponse) {
+										// 	console.log("Questionnaire response" + questionnaireResponse);
+										// 	if(questionnaireResponse == dealerAudit_ConstantsConst.success || questionnaireResponse == dealerAudit_ConstantsConst.noContent) {
+										// 		resolve(dealerAudit_ConstantsConst.success);
+										// 	}
+										// }, function(error) {
+										// 	console.log("Download questionnaire failed." + JSON.stringify(error));
+										// 	logsFctry.logsDisplay('ERROR', TagName, 'Error in downloading questionnaire' + JSON.stringify(error));
+										// 	reject(dealerAudit_ConstantsConst.failure);
+										// })
+										resolve(dealerAudit_ConstantsConst.success);
+									} else {
+										resolve(dealerAudit_ConstantsConst.failure);
+									}
+								}, function(error) {
+									logsFctry.logsDisplay('ERROR', TagName, 'Error in getting dealers - downloadMasterData' + JSON.stringify(error));
+									reject(dealerAudit_ConstantsConst.failure);
+								})
+							}
+						}, function(error) {
+							logsFctry.logsDisplay('ERROR', TagName, 'Error in getting Template information' + JSON.stringify(error));
+							reject(dealerAudit_ConstantsConst.failure);
+						})
 					}
 				}, function(error) {
 					reject(dealerAudit_ConstantsConst.failure);
-					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting dealers - downloadMasterData' + JSON.stringify(error));
+					logsFctry.logsDisplay('ERROR', TagName, 'Error in getting TTS information' + JSON.stringify(error));
 				})
 			})
 		},

@@ -12992,6 +12992,11 @@ input[disabled] {
   color: grey !important;
   background-color: transparent !important; }
 
+dealerConfirmLabelStyle.input[disabled] {
+  color: black !important;
+  opacity: 1;
+  background-color: transparent !important; }
+
 .item-checkbox input:before,
 .item-checkbox-icon:before {
   background: transparent;
@@ -14413,7 +14418,8 @@ label {
   bottom: 0px;
   height: 52px;
   position: fixed;
-  width: 100%; }
+  width: 100%;
+  z-index: 999999; }
 
 .backButtonQuestionnaire {
   width: 50%;
@@ -14508,7 +14514,7 @@ hr {
 .dateStyleQuestionnaire {
   height: 30px;
   width: 30px;
-  margin-left: 81%;
+  margin-left: 90%;
   margin-top: -6%;
   position: fixed; }
 
@@ -14518,6 +14524,71 @@ hr {
 .checkBoxLabelStyle {
   border: transparent !important; }
 
+.progressBarDiv {
+  margin-top: 5%;
+  overflow: hidden; }
+
+.pendingQuesTag {
+  text-align: center;
+  margin-top: -10px; }
+
+.questionsDiv {
+  padding-bottom: 5%;
+  margin-top: 0%;
+  overflow: scroll !important;
+  height: 83%; }
+
+.questionHeader {
+  width: 100%;
+  height: 30px;
+  background-color: #E6E6E6;
+  margin-top: 0%;
+  display: flex;
+  align-items: center; }
+
+.questionNumber {
+  margin-left: 4%;
+  margin-right: 1%;
+  margin-top: 3px;
+  white-space: nowrap; }
+
+/* This sets the dimensions of the Progress Bar element */
+progress {
+  width: 300px;
+  height: 17px;
+  display: block;
+  /* turn off defaults */
+  -webkit-appearance: none;
+  border: none; }
+
+/* This rule sets the appearance of the progress bar background */
+progress::-webkit-progress-bar {
+  background: #ebebeb;
+  padding: 2px;
+  box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2); }
+
+progress::-webkit-progress-value {
+  background: -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)), -webkit-linear-gradient(left, #ea342f, #eac92f, #31b718);
+  background-size: 25px 14px, 100% 100%, 100% 100%;
+  -webkit-animation: move 5s linear 0 infinite;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
+
+@-webkit-keyframes move {
+  0% {
+    background-position: 0px 0px, 0 0, 0 0; }
+  100% {
+    background-position: -100px 0px, 0 0, 0 0; } }
+.marqueeHeaderStyle {
+  font-weight: bold;
+  color: #494949; }
+
+.marqueeSubHeaderStyle {
+  color: #696969; }
+
+/****************************** NEXUS 5 portrait ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: portrait) {
+  .questionsDiv {
+    height: 76%; } }
 .confirmDealer {
   top: 15% !important; }
 
@@ -14564,20 +14635,455 @@ hr {
   color: #1385CC; }
 
 .dealerSelectedLabel {
-  text-align: center; }
+  text-align: center;
+  background: #e6e6e6;
+  margin-top: 5%;
+  height: 9%; }
 
 .labelStyle {
   font-size: 18px;
-  font-weight: 400;
-  color: #000000; }
+  color: #000000;
+  padding-top: 4.5%; }
 
 .confrmDealerLabelStyle {
-  margin-left: 5%;
-  margin-top: 2% !important;
-  font-size: 17px;
+  margin-left: 2%;
+  margin-top: -1% !important;
+  font-size: 13px;
   font-family: "HelveticaNeue";
   color: grey; }
 
+.dealerConfirmLabelStyle {
+  width: 50%;
+  margin-left: 48% !important;
+  margin-top: -7%;
+  font-size: 13px !important;
+  background: transparent; }
+
+.editIcon {
+  width: 26px;
+  height: 26px;
+  margin-left: 89%;
+  margin-top: 8%;
+  position: fixed; }
+
+.dealerList {
+  padding-bottom: 20%; }
+
+/*************************** Landscape ***********************/
+@media only screen and (orientation: landscape) {
+  .editIcon {
+    width: 28px;
+    height: 28px;
+    margin-left: 92%;
+    margin-top: 5%;
+    position: fixed; }
+
+  .dealerSelectedLabel {
+    text-align: center;
+    background: #e6e6e6;
+    margin-top: 4%;
+    height: 16%; }
+
+  .labelStyle {
+    font-size: 18px;
+    font-weight: 450;
+    color: #000000;
+    padding-top: 3%; }
+
+  .confirmprogressDiv {
+    margin-top: -2%; }
+
+  .lblSelectDealerConfirm {
+    margin-top: 5%;
+    margin-left: 11%;
+    margin-right: 11%;
+    margin-bottom: 2%; }
+
+  .lblConfirmDealerConfirm {
+    margin-right: 19%;
+    margin-left: 8%;
+    color: #1385CC; }
+
+  .progressIcon {
+    margin-top: -3%; }
+
+  .dealerConfirmLabelStyle {
+    margin-top: -4.5%;
+    margin-left: 37% !important; }
+
+  .dealerList {
+    padding-bottom: 10%; } }
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .confirmDealer {
+    margin-top: 20px; }
+
+  .editIcon {
+    margin-top: 4%; }
+
+  .dealerSelectedLabel {
+    margin-top: -2%;
+    padding-bottom: 1.5%; }
+
+  .labelStyle {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 3%;
+    padding-bottom: 2%; }
+
+  .lblSelectDealerConfirm {
+    margin-left: 5%;
+    margin-right: 5%; }
+
+  .lblConfirmDealerConfirm {
+    margin-right: 4%; } }
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .dealerSelectedLabel {
+    margin-top: 1.5%; }
+
+  .editIcon {
+    margin-top: 2.5%; }
+
+  .labelStyle {
+    padding-bottom: 2% !important;
+    padding-top: 2.5% !important; }
+
+  .confirmprogressDiv {
+    margin-top: -3.5%; }
+
+  .lblSelectDealerConfirm {
+    margin-left: 10%;
+    margin-right: 7%; }
+
+  .lblConfirmDealerConfirm {
+    margin-right: 17%; }
+
+  .footerDiv {
+    height: 45px; }
+
+  .backButtonQuestionnaire {
+    height: 45px; }
+
+  .nextButtonQuestionnaire {
+    height: 45px; }
+
+  .confrmDealerLabelStyle {
+    margin-left: 2%;
+    margin-top: 0% !important;
+    font-size: 13px; }
+
+  .dealerConfirmLabelStyle {
+    margin-top: -4%;
+    margin-left: 37% !important; } }
+/****************************** NEXUS 5 portrait ******************************/
+/****************************** Google Nexus 7 (portrait) ***********************/
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: portrait) {
+  .confirmDealer {
+    margin-top: 2% !important; }
+
+  .editIcon {
+    width: 28px;
+    height: 28px;
+    margin-left: 91%;
+    margin-top: 4%;
+    position: fixed; }
+
+  .dealerSelectedLabel {
+    margin-top: 3%;
+    height: 8%; }
+
+  .labelStyle {
+    font-size: 18px;
+    color: #000000;
+    padding-top: 4.5%;
+    width: 100%; }
+
+  .lblSelectDealerConfirm {
+    width: 24%;
+    margin-left: 10%;
+    font-size: 16px; }
+
+  .lblConfirmDealerConfirm {
+    margin-left: -4%;
+    width: 21%;
+    font-size: 16px; }
+
+  .lblSubmitAudit {
+    font-size: 16px;
+    width: 20%; }
+
+  .progressIcon {
+    margin-top: -2%; }
+
+  .confrmDealerLabelStyle {
+    margin-left: 2%;
+    margin-top: 0% !important;
+    font-size: 16px;
+    font-family: "HelveticaNeue";
+    color: grey;
+    width: 30%; }
+
+  .dealerConfirmLabelStyle {
+    width: 50%;
+    margin-left: 41% !important;
+    margin-top: -5%;
+    font-size: 16px !important;
+    background: transparent; } }
+/******************************* Google Nexus 7 (lanscape) ****************************/
+@media only screen and (min-device-width: 600px) and (max-device-width: 966px) and (orientation: landscape) {
+  .confirmDealer {
+    margin-top: 1.5% !important; }
+
+  .editIcon {
+    margin-top: 3%; }
+
+  .dealerSelectedLabel {
+    margin-top: 3%;
+    height: 13%; }
+
+  .labelStyle {
+    width: 100%;
+    padding-top: 2%; }
+
+  .confirmprogressDiv {
+    margin-top: -3%; }
+
+  .lblSelectDealerConfirm {
+    width: 25%;
+    font-size: 16px;
+    margin-left: 12%; }
+
+  .lblConfirmDealerConfirm {
+    width: 12%;
+    margin-left: -5%;
+    font-size: 16px; }
+
+  .lblSubmitAudit {
+    margin-left: 2%;
+    font-size: 16px !important; }
+
+  .dealerList {
+    margin-top: -1%; }
+
+  .confrmDealerLabelStyle {
+    font-size: 16px;
+    margin-top: -1% !important;
+    width: 25% !important; }
+
+  .dealerConfirmLabelStyle {
+    font-size: 16px !important;
+    margin-top: -3% !important; } }
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape) {
+  .editIcon {
+    width: 28px;
+    height: 28px;
+    margin-left: 92%;
+    margin-top: 5%;
+    position: fixed; }
+
+  .dealerSelectedLabel {
+    text-align: center;
+    background: #e6e6e6;
+    margin-top: 4%;
+    height: 16%; }
+
+  .labelStyle {
+    font-size: 18px;
+    font-weight: 450;
+    color: #000000;
+    padding-top: 3%; }
+
+  .confirmprogressDiv {
+    margin-top: -2%; }
+
+  .lblSelectDealerConfirm {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 4%;
+    margin-bottom: 2%; }
+
+  .lblConfirmDealerConfirm {
+    margin-right: 16%;
+    margin-left: 2%;
+    width: 16%;
+    color: #1385CC; }
+
+  .progressIcon {
+    margin-top: -3%; }
+
+  .dealerConfirmLabelStyle {
+    margin-top: -4.5%;
+    margin-left: 37% !important; }
+
+  .dealerList {
+    padding-bottom: 10%; }
+
+  .confrmDealerLabelStyle {
+    font-size: 13px;
+    margin-top: 0% !important;
+    width: 25% !important; }
+
+  .dealerConfirmLabelStyle {
+    margin-top: -4% !important;
+    margin-left: 37% !important;
+    font-size: 13px !important; } }
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3 / 4) {
+  .editIcon {
+    margin-top: 1% !important; }
+
+  .dealerSelectedLabel {
+    margin-top: -2% !important; }
+
+  .labelStyle {
+    padding-bottom: 2% !important; }
+
+  .lblSelectDealerConfirm {
+    margin-left: 11% !important; }
+
+  .confrmDealerLabelStyle {
+    margin-top: -10% !important; }
+
+  .dealerConfirmLabelStyle {
+    margin-top: -3.5% !important; } }
+/**************************************** ipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3 / 4) {
+  .editIcon {
+    margin-top: 1.5%; }
+
+  .dealerSelectedLabel {
+    margin-top: 1%; }
+
+  .labelStyle {
+    padding-top: 2%;
+    padding-bottom: 1.5%; }
+
+  .confrmDealerLabelStyle {
+    margin-top: 0% !important; }
+
+  .dealerConfirmLabelStyle {
+    margin-top: -3% !important; } }
+/***custom css for the audit details page****/
+.auditDetailsDiv {
+  height: 8.09%;
+  width: inherit;
+  margin-top: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6e6e6; }
+
+.auditDetailsText {
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap; }
+
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape) {
+  .auditDetailsDiv {
+    height: 15%;
+    width: inherit;
+    margin-top: 33px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e6e6e6; } }
+/******************* Google Nexus 7 (landscape) ********************/
+@media only screen and (min-device-width: 601px) and (max-device-width: 970px) and (orientation: landscape) {
+  .auditDetailsDiv {
+    height: 12%;
+    width: inherit;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e6e6e6; } }
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .auditDetailsDiv {
+    margin-top: 5px;
+    background: #e6e6e6; }
+
+  .auditDetailsText {
+    display: -webkit-inline-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    margin-top: 8px; }
+
+  .dateIconStyle {
+    height: 25px;
+    width: 25px;
+    margin-left: -23%;
+    margin-top: -16%;
+    position: fixed; } }
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .auditDetailsDiv {
+    height: 15%;
+    width: inherit;
+    margin-top: 10px;
+    background: #e6e6e6; }
+
+  .auditDetailsText {
+    display: -webkit-inline-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    margin-top: 8px;
+    text-align: center; }
+
+  .dateIconStyle {
+    height: 25px;
+    width: 25px;
+    margin-left: -4%;
+    margin-top: -8%;
+    position: fixed; } }
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3 / 4) {
+  .auditDetailsDiv {
+    height: 5%;
+    margin-top: 5px;
+    background: #e6e6e6; }
+
+  .auditDetailsText {
+    display: -webkit-inline-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    margin-top: 12px; }
+
+  .dateIconStyle {
+    hheight: 25px;
+    width: 25px;
+    margin-left: -3%;
+    margin-top: -5%;
+    position: fixed; } }
+/**************************************** ipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3 / 4) {
+  .auditDetailsDiv {
+    height: 7%;
+    width: inherit;
+    margin-top: 13px;
+    margin-bottom: 10px;
+    background: #e6e6e6; }
+
+  .auditDetailsText {
+    display: -webkit-inline-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    margin-top: 10px;
+    text-align: center; }
+
+  .dateIconStyle {
+    height: 25px;
+    width: 25px;
+    margin-left: -2%;
+    margin-top: -2%;
+    position: fixed; } }
 .overLayDiv {
   position: absolute;
   top: 0%;

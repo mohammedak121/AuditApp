@@ -267,18 +267,28 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 						if($location.search().auditProgress == "true") {
 							$location.path('/auditProgressDealer');
 						} else {
-							$location.path('/searchDealer');
+							$location.path('/confirmDealer').search({
+								confirmDealerFromSearch: 'false'
+							});
 						}
 					}
 				})
 			} else {
 				if($location.search().auditProgress == "true") {
 					$location.path('/auditProgressDealer');
-				} else {
-					$location.path('/searchDealer');
+				} else 	if($location.search().confirmDealerFromSearch == "false") {
+						$location.path('/auditProgressDealer');
+					}
+					else{
+						$location.path('/confirmDealer').search({
+						confirmDealerFromSearch: 'true'
+					});
 				}
 			}
 		}
+
+   
+
 
 		/**
 		 * @function setForm
@@ -393,7 +403,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 
 							logsFctry.logsDisplay('INFO', $scope.TagName, "Dealer data saved successfully");
 							toastFctry.showToast("Dealer succesfully added.");
-
+							passParameterFctry.setDealerInformation($scope.dealerData);
 							// Check if there is online connectivity , then trigger an upload sync for the added dealer.
 							// This sync should happen in background.
 							if($cordovaNetwork.isOnline()) {
@@ -406,16 +416,26 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 												logsFctry.logsDisplay('INFO', $scope.TagName, 'Offline dealers isServerRecord value successfully changed.');
 											}
 										});
+										//passParameterFctry.setDealerInformation($scope.dealerData);
+
 									} else {
 										console.log("Dealer not uploaded");
 									}
+									//$location.path('/confirmDealer');
 								}, function(error) {
 									logsFctry.logsDisplay('ERROR', $scope.TagName, "Dealer Data could not be uploaded " + JSON.stringify(error));
 									console.log("Dealer not uploaded" + error);
+										//$location.path('/confirmDealer');
 								});
+
 							}
 
-							$location.path('/searchDealer');
+						    //$scope.data = true;
+								// $location.path('/confirmDealer');
+
+								$location.path('/confirmDealer').search({
+									confirmDealerFromSearch: 'false'
+								});
 
 						} else {
 							logsFctry.logsDisplay('INFO', $scope.TagName, "Dealer Data could not be saved");
@@ -446,6 +466,7 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 														toastFctry.showToast("Dealer succesfully updated.");
 
 														console.log("Dealer ID : " + $scope.dealerData.dealer_id);
+															passParameterFctry.setDealerInformation($scope.dealerData);
 
 														// Check if there is online connectivity , then trigger an upload sync for the added dealer.
 														// This sync should happen in background.
@@ -453,9 +474,13 @@ modifyDealerModule.controller('ModifyDealerController', ['$scope', 'passParamete
 
 															syncModuleFactory.updateDealerData($scope.dealerData);
 
-														}
 
-														$location.path('/searchDealer');
+														}
+														//$scope.data = false;
+														// $location.path('/confirmDealer');
+														$location.path('/confirmDealer').search({
+															confirmDealerFromSearch: 'true'
+														});
 
 													} else {
 														logsFctry.logsDisplay('INFO', $scope.TagName, "Dealer Data could not be updated");

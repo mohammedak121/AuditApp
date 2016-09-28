@@ -360,6 +360,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 										console.log("No records for upload sync.");
 									}
 								}, function(error) {
+									$scope.buttonDisabled = false;
 									$scope.shouldShowTyreImage = false;
 									logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in login function upload dealer data.' + JSON.stringify(error));
 									console.log("Error during upload", error);
@@ -432,6 +433,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 												// $scope.status = 'session_failed';
 											}
 										}, function(error) {
+											$scope.buttonDisabled = false;
 											$scope.shouldShowTyreImage = false;
 											console.log("Unable to modify dealer DB info " + error);
 											logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in function login modify dealer information' + JSON.stringify(error));
@@ -441,6 +443,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 										console.log("No records for upload sync.");
 									}
 								}, function(error) {
+									$scope.buttonDisabled = false;
 									$scope.shouldShowTyreImage = false;
 									console.log("Error during upload", error);
 									logsFctry.logsDisplay('ERROR', $scope.TagName, 'Error in function login upload dealer data' + JSON.stringify(error));
@@ -449,6 +452,7 @@ loginControllers.controller('LoginCtrl', function($scope, $rootScope, $location,
 								//return;
 							}
 						}, function(error) {
+							$scope.buttonDisabled = false;
 							$scope.shouldShowTyreImage = false;
 							ErrorHandlerService.showError(error);
 							console.log("Dealers not downloaded " + error);

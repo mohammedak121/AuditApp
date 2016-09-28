@@ -30,5 +30,7 @@ angular.module('dealerAudit.ModuleAssets', []).constant('dealerAudit_AssetsConst
 	searchIconWhite: "img/searchButton.svg",
 	calender: "img/Calender.svg",
 	rightArrow: "img/rightArrow.svg",
-	confirmDealerNavigationIcon:"img/confirmProgressBar.svg"
+	confirmDealerNavigationIcon:"img/confirmProgressBar.svg",
+	edit:"img/edit.svg"
+
 });

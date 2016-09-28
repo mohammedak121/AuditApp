@@ -14,11 +14,8 @@ questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsF
 		$scope.rightArrow = dealerAudit_AssetsConst.rightArrow;
 		$scope.calender = dealerAudit_AssetsConst.calender;
 
-		$scope.noOfQuestionaPerPage = 4;
-		$scope.headerIndex = 0;
-		$scope.subHeaderIndex = 0;
-		$scope.questionIndex = 0;
-
+		$scope.progressBarMaxValue = 0;
+		$scope.progressBarValue = 0;
 
 		$scope.errorTitle = $filter('translate')('lblError');
 		$scope.noQuestionnaires = $filter('translate')('lblNoQuestionnaires');
@@ -37,32 +34,6 @@ questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsF
 		 */
 		$scope.$on('$ionicView.beforeEnter', function() {
 
-			// $scope.groups = [];
-			// for(var i = 0; i < 10; i++) {
-			// 	$scope.groups[i] = {
-			// 		name: i,
-			// 		items: []
-			// 	};
-			// 	for(var j = 0; j < 3; j++) {
-			// 		$scope.groups[i].items.push(i + '-' + j);
-			// 	}
-			// }
-
-			/*
-			 * if given group is the selected group, deselect it
-			 * else, select the given group
-			 */
-			$scope.toggleGroup = function(group) {
-				if($scope.isGroupShown(group)) {
-					$scope.shownGroup = null;
-				} else {
-					$scope.shownGroup = group;
-				}
-			};
-			$scope.isGroupShown = function(group) {
-				return $scope.shownGroup === group;
-			};
-
 			// This is a test method to populate the questionnaire result in JSON format.
 			auditQuestionnaireDBFactory.getQuestionnaireObject().then(function(response) {
 
@@ -72,6 +43,15 @@ questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsF
 
 					$scope.grid = response;
 					$scope.headers = Object.keys(response);
+
+					auditQuestionnaireDBFactory.getMandatoryQuestions().then(function(mandatoryQuestionResponse) {
+						if(mandatoryQuestionResponse.length > 0) {
+							console.log("Number of mandatory questions " + mandatoryQuestionResponse.length);
+							$scope.progressBarMaxValue = mandatoryQuestionResponse.length;
+						} else {
+							console.log("There are no mandatory questions");
+						}
+					});
 
 				} else {
 					$ionicPopup.alert({
@@ -83,6 +63,15 @@ questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsF
 			})
 		});
 
+		$scope.nextButtonClick = function() {
+			// for(header in $scope.grid) {
+			// 	for(subheader in header) {
+			// 		for(question in subheader) {
+			// 			var
+			// 		}
+			// 	}
+			// }
+		}
 
 		/**
 		 * @function openDatePicker
@@ -121,11 +110,6 @@ questionnaireModule.controller('AuditQuestionnaireController', ['$scope', 'logsF
 				$scope.dateData = fullDate;
 			});
 		}
-
-		$scope.loadNextQuestionnaire = function() {
-
-		}
-
 	} catch(error) {
 		logsFctry.logsDisplay('ERROR', $scope.TagName, "Error loading AuditQuestionnaireController" + JSON.stringify(error));
 	}

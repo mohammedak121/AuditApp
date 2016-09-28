@@ -1,0 +1,147 @@
+/***custom css for the audit details page****/
+
+.auditDetailsDiv{
+  height: 8.09%;
+  width: inherit;
+  margin-top: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6e6e6;
+}
+
+.auditDetailsText{
+display: table-cell;
+vertical-align: middle;
+white-space: nowrap;
+}
+
+/****************************** NEXUS 5 Landscape ******************************/
+@media only screen and (min-device-width: 360px) and (max-width: 731px) and (-webkit-min-device-pixel-ratio: 2.6) and (orientation: landscape){
+  .auditDetailsDiv{
+    height: 15%;
+    width: inherit;
+    margin-top: 33px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e6e6e6;
+  }
+}
+
+/******************* Google Nexus 7 (landscape) ********************/
+@media only screen and (min-device-width : 601px) and (max-device-width :970px) and (orientation : landscape) {
+  .auditDetailsDiv{
+    height: 12%;
+    width: inherit;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e6e6e6;
+  }
+}
+
+/***************************iPhone 5 (portrait) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .auditDetailsDiv{
+  margin-top: 5px;
+  background: #e6e6e6;
+}
+
+.auditDetailsText{
+display: -webkit-inline-box;
+-webkit-box-pack: center;
+-webkit-box-align: center;
+margin-top: 8px;
+}
+
+ .dateIconStyle{
+height: 25px;
+width: 25px;
+margin-left: -23%;
+margin-top: -16%;
+position: fixed;
+  }
+
+}
+
+/***************************iPhone 5 (landscape) *************/
+@media only screen and (min-device-width: 320px) and (max-device-width: 400px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+.auditDetailsDiv{
+  height: 15%;
+width: inherit;
+margin-top: 10px;
+background: #e6e6e6;
+}
+.auditDetailsText{
+display: -webkit-inline-box;
+-webkit-box-pack: center;
+-webkit-box-align: center;
+margin-top: 8px;
+text-align: center;
+}
+.dateIconStyle{
+height: 25px;
+width: 25px;
+margin-left: -4%;
+margin-top: -8%;
+position: fixed;
+  }
+}
+
+
+/**************************************** iPAD Potrait*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)  and (device-aspect-ratio: 3/4) {
+  .auditDetailsDiv{
+  height: 5%;
+  margin-top: 5px;
+  background: #e6e6e6;
+}
+
+.auditDetailsText{
+display: -webkit-inline-box;
+-webkit-box-pack: center;
+-webkit-box-align: center;
+margin-top: 12px;
+}
+
+ .dateIconStyle{
+hheight: 25px;
+width: 25px;
+margin-left: -3%;
+margin-top: -5%;
+position: fixed;
+  }
+}
+
+/**************************************** ipad Landscape*********************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) and (device-aspect-ratio: 3/4){
+
+.auditDetailsDiv{
+ height: 7%;
+  width: inherit;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  background: #e6e6e6;
+}
+.auditDetailsText{
+display: -webkit-inline-box;
+-webkit-box-pack: center;
+-webkit-box-align: center;
+margin-top: 10px;
+text-align: center;
+}
+.dateIconStyle{
+height: 25px;
+width: 25px;
+margin-left: -2%;
+margin-top: -2%;
+position: fixed;
+  }
+}

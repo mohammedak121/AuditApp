@@ -71,6 +71,7 @@ angular.module('dealerAudit.ModuleConstants', []).constant('dealerAudit_Constant
 		LogsDisable: 0,
 		logStatusInConst: 0,
 	},
+
 	languag: {
 		Englishlanguage: "English",
 		Germanlanguage: "German",
@@ -94,5 +95,8 @@ angular.module('dealerAudit.ModuleConstants', []).constant('dealerAudit_Constant
 		noContent: 2
 	},
 	keyBoardSubmitButtonKeyCode: 13,
-	keyBoardGoButtonKeyCode: 9
+	keyBoardGoButtonKeyCode: 9,
+	currentLanguage :'',
+	currentCountry : ''
+
 });

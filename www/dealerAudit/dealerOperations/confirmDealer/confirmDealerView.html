@@ -13,57 +13,81 @@ Description : This Provides the design for showing the confirmation of dealer au
   <ion-header-bar class="bar bar-header headerBar" align-title="center">
 
     <h1 class="title confirmDealer" >Audit in Progress</h1>
+      <div ng-show="editIconVisibility">
+        <img class="editIcon"  ng-src="{{editIcon}}" ng-click="navigateToModifyDealer()"/>
+    </div>
     <!--Header Bar Title  -->
   </ion-header-bar>
   <ion-content has-footer="true" class="SettingsPageBg" scroll="true">
-    <div class="progressDiv">
+
+    <div class="dealerSelectedLabel">
+        <label class="labelStyle">{{'lbldealerSelectedLabel'|translate}}</label>
+    </div>
+    <div class="confirmprogressDiv">
 
       <label class="lblSelectDealerConfirm">{{'lblSelectDealer'|translate}}</label>
       <label class="lblConfirmDealerConfirm">{{'lblConfirmDealer'|translate}}</label>
       <label class="lblSubmitAudit">{{'lblSubmitAudit'|translate}}</label>
-      <img ng-src={{confirmDealerNavigationIcon}} />
+      <img class="progressIcon" ng-src={{confirmDealerNavigationIcon}} />
 
     </div>
-    <div class="dealerSelectedLabel">
-        <label class="labelStyle">{{'lbldealerSelectedLabel'|translate}}</label>
-    </div>
+
 
     <div class="dealerList">
-      <div>
+
+      <div ng-show="dealerData.dealer_name.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblDealerName'|translate}}</label>
+          <input id="companyName" name="companyName" type="text" class="dealerConfirmLabelStyle" ng-disabled="companyName" ng-model="dealerData.dealer_name" style="color: black !important; opacity: 1;">
       </div>
-      <div>
+
+      <div ng-show="dealerData.email.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblEmail'|translate}}</label>
+          <input id="email" name="email" type="text" class="dealerConfirmLabelStyle" ng-disabled="email" ng-model="dealerData.email" style="color: black !important; opacity: 1;">
       </div>
-      <div>
+
+      <div ng-show="dealerData.phone.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblPhone'|translate}}</label>
+          <input id="phone" name="phone" type="text"  class="dealerConfirmLabelStyle" ng-disabled="phone" ng-model="dealerData.phone"  style="color: black !important; opacity: 1;">
       </div>
-      <div>
+        <div ng-show="dealerData.network.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblNetwork'|translate}}</label>
+          <input id="network" name="network"  type="text"  class="dealerConfirmLabelStyle" ng-disabled="network" ng-model="dealerData.network"  style="color: black !important; opacity: 1;">
       </div>
-      <div>
+        <div ng-show="dealerData.address.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblDealerAddress'|translate}}</label>
+          <input id="address" name="address" type="text" class="dealerConfirmLabelStyle" ng-disabled="address" ng-model="dealerData.address" style="color: black !important; opacity: 1;">
       </div>
-      <div>
+        <div ng-show="dealerData.post_code.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblZipCode'|translate}}</label>
+          <input id="zipCode" name="zipCode" type="text" class="dealerConfirmLabelStyle" ng-disabled="zipCode" ng-model="dealerData.post_code"  style="color: black !important; opacity: 1;">
       </div>
-      <div>
+        <div ng-show="dealerData.country_name.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblDealerCountry'|translate}}</label>
+          <input id="country" name="country" type="text" placeholder="" class="dealerConfirmLabelStyle" ng-disabled="country" ng-model="dealerData.country_name" style="color: black !important; opacity: 1;">
       </div>
-      <div>
+      <div ng-show="dealerData.city_name.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblDealerCity'|translate}}</label>
+              <input id="city" name="city" type="text" placeholder="" class="dealerConfirmLabelStyle" ng-disabled="city" ng-model="dealerData.city_name" style="color: black !important; opacity: 1;">
       </div>
-      <div>
+        <div ng-show="dealerData.holding_name.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblHoldingName'|translate}}</label>
+          <input id="holdingName" name="holdingName" type="text" class="dealerConfirmLabelStyle" ng-disabled="holdingName" ng-model="dealerData.holding_name"   style="color: black !important; opacity: 1;">
+
       </div>
-      <div>
+        <div ng-show="dealerData.payer_code.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblPayerCode'|translate}}</label>
+          <input id="payerCode" name="payerCode"  type="text" class="dealerConfirmLabelStyle" ng-disabled="payerCode" ng-model="dealerData.payer_code"  style="color: black !important; opacity: 1;" >
+
       </div>
-      <div>
+        <div ng-show="dealerData.pos_code.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblDealerPOSCode'|translate}}</label>
+          <input id="posCode" name="posCode"  type="text" class="dealerConfirmLabelStyle" ng-disabled="posCode" ng-model="dealerData.pos_code"  style="color: black !important; opacity: 1;">
+
       </div>
-      <div>
+        <div ng-show="dealerData.tts_name.length != 0">
           <label class="confrmDealerLabelStyle">{{'lblTTS'|translate}}</label>
+          <input id="tts" name="tts" type="text" class="dealerConfirmLabelStyle"  ng-disabled="tts" ng-model="dealerData.tts_name" style="color: black !important; opacity: 1;">
+
       </div>
     </div>
   </ion-content>
@@ -72,8 +96,8 @@ Description : This Provides the design for showing the confirmation of dealer au
       <!-- <ion-footer-bar ng-show="buttonVisibility" style="position:fixed;" class="bar bar-footer footerstyle footerStyleDashBoard"> -->
       <div class="footerDiv">
 
-          <button class="backButtonQuestionnaire" >Back</button>
-          <button class="nextButtonQuestionnaire" >Confirm</button>
+          <button class="backButtonQuestionnaire" ng-click="navigateTosearchorModifyDealer()">Back</button>
+          <button class="nextButtonQuestionnaire" ng-click="navigatetoAuditDealers()" >Confirm</button>
       </div>
   </div>
 </ion-nav-view>
